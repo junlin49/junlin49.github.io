@@ -3,7 +3,7 @@
   <entry>
     <title> OpenCV调用Azure Kinect 实现过程</title>
     <url>/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="OpenCV调用Azure-Kinect-实现过程"><a href="#OpenCV调用Azure-Kinect-实现过程" class="headerlink" title="OpenCV调用Azure Kinect 实现过程"></a>OpenCV调用Azure Kinect 实现过程</h1><blockquote>
+    <content><![CDATA[<blockquote>
 <p>源代码来源：</p>
 <p>源代码作者：无雨森</p>
 <p>浙江科技大学在读博士</p>
@@ -43,40 +43,5 @@
       <tags>
         <tag>Azure Kinect</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Test</title>
-    <url>/2020/08/01/Test/</url>
-    <content><![CDATA[<p>仅仅测试</p>
-<!-- mor -->
-
-<p>slkjadfkljsdklfjklsdjfkaljsdlk哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈</p>
-<h1 id="啊哈哈哈哈哈哈"><a href="#啊哈哈哈哈哈哈" class="headerlink" title="啊哈哈哈哈哈哈"></a>啊哈哈哈哈哈哈</h1><p>啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈、</p>
-<h2 id="啊哈哈哈哈哈哈-1"><a href="#啊哈哈哈哈哈哈-1" class="headerlink" title="啊哈哈哈哈哈哈"></a>啊哈哈哈哈哈哈</h2><p>啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈</p>
-<h3 id="啊哈哈哈哈哈哈-2"><a href="#啊哈哈哈哈哈哈-2" class="headerlink" title="啊哈哈哈哈哈哈"></a>啊哈哈哈哈哈哈</h3><p>啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈啊哈哈哈哈哈哈</p>
-]]></content>
-      <tags>
-        <tag>heha</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/07/30/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<a id="more"></a>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
