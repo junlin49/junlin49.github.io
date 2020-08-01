@@ -91,7 +91,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/07/30/hello-world/" data-id="ckd88aw9p0000pgvs48sb8h2o" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/07/30/hello-world/" data-id="ckdbjzm620001wcvs43rt3wvs" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -107,6 +107,32 @@
                 
                     
                         
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
                             
 
 </article>
