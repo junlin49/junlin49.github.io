@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+     OpenCV调用Azure Kinect 实现过程 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-OpenCV调用Azure-Kinect-实现过程" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+       OpenCV调用Azure Kinect 实现过程
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" class="article-date">
+  <time datetime="2020-08-01T11:44:28.000Z" itemprop="datePublished">2020-08-01</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="OpenCV调用Azure-Kinect-实现过程"><a href="#OpenCV调用Azure-Kinect-实现过程" class="headerlink" title="OpenCV调用Azure Kinect 实现过程"></a>OpenCV调用Azure Kinect 实现过程</h1><blockquote>
+<p>源代码来源：</p>
+<p>源代码作者：无雨森</p>
+<p>浙江科技大学在读博士</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="软件硬件a"><a href="#软件硬件a" class="headerlink" title="软件硬件a"></a>软件硬件a</h2><p>VS2019</p>
+<p>Azure Kinect</p>
+<h2 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h2><p>OpenCV_OneKinect</p>
+<h2 id="本地配置过程"><a href="#本地配置过程" class="headerlink" title="本地配置过程"></a>本地配置过程</h2><h3 id="配置OpenCV"><a href="#配置OpenCV" class="headerlink" title="配置OpenCV"></a>配置OpenCV</h3><p>略过</p>
+<h3 id="配置模式与头文件路径"><a href="#配置模式与头文件路径" class="headerlink" title="配置模式与头文件路径"></a>配置模式与头文件路径</h3><ul>
+<li>本地建立VS空项目，release X64模式</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731102606.png"></p>
+<ul>
+<li>新建cpp文档，作为源文件，将OpenCV_OneKinect的源代码复制进新建的cpp文档</li>
+<li>配置头文件路径，本文以此为例</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731102928.png"></p>
+<p>项目 -&gt; 属性 -&gt; C/C++ -&gt; 附加包含目录</p>
+<p>填入上面图片所示路径</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731103339.png"></p>
+<h3 id="安装Kinect包"><a href="#安装Kinect包" class="headerlink" title="安装Kinect包"></a>安装Kinect包</h3><p>打开包管理器，下载如下图所示包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731103706.png"></p>
+<p>安装结束后，即可发现代码已经没有报错</p>
+<h3 id="修改源代码"><a href="#修改源代码" class="headerlink" title="修改源代码"></a>修改源代码</h3><p>此时F5运行，会发现报错：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731104137.png"><br>错误    LNK2001    无法解析的外部符号 “void __cdecl sen::ColorizeDepthImage(class k4a::image const &amp;,struct sen::Pixel (__cdecl*)(unsigned short const &amp;,unsigned short const &amp;,unsigned short const &amp;),struct std::pair&lt;unsigned short,unsigned short&gt;,class std::vector&lt;struct sen::Pixel,class std::allocator<struct sen::Pixel> &gt; *)” (?ColorizeDepthImage@sen@@YAXAEBVimage@k4a@@P6A?AUPixel@1@AEBG11@ZU?$pair@GG@std@@PEAV?$vector@UPixel@sen@@V?$allocator@UPixel@sen@@@std@@@6@@Z)    Test    F:\VS_Area\Test\源.obj    1    </p>
+<p>原因：</p>
+<p>StaticImageProperties.h头文件中，缺少ColorizeDepthImage的函数体</p>
+<p>解决方法：</p>
+<p>在StaticImageProperties.h头文件中添加即可</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ColorizeDepthImage</span><span class="params">(<span class="keyword">const</span> k4a::<span class="built_in">image</span>&amp; depthImage,</span></span></span><br><span class="line"><span class="function"><span class="params">        DepthPixelVisualizationFunction visualizationFn,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">std</span>::<span class="built_in">pair</span>&lt;<span class="keyword">uint16_t</span>, <span class="keyword">uint16_t</span>&gt; expectedValueRange,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Pixel&gt;* <span class="built_in">buffer</span>)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">k4a_image_format_t</span> imageFormat = depthImage.get_format();</span><br><span class="line">        <span class="keyword">if</span> (imageFormat != K4A_IMAGE_FORMAT_DEPTH16 &amp;&amp; imageFormat != K4A_IMAGE_FORMAT_IR16)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">std</span>::logic_error(<span class="string">&quot;Attempted to colorize a non-depth image!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> <span class="built_in">width</span> = depthImage.get_width_pixels();</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> <span class="built_in">height</span> = depthImage.get_height_pixels();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">buffer</span>-&gt;resize(<span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(<span class="built_in">width</span> * <span class="built_in">height</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">uint16_t</span>* depthData = <span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">uint16_t</span>*&gt;(depthImage.get_buffer());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; <span class="built_in">height</span>; ++h)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> w = <span class="number">0</span>; w &lt; <span class="built_in">width</span>; ++w)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">const</span> <span class="keyword">size_t</span> currentPixel = <span class="keyword">static_cast</span>&lt;<span class="keyword">size_t</span>&gt;(h * <span class="built_in">width</span> + w);</span><br><span class="line">                (*<span class="built_in">buffer</span>)[currentPixel] = visualizationFn(depthData[currentPixel], expectedValueRange.first, expectedValueRange.second);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行成功：</p>
+<p><img src="C:\Users\VR5\AppData\Roaming\Typora\typora-user-images\image-20200731104600494.png" alt="image-20200731104600494"></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" data-id="ckdblaz880003zwvsbecn94ov" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Azure-Kinect/" rel="tag">Azure Kinect</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/08/01/Test/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Test</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
