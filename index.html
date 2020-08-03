@@ -103,53 +103,19 @@
                                             
 
                                                 
-                                                                    <blockquote>
+                                                    <blockquote>
 <p>源代码来源：</p>
 <p>源代码作者：无雨森；浙江科技大学在读博士</p>
 </blockquote>
-<h2 id="软件硬件"><a href="#软件硬件" class="headerlink" title="软件硬件"></a>软件硬件</h2><p>VS2019</p>
-<p>Azure Kinect</p>
-<h2 id="名称"><a href="#名称" class="headerlink" title="名称"></a>名称</h2><p>OpenGL_GLUT_ShowImage</p>
-<h2 id="本地配置过程"><a href="#本地配置过程" class="headerlink" title="本地配置过程"></a>本地配置过程</h2><h3 id="配置OpenCV"><a href="#配置OpenCV" class="headerlink" title="配置OpenCV"></a>配置OpenCV</h3><p>略过</p>
-<h3 id="配置模式与头文件路径"><a href="#配置模式与头文件路径" class="headerlink" title="配置模式与头文件路径"></a>配置模式与头文件路径</h3><ul>
-<li>本地建立VS空项目，release X64模式</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731102606.png"></p>
-<ul>
-<li>新建cpp文档，作为源文件，将OpenGL_GLUT_ShowImage的源代码复制进新建的cpp文档</li>
-<li>配置头文件路径，本文以此为例</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731102928.png"></p>
-<p>项目 -&gt; 属性 -&gt; C/C++ -&gt; 附加包含目录</p>
-<p>填入上面图片所示路径</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731103339.png"></p>
-<h3 id="安装Kinect包"><a href="#安装Kinect包" class="headerlink" title="安装Kinect包"></a>安装Kinect包</h3><p>打开包管理器，下载如下图所示包</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731101741.png"></p>
-<p>安装结束后，即可发现代码已经没有报错</p>
-<h3 id="修改源代码"><a href="#修改源代码" class="headerlink" title="修改源代码"></a>修改源代码</h3><p>此时F5运行，会发现报错：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731105327.png"></p>
-<p>解决方法：</p>
-<p>在windows.h语句上方，加入以下语句：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NOMINMAX</span></span><br></pre></td></tr></table></figure>
-
-<p>整体看起来是这样的</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200731105536.png"></p>
-<p>此时F5运行，会出现更多错误</p>
-<p>一种是 C++ error:LNK2005 已经在*.obj中定义</p>
-<p>另一种是和OpenCV的错误一样，无法解析外部命令；这里就略过了</p>
-<p>解决方法：</p>
-<p>在 属性-&gt;配置属性-&gt;链接器-&gt;命令行中添加 /FORCE:MULTIPLE 即可</p>
-<p>此时F5运行，出现错误：</p>
-<p>fatal error LNK1179: 无效或损坏的文件: 重复的XXX</p>
-<p>解决方法：</p>
-<p>属性-C/C++-优化-全程序优化 选择“否”</p>
-<p>此时F5运行，成功！</p>
-<p><img src="C:\Users\VR5\AppData\Roaming\Typora\typora-user-images\image-20200731110227026.png" alt="image-20200731110227026"></p>
-
-                                                                        
+                                                        
+                                                            <a class="article-more-link" href="/2020/08/03/OpenGL%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/08/03/OpenGL%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" data-id="ckdektkqc00015ovs2hr9a7v9" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/08/03/OpenGL%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" data-id="ckdeky0gt0006b0vs9dk8hvz9" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -215,7 +181,7 @@
                                                                 
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" data-id="ckdektkqe00035ovsabu20b3f" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" data-id="ckdeky0gk0001b0vs1qf2b7v8" class="article-share-link">
                                             Share
                                         </a>
                                         
