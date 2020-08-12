@@ -96,4 +96,28 @@
         <tag>Azure Kinect</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用VS2019 创建C++ dll用于Unity</title>
+    <url>/2020/08/12/%E4%BD%BF%E7%94%A8VS2019-%E5%88%9B%E5%BB%BAC-dll%E7%94%A8%E4%BA%8EUnity/</url>
+    <content><![CDATA[<blockquote>
+<p>参考博客：</p>
+<p><a href="https://www.cnblogs.com/aWxvdmVseXc0/p/12857974.html">https://www.cnblogs.com/aWxvdmVseXc0/p/12857974.html</a></p>
+<p><a href="https://blog.csdn.net/zhunju0089/article/details/103458855">https://blog.csdn.net/zhunju0089/article/details/103458855</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="创建VS项目"><a href="#创建VS项目" class="headerlink" title="创建VS项目"></a>创建VS项目</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145559.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145630.png"></p>
+<h3 id="创建项目成功后，打开pch-h文件，定义导出函数的定义"><a href="#创建项目成功后，打开pch-h文件，定义导出函数的定义" class="headerlink" title="创建项目成功后，打开pch.h文件，定义导出函数的定义"></a>创建项目成功后，打开<strong>pch.h</strong>文件，定义导出函数的定义</h3><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145856.png" style="zoom:200%;" />
+
+<h3 id="打开pch-cpp文件，实现上述函数的具体功能"><a href="#打开pch-cpp文件，实现上述函数的具体功能" class="headerlink" title="打开pch.cpp文件，实现上述函数的具体功能"></a>打开<strong>pch.cpp</strong>文件，实现上述函数的具体功能</h3><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150216.png" style="zoom:200%;" />
+
+<h3 id="点击生成解决方案，即可生成dll文件"><a href="#点击生成解决方案，即可生成dll文件" class="headerlink" title="点击生成解决方案，即可生成dll文件"></a>点击<strong>生成解决方案</strong>，即可生成dll文件</h3><h3 id="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"><a href="#在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中" class="headerlink" title="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"></a>在Unity项目中，新建文件夹<strong>Plugins</strong>，将生成的dll文件复制进此文件夹中</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150544.png"></p>
+<h3 id="脚本调用"><a href="#脚本调用" class="headerlink" title="脚本调用"></a>脚本调用</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150843.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150927.png" style="zoom:200%;" />]]></content>
+      <tags>
+        <tag>Unity</tag>
+        <tag>dll</tag>
+      </tags>
+  </entry>
 </search>
