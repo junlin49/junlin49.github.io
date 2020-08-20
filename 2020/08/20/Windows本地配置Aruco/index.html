@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+     Windows本地配置Aruco |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Windows本地配置Aruco" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+       Windows本地配置Aruco
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/08/20/Windows%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AEAruco/" class="article-date">
+  <time datetime="2020-08-20T08:15:16.000Z" itemprop="datePublished">2020-08-20</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <blockquote>
+<p>环境：win10 + VS2019 + OpenCV4.30</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="下载Contrib库"><a href="#下载Contrib库" class="headerlink" title="下载Contrib库"></a>下载Contrib库</h2><p>传送门：</p>
+<p>(<strong>注意</strong>：选择与OpenCV对应的库)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155046.png"></p>
+<h2 id="CMake编译OpecCV"><a href="#CMake编译OpecCV" class="headerlink" title="CMake编译OpecCV"></a>CMake编译OpecCV</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155137.png"></p>
+<p>点击<em>configure</em>，如果有红色，继续点<em>configure</em>，直至红色都消失</p>
+<h2 id="CMake编译OpenCV-contrib"><a href="#CMake编译OpenCV-contrib" class="headerlink" title="CMake编译OpenCV-contrib"></a>CMake编译OpenCV-contrib</h2><ul>
+<li>将<em>opencv_contrib-4.3.0</em>放置在<em>F:\DownLoad\opencv</em>目录下，在CMake中找到<em>OPENCV_EXTRA_MODULES_PATH</em>，填入<em>F:\DownLoad\opencv\opencv_contrib-4.3.0\modules</em>路径，并勾选上方<em>OPENCV_ENABLE_NONFREE</em>；</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155702.png"></p>
+<p>点击<em>configure</em>，如果有红色，继续点<em>configure</em>，直至红色都消失</p>
+<p>最后点击<em>generate</em></p>
+<h2 id="VS2019编译debug与release库"><a href="#VS2019编译debug与release库" class="headerlink" title="VS2019编译debug与release库"></a>VS2019编译debug与release库</h2><p>打开OpenCV.sln项目文件；</p>
+<h3 id="编译debug库"><a href="#编译debug库" class="headerlink" title="编译debug库"></a>编译debug库</h3><p>解决方案 -&gt; 右键重新生成解决方案</p>
+<p>完成后，找到CMakeTargets中的INSTALL，然后右键选择“仅限于项目”–&gt;“仅生成INSTALL”；</p>
+<h3 id="编译release库"><a href="#编译release库" class="headerlink" title="编译release库"></a>编译release库</h3><p>和上面差不多</p>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>系统变量 -&gt; PATH ，添加 F:\DownLoad\MyBuild\install\x64\vc16\bin</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160215.png"></p>
+<p>用户变量：</p>
+<p>变量名：OPENCV</p>
+<p>变量值：F:\DownLoad\MyBuild\install\include</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160401.png"></p>
+<h2 id="配置目录"><a href="#配置目录" class="headerlink" title="配置目录"></a>配置目录</h2><p>与配置OpenCV相同，新建一个项目，新建一个属性表，为日后重复使用奠定基础</p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160634.png"></p>
+<p>属性 -&gt; VC++目录 -&gt; 包含目录，添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F:\DownLoad\MyBuild\install\include</span><br><span class="line">F:\DownLoad\MyBuild\install\include\opencv2</span><br></pre></td></tr></table></figure>
+
+<p>VC++目录 —&gt; 库目录，添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F:\DownLoad\MyBuild\install\x64\vc16\lib</span><br></pre></td></tr></table></figure>
+
+<p>链接器 -&gt; 输入 -&gt; 附加依赖项 ，添加以下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">opencv_aruco430d.lib;</span><br><span class="line">opencv_bgsegm430d.lib;</span><br><span class="line">opencv_bioinspired430d.lib;</span><br><span class="line">opencv_calib3d430d.lib;</span><br><span class="line">opencv_ccalib430d.lib;</span><br><span class="line">opencv_core430d.lib;</span><br><span class="line">opencv_datasets430d.lib;</span><br><span class="line">opencv_dnn_objdetect430d.lib;</span><br><span class="line">opencv_dnn430d.lib;</span><br><span class="line">opencv_dpm430d.lib;</span><br><span class="line">opencv_face430d.lib;</span><br><span class="line">opencv_features2d430d.lib;</span><br><span class="line">opencv_flann430d.lib;</span><br><span class="line">opencv_fuzzy430d.lib;</span><br><span class="line">opencv_hdf430d.lib;</span><br><span class="line">opencv_hfs430d.lib;</span><br><span class="line">opencv_highgui430d.lib;</span><br><span class="line">opencv_img_hash430d.lib;</span><br><span class="line">opencv_imgcodecs430d.lib;</span><br><span class="line">opencv_imgproc430d.lib;</span><br><span class="line">opencv_line_descriptor430d.lib;</span><br><span class="line">opencv_ml430d.lib;</span><br><span class="line">opencv_objdetect430d.lib;</span><br><span class="line">opencv_optflow430d.lib;</span><br><span class="line">opencv_phase_unwrapping430d.lib;</span><br><span class="line">opencv_photo430d.lib;</span><br><span class="line">opencv_plot430d.lib;</span><br><span class="line">opencv_reg430d.lib;</span><br><span class="line">opencv_rgbd430d.lib;</span><br><span class="line">opencv_saliency430d.lib;</span><br><span class="line">opencv_shape430d.lib;</span><br><span class="line">opencv_stereo430d.lib;</span><br><span class="line">opencv_stitching430d.lib;</span><br><span class="line">opencv_structured_light430d.lib;</span><br><span class="line">opencv_superres430d.lib;</span><br><span class="line">opencv_surface_matching430d.lib;</span><br><span class="line">opencv_text430d.lib;</span><br><span class="line">opencv_tracking430d.lib;</span><br><span class="line">opencv_video430d.lib;</span><br><span class="line">opencv_videoio430d.lib;</span><br><span class="line">opencv_videostab430d.lib;</span><br><span class="line">opencv_xfeatures2d430d.lib;</span><br><span class="line">opencv_ximgproc430d.lib;</span><br><span class="line">opencv_xobjdetect430d.lib;</span><br><span class="line">opencv_xphoto430d.lib;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-生成Aruco-board"><a href="#测试-生成Aruco-board" class="headerlink" title="测试 - 生成Aruco_board"></a>测试 - 生成Aruco_board</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;opencv2\highgui.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco\dictionary.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco\charuco.hpp&gt;</span><br><span class="line">#include &lt;opencv2\core.hpp&gt;</span><br><span class="line">#include &lt;opencv2\imgproc\imgproc.hpp&gt;</span><br><span class="line">#include &lt;opencv2\opencv.hpp&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int markersX &#x3D; 5;&#x2F;&#x2F;X轴上标记的数量</span><br><span class="line">    int markersY &#x3D; 5;&#x2F;&#x2F;Y轴上标记的数量   本例生成5x5的棋盘</span><br><span class="line">    int markerLength &#x3D; 100;&#x2F;&#x2F;标记的长度，单位是像素</span><br><span class="line">    int markerSeparation &#x3D; 20;&#x2F;&#x2F;每个标记之间的间隔，单位像素</span><br><span class="line">    int dictionaryId &#x3D; cv::aruco::DICT_4X4_50;&#x2F;&#x2F;生成标记的字典ID</span><br><span class="line">    int margins &#x3D; markerSeparation;&#x2F;&#x2F;标记与边界之间的间隔</span><br><span class="line"></span><br><span class="line">    int borderBits &#x3D; 1;&#x2F;&#x2F;标记的边界所占的bit位数</span><br><span class="line">    bool showImage &#x3D; true;</span><br><span class="line"></span><br><span class="line">    Size imageSize;</span><br><span class="line"></span><br><span class="line">    imageSize.width &#x3D; markersX * (markerLength + markerSeparation) - markerSeparation + 2 * margins;</span><br><span class="line"></span><br><span class="line">    imageSize.height &#x3D; markersY * (markerLength + markerSeparation) - markerSeparation + 2 * margins;</span><br><span class="line"></span><br><span class="line">    Ptr&lt;aruco::Dictionary&gt; dictionary &#x3D; aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));</span><br><span class="line"></span><br><span class="line">    Ptr&lt;aruco::GridBoard&gt; board &#x3D; aruco::GridBoard::create(markersX, markersY, float(markerLength), float(markerSeparation), dictionary);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; show created board</span><br><span class="line">    Mat boardImage;</span><br><span class="line">    board-&gt;draw(imageSize, boardImage, margins, borderBits);</span><br><span class="line"></span><br><span class="line">    if (showImage) &#123;</span><br><span class="line">        imshow(&quot;board&quot;, boardImage);</span><br><span class="line">        waitKey(0);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820154403.png"></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/08/20/Windows%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AEAruco/" data-id="cke2j6sbn000910vsf7lbblox" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Aruco/" rel="tag">Aruco</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/08/12/%E4%BD%BF%E7%94%A8VS2019-%E5%88%9B%E5%BB%BAC-dll%E7%94%A8%E4%BA%8EUnity/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">使用VS2019 创建C++ dll用于Unity</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
