@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+     Aruco Demo_1 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Aruco-Demo-1" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+       Aruco Demo_1
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/08/22/Aruco-Demo-1/" class="article-date">
+  <time datetime="2020-08-22T11:39:27.000Z" itemprop="datePublished">2020-08-22</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <blockquote>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33446100/article/details/89209901">https://blog.csdn.net/qq_33446100/article/details/89209901</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>Aruco Demo_1 是在<strong>board</strong>板上显示图片，在相机标定的基础上完成</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\videoio.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco\dictionary.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco\charuco.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\imgproc\imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\opencv.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv::aruco;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WINDOW_NAME <span class="meta-string">&quot;ARDemo&quot;</span></span></span><br><span class="line"></span><br><span class="line">Mat camMatrix, distCoeffs, srcImage;</span><br><span class="line"><span class="keyword">float</span> markerLength = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">readCameraParameters</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; filename, Mat&amp; camMatrix, Mat&amp; distCoeffs)</span> </span>&#123;</span><br><span class="line">    <span class="function">FileStorage <span class="title">fs</span><span class="params">(filename, FileStorage::READ)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!fs.isOpened())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    fs[<span class="string">&quot;camera_matrix&quot;</span>] &gt;&gt; camMatrix;</span><br><span class="line">    fs[<span class="string">&quot;distortion_coefficients&quot;</span>] &gt;&gt; distCoeffs;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw_image</span><span class="params">(Mat <span class="built_in">image</span>, Mat&amp; frame, Vec3d&amp; rvec, Vec3d&amp; tvec)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Point3f&gt; points;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Point2f&gt; imagePoints;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> l = markerLength * <span class="number">0.5f</span>;</span><br><span class="line"></span><br><span class="line">    points.emplace_back(-l, l, <span class="number">0</span>);<span class="comment">//确定每个marker对应的坐标系中四个顶点的位置</span></span><br><span class="line">    points.emplace_back(l, l, <span class="number">0</span>);<span class="comment">//这个坐标是上一篇中绘制出来的坐标轴中对应的坐标</span></span><br><span class="line">    points.emplace_back(l, -l, <span class="number">0</span>);</span><br><span class="line">    points.emplace_back(-l, -l, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过相机内参、外参将3d坐标映射到图像坐标系</span></span><br><span class="line">    cv::projectPoints(points, rvec, tvec, camMatrix, distCoeffs, imagePoints);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> x = (<span class="keyword">unsigned</span> <span class="keyword">int</span>)imagePoints[<span class="number">0</span>].x;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> y = (<span class="keyword">unsigned</span> <span class="keyword">int</span>)imagePoints[<span class="number">0</span>].y;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;Point2f&gt; corners;</span><br><span class="line">    corners.emplace_back(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    corners.emplace_back(<span class="built_in">image</span>.cols, <span class="number">0</span>);</span><br><span class="line">    corners.emplace_back(<span class="built_in">image</span>.cols, <span class="built_in">image</span>.rows);</span><br><span class="line">    corners.emplace_back(<span class="number">0</span>, <span class="built_in">image</span>.rows);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从四对对应点计算透视变换</span></span><br><span class="line">    cv::Mat T = getPerspectiveTransform(corners, imagePoints);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将透视变换应用于image</span></span><br><span class="line">    Mat warpedImg;</span><br><span class="line">    cv::warpPerspective(<span class="built_in">image</span>, warpedImg, T, frame.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;Point2i&gt; pts;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i : imagePoints) &#123;</span><br><span class="line">        pts.emplace_back((<span class="keyword">int</span>)i.x, (<span class="keyword">int</span>)i.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用全0填充凸多边形</span></span><br><span class="line">    cv::fillConvexPoly(frame, pts, cv::Scalar::all(<span class="number">0</span>), cv::LINE_AA);</span><br><span class="line">    <span class="comment">//或运算</span></span><br><span class="line">    cv::bitwise_or(warpedImg, frame, frame);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*cout &lt;&lt; points &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">    cout &lt;&lt; imagePoints &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">    cout &lt;&lt; corners &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">    cout &lt;&lt; pts &lt;&lt; endl;*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    [-50, 50, 0;</span></span><br><span class="line"><span class="comment">     50, 50, 0;</span></span><br><span class="line"><span class="comment">     50, -50, 0;</span></span><br><span class="line"><span class="comment">     -50, -50, 0]</span></span><br><span class="line"><span class="comment">    [98.558197, 147.89699;</span></span><br><span class="line"><span class="comment">     131.39151, 168.23427;</span></span><br><span class="line"><span class="comment">     108.73455, 203.80612;</span></span><br><span class="line"><span class="comment">     75.317993, 184.06393]</span></span><br><span class="line"><span class="comment">    [0, 0;</span></span><br><span class="line"><span class="comment">     100, 0;</span></span><br><span class="line"><span class="comment">     100, 100;</span></span><br><span class="line"><span class="comment">     0, 100]</span></span><br><span class="line"><span class="comment">    [98, 147;</span></span><br><span class="line"><span class="comment">     131, 168;</span></span><br><span class="line"><span class="comment">     108, 203;</span></span><br><span class="line"><span class="comment">     75, 184]</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//waitKey();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">VideoCapture <span class="title">inputVideo</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="comment">//VideoWriter writer(&quot;VideoTest.avi&quot;, VideoWriter::fourcc(&#x27;M&#x27;, &#x27;J&#x27;, &#x27;P&#x27;, &#x27;G&#x27;), 25.0, Size(640, 480));</span></span><br><span class="line"></span><br><span class="line">    Ptr&lt;aruco::Dictionary&gt; dictionary =</span><br><span class="line">        aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_50);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> readOk = readCameraParameters(<span class="string">&quot;camera.yml&quot;</span>, camMatrix, distCoeffs);</span><br><span class="line">    <span class="keyword">if</span> (!readOk) &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Invalid camera file&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; camMatrix &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; distCoeffs &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    srcImage = imread(<span class="string">&quot;image.png&quot;</span>);</span><br><span class="line">    resize(srcImage, srcImage, Size(<span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line"></span><br><span class="line">    namedWindow(WINDOW_NAME);</span><br><span class="line"></span><br><span class="line">    Mat frame;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (inputVideo.grab()) &#123;</span><br><span class="line">        inputVideo &gt;&gt; frame;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;Point2f&gt;&gt; corners;</span><br><span class="line"></span><br><span class="line">        aruco::detectMarkers(frame, dictionary, corners, ids);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ids.<span class="built_in">size</span>() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt; Vec3d &gt; rvecs, tvecs;<span class="comment">//得到旋转矢量以及平移矢量</span></span><br><span class="line">            cv::aruco::estimatePoseSingleMarkers(corners, <span class="number">100</span>, camMatrix, distCoeffs, rvecs, tvecs);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ids.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">                draw_image(srcImage, frame, rvecs[i], tvecs[i]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//writer &lt;&lt; frame;</span></span><br><span class="line">        &#125;</span><br><span class="line">        cv::imshow(WINDOW_NAME, frame);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> key = (<span class="keyword">char</span>)waitKey(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span> (key == <span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    inputVideo.<span class="built_in">release</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200822193805.png"></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/08/22/Aruco-Demo-1/" data-id="cke5lcq2c0001e8vs9wvwg66j" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Aruco/" rel="tag">Aruco</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/08/22/Aruco-%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title"> Aruco 相机标定</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
