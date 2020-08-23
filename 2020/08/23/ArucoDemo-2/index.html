@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    ArucoDemo-2 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-ArucoDemo-2" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      ArucoDemo-2
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/08/23/ArucoDemo-2/" class="article-date">
+  <time datetime="2020-08-23T00:00:35.000Z" itemprop="datePublished">2020-08-23</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <blockquote>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33446100/article/details/95796560">https://blog.csdn.net/qq_33446100/article/details/95796560</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\imgproc.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawCubeWireframe</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    cv::InputOutputArray <span class="built_in">image</span>, cv::InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">    cv::InputArray distCoeffs, cv::InputArray rvec, cv::InputArray tvec,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">float</span> l</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> wait_time = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">float</span> actual_marker_l = <span class="number">0.101</span>; <span class="comment">// this should be in meters</span></span><br><span class="line"></span><br><span class="line">    <span class="function">VideoWriter <span class="title">writer</span><span class="params">(<span class="string">&quot;VideoTest.avi&quot;</span>, VideoWriter::fourcc(<span class="string">&#x27;M&#x27;</span>, <span class="string">&#x27;J&#x27;</span>, <span class="string">&#x27;P&#x27;</span>, <span class="string">&#x27;G&#x27;</span>), <span class="number">20.0</span>, Size(<span class="number">640</span>, <span class="number">480</span>))</span></span>;</span><br><span class="line"></span><br><span class="line">    cv::Mat <span class="built_in">image</span>, image_copy;</span><br><span class="line">    cv::Mat camera_matrix, dist_coeffs;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">ostringstream</span> vector_to_marker;</span><br><span class="line"></span><br><span class="line">    cv::VideoCapture in_video;</span><br><span class="line">    in_video.<span class="built_in">open</span>(<span class="number">0</span>);</span><br><span class="line">    cv::Ptr&lt;cv::aruco::Dictionary&gt; dictionary =</span><br><span class="line">        cv::aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="function">cv::FileStorage <span class="title">fs</span><span class="params">(<span class="string">&quot;camera.yml&quot;</span>, cv::FileStorage::READ)</span></span>;</span><br><span class="line"></span><br><span class="line">    fs[<span class="string">&quot;camera_matrix&quot;</span>] &gt;&gt; camera_matrix;</span><br><span class="line">    fs[<span class="string">&quot;distortion_coefficients&quot;</span>] &gt;&gt; dist_coeffs;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;camera_matrix\n&quot;</span></span><br><span class="line">        &lt;&lt; camera_matrix &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\ndist coeffs\n&quot;</span></span><br><span class="line">        &lt;&lt; dist_coeffs &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> frame_width = <span class="number">480</span>;</span><br><span class="line">    <span class="keyword">int</span> frame_height = <span class="number">640</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (in_video.grab())</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        in_video.retrieve(<span class="built_in">image</span>);</span><br><span class="line">        <span class="built_in">image</span>.copyTo(image_copy);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt;&gt; corners;</span><br><span class="line">        cv::aruco::detectMarkers(<span class="built_in">image</span>, dictionary, corners, ids);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// if at least one marker detected</span></span><br><span class="line">        <span class="keyword">if</span> (ids.<span class="built_in">size</span>() &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cv::aruco::drawDetectedMarkers(image_copy, corners, ids);</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Vec3d&gt; rvecs, tvecs;</span><br><span class="line">            cv::aruco::estimatePoseSingleMarkers(</span><br><span class="line">                corners, actual_marker_l, camera_matrix, dist_coeffs,</span><br><span class="line">                rvecs, tvecs</span><br><span class="line">            );</span><br><span class="line"></span><br><span class="line">            <span class="comment">// draw axis for each marker</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ids.<span class="built_in">size</span>(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                drawCubeWireframe(</span><br><span class="line">                    image_copy, camera_matrix, dist_coeffs, rvecs[i], tvecs[i],</span><br><span class="line">                    actual_marker_l</span><br><span class="line">                );</span><br><span class="line"></span><br><span class="line">                vector_to_marker.str(<span class="built_in">std</span>::<span class="built_in">string</span>());</span><br><span class="line">                vector_to_marker &lt;&lt; <span class="built_in">std</span>::setprecision(<span class="number">4</span>)</span><br><span class="line">                    &lt;&lt; <span class="string">&quot;x: &quot;</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">8</span>) &lt;&lt; tvecs[<span class="number">0</span>](<span class="number">0</span>);</span><br><span class="line">                cv::putText(image_copy, vector_to_marker.str(),</span><br><span class="line">                    Point(<span class="number">10</span>, <span class="number">30</span>), cv::FONT_HERSHEY_SIMPLEX, <span class="number">0.6</span>,</span><br><span class="line">                    Scalar(<span class="number">0</span>, <span class="number">252</span>, <span class="number">124</span>), <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">                vector_to_marker.str(<span class="built_in">std</span>::<span class="built_in">string</span>());</span><br><span class="line">                vector_to_marker &lt;&lt; <span class="built_in">std</span>::setprecision(<span class="number">4</span>)</span><br><span class="line">                    &lt;&lt; <span class="string">&quot;y: &quot;</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">8</span>) &lt;&lt; tvecs[<span class="number">0</span>](<span class="number">1</span>);</span><br><span class="line">                cv::putText(image_copy, vector_to_marker.str(),</span><br><span class="line">                    Point(<span class="number">10</span>, <span class="number">50</span>), cv::FONT_HERSHEY_SIMPLEX, <span class="number">0.6</span>,</span><br><span class="line">                    Scalar(<span class="number">0</span>, <span class="number">252</span>, <span class="number">124</span>), <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">                vector_to_marker.str(<span class="built_in">std</span>::<span class="built_in">string</span>());</span><br><span class="line">                vector_to_marker &lt;&lt; <span class="built_in">std</span>::setprecision(<span class="number">4</span>)</span><br><span class="line">                    &lt;&lt; <span class="string">&quot;z: &quot;</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">8</span>) &lt;&lt; tvecs[<span class="number">0</span>](<span class="number">2</span>);</span><br><span class="line">                cv::putText(image_copy, vector_to_marker.str(),</span><br><span class="line">                    Point(<span class="number">10</span>, <span class="number">70</span>), cv::FONT_HERSHEY_SIMPLEX, <span class="number">0.6</span>,</span><br><span class="line">                    Scalar(<span class="number">0</span>, <span class="number">252</span>, <span class="number">124</span>), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cv::imshow(<span class="string">&quot;Pose estimation&quot;</span>, image_copy);</span><br><span class="line"></span><br><span class="line">        writer &lt;&lt; image_copy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> key = (<span class="keyword">char</span>)cv::waitKey(wait_time);</span><br><span class="line">        <span class="keyword">if</span> (key == <span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drawCubeWireframe</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    cv::InputOutputArray <span class="built_in">image</span>, cv::InputArray cameraMatrix,</span></span></span><br><span class="line"><span class="function"><span class="params">    cv::InputArray distCoeffs, cv::InputArray rvec, cv::InputArray tvec,</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">float</span> l</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    CV_Assert(</span><br><span class="line">        <span class="built_in">image</span>.getMat().total() != <span class="number">0</span> &amp;&amp;</span><br><span class="line">        (<span class="built_in">image</span>.getMat().channels() == <span class="number">1</span> || <span class="built_in">image</span>.getMat().channels() == <span class="number">3</span>)</span><br><span class="line">    );</span><br><span class="line">    CV_Assert(l &gt; <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">float</span> half_l = l / <span class="number">2.0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// project cube points</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point3f&gt; axisPoints;</span><br><span class="line">    axisPoints.push_back(cv::Point3f(half_l, half_l, l));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(half_l, -half_l, l));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(-half_l, -half_l, l));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(-half_l, half_l, l));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(half_l, half_l, <span class="number">0</span>));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(half_l, -half_l, <span class="number">0</span>));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(-half_l, -half_l, <span class="number">0</span>));</span><br><span class="line">    axisPoints.push_back(cv::Point3f(-half_l, half_l, <span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; imagePoints;</span><br><span class="line">    projectPoints(</span><br><span class="line">        axisPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// draw cube edges lines</span></span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">0</span>], imagePoints[<span class="number">1</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">0</span>], imagePoints[<span class="number">3</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">0</span>], imagePoints[<span class="number">4</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">1</span>], imagePoints[<span class="number">2</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">1</span>], imagePoints[<span class="number">5</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">2</span>], imagePoints[<span class="number">3</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">2</span>], imagePoints[<span class="number">6</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">3</span>], imagePoints[<span class="number">7</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">4</span>], imagePoints[<span class="number">5</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">4</span>], imagePoints[<span class="number">7</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">5</span>], imagePoints[<span class="number">6</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">    cv::<span class="built_in">line</span>(<span class="built_in">image</span>, imagePoints[<span class="number">6</span>], imagePoints[<span class="number">7</span>], cv::Scalar(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">3</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200823075820.png"></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/08/23/ArucoDemo-2/" data-id="cke6btul40003t4vs1h883lmz" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Aruco/" rel="tag">Aruco</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/08/22/Aruco-Demo-1/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title"> Aruco Demo_1</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
