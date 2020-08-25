@@ -74,7 +74,9 @@
                                             
 
                                                 
-                                                                    <p>由上次记录<a href="%5Bhttps://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/%5D(https://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/)">相机标定原理解析-1</a>可知：<br>$$<br>\begin{bmatrix}u \v \1 \\end{bmatrix}=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\begin{bmatrix}x_w \y_w \1 \\end{bmatrix}<br>$$<br>$f_x = \frac{f}{d_x}$</p>
+                                                                    <a id="more"></a>
+
+<p>由上次记录<a href="%5Bhttps://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/%5D(https://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/)">相机标定原理解析-1</a>可知：<br>$$<br>\begin{bmatrix}u \v \1 \\end{bmatrix}=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\begin{bmatrix}x_w \y_w \1 \\end{bmatrix}<br>$$<br>$f_x = \frac{f}{d_x}$</p>
 <p>$f_y = \frac{f}{d_y}$</p>
 <p>定义<code>单应性矩阵（从物体平面到成像平面）:</code><br>$$<br>H=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}=sM\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\tag {公式1}<br>$$<br>$s$为比例系数</p>
 <h3 id="在不考虑畸变情况下，求解内参和外参"><a href="#在不考虑畸变情况下，求解内参和外参" class="headerlink" title="在不考虑畸变情况下，求解内参和外参"></a>在不考虑畸变情况下，求解内参和外参</h3><p>简化：$H = \begin{bmatrix} h_1 &amp; h_2 &amp; h_3 \ \end{bmatrix}$<br>$$<br>h_1 = sMr_1 \h_2 = sMr_2 \\tag {公式2}h_3 = sMr_3 \<br>$$<br><code>旋转向量的性质</code>：$r_1$和$r_2$正交 -&gt; 点积为0<br>$$<br>r_1^Tr_2 = 0\tag {公式3}<br>$$<br>将上述 <code>公式2</code> 替换 <code>公式3 </code>并化简：<br>$$<br>h_1^T(M^{-1})^TM^{-1}h_2 = 0\tag {公式4}<br>$$<br><code>旋转向量性质</code>：旋转向量长度相等<br>$$<br>|r_1|=|r_2|=1 \r_1^T r_1 = r_2^T r_2\tag {公式5}<br>$$</p>
@@ -87,7 +89,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-2/" data-id="cke9bo7qx001lu4vs465ufykg" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-2/" data-id="cke9bwid8001ds4vsg5ke74hf" class="article-share-link">
                                             Share
                                         </a>
                                         

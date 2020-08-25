@@ -306,9 +306,11 @@
   <entry>
     <title>HOLOLENS2开发1</title>
     <url>/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/</url>
-    <content><![CDATA[<h2 id="HOLOLENS2-开发-环境配置"><a href="#HOLOLENS2-开发-环境配置" class="headerlink" title="HOLOLENS2 开发 - 环境配置"></a>HOLOLENS2 开发 - 环境配置</h2><blockquote>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="HOLOLENS2-开发-环境配置"><a href="#HOLOLENS2-开发-环境配置" class="headerlink" title="HOLOLENS2 开发 - 环境配置"></a>HOLOLENS2 开发 - 环境配置</h2><blockquote>
 <p>现在毕设项目已经做完，现在复盘下走过的坑</p>
-<p>可通过邮件<a href="mailto:&#x32;&#x39;&#57;&#x38;&#57;&#x36;&#51;&#x34;&#x34;&#57;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x32;&#x39;&#57;&#x38;&#57;&#x36;&#51;&#x34;&#x34;&#57;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;</a>联系</p>
+<p>可通过邮件<a href="mailto:&#50;&#x39;&#57;&#x38;&#57;&#54;&#51;&#52;&#52;&#x39;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#50;&#x39;&#57;&#x38;&#57;&#54;&#51;&#52;&#52;&#x39;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;</a>联系</p>
 </blockquote>
 <h3 id="第1步：单独安装Win10-SDK"><a href="#第1步：单独安装Win10-SDK" class="headerlink" title="第1步：单独安装Win10 SDK"></a>第1步：单独安装Win10 SDK</h3><p>SDK下载链接：<a href="https://developer.microsoft.com/zh-cn/windows/downloads/windows-10-sdk/">I am here</a></p>
 <ol>
@@ -350,7 +352,9 @@
   <entry>
     <title>VisonLib SDK 初接触</title>
     <url>/2020/05/18/VisonLib-SDK-%E5%88%9D%E6%8E%A5%E8%A7%A6/</url>
-    <content><![CDATA[<h2 id="接触VisonLib-SDK"><a href="#接触VisonLib-SDK" class="headerlink" title="接触VisonLib SDK"></a>接触VisonLib SDK</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>由于毕设需求，在网上寻找能够解决质量检测或者测量方面的<em>AR SDK</em>，找到了这篇报道：<a href="https://www.toutiao.com/a6674774916132241931/">VisionLib推跨平台AR质检解决方案，可结合CAD对比检测</a></p>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="接触VisonLib-SDK"><a href="#接触VisonLib-SDK" class="headerlink" title="接触VisonLib SDK"></a>接触VisonLib SDK</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>由于毕设需求，在网上寻找能够解决质量检测或者测量方面的<em>AR SDK</em>，找到了这篇报道：<a href="https://www.toutiao.com/a6674774916132241931/">VisionLib推跨平台AR质检解决方案，可结合CAD对比检测</a></p>
 <p>所以开始准备尝试下</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li>进<a href="https://visionlib.com/#sect-6">官网</a></li>
@@ -387,7 +391,9 @@
   <entry>
     <title>word中美观地插入代码方法</title>
     <url>/2020/05/18/word%E4%B8%AD%E7%BE%8E%E8%A7%82%E5%9C%B0%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="优雅的在-Microsoft-word中插入代码，使文档更美观！！！"><a href="#优雅的在-Microsoft-word中插入代码，使文档更美观！！！" class="headerlink" title="优雅的在 Microsoft word中插入代码，使文档更美观！！！"></a>优雅的在 Microsoft word中插入代码，使文档更美观！！！</h2><blockquote>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="优雅的在-Microsoft-word中插入代码，使文档更美观！！！"><a href="#优雅的在-Microsoft-word中插入代码，使文档更美观！！！" class="headerlink" title="优雅的在 Microsoft word中插入代码，使文档更美观！！！"></a>优雅的在 Microsoft word中插入代码，使文档更美观！！！</h2><blockquote>
 <p>本文转载自 <a href="https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy">https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy</a></p>
 </blockquote>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://i.loli.net/2020/05/18/a7OuKt9znPI5xHM.png"></p>
@@ -414,7 +420,9 @@
   <entry>
     <title>Unity重新激活许可证</title>
     <url>/2020/05/06/Unity%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB%E8%AE%B8%E5%8F%AF%E8%AF%81/</url>
-    <content><![CDATA[<h2 id="关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误"><a href="#关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误" class="headerlink" title="关于出现 your license does not cover Universal Windows Platform Publishing 的错误"></a>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</h2><p>错误截图如下：</p>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误"><a href="#关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误" class="headerlink" title="关于出现 your license does not cover Universal Windows Platform Publishing 的错误"></a>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</h2><p>错误截图如下：</p>
 <p><a href="https://imgchr.com/i/YPoiYn"><img src="https://s1.ax1x.com/2020/05/05/YPoiYn.png" alt="YPoiYn.png"></a></p>
 <p>解决方法：重新激活许可证即可解决</p>
 ]]></content>
@@ -425,7 +433,9 @@
   <entry>
     <title>Vuforia 9.0来啦</title>
     <url>/2020/04/28/Vuforia-9-0%E6%9D%A5%E5%95%A6/</url>
-    <content><![CDATA[<h2 id="来了，Vuforia-9-0来了！"><a href="#来了，Vuforia-9-0来了！" class="headerlink" title="来了，Vuforia 9.0来了！"></a>来了，Vuforia 9.0来了！</h2><p>转载自 <a href="https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao">https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao</a></p>
+    <content><![CDATA[<h2 id="来了，Vuforia-9-0来了！"><a href="#来了，Vuforia-9-0来了！" class="headerlink" title="来了，Vuforia 9.0来了！"></a>来了，Vuforia 9.0来了！</h2><a id="more"></a>
+
+<p>转载自 <a href="https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao">https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao</a></p>
 <p><a href="https://blogs.unity3d.com/2020/04/21/augment-your-spaces-with-vuforia-engine/">原文链接：https://blogs.unity3d.com/2020/04/21/augment-your-spaces-with-vuforia-engine/</a></p>
 <p>在新版本中，可以使用Area Target（区域型目标）轻松地在大型环境中制作沉浸式增强现实（AR）体验。</p>
 <p>日常的生活、工作和购物空间中包含大量的价值信息，但要获取特定语境的相关数据会比较困难。目前基于对象的增强现实（AR）技术仅能在视场中展示物体，并不具备处理大型空间的能力。</p>
@@ -461,6 +471,8 @@
 <blockquote>
 <p>本文转载于<a href="https://mp.weixin.qq.com/s?__biz=MzIwMDk2OTQ2MQ==&amp;mid=2247485416&amp;idx=1&amp;sn=e7cc50d5c06b61892b1370f71632a4e8&amp;chksm=96f45a72a183d3641bfca0c3e29bdaf9ec0bdf2e464071cee2ca535191fa23d611403d08f622&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1587217180782&amp;sharer_shareid=93eb2711304121e2bbb43bede39aadd0#rd">https://mp.weixin.qq.com/s?__biz=MzIwMDk2OTQ2MQ==&amp;mid=2247485416&amp;idx=1&amp;sn=e7cc50d5c06b61892b1370f71632a4e8&amp;chksm=96f45a72a183d3641bfca0c3e29bdaf9ec0bdf2e464071cee2ca535191fa23d611403d08f622&amp;mpshare=1&amp;scene=23&amp;srcid=&amp;sharer_sharetime=1587217180782&amp;sharer_shareid=93eb2711304121e2bbb43bede39aadd0#rd</a></p>
 </blockquote>
+<a id="more"></a>
+
 <p>本文主要整理了一些AR开发过程中会用到的视频课程（公开课）和相关开发书籍，适合AR初级开发者和一些资深程序员学习。</p>
 <h2 id="视频课程"><a href="#视频课程" class="headerlink" title="视频课程"></a>视频课程</h2><hr>
 <h3 id="EasyAR"><a href="#EasyAR" class="headerlink" title="EasyAR"></a>EasyAR</h3><ol>
@@ -669,7 +681,9 @@
   <entry>
     <title>ARCore导入Unity，打包HelloAR</title>
     <url>/2020/04/03/ARCore%E5%AF%BC%E5%85%A5Unity%EF%BC%8C%E6%89%93%E5%8C%85HelloAR/</url>
-    <content><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>记录第一次使用ARCore的报错经历</p>
+    <content><![CDATA[<p>记录第一次使用ARCore的报错经历</p>
+<a id="more"></a>
+
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="前提要求"><a href="#前提要求" class="headerlink" title="前提要求"></a>前提要求</h4><p>硬件：<a href="https://developers.google.com/ar/discover/supported-devices">支持ARCore的手机</a></p>
 <p>软件：</p>
 <ul>
@@ -742,7 +756,9 @@
   <entry>
     <title>Vuforia-在Unity2019.3.4中安装Vuforia</title>
     <url>/2020/04/02/Vuforia-%E5%9C%A8Unity2019-3-4%E4%B8%AD%E5%AE%89%E8%A3%85Vuforia/</url>
-    <content><![CDATA[<h3 id="下载安装Unity2019-3-4-f1"><a href="#下载安装Unity2019-3-4-f1" class="headerlink" title="下载安装Unity2019.3.4.f1"></a>下载安装Unity2019.3.4.f1</h3><h4 id="方式1："><a href="#方式1：" class="headerlink" title="方式1："></a>方式1：</h4><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="下载安装Unity2019-3-4-f1"><a href="#下载安装Unity2019-3-4-f1" class="headerlink" title="下载安装Unity2019.3.4.f1"></a>下载安装Unity2019.3.4.f1</h3><h4 id="方式1："><a href="#方式1：" class="headerlink" title="方式1："></a>方式1：</h4><ul>
 <li>进入官方网站 <a href="https://unity.com/">https://unity.com/</a></li>
 <li>在页面最下方找到 download unity</li>
 <li>在页面最下方找到 older versions</li>
@@ -764,6 +780,8 @@
     <title>Vuforia-阶段Demo小总结</title>
     <url>/2020/04/02/Vuforia-%E9%98%B6%E6%AE%B5Demo%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>记录学习的demo</p>
+<a id="more"></a>
+
 <hr>
 <h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><hr>
 <p>实现如下效果：</p>
@@ -820,6 +838,8 @@
     <title>Unity-场景切换</title>
     <url>/2020/04/02/Unity-%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2/</url>
     <content><![CDATA[<p>本文记录如何在Unity中实现场景切换</p>
+<a id="more"></a>
+
 <p>代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public void Click()</span><br><span class="line">&#123;</span><br><span class="line">      Invoke(&quot;ChangeScene&quot;, 1);  # 1s后切换场景，延时作用</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void ChangeScene()</span><br><span class="line">&#123;</span><br><span class="line">      SceneManager.LoadScene(&quot;场景名字&quot;);  &#x2F;&#x2F; 登陆成功则切换到游戏界面</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -840,7 +860,9 @@
   <entry>
     <title>问题-Vuforia更新错误:Failed to resolve packages</title>
     <url>/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E6%9B%B4%E6%96%B0%E9%94%99%E8%AF%AF-Failed-to-resolve-packages/</url>
-    <content><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>新冠期间总是不开学，最近Vuforia更新了9.0版本，所以尝试下</p>
+    <content><![CDATA[<p>新冠期间总是不开学，最近Vuforia更新了9.0版本，所以尝试下</p>
+<a id="more"></a>
+
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>错误提示：</p>
 <p>Failed to resolve packages: Cannot read property ‘scopedRegistries’ of undefined. No packages loaded.</p>
 <p>如果使用 Unity 2019及以上版本，可以发现 AR camera 的输入密钥页面，已经提示有新版本可用，如下：</p>
@@ -865,8 +887,10 @@
   <entry>
     <title>问题-Vuforia错误：Failed-load-data-set-xxx</title>
     <url>/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E9%94%99%E8%AF%AF%EF%BC%9AFailed-load-data-set-xxx/</url>
-    <content><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>按照常规套路，布置好AR Camera , 2个model target 之后，运行会报错。提示 failed-load-data-set-xxx </p>
-<a id="more"></a>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>按照常规套路，布置好AR Camera , 2个model target 之后，运行会报错。提示 failed-load-data-set-xxx </p>
+<!-- more -->
 
 <p>错误提示：</p>
 <blockquote>
@@ -884,7 +908,9 @@
   <entry>
     <title>问题-Unity移动不连续</title>
     <url>/2020/04/02/%E9%97%AE%E9%A2%98-Unity%E7%A7%BB%E5%8A%A8%E4%B8%8D%E8%BF%9E%E7%BB%AD/</url>
-    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>刚刚装了Unity2019.3.4.f1 ，在scene页面移动cube时，发现移动不连续，即按照网格移动，类似于建模软件中的情况</p>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>刚刚装了Unity2019.3.4.f1 ，在scene页面移动cube时，发现移动不连续，即按照网格移动，类似于建模软件中的情况</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>so easy</p>
 <p><a href="https://imgchr.com/i/GKKNGt"><img src="https://s1.ax1x.com/2020/03/31/GKKNGt.png" alt="GKKNGt.png"></a></p>
 <p>点击一下就行了</p>
@@ -896,7 +922,9 @@
   <entry>
     <title>笔记-机械工程图纸设计</title>
     <url>/2020/04/02/%E7%AC%94%E8%AE%B0-%E6%9C%BA%E6%A2%B0%E5%B7%A5%E7%A8%8B%E5%9B%BE%E7%BA%B8%E8%AE%BE%E8%AE%A1/</url>
-    <content><![CDATA[<p>记录关于工程制图的事项，此文用于毕业设计</p>
+    <content><![CDATA[<a id="more"></a>
+
+<p>记录关于工程制图的事项，此文用于毕业设计</p>
 <h3 id="工程图纸的作用"><a href="#工程图纸的作用" class="headerlink" title="工程图纸的作用"></a>工程图纸的作用</h3><ul>
 <li>工程师的语言</li>
 <li>传递设计思路</li>
@@ -1067,7 +1095,9 @@
   <entry>
     <title>网易有道词典纯净VIP版</title>
     <url>/2020/04/02/%E7%BD%91%E6%98%93%E6%9C%89%E9%81%93%E8%AF%8D%E5%85%B8%E7%BA%AF%E5%87%80VIP%E7%89%88/</url>
-    <content><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>网易有道词典是一款免费的全能翻译软件。它结合了桌面词典及互联网在线词典的优势，支持英汉、法汉、日汉、韩汉互译以及汉语词典和全文翻译的功能，还收录了各类词汇的网络释义、例句和百科知识。除此之外，有道词典的取词划词还融合了「指点」释义，除了提供常规的翻译外，还会同时提供给用户更多资讯，包括新闻、影视资讯、百科、人物等。</p>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>网易有道词典是一款免费的全能翻译软件。它结合了桌面词典及互联网在线词典的优势，支持英汉、法汉、日汉、韩汉互译以及汉语词典和全文翻译的功能，还收录了各类词汇的网络释义、例句和百科知识。除此之外，有道词典的取词划词还融合了「指点」释义，除了提供常规的翻译外，还会同时提供给用户更多资讯，包括新闻、影视资讯、百科、人物等。</p>
 <p>本纯净版由飞扬时空基于网易有道词典官方版本制作，它安装不弹窗、使用无广告、卸载不留痕，完美保留软件所有功能，优化软件设置，集成多部英汉语词典，离线使用更方便。</p>
 <p><a href="https://imgchr.com/i/GAG2SU"><img src="https://s1.ax1x.com/2020/03/28/GAG2SU.png" alt="GAG2SU.png"></a></p>
 <h2 id="修改特点"><a href="#修改特点" class="headerlink" title="修改特点"></a>修改特点</h2><ul>
@@ -1103,7 +1133,9 @@
   <entry>
     <title>下载YouTuBe字幕</title>
     <url>/2020/04/02/%E4%B8%8B%E8%BD%BDYouTuBe%E5%AD%97%E5%B9%95/</url>
-    <content><![CDATA[<h3 id="1-Keepvid"><a href="#1-Keepvid" class="headerlink" title="1. Keepvid"></a>1. Keepvid</h3><p><a href="https://keepvid.com/">https://keepvid.com/</a></p>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="1-Keepvid"><a href="#1-Keepvid" class="headerlink" title="1. Keepvid"></a>1. Keepvid</h3><p><a href="https://keepvid.com/">https://keepvid.com/</a></p>
 <h3 id="2-Dbxdb"><a href="#2-Dbxdb" class="headerlink" title="2.Dbxdb"></a>2.Dbxdb</h3><p><a href="http://mo.dbxdb.com/setting.html">http://mo.dbxdb.com/setting.html</a></p>
 <h3 id="3-Zhuwei"><a href="#3-Zhuwei" class="headerlink" title="3. Zhuwei"></a>3. Zhuwei</h3><p><a href="https://zhuwei.me/y2b/">https://zhuwei.me/y2b/</a></p>
 <h3 id="4-FindYoutube"><a href="#4-FindYoutube" class="headerlink" title="4. FindYoutube"></a>4. FindYoutube</h3><p><a href="https://www.findyoutube.net/">https://www.findyoutube.net/</a></p>
@@ -1115,7 +1147,9 @@
   <entry>
     <title>相机标定原理解析-2</title>
     <url>/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-2/</url>
-    <content><![CDATA[<p>由上次记录<a href="%5Bhttps://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/%5D(https://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/)">相机标定原理解析-1</a>可知：<br>$$<br>\begin{bmatrix}u \v \1 \\end{bmatrix}=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\begin{bmatrix}x_w \y_w \1 \\end{bmatrix}<br>$$<br>$f_x = \frac{f}{d_x}$</p>
+    <content><![CDATA[<a id="more"></a>
+
+<p>由上次记录<a href="%5Bhttps://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/%5D(https://junlu.club/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/)">相机标定原理解析-1</a>可知：<br>$$<br>\begin{bmatrix}u \v \1 \\end{bmatrix}=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\begin{bmatrix}x_w \y_w \1 \\end{bmatrix}<br>$$<br>$f_x = \frac{f}{d_x}$</p>
 <p>$f_y = \frac{f}{d_y}$</p>
 <p>定义<code>单应性矩阵（从物体平面到成像平面）:</code><br>$$<br>H=s\begin{bmatrix}f_x &amp; 0 &amp; u_0 \0 &amp; f_x &amp; v_0 \0 &amp; 0 &amp; 1 \\end{bmatrix}\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}=sM\begin{bmatrix}r_1 &amp; r_2 &amp; t \\end{bmatrix}\tag {公式1}<br>$$<br>$s$为比例系数</p>
 <h3 id="在不考虑畸变情况下，求解内参和外参"><a href="#在不考虑畸变情况下，求解内参和外参" class="headerlink" title="在不考虑畸变情况下，求解内参和外参"></a>在不考虑畸变情况下，求解内参和外参</h3><p>简化：$H = \begin{bmatrix} h_1 &amp; h_2 &amp; h_3 \ \end{bmatrix}$<br>$$<br>h_1 = sMr_1 \h_2 = sMr_2 \\tag {公式2}h_3 = sMr_3 \<br>$$<br><code>旋转向量的性质</code>：$r_1$和$r_2$正交 -&gt; 点积为0<br>$$<br>r_1^Tr_2 = 0\tag {公式3}<br>$$<br>将上述 <code>公式2</code> 替换 <code>公式3 </code>并化简：<br>$$<br>h_1^T(M^{-1})^TM^{-1}h_2 = 0\tag {公式4}<br>$$<br><code>旋转向量性质</code>：旋转向量长度相等<br>$$<br>|r_1|=|r_2|=1 \r_1^T r_1 = r_2^T r_2\tag {公式5}<br>$$</p>
@@ -1132,7 +1166,9 @@
   <entry>
     <title>相机标定原理解析-1</title>
     <url>/2020/04/02/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90-1/</url>
-    <content><![CDATA[<h3 id="相机标定的目的"><a href="#相机标定的目的" class="headerlink" title="相机标定的目的"></a>相机标定的目的</h3><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="相机标定的目的"><a href="#相机标定的目的" class="headerlink" title="相机标定的目的"></a>相机标定的目的</h3><ul>
 <li><p>建立相机成像几何模型，矫正透镜畸变</p>
 <p>（得到物体从三维世界信息到成像平面信息之间的映射关系）</p>
 <ul>
@@ -1171,6 +1207,8 @@
     <title>Opencv-VS2019环境配置</title>
     <url>/2020/04/02/Opencv-VS2019%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>本文记录Win10操作系统下，Opencv+VS2019的环境配置，具体Opencv版本为4.1.0</p>
+<a id="more"></a>
+
 <h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p>Opencv 官网下载链接：<a href="https://opencv.org/releases/">传送门</a></p>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><ol>
 <li><p>下载好的文件解压到合适的目录下，本文以<code>D:\OpenCV</code>目录放置解压文件，如下图</p>
@@ -1226,9 +1264,6 @@
 <p><a href="https://blog.csdn.net/qq_24912401/article/details/90475290?utm_source=app">https://blog.csdn.net/qq_24912401/article/details/90475290?utm_source=app</a></p>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>vision</category>
-      </categories>
       <tags>
         <tag>OpenCV</tag>
         <tag>VS2019</tag>
@@ -1237,7 +1272,9 @@
   <entry>
     <title>Next主题优化记录</title>
     <url>/2020/04/02/Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h3><ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h3><ul>
 <li>站点配置文件：指文件所在路径为：根目录\_config.yml </li>
 <li>主题配置文件：指文件所在路径为：根目录\themes\next\_config.yml </li>
 </ul>
@@ -1294,7 +1331,9 @@
   <entry>
     <title>Hexo-Next-支持数学公式输入配置</title>
     <url>/2020/04/02/Hexo-Next-%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%BE%93%E5%85%A5%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="1-使用Kramed-代替-Marked"><a href="#1-使用Kramed-代替-Marked" class="headerlink" title="1. 使用Kramed 代替 Marked"></a>1. 使用Kramed 代替 Marked</h3><p>渲染引擎kramed支持mathjax</p>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="1-使用Kramed-代替-Marked"><a href="#1-使用Kramed-代替-Marked" class="headerlink" title="1. 使用Kramed 代替 Marked"></a>1. 使用Kramed 代替 Marked</h3><p>渲染引擎kramed支持mathjax</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
 
 <p>打开:博客根目录<code>/node_modules/hexo-renderer-kramed/lib/renderer.js</code><br>将下面这几句进行更改</p>
@@ -1330,7 +1369,9 @@
   <entry>
     <title>Hexo静态博客配置</title>
     <url>/2020/04/02/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><ol>
+    <content><![CDATA[<a id="more"></a>
+
+<h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><ol>
 <li><p>github 账号。</p>
 </li>
 <li><p><del>购买一个域名的钱</del></p>
@@ -1553,7 +1594,9 @@
   <entry>
     <title>chorme插件记录</title>
     <url>/2020/04/02/chorme%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h2 id="chorme-插件"><a href="#chorme-插件" class="headerlink" title="chorme 插件"></a>chorme 插件</h2><hr>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="chorme-插件"><a href="#chorme-插件" class="headerlink" title="chorme 插件"></a>chorme 插件</h2><hr>
 <p>chorme 浏览器成功的地方在于，其强大的扩展能力。在chorme 网上商店强大的加持下，chorme浏览器成为市面上最好用的浏览器，通过安装不同的插件，达到其他浏览器无法达到的效果</p>
 <hr>
 <h3 id="必备插件"><a href="#必备插件" class="headerlink" title="必备插件"></a>必备插件</h3><hr>
