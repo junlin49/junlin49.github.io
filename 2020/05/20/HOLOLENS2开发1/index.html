@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    HOLOLENS2开发1 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-HOLOLENS2开发1" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      HOLOLENS2开发1
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/" class="article-date">
+  <time datetime="2020-05-20T05:57:58.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h2 id="HOLOLENS2-开发-环境配置"><a href="#HOLOLENS2-开发-环境配置" class="headerlink" title="HOLOLENS2 开发 - 环境配置"></a>HOLOLENS2 开发 - 环境配置</h2><blockquote>
+<p>现在毕设项目已经做完，现在复盘下走过的坑</p>
+<p>可通过邮件<a href="mailto:&#x32;&#x39;&#57;&#x38;&#57;&#x36;&#51;&#x34;&#x34;&#57;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x32;&#x39;&#57;&#x38;&#57;&#x36;&#51;&#x34;&#x34;&#57;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;</a>联系</p>
+</blockquote>
+<h3 id="第1步：单独安装Win10-SDK"><a href="#第1步：单独安装Win10-SDK" class="headerlink" title="第1步：单独安装Win10 SDK"></a>第1步：单独安装Win10 SDK</h3><p>SDK下载链接：<a target="_blank" rel="noopener" href="https://developer.microsoft.com/zh-cn/windows/downloads/windows-10-sdk/">I am here</a></p>
+<ol>
+<li>安装时必须使用短路径！（建议放在C盘），如<code>C:\SDK</code></li>
+<li>请记住这个路径，因为后续在VS中部署时，解决错误时需要用到此路径</li>
+</ol>
+<h3 id="第2步：安装Unity，VS2019"><a href="#第2步：安装Unity，VS2019" class="headerlink" title="第2步：安装Unity，VS2019"></a>第2步：安装Unity，VS2019</h3><p>安装完Win10 SDK后</p>
+<h3 id="1-安装Unity"><a href="#1-安装Unity" class="headerlink" title="1. 安装Unity"></a>1. 安装Unity</h3><p>链接：<a target="_blank" rel="noopener" href="https://unity.cn/releases">传送门</a></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>推荐下载下图所示，因为其他的安装渠道，博主并没有看到有单独安装组件的界面；不过需要外网才能提高网速，博主在不开启外网情况下，网速在30-40k/s<br><img src="https://img-blog.csdnimg.cn/20200302144820699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjU2MjUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ol>
+<ol start="2">
+<li><p>安装组件界面：（不必勾选这么多）<br><img src="https://img-blog.csdnimg.cn/20200302145208244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjU2MjUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</li>
+<li><p>下载完成后，如需要 Vuforia 组件，请<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43656250/article/details/104475189">参考此链接</a></p>
+</li>
+</ol>
+<h3 id="2-安装VS2019"><a href="#2-安装VS2019" class="headerlink" title="2. 安装VS2019"></a>2. 安装VS2019</h3><p>链接：<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/">传送门</a></p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ol>
+<li>组件选择：<br><img src="https://img-blog.csdnimg.cn/20200302145823352.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzNjU2MjUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></li>
+</ol>
+<ol start="2">
+<li><p>使用Unity的游戏开发：不要勾选编辑器！之前装过了</p>
+</li>
+<li><p>通用Windows平台开发中会包含Win10 SDK，没办法</p>
+</li>
+</ol>
+<h3 id="3-后续问题"><a href="#3-后续问题" class="headerlink" title="3.后续问题"></a>3.后续问题</h3><p>到此基本就已经结束了，但是在Unity做完项目以后，使用VS2019打开项目时，并不能直接使用，会出现以下报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MSB3774找不到SDK“ WindowsMo​​bile，版本&#x3D; 10.0.17763.0”</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<p><a target="_blank" rel="noopener" href="https://developercommunity.visualstudio.com/content/problem/402362/msb3774-could-not-find-sdk-windowsmobile-version10.html">https://developercommunity.visualstudio.com/content/problem/402362/msb3774-could-not-find-sdk-windowsmobile-version10.html</a></p>
+<p><img src="https://i.loli.net/2020/05/20/jcPnxkgND3opC8a.png"></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/" data-id="cke9bo7qh000gu4vs1lkt3vj7" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E8%AE%BE/" rel="tag">毕设</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+             OpenCV调用Azure Kinect 实现过程
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/18/VisonLib-SDK-%E5%88%9D%E6%8E%A5%E8%A7%A6/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">VisonLib SDK 初接触</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

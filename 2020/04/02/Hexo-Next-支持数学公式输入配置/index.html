@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Hexo-Next-支持数学公式输入配置 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Hexo-Next-支持数学公式输入配置" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo-Next-支持数学公式输入配置
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/04/02/Hexo-Next-%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%BE%93%E5%85%A5%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-04-02T10:20:59.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h3 id="1-使用Kramed-代替-Marked"><a href="#1-使用Kramed-代替-Marked" class="headerlink" title="1. 使用Kramed 代替 Marked"></a>1. 使用Kramed 代替 Marked</h3><p>渲染引擎kramed支持mathjax</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+
+<p>打开:博客根目录<code>/node_modules/hexo-renderer-kramed/lib/renderer.js</code><br>将下面这几句进行更改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">  return text.replace(&#x2F;&#96;\$(.*?)\$&#96;&#x2F;g, &#39;$$$$$1$$$$&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">  &#x2F;&#x2F; Fit kramed&#39;s rule: $$ + \1 + $$</span><br><span class="line">    return text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用hexo-renderer-mathjax-代替-hexo-math"><a href="#2-使用hexo-renderer-mathjax-代替-hexo-math" class="headerlink" title="2. 使用hexo-renderer-mathjax 代替 hexo-math"></a>2. 使用hexo-renderer-mathjax 代替 hexo-math</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-更新-Mathjax-的-CDN-链接"><a href="#3-更新-Mathjax-的-CDN-链接" class="headerlink" title="3. 更新 Mathjax 的 CDN 链接"></a>3. 更新 Mathjax 的 CDN 链接</h3><p>打开:<code>博客根目录/node_modules/hexo-renderer-mathjax/mathjax.html</code><br>将最下面&lt;script src=后的url改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;mathjax&#x2F;2.7.1&#x2F;MathJax.js?config&#x3D;TeX-MML-AM_CHTML</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-更改默认转义规则"><a href="#4-更改默认转义规则" class="headerlink" title="4. 更改默认转义规则"></a>4. 更改默认转义规则</h3><p>打开:<code>博客根目录/node_modules/kramed/lib/rules/inline.js</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;escape: &#x2F;^\\([\\&#96;*&#123;&#125;\[\]()#$+\-.!_&gt;])&#x2F;,      第11行，将其修改为</span><br><span class="line">escape: &#x2F;^\\([&#96;*\[\]()#$+\-.!_&gt;])&#x2F;,</span><br><span class="line">&#x2F;&#x2F;em: &#x2F;^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,    第20行，将其修改为</span><br><span class="line">em: &#x2F;^\*((?:\*\*|[\s\S])+?)\*(?!\*)&#x2F;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-开启mathjax"><a href="#5-开启mathjax" class="headerlink" title="5. 开启mathjax"></a>5. 开启mathjax</h3><p>在主题的配置文件中,我用的是next主题,那么在其_config.yml中找到mathjax并设置为true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># MathJax Support</span><br><span class="line">mathjax:</span><br><span class="line">  enable: true</span><br><span class="line">  per_page: true</span><br><span class="line">  cdn: &#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.1&#x2F;latest.js?config&#x3D;TeX-AMS-MML_HTMLorMML</span><br></pre></td></tr></table></figure>
+
+<p>之后再写文章时,加上mathjax: true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">date: 2017&#x2F;8&#x2F;3 18:20:00</span><br><span class="line">tags: hexo</span><br><span class="line">mathjax: true</span><br><span class="line">title: hexo博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/littlehaes/article/details/84370393">https://blog.csdn.net/littlehaes/article/details/84370393</a></p>
+<p><a target="_blank" rel="noopener" href="https://andyvj.coding.me/2019/02/26/190226-02/">https://andyvj.coding.me/2019/02/26/190226-02/</a></p>
+</blockquote>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/04/02/Hexo-Next-%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%BE%93%E5%85%A5%E9%85%8D%E7%BD%AE/" data-id="cke9bo7qi000ju4vs1kvk4ih8" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Next/" rel="tag">Next</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2020/04/02/Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            Next主题优化记录
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/02/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Hexo静态博客配置</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vuforia 9.0来啦 |
+    
+    君路</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Vuforia-9-0来啦" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vuforia 9.0来啦
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/04/28/Vuforia-9-0%E6%9D%A5%E5%95%A6/" class="article-date">
+  <time datetime="2020-04-28T15:46:47.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h2 id="来了，Vuforia-9-0来了！"><a href="#来了，Vuforia-9-0来了！" class="headerlink" title="来了，Vuforia 9.0来了！"></a>来了，Vuforia 9.0来了！</h2><p>转载自 <a target="_blank" rel="noopener" href="https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao">https://unity.cn/projects/lai-liao-vuforia-9-0lai-liao</a></p>
+<p><a target="_blank" rel="noopener" href="https://blogs.unity3d.com/2020/04/21/augment-your-spaces-with-vuforia-engine/">原文链接：https://blogs.unity3d.com/2020/04/21/augment-your-spaces-with-vuforia-engine/</a></p>
+<p>在新版本中，可以使用Area Target（区域型目标）轻松地在大型环境中制作沉浸式增强现实（AR）体验。</p>
+<p>日常的生活、工作和购物空间中包含大量的价值信息，但要获取特定语境的相关数据会比较困难。目前基于对象的增强现实（AR）技术仅能在视场中展示物体，并不具备处理大型空间的能力。</p>
+<p>为了让制作大型增强现实体验成为现实，Vuforia Engine 9.0推出了新的Area Target功能。Area Target可让你在扫描而成的空间3D模型中制作巨大、连贯的AR体验，在选择区域中持续识别、跟踪场景内容，形成一种持续性的增强效果。制作成果可在各个手机、平板和AR头显上播放。</p>
+<iframe width="100%" height="100%" src="https://unity.cn/player/5ea7a942edbc2a002026cef2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" __idm_frm__="11" style="box-sizing: border-box; font-family: PingFangSC, Roboto, &quot;Noto Sans SC&quot;, SimSun, sans-serif;"></iframe>
+
+<p>Area Target体验制作</p>
+<p>制作Area Target体验的流程可总结为：扫描、创作和查看。流程可大致分为以下五步：</p>
+<p>👉第一步：</p>
+<p>扫描场景空间：Area Target经由真实空间的3D扫描模型制作而来。Vuforia Engine的最初版本可以使用Matterport Pro2 camera来抓拍扫描数据。</p>
+<p>👉第二步：</p>
+<p>创建一个Area Target：在3D模型扫描完成后，将数据导入Vuforia的Area Target Generator（区域性目标生成器），就能生成对应的Vuforia数据集。数据集包含一个带数据集文件的Unity包和扫描空间的纹理网格，可直接导入到Unity项目中。</p>
+<p>👉第三步：</p>
+<p>导入Area Target：在Unity中安装设置好Vuforia Engine，然后在GameObject下拉菜单中导入Area Targets文件。若想修改文件的配置，可参考Area Targets in Unity的详细指南。</p>
+<p><img src="https://connect-cn-cdn-public-prd.unitychina.cn/h1/20200428/p/images/2c98786f-7ce6-41dd-8d63-b962e5d68823_image.png" alt="img"></p>
+<p>👉第四步：</p>
+<p>创作：如上图，在导入完成后，开发者可以查看详细的扫描3D模型，可以在环境中放置3D对象，使用播放模式来测试体验。播放模式可让开发者“演练”一遍3D模型，在电脑上观看AR体验的最终效果。如果某个空间不方便实地查看，可使用播放模式来测试应用。</p>
+<p>👉第五步：</p>
+<p>查看：在部署完Area Target应用后，你就能从场景中的任何位置启动增强应用了——启动操作简单明了。当使用者在空间中移动时，3D增强效果会被持续追踪，且因为采用了扫描数据，还能被真实物体遮挡。</p>
+<p>通过沉浸式AR将人们连接在一起</p>
+<p>Area Target功能不仅强大，还可用于商场、旅馆和工厂等各种场景，用庞大、持续性的AR体验提供独特的商业价值。</p>
+<p>企业可将整个商店作为画布来制作AR体验，轻松展示或修改促销、发售或导购体验。专业客服可在对应语境中提供说明，如让顾客学会使用某些电器。体验可用不同语言进一步拓展，来支持不同国家的顾客。</p>
+<p>在工业中，该技术可为前线工人提供实时、沉浸式的体验，让工作更加安全、简便。某些任务或设备的导览数据可部署到整个设施中，引导工人完成工作。此类方法可节省新员工培训的时间和成本，引导现场技术人员，协助工人在多个流程和设备间流畅地过渡。</p>
+<p>Vuforia Engine 9.0已于3月18日发布，推出了更多高级的AR功能。</p>
+<p>如果希望马上尝试Vuforia Area Target功能，可参阅How to Create Area Targets说明页面。</p>
+<p><a target="_blank" rel="noopener" href="https://library.vuforia.com/content/vuforia-library/en/features/environments/area-targets/how-to-create-area-targets.html">https://library.vuforia.com/content/vuforia-library/en/features/environments/area-targets/how-to-create-area-targets.html</a></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/04/28/Vuforia-9-0%E6%9D%A5%E5%95%A6/" data-id="cke9bo7qq0011u4vs41kihbz2" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2020/05/06/Unity%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB%E8%AE%B8%E5%8F%AF%E8%AF%81/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            Unity重新激活许可证
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/04/19/AR%E8%B5%84%E6%BA%90/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">AR资源</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+  <div class="gitalk" id="gitalk-container"></div>
+  
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 君路</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="君路"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
