@@ -211,24 +211,16 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhunju0089/article/details/103458855">https://blog.csdn.net/zhunju0089/article/details/103458855</a></p>
 </blockquote>
 <a id="more"></a>
-
-<h3 id="创建VS项目"><a href="#创建VS项目" class="headerlink" title="创建VS项目"></a>创建VS项目</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145559.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145630.png"></p>
-<h3 id="创建项目成功后，打开pch-h文件，定义导出函数的定义"><a href="#创建项目成功后，打开pch-h文件，定义导出函数的定义" class="headerlink" title="创建项目成功后，打开pch.h文件，定义导出函数的定义"></a>创建项目成功后，打开<strong>pch.h</strong>文件，定义导出函数的定义</h3><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145856.png" style="zoom:200%;" />
-
+<h3 id="创建VS项目"><a href="#创建VS项目" class="headerlink" title="创建VS项目"></a>创建VS项目</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145559.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145630.png" alt=""></p>
+<h3 id="创建项目成功后，打开pch-h文件，定义导出函数的定义"><a href="#创建项目成功后，打开pch-h文件，定义导出函数的定义" class="headerlink" title="创建项目成功后，打开pch.h文件，定义导出函数的定义"></a>创建项目成功后，打开<strong>pch.h</strong>文件，定义导出函数的定义</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812145856.png" style="zoom:200%;" /></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> _declspec(dllexport) <span class="function"><span class="keyword">int</span> <span class="title">myadd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="打开pch-cpp文件，实现上述函数的具体功能"><a href="#打开pch-cpp文件，实现上述函数的具体功能" class="headerlink" title="打开pch.cpp文件，实现上述函数的具体功能"></a>打开<strong>pch.cpp</strong>文件，实现上述函数的具体功能</h3><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150216.png" style="zoom:200%;" />
-
+<h3 id="打开pch-cpp文件，实现上述函数的具体功能"><a href="#打开pch-cpp文件，实现上述函数的具体功能" class="headerlink" title="打开pch.cpp文件，实现上述函数的具体功能"></a>打开<strong>pch.cpp</strong>文件，实现上述函数的具体功能</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150216.png" style="zoom:200%;" /></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myadd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="点击生成解决方案，即可生成dll文件"><a href="#点击生成解决方案，即可生成dll文件" class="headerlink" title="点击生成解决方案，即可生成dll文件"></a>点击<strong>生成解决方案</strong>，即可生成dll文件</h3><h3 id="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"><a href="#在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中" class="headerlink" title="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"></a>在Unity项目中，新建文件夹<strong>Plugins</strong>，将生成的dll文件复制进此文件夹中</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150544.png" alt=""></p>
+<h3 id="脚本调用"><a href="#脚本调用" class="headerlink" title="脚本调用"></a>脚本调用</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150843.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150927.png" style="zoom:200%;" /></p>
 
-
-
-<h3 id="点击生成解决方案，即可生成dll文件"><a href="#点击生成解决方案，即可生成dll文件" class="headerlink" title="点击生成解决方案，即可生成dll文件"></a>点击<strong>生成解决方案</strong>，即可生成dll文件</h3><h3 id="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"><a href="#在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中" class="headerlink" title="在Unity项目中，新建文件夹Plugins，将生成的dll文件复制进此文件夹中"></a>在Unity项目中，新建文件夹<strong>Plugins</strong>，将生成的dll文件复制进此文件夹中</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150544.png"></p>
-<h3 id="脚本调用"><a href="#脚本调用" class="headerlink" title="脚本调用"></a>脚本调用</h3><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150843.png"></p>
-<img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200812150927.png" style="zoom:200%;" />
     </div>
 
     
@@ -415,6 +407,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

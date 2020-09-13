@@ -202,44 +202,37 @@
 <p>环境：win10 + VS2019 + OpenCV4.30</p>
 </blockquote>
 <a id="more"></a>
-
 <h2 id="下载Contrib库"><a href="#下载Contrib库" class="headerlink" title="下载Contrib库"></a>下载Contrib库</h2><p>传送门：<a target="_blank" rel="noopener" href="https://github.com/opencv/opencv_contrib/releases">click it</a></p>
 <p>(<strong>注意</strong>：选择与OpenCV对应的库)</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155046.png"></p>
-<h2 id="CMake编译OpecCV"><a href="#CMake编译OpecCV" class="headerlink" title="CMake编译OpecCV"></a>CMake编译OpecCV</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155137.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155046.png" alt=""></p>
+<h2 id="CMake编译OpecCV"><a href="#CMake编译OpecCV" class="headerlink" title="CMake编译OpecCV"></a>CMake编译OpecCV</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155137.png" alt=""></p>
 <p>点击<em>configure</em>，如果有红色，继续点<em>configure</em>，直至红色都消失</p>
 <h2 id="CMake编译OpenCV-contrib"><a href="#CMake编译OpenCV-contrib" class="headerlink" title="CMake编译OpenCV-contrib"></a>CMake编译OpenCV-contrib</h2><ul>
 <li>将<em>opencv_contrib-4.3.0</em>放置在<em>F:\DownLoad\opencv</em>目录下，在CMake中找到<em>OPENCV_EXTRA_MODULES_PATH</em>，填入<em>F:\DownLoad\opencv\opencv_contrib-4.3.0\modules</em>路径，并勾选上方<em>OPENCV_ENABLE_NONFREE</em>；</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155702.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820155702.png" alt=""></p>
 <p>点击<em>configure</em>，如果有红色，继续点<em>configure</em>，直至红色都消失</p>
 <p>最后点击<em>generate</em></p>
 <h2 id="VS2019编译debug与release库"><a href="#VS2019编译debug与release库" class="headerlink" title="VS2019编译debug与release库"></a>VS2019编译debug与release库</h2><p>打开OpenCV.sln项目文件；</p>
 <h3 id="编译debug库"><a href="#编译debug库" class="headerlink" title="编译debug库"></a>编译debug库</h3><p>解决方案 -&gt; 右键重新生成解决方案</p>
-<p>完成后，找到CMakeTargets中的INSTALL，然后右键选择“仅限于项目”–&gt;“仅生成INSTALL”；</p>
+<p>完成后，找到CMakeTargets中的INSTALL，然后右键选择“仅限于项目”—&gt;“仅生成INSTALL”；</p>
 <h3 id="编译release库"><a href="#编译release库" class="headerlink" title="编译release库"></a>编译release库</h3><p>和上面差不多</p>
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>系统变量 -&gt; PATH ，添加 F:\DownLoad\MyBuild\install\x64\vc16\bin</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160215.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160215.png" alt=""></p>
 <p>用户变量：</p>
 <p>变量名：OPENCV</p>
 <p>变量值：F:\DownLoad\MyBuild\install\include</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160401.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160401.png" alt=""></p>
 <h2 id="配置目录"><a href="#配置目录" class="headerlink" title="配置目录"></a>配置目录</h2><p>与配置OpenCV相同，新建一个项目，新建一个属性表，为日后重复使用奠定基础</p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160634.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820160634.png" alt=""></p>
 <p>属性 -&gt; VC++目录 -&gt; 包含目录，添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F:\DownLoad\MyBuild\install\include</span><br><span class="line">F:\DownLoad\MyBuild\install\include\opencv2</span><br></pre></td></tr></table></figure>
-
 <p>VC++目录 —&gt; 库目录，添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F:\DownLoad\MyBuild\install\x64\vc16\lib</span><br></pre></td></tr></table></figure>
-
 <p>链接器 -&gt; 输入 -&gt; 附加依赖项 ，添加以下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">opencv_aruco430d.lib;</span><br><span class="line">opencv_bgsegm430d.lib;</span><br><span class="line">opencv_bioinspired430d.lib;</span><br><span class="line">opencv_calib3d430d.lib;</span><br><span class="line">opencv_ccalib430d.lib;</span><br><span class="line">opencv_core430d.lib;</span><br><span class="line">opencv_datasets430d.lib;</span><br><span class="line">opencv_dnn_objdetect430d.lib;</span><br><span class="line">opencv_dnn430d.lib;</span><br><span class="line">opencv_dpm430d.lib;</span><br><span class="line">opencv_face430d.lib;</span><br><span class="line">opencv_features2d430d.lib;</span><br><span class="line">opencv_flann430d.lib;</span><br><span class="line">opencv_fuzzy430d.lib;</span><br><span class="line">opencv_hdf430d.lib;</span><br><span class="line">opencv_hfs430d.lib;</span><br><span class="line">opencv_highgui430d.lib;</span><br><span class="line">opencv_img_hash430d.lib;</span><br><span class="line">opencv_imgcodecs430d.lib;</span><br><span class="line">opencv_imgproc430d.lib;</span><br><span class="line">opencv_line_descriptor430d.lib;</span><br><span class="line">opencv_ml430d.lib;</span><br><span class="line">opencv_objdetect430d.lib;</span><br><span class="line">opencv_optflow430d.lib;</span><br><span class="line">opencv_phase_unwrapping430d.lib;</span><br><span class="line">opencv_photo430d.lib;</span><br><span class="line">opencv_plot430d.lib;</span><br><span class="line">opencv_reg430d.lib;</span><br><span class="line">opencv_rgbd430d.lib;</span><br><span class="line">opencv_saliency430d.lib;</span><br><span class="line">opencv_shape430d.lib;</span><br><span class="line">opencv_stereo430d.lib;</span><br><span class="line">opencv_stitching430d.lib;</span><br><span class="line">opencv_structured_light430d.lib;</span><br><span class="line">opencv_superres430d.lib;</span><br><span class="line">opencv_surface_matching430d.lib;</span><br><span class="line">opencv_text430d.lib;</span><br><span class="line">opencv_tracking430d.lib;</span><br><span class="line">opencv_video430d.lib;</span><br><span class="line">opencv_videoio430d.lib;</span><br><span class="line">opencv_videostab430d.lib;</span><br><span class="line">opencv_xfeatures2d430d.lib;</span><br><span class="line">opencv_ximgproc430d.lib;</span><br><span class="line">opencv_xobjdetect430d.lib;</span><br><span class="line">opencv_xphoto430d.lib;</span><br></pre></td></tr></table></figure>
-
 <h2 id="测试-生成Aruco-board"><a href="#测试-生成Aruco-board" class="headerlink" title="测试 - 生成Aruco_board"></a>测试 - 生成Aruco_board</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;opencv2\highgui.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco\dictionary.hpp&gt;</span><br><span class="line">#include &lt;opencv2\aruco\charuco.hpp&gt;</span><br><span class="line">#include &lt;opencv2\core.hpp&gt;</span><br><span class="line">#include &lt;opencv2\imgproc\imgproc.hpp&gt;</span><br><span class="line">#include &lt;opencv2\opencv.hpp&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">using namespace cv;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int markersX &#x3D; 5;&#x2F;&#x2F;X轴上标记的数量</span><br><span class="line">    int markersY &#x3D; 5;&#x2F;&#x2F;Y轴上标记的数量   本例生成5x5的棋盘</span><br><span class="line">    int markerLength &#x3D; 100;&#x2F;&#x2F;标记的长度，单位是像素</span><br><span class="line">    int markerSeparation &#x3D; 20;&#x2F;&#x2F;每个标记之间的间隔，单位像素</span><br><span class="line">    int dictionaryId &#x3D; cv::aruco::DICT_4X4_50;&#x2F;&#x2F;生成标记的字典ID</span><br><span class="line">    int margins &#x3D; markerSeparation;&#x2F;&#x2F;标记与边界之间的间隔</span><br><span class="line"></span><br><span class="line">    int borderBits &#x3D; 1;&#x2F;&#x2F;标记的边界所占的bit位数</span><br><span class="line">    bool showImage &#x3D; true;</span><br><span class="line"></span><br><span class="line">    Size imageSize;</span><br><span class="line"></span><br><span class="line">    imageSize.width &#x3D; markersX * (markerLength + markerSeparation) - markerSeparation + 2 * margins;</span><br><span class="line"></span><br><span class="line">    imageSize.height &#x3D; markersY * (markerLength + markerSeparation) - markerSeparation + 2 * margins;</span><br><span class="line"></span><br><span class="line">    Ptr&lt;aruco::Dictionary&gt; dictionary &#x3D; aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));</span><br><span class="line"></span><br><span class="line">    Ptr&lt;aruco::GridBoard&gt; board &#x3D; aruco::GridBoard::create(markersX, markersY, float(markerLength), float(markerSeparation), dictionary);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; show created board</span><br><span class="line">    Mat boardImage;</span><br><span class="line">    board-&gt;draw(imageSize, boardImage, margins, borderBits);</span><br><span class="line"></span><br><span class="line">    if (showImage) &#123;</span><br><span class="line">        imshow(&quot;board&quot;, boardImage);</span><br><span class="line">        waitKey(0);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820154403.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200820154403.png" alt=""></p>
 
     </div>
 
@@ -426,6 +419,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

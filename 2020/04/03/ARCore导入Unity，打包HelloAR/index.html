@@ -199,7 +199,6 @@
       
         <p>记录第一次使用ARCore的报错经历</p>
 <a id="more"></a>
-
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><h4 id="前提要求"><a href="#前提要求" class="headerlink" title="前提要求"></a>前提要求</h4><p>硬件：<a target="_blank" rel="noopener" href="https://developers.google.com/ar/discover/supported-devices">支持ARCore的手机</a></p>
 <p>软件：</p>
 <ul>
@@ -223,30 +222,7 @@
 <li><p>在 <strong>Build Settings</strong> 窗口中，点击 <strong>Player Settings</strong>。</p>
 </li>
 <li><p>在Inspector窗口中，配置下列播放器设置：</p>
-<table>
-<thead>
-<tr>
-<th align="left">设置</th>
-<th align="left">值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Package Name</strong></td>
-<td align="left">创建一个 Java 软件包名称格式的唯一应用 ID。 例如，使用 <code>com.example.helloAR</code></td>
-</tr>
-<tr>
-<td align="left"><strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Minimum API Level</strong></td>
-<td align="left">Android 7.0 或更高版本</td>
-</tr>
-<tr>
-<td align="left"><strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Target API Level</strong></td>
-<td align="left"><del>Android 7.0 或更高版本</del> 直接自动最高版本</td>
-</tr>
-<tr>
-<td align="left"><strong>Player Settings</strong> &gt; <strong>XR Settings</strong> &gt; <strong>ARCore Supported</strong></td>
-<td align="left">启用</td>
-</tr>
-</tbody></table>
+<p>| 设置                                                         | 值                                                           |<br>| :—————————————————————————————- | :—————————————————————————————- |<br>| <strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Package Name</strong>  | 创建一个 Java 软件包名称格式的唯一应用 ID。 例如，使用 <code>com.example.helloAR</code> |<br>| <strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Minimum API Level</strong> | Android 7.0 或更高版本                                       |<br>| <strong>Player Settings</strong> &gt; <strong>Other Settings</strong> &gt; <strong>Target API Level</strong> | <del>Android 7.0 或更高版本</del> 直接自动最高版本                  |<br>| <strong>Player Settings</strong> &gt; <strong>XR Settings</strong> &gt; <strong>ARCore Supported</strong> | 启用                                                         |</p>
 </li>
 </ol>
 <h4 id="第四步：解决报错"><a href="#第四步：解决报错" class="headerlink" title="第四步：解决报错"></a>第四步：解决报错</h4><p>导入SDK后，控制台报错如下：</p>
@@ -257,7 +233,7 @@
 <p><strong>解决方法：</strong></p>
 <ol>
 <li>打开windows -&gt; package manger</li>
-<li>分别搜索 **Multiplayer HLAPI **和 **XR Legacy Input Helper **,安装即可</li>
+<li>分别搜索 <strong>Multiplayer HLAPI </strong>和 <strong>XR Legacy Input Helper </strong>,安装即可</li>
 </ol>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://developers.google.com/ar/develop/unity/quickstart-android">https://developers.google.com/ar/develop/unity/quickstart-android</a></p>
@@ -450,6 +426,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

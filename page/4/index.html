@@ -192,7 +192,6 @@
 
       
           <a id="more"></a>
-
 <h3 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h3><ol>
 <li><p>github 账号。</p>
 </li>
@@ -233,15 +232,13 @@
 </li>
 <li><p><strong>直接按 Enter</strong>，Git Bash会在默认路径C:\users\用户名.ssh下生成几个文件。然后Git Bash又给出提示：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase &lt;empty for no passphrase&gt;:_</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <blockquote>
 <p>这是在提示我们输入密码，直接回车表示不设置密码</p>
 </blockquote>
 <ul>
-<li><p><strong>直接回车</strong>，然后Git Bash要求我们重复密码，也<strong>直接回车</strong>，然后就会提示ssh key已经生成。</p>
-</li>
+<li><strong>直接回车</strong>，然后Git Bash要求我们重复密码，也<strong>直接回车</strong>，然后就会提示ssh key已经生成。</li>
 <li><p><strong>进入到默认的地址</strong>中查看ssh key文件</p>
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/G0YOjH"><img src="https://s1.ax1x.com/2020/04/04/G0YOjH.png" alt="G0YOjH.png"></a></p>
 </li>
@@ -265,10 +262,8 @@
 </li>
 <li><p>在本地验证ssh key设置是否成功，<strong>打开Git Bash，输入命令</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
 <p><strong>回车</strong>后，如果看到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;You’ve successfully authenticated, but GitHub does not provide shell access&#96;</span><br></pre></td></tr></table></figure>
-
 <p>表示当前已经成功地连接上了自己的GitHub账户。</p>
 </li>
 <li><p>接下来，设置一下自己的用户名和邮箱，<strong>输入以下命令：</strong>（name 和 email 每个人不同）</p>
@@ -306,7 +301,6 @@
 </li>
 <li><p>检查Hexo是否安装成功，<strong>输入命令：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <hr>
@@ -341,7 +335,6 @@
 <li>打开 E:\HexoB 中的<strong>_config.yml文件</strong>，找到deploy字段，改为如下内容</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository: git@github.com:someurl&#x2F;someurl.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p> git@github.com:someurl/someurl.github.io.git 是博客仓库的地址，获取方式是登录GitHub，找到自己的博客的仓库</p>
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/GBEbB4"><img src="https://s1.ax1x.com/2020/04/05/GBEbB4.png" alt="GBEbB4.png"></a></p>
@@ -360,11 +353,10 @@
 <li><p><strong>输入命令：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>部署完成之后，在浏览器中输入地址 <a target="_blank" rel="noopener" href="http://www.yourname.github.io,这个地址就是在repository的setting页面中看到的那个,就可以访问自己的博客啦,以后写了新的博客,保存成md文件放到source/_post%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%EF%BC%8C%E6%89%A7%E8%A1%8C">www.yourname.github.io，这个地址就是在repository的Setting页面中看到的那个，就可以访问自己的博客啦，以后写了新的博客，保存成md文件放到source\_post文件夹中，执行</a></p>
+<li><p>部署完成之后，在浏览器中输入地址 www.yourname.github.io，这个地址就是在repository的Setting页面中看到的那个，就可以访问自己的博客啦，以后写了新的博客，保存成md文件放到source_post文件夹中，执行</p>
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>就可以发布到GitHub上啦</li>
 </ul>
@@ -387,7 +379,7 @@
 <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/83ozB6"><img src="https://s1.ax1x.com/2020/03/15/83ozB6.png" alt="83ozB6.png"></a></p>
 <ul>
 <li>记录值的获取方式：<ul>
-<li>打开windows控制台，ping <a target="_blank" rel="noopener" href="http://www.yourname.github.io/">www.yourname.github.io</a></li>
+<li>打开windows控制台，ping www.yourname.github.io</li>
 <li>将IP地址填写进入记录值</li>
 </ul>
 </li>
@@ -473,7 +465,6 @@
 
       
           <a id="more"></a>
-
 <h2 id="chorme-插件"><a href="#chorme-插件" class="headerlink" title="chorme 插件"></a>chorme 插件</h2><hr>
 <p>chorme 浏览器成功的地方在于，其强大的扩展能力。在chorme 网上商店强大的加持下，chorme浏览器成为市面上最好用的浏览器，通过安装不同的插件，达到其他浏览器无法达到的效果</p>
 <hr>
@@ -690,6 +681,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

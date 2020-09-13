@@ -193,13 +193,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><blockquote>
+        <h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><blockquote>
 <p>参考链接：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33446100/article/details/89115983">https://blog.csdn.net/qq_33446100/article/details/89115983</a></p>
 <p><a target="_blank" rel="noopener" href="https://docs.opencv.org/4.0.1/d9/d6a/group__aruco.html">https://docs.opencv.org/4.0.1/d9/d6a/group__aruco.html</a></p>
 </blockquote>
 <a id="more"></a>
-
 <h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><ul>
 <li><p>Azure Kinect</p>
 <p>使用RGB相机，Kinect不接电源</p>
@@ -208,9 +207,8 @@
 </li>
 </ul>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\highgui.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\aruco\dictionary.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2\core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cv::Mat markerImage;</span><br><span class="line">    <span class="function">cv::VideoCapture <span class="title">mVideoCapture</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建字典，这里注意使用Ptr&lt;&gt;，不然无法显示结果</span></span><br><span class="line">    Ptr&lt;aruco::Dictionary&gt; dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_4X4_50);</span><br><span class="line">    cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">240</span>, markerImage);<span class="comment">//这里取出一个marker用于检测</span></span><br><span class="line"></span><br><span class="line">    imshow(<span class="string">&quot;marker&quot;</span>, markerImage);<span class="comment">//显示待检测标记</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (mVideoCapture.grab())<span class="comment">//取得下一帧</span></span><br><span class="line">    &#123;</span><br><span class="line">        cv::Mat frame, frame_show;</span><br><span class="line">        mVideoCapture.retrieve(frame);<span class="comment">//放入Mat</span></span><br><span class="line"></span><br><span class="line">        frame.copyTo(frame_show);<span class="comment">//复制一份</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt;&gt; corners;</span><br><span class="line"></span><br><span class="line">        cv::aruco::detectMarkers(frame, dictionary, corners, ids);<span class="comment">//检测该帧是否有标记</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (ids.<span class="built_in">size</span>() &gt; <span class="number">0</span>)</span><br><span class="line">            cv::aruco::drawDetectedMarkers(frame_show, corners, ids);<span class="comment">//如果有，则标记出来，放入另一个Mat</span></span><br><span class="line"></span><br><span class="line">        cv::imshow(<span class="string">&quot;video&quot;</span>, frame_show);<span class="comment">//显示结果</span></span><br><span class="line"></span><br><span class="line">        waitKey(<span class="number">30</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200822112653.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200822112801.png"></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200822112653.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200822112801.png" alt=""></p>
 
     </div>
 
@@ -294,7 +292,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.</span> <span class="nav-text">运行结果</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87"><span class="nav-number">1.1.</span> <span class="nav-text">设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.</span> <span class="nav-text">运行结果</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -397,6 +395,63 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
