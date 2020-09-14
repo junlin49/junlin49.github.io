@@ -184,6 +184,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
+      <meta itemprop="name" content="JunLu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君路">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/" class="post-title-link" itemprop="url">Aruco实现AR梳理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-14 08:26:52 / 修改时间：08:27:58" itemprop="dateCreated datePublished" datetime="2020-09-14T08:26:52+08:00">2020-09-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Aruco/" itemprop="url" rel="index"><span itemprop="name">Aruco</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/14/Aruco实现AR梳理/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Aruco-AR实现过程梳理"><a href="#Aruco-AR实现过程梳理" class="headerlink" title="Aruco AR实现过程梳理"></a>Aruco AR实现过程梳理</h1><hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>目的</strong>：在<em>VS2019</em>运行的<em>OpenGL</em>窗口上，<em>generated virtual computer generated 3D graphics on the realistic environment , i.e.</em> 在<em>OpenGL</em>的相机位置看到<em>AR</em>效果</p>
+<p><strong>思路</strong>：</p>
+<p><strong>OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果</strong></p>
+<ul>
+<li>生成<em>OpenGL</em>窗口</li>
+<li>将外部相机捕获的<em>frame</em>传递到<em>OpenGL</em>中，作为背景</li>
+<li>定义虚拟的三维物体，将其渲染</li>
+<li>相机捕获的背景，不需要透视变换，正交变换即可</li>
+<li><p>虚拟物体，需要<em>MVP（model transform, view transform, projection transform）</em>变换</p>
+</li>
+<li><p>世界坐标系重合，使用OpenCV去做</p>
+</li>
+</ul>
+<hr>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p><em>OpenGL</em> 的摄像机需要实时改变自身位置与姿态，数据来自于<em>opencv</em> 相机标定外参</p>
+<p><em>OpenGL</em> 中的背景图也需要实时改变</p>
+<hr>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
+<li>虚拟模型没有出现在规定的世界原点处；</li>
+<li>如何将三维模型直接导入OpenGL，而不是一个一个的定义顶点坐标</li>
+</ul>
+<hr>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200913163957.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/23/ArucoDemo-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -936,92 +1041,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/" class="post-title-link" itemprop="url">HOLOLENS2开发1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-20 13:57:58" itemprop="dateCreated datePublished" datetime="2020-05-20T13:57:58+08:00">2020-05-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-14 07:37:53" itemprop="dateModified" datetime="2020-09-14T07:37:53+08:00">2020-09-14</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/20/HOLOLENS2开发1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Hololens初步上手</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/20/HOLOLENS2%E5%BC%80%E5%8F%911/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1093,9 +1112,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">

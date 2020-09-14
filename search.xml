@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Aruco实现AR梳理</title>
+    <url>/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/</url>
+    <content><![CDATA[<h1 id="Aruco-AR实现过程梳理"><a href="#Aruco-AR实现过程梳理" class="headerlink" title="Aruco AR实现过程梳理"></a>Aruco AR实现过程梳理</h1><hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>目的</strong>：在<em>VS2019</em>运行的<em>OpenGL</em>窗口上，<em>generated virtual computer generated 3D graphics on the realistic environment , i.e.</em> 在<em>OpenGL</em>的相机位置看到<em>AR</em>效果</p>
+<p><strong>思路</strong>：</p>
+<p><strong>OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果</strong></p>
+<ul>
+<li>生成<em>OpenGL</em>窗口</li>
+<li>将外部相机捕获的<em>frame</em>传递到<em>OpenGL</em>中，作为背景</li>
+<li>定义虚拟的三维物体，将其渲染</li>
+<li>相机捕获的背景，不需要透视变换，正交变换即可</li>
+<li><p>虚拟物体，需要<em>MVP（model transform, view transform, projection transform）</em>变换</p>
+</li>
+<li><p>世界坐标系重合，使用OpenCV去做</p>
+</li>
+</ul>
+<hr>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p><em>OpenGL</em> 的摄像机需要实时改变自身位置与姿态，数据来自于<em>opencv</em> 相机标定外参</p>
+<p><em>OpenGL</em> 中的背景图也需要实时改变</p>
+<hr>
+<h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
+<li>虚拟模型没有出现在规定的世界原点处；</li>
+<li>如何将三维模型直接导入OpenGL，而不是一个一个的定义顶点坐标</li>
+</ul>
+<hr>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://cdn.jsdelivr.net/gh/junlin49/up/20200913163957.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>Aruco</category>
+      </categories>
+      <tags>
+        <tag>Aruco</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ArucoDemo-2</title>
     <url>/2020/08/23/ArucoDemo-2/</url>
     <content><![CDATA[<blockquote>
