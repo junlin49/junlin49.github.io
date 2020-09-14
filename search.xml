@@ -1153,7 +1153,7 @@ v_{12}^Tb = 0 \\v_{11}^Tb = v_{22}^Tb</script><p>化简得：</p>
 <li>图像坐标系</li>
 <li>像素坐标系</li>
 </ul>
-<p><a href="https://imgchr.com/i/8BXWjJ"><img src="C:\Users\JunLu\Desktop\8BXWjJ.md.png" alt="8BXWjJ.md.png"></a></p>
+<p><a href="https://imgchr.com/i/8BXWjJ"><img src="https://s1.ax1x.com/2020/03/18/8BXWjJ.png" alt="8BXWjJ.png"></a></p>
 <h3 id="坐标转换"><a href="#坐标转换" class="headerlink" title="坐标转换"></a>坐标转换</h3><h4 id="世界坐标系-gt-相机坐标系"><a href="#世界坐标系-gt-相机坐标系" class="headerlink" title="世界坐标系 -&gt; 相机坐标系"></a>世界坐标系 -&gt; 相机坐标系</h4><script type="math/tex; mode=display">
 \begin{bmatrix}x_c \\y_c \\z_c \\1 \\\end{bmatrix}= \begin{bmatrix}R^3_3 & &&t^1_3 \\0 & 0 & 0 & 1 \\\end{bmatrix}\begin{bmatrix}x_w \\y_w \\z_w \\1 \\\end {bmatrix}=\begin {bmatrix}r_1 & r_2 & r_3 & t^4_1 \\\end {bmatrix}\begin{bmatrix}x_w \\y_w \\0 \\1 \\\end{bmatrix}=\begin{bmatrix}r_1 & r_2 & 1 \\\end{bmatrix}\begin{bmatrix}x_w \\y_w \\1 \\\end{bmatrix}\tag {公式1}</script><p>前提假设：$z_w = 0$，即物体在世界坐标系的 $x_w$ 与 $y_w$ 组成的平面上</p>
 <p><strong>外参矩阵</strong>为：</p>
