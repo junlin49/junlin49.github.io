@@ -1,19 +1,19 @@
 ---
-title: Vuforia-阶段Demo小总结
+title: Vuforia-ImageTarget阶段Demo小总结
 date: 2020-04-02 18:28:37
 tags:
 - Vuforia
 ---
 
-记录学习的demo
+# 代码
 
-<!--more-->
+https://github.com/junlin49/VuforiaDemo
 
----
-
-### 需求
+VuforiaImageDemo_1_Ashe
 
 ---
+
+# 需求
 
 实现如下效果：
 
@@ -27,9 +27,7 @@ tags:
 
 ---
 
-### 实现
-
----
+# 实现
 
 1. 自动对焦
 
@@ -180,9 +178,7 @@ tags:
 
    ---
 
-   ### 演示
-
-   ---
+   # 演示
 
    [![8OLECj.jpg](https://s1.ax1x.com/2020/03/25/8OLECj.jpg)](https://imgchr.com/i/8OLECj)
 
