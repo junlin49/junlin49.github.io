@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于Windows10设置Windows terminal 当前目录打开</title>
+    <url>/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/</url>
+    <content><![CDATA[<h1 id="关于Win10-设置Windows-terminal-的特定目录打开设置"><a href="#关于Win10-设置Windows-terminal-的特定目录打开设置" class="headerlink" title="关于Win10 设置Windows terminal 的特定目录打开设置"></a>关于Win10 设置Windows terminal 的特定目录打开设置</h1><blockquote>
+<p>参考博客:</p>
+<p><a href="https://blog.csdn.net/andyL_05/article/details/105943820">https://blog.csdn.net/andyL_05/article/details/105943820</a></p>
+<p>以下内容全部来自参考博客，如有侵权，请联系我删除，感谢</p>
+</blockquote>
+<h2 id="Windows-Terminal-简介"><a href="#Windows-Terminal-简介" class="headerlink" title="Windows Terminal 简介"></a>Windows Terminal 简介</h2><p>Windows Terminal 是微软推出的Windows端新的命令行工具，相比于之前一直被吐槽丑的command 和 powershell，Windows Terminal更加“现代”，界面好看，使用方便。</p>
+<p>作为一款开源工具，repo位于<a href="https://github.com/Microsoft/Terminal">Windows Terminal</a>这里。当前（2020年5月初）版本为v0.11.1251.0，也是v1.0rc1，基本上就是预览版（preview）的最后一个版本了，在源码仓库里时间表上也可以看到<br><img src="https://img-blog.csdnimg.cn/20200506092739206.png" alt="在这里插入图片描述"><br>预计就是本月推出正式版的windows terminal了。<br>以往的预览版通常无法直接安装，需要从源码自行编译。目前已经可以直接从Microsoft Store里直接安装，不过要求系统版本<br><img src="https://img-blog.csdnimg.cn/20200506092952865.png" alt="在这里插入图片描述"><br>在1903或更新。</p>
+<hr>
+<h2 id="Windows-Terminal设置简要介绍"><a href="#Windows-Terminal设置简要介绍" class="headerlink" title="Windows Terminal设置简要介绍"></a>Windows Terminal设置简要介绍</h2><p>安装后直接打开的Windows Terminal是这个样子：<br><img src="https://img-blog.csdnimg.cn/20200506093128723.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHlMXzA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">注意到“Windows Terminal”这个名字实在是太长了，所以其实运行的可执行文件叫做 “wt”，按win键启动开始菜单输入 wt 就可以直接打开。<br>首先我们注意到字体就比cmd或者powershell好看了很多<br>点击右侧下拉菜单，可以选择新建其他的命令行，这里只是显示了默认的几个，实际上通过设置可以进行ssh连接到远程主机（不限于win系统）<br><img src="https://img-blog.csdnimg.cn/20200506093355250.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHlMXzA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>设置是通过setting.json实现的。<br>打开设置文件，可以看到一系列的设置选项：<br><img src="https://img-blog.csdnimg.cn/20200506093906551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHlMXzA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>微软也有完善的文档支持这些设置，<a href="https://github.com/microsoft/terminal/blob/master/doc/user-docs/index.md">使用者文档（user documentation）</a></p>
+<p>以及 <a href="https://github.com/microsoft/terminal/blob/master/doc/cascadia/SettingsSchema.md">setting.json文档</a></p>
+<p>可以参考完成设置，我这里就不多说了。<br>简单说一下default里面的设置，就是默认打开的终端设置，这里不光可以设置背景颜色，字体等，还可以选择自定义的图片作为背景，比如我就设置了：<br><img src="https://img-blog.csdnimg.cn/2020050609424670.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FuZHlMXzA1,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这样的背景，感觉使用起来还是蛮有感觉的。</p>
+<p>list内部就是自定义的profiles，可以配置打开不同的终端时的设置。guid就是全局唯一标识符，可以从工具自动生成。其他设置参考文档中的设置即可。</p>
+<p>背景的独立设置，不仅美观，而且能够帮助我们直观的区分所处的环境，避免输入错误的命令导致严重后果。</p>
+<hr>
+<h2 id="Windows-Terminal-当前路径打开"><a href="#Windows-Terminal-当前路径打开" class="headerlink" title="Windows Terminal 当前路径打开"></a>Windows Terminal 当前路径打开</h2><p>熟悉cmd或powershell的朋友们应该知道，如果在文件夹地址栏直接输出 cmd 或 powershell 就可以在文件夹所处路径直接打开命令行终端，而不需要启动后再切换路径，对于Windows系统来说，由于磁盘分区、中文路径、反斜杠等因素，切换路径比起linux更让人烦一点。<br>除此之外，通过修改注册表也能够使用shift+右键选择此处启动powershell，这些都是快速在当前路径启动命令行的方式，那么Windows Terminal能不能这么做呢？</p>
+<p>测试发现直接在文件夹地址栏输入wt（因为这个可执行文件就是wt.exe而不是完整名字）确实启动了Windows Terminal，但是初始路径位置并不是当前的文件夹。这里参考我们上面的设置，default里增加一行 “startingDirectory”: “.”，也就是打开目录为当前路径，就可以做到地址栏输入WT在特定目录启动Windows terminal了。</p>
+<p>不过这里仍然有一些<strong>问题</strong>：<br>1· 首先如果不加这一行或者不对startingDirectory设置，那么默认启动路径是C:\Users\username这里，无论是双击wt.exe还是地址栏还是开始菜单启动都是这样，设置了之后默认位置就变成了C:\WINDOWS\system32这里，除了地址栏输入wt能够在特定目录启动外，其他运行Windows Terminal的方式一律在这里打开了。<br>2· 另外如果已经有Windows Terminal的窗口打开了，再次启动或者通过地址栏运行wt都会新建一个窗口而不是原来窗口的新标签页，并且标签页不能像浏览器一样拖进拖出；同时在某个路径下打开WT的窗口，点击右边“+”新建的标签页一定在同一个路径。一开始发现这个有点不爽，但是仔细想想可能这样做更实用一些，如果所有终端页面都是可拖动的标签页也难免混淆。<br>以上就是特定目录启动wt的一种方法，setting.json增加相应设置，然后地址栏输入wt按下回车即可。另外在文件夹中，快捷键 ctrl+L将焦点锁定地址栏，这样完全不需要鼠标，听起来有点geek了。</p>
+<p>除此之外，通过自己建立注册表，也可以实现类似powershell的右键打开方式，具体方法参考<a href="https://github.com/microsoft/terminal/issues/1060">这个issue</a></p>
+<p>由于我本人更喜欢地址栏打开方式，右键打开的配置就不赘述了，通过上述链接查看即可。</p>
+]]></content>
+      <tags>
+        <tag>Windows terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub上传项目文件</title>
+    <url>/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="在GitHub上，上传项目文件"><a href="#在GitHub上，上传项目文件" class="headerlink" title="在GitHub上，上传项目文件"></a>在GitHub上，上传项目文件</h1><p>小白第一次在GitHub上上传文件</p>
+<a id="more"></a>
+<hr>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>新建仓库</li>
+<li>将仓库下载到本地</li>
+<li>把要上传的项目文件夹，放进下载的仓库文件夹中</li>
+<li>使用以下代码push到GitHub：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .        </span><br><span class="line">git commit  -m  &quot;提交信息&quot;  </span><br><span class="line">git push -u origin master   </span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>对于体积较大的项目文件，可能会遇到如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fatal: the remote end hung up unexpectedly Everything up-to-date</span><br></pre></td></tr></table></figure>
+<p><strong>错误原因</strong>：</p>
+<p>文件太大</p>
+<p><strong>解决办法</strong> :</p>
+<blockquote>
+<p>转载自<a href="https://blog.csdn.net/qq_21770005/article/details/78733008">https://blog.csdn.net/qq_21770005/article/details/78733008</a></p>
+</blockquote>
+<ul>
+<li>windows:</li>
+</ul>
+<p>在 .git/config 文件中加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[http]</span><br><span class="line">postBuffer &#x3D; 524288000</span><br></pre></td></tr></table></figure>
+<ul>
+<li>linux:</li>
+</ul>
+<p>在 .git/config 文件中加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">linux:</span><br><span class="line">git config http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Aruco实现AR梳理</title>
     <url>/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/</url>
     <content><![CDATA[<p>使用Aruco实现AR效果的方式，实在是很基础，对于相机标定，OpenGL等基础知识具有很好的加强作用，有待长期梳理更新</p>
