@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913163957.png">
 <meta property="article:published_time" content="2020-09-14T00:26:52.000Z">
-<meta property="article:modified_time" content="2020-09-14T01:31:53.080Z">
+<meta property="article:modified_time" content="2020-09-16T10:43:24.176Z">
 <meta property="article:author" content="JunLu">
 <meta property="article:tag" content="Aruco">
 <meta name="twitter:card" content="summary">
@@ -214,10 +214,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-14 08:26:52 / 修改时间：09:31:53" itemprop="dateCreated datePublished" datetime="2020-09-14T08:26:52+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 08:26:52" itemprop="dateCreated datePublished" datetime="2020-09-14T08:26:52+08:00">2020-09-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-16 18:43:24" itemprop="dateModified" datetime="2020-09-16T18:43:24+08:00">2020-09-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -270,8 +276,21 @@
 </li>
 </ul>
 <hr>
-<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p><em>OpenGL</em> 的摄像机需要实时改变自身位置与姿态，数据来自于<em>opencv</em> 相机标定外参</p>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><p>两个世界的世界坐标系要完全重合，相机位置完全重合</p>
+<blockquote>
+<p>OpenGL中的世界坐标与虚拟物体局部坐标系的变换为Model Transform，世界坐标系与相机坐标系之间的变换为View Transform；</p>
+<p>OpenCV中的aruco，将世界坐标系注册在marker上；<strong>Model Transform 保持不变（即虚拟物体的位置保持不变）</strong> </p>
+</blockquote>
+<p><em>OpenGL</em> 的摄像机需要实时改变自身位置与姿态，数据来自于<em>opencv</em> 相机标定<del>外参</del> </p>
+<blockquote>
+<p>相机标定完成后，得到的是相机内参与畸变参数，对于特定的相机来说，都是不变量，因此，相机标定只需要一次即可</p>
+<p><strong>通过aruco的marker，获得相机的外参（重点），并实时传入OpenGL的View Transform矩阵</strong> </p>
+<p><strong>相机内参的作用：用来构造Projection Transform</strong> </p>
+</blockquote>
 <p><em>OpenGL</em> 中的背景图也需要实时改变</p>
+<blockquote>
+<p>将OpenCV捕获的图像，实时正交投影至背景</p>
+</blockquote>
 <hr>
 <h2 id="遗留问题"><a href="#遗留问题" class="headerlink" title="遗留问题"></a>遗留问题</h2><ul>
 <li><p>虚拟模型没有出现在规定的世界原点处；</p>
