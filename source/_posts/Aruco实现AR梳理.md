@@ -34,9 +34,23 @@ tags:
 
 ## 细节
 
-*OpenGL* 的摄像机需要实时改变自身位置与姿态，数据来自于*opencv* 相机标定外参
+两个世界的世界坐标系要完全重合，相机位置完全重合
+
+> OpenGL中的世界坐标与虚拟物体局部坐标系的变换为Model Transform，世界坐标系与相机坐标系之间的变换为View Transform；
+>
+> OpenCV中的aruco，将世界坐标系注册在marker上；**Model Transform 保持不变（即虚拟物体的位置保持不变）** 
+
+*OpenGL* 的摄像机需要实时改变自身位置与姿态，数据来自于*opencv* 相机标定~~外参~~ 
+
+> 相机标定完成后，得到的是相机内参与畸变参数，对于特定的相机来说，都是不变量，因此，相机标定只需要一次即可
+>
+> **通过aruco的marker，获得相机的外参（重点），并实时传入OpenGL的View Transform矩阵** 
+>
+> **相机内参的作用：用来构造Projection Transform** 
 
 *OpenGL* 中的背景图也需要实时改变
+
+> 将OpenCV捕获的图像，实时正交投影至背景
 
 ---
 
