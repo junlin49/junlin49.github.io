@@ -394,7 +394,7 @@
 <p>相机标定完成后，得到的是相机内参与畸变参数，对于特定的相机来说，都是不变量，因此，相机标定只需要一次即可</p>
 <p><strong>通过aruco的marker，获得相机的外参（重点），并实时传入OpenGL的View Transform矩阵</strong> </p>
 <blockquote>
-<p>用 aruco 的 marker 检测相机位姿时，是从marker坐标系到相机坐标系的一个三维变换矩阵</p>
+<p>用 aruco 的 marker 检测相机位姿时，是从marker坐标系（marker中心）到相机坐标系的一个三维变换矩阵</p>
 </blockquote>
 <p><strong>相机内参的作用：用来构造Projection Transform</strong> </p>
 </blockquote>
