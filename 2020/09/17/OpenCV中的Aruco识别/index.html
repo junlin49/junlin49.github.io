@@ -41,7 +41,7 @@
 <meta property="og:image" content="http://docs.opencv.org/3.1.0/bitsextraction1.png">
 <meta property="og:image" content="http://docs.opencv.org/3.1.0/bitsextraction2.png">
 <meta property="article:published_time" content="2020-09-17T02:21:35.000Z">
-<meta property="article:modified_time" content="2020-09-17T02:22:01.072Z">
+<meta property="article:modified_time" content="2020-09-17T08:00:41.726Z">
 <meta property="article:author" content="JunLu">
 <meta property="article:tag" content="Aruco">
 <meta name="twitter:card" content="summary">
@@ -228,7 +228,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-17 10:21:35 / 修改时间：10:22:01" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
+              <time title="创建时间：2020-09-17 10:21:35 / 修改时间：16:00:41" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
             </span>
 
           
@@ -376,179 +376,155 @@
 <ul>
 <li>预定义的字典：</li>
 </ul>
-<p>​    这是选择字典最简单的办法。aruco模块包含了一系列预定义的字典，涵盖了不同的marker大小和marker数量。例如：</p>
-<p>``` c++ </p>
-<p><a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d5/d0b/classcv_1_1aruco_1_1Dictionary.html">cv::aruco::Dictionary</a> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); ```</p>
-<p>​    DICT_6X6_250 是一个预定义的字典，它包含6x6位的marker，总共有250个marker。</p>
-<p>​    在所有提供的字典中，我们推荐使用你选择尽可能小的marker。例如，如果你需要6x6位的200个marker，选择DICT_6X6_250要优于选择DICT_6X6_1000。字典越小，内部距离就越大。</p>
-<p>​    </p>
+<p>这是选择字典最简单的办法。aruco模块包含了一系列预定义的字典，涵盖了不同的marker大小和marker数量。例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br></pre></td></tr></table></figure>
+<p>DICT_6X6_250 是一个预定义的字典，它包含6x6位的marker，总共有250个marker。</p>
+<p>在所有提供的字典中，我们推荐使用你选择尽可能小的marker。例如，如果你需要6x6位的200个marker，选择DICT_6X6_250要优于选择DICT_6X6_1000。字典越小，内部距离就越大。</p>
 <ul>
 <li>自动生成的字典:</li>
 </ul>
-<p>​    我们可以针对想要的marker数量和位来生成字典，以得到最优的内部Marker距离。</p>
-<p>``` c++ </p>
-<p><a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d5/d0b/classcv_1_1aruco_1_1Dictionary.html">cv::aruco::Dictionary</a> dictionary = cv::aruco::generateCustomDictionary(36, 5); ```</p>
-<p>​    这将会产生一个由36个5X5位字典组成的标准字典。这个过程需要几秒钟，具体时间取决于你的参数（更大的字典和更多的位数会耗费更多的时间）</p>
+<p>我们可以针对想要的marker数量和位来生成字典，以得到最优的内部Marker距离。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::generateCustomDictionary(<span class="number">36</span>, <span class="number">5</span>); </span><br></pre></td></tr></table></figure>
+<p>这将会产生一个由36个5X5位字典组成的标准字典。这个过程需要几秒钟，具体时间取决于你的参数（更大的字典和更多的位数会耗费更多的时间）</p>
 <ul>
 <li>手动生成的字典:</li>
 </ul>
-<p>​    最终，我们可以手动设置字典，方便做任何修改。为了做到这一点，我们需要手动给 <code>Dictionary</code> 对象参数赋值。必须注意的是，除非你有一些特别的理由需要自己来生成字典，一般情况下我们推荐前面的任一种方案。</p>
-<p>​    字典参数为：</p>
-<p>``` c++ </p>
-<p>class Dictionary { </p>
-<p>public:</p>
-<p>​    Mat bytesList; </p>
-<p>​    int markerSize; </p>
-<p>​    int maxCorrectionBits; // maximum number of bits that can be corrected</p>
-<p>​    …</p>
-<p>}</p>
-<p>```</p>
+<p>最终，我们可以手动设置字典，方便做任何修改。为了做到这一点，我们需要手动给 <code>Dictionary</code> 对象参数赋值。必须注意的是，除非你有一些特别的理由需要自己来生成字典，一般情况下我们推荐前面的任一种方案。</p>
+<p>字典参数为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dictionary</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Mat bytesList; </span><br><span class="line">        <span class="keyword">int</span> markerSize; </span><br><span class="line">        <span class="keyword">int</span> maxCorrectionBits; <span class="comment">// maximum number of bits that can be corrected</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>bytesList</code> 是一个数组，它包含了所有marker代码的信息。markerSize是每个marker的维度（例如，参数为5代表5x5位）。最终， <code>maxCorrectionBits</code>是marker检测中 可校正的最大比特数，如果这个值过大，会得到大量的错误位置。</p>
-<p>​    <code>bytesList</code> 中的每一行代表字典中的一个marker。但是，这些marker的数据并不以二进制形式存储，而是以一种特殊的方式存储，这样可以简化检测的过程。</p>
-<p>​    幸运的是，我们可以简单地调用静态方法<code>Dictionary::getByteListFromBits()</code>来转换到这种形式。</p>
-<p>​    示例：</p>
-<p>``` c++ </p>
-<p>​    Dictionary dictionary; </p>
-<p>​    // markers of 6x6 bits </p>
-<p>​    dictionary.markerSize = 6; </p>
-<p>​     // maximum number of bit corrections </p>
-<p>​    dictionary.maxCorrectionBits = 3;</p>
-<p>​    // lets create a dictionary of 100 markers </p>
-<p>​    for(int i=0; i&lt;100; i++) {// assume generateMarkerBits() generate a new marker in binary format, so that </p>
-<p>​        // markerBits is a 6x6 matrix of CV_8UC1 type, only containing 0s and 1s </p>
-<p>​        <a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html">cv::Mat</a> markerBits = generateMarkerBits(); </p>
-<p>​        <a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html">cv::Mat</a> markerCompressed = getByteListFromBits(markerBits); // add the marker as a new row</p>
-<p>​        dictionary.bytesList.push_back(markerCompressed); </p>
-<p>​    }</p>
-<p>```</p>
-<h2 id="检测参数"><a href="#检测参数" class="headerlink" title="检测参数"></a>检测参数</h2><p>​    <a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga306791ee1aab1513bc2c2b40d774f370">detectMarkers()</a>的一个参数是DetectorParameters对象。这一对象包含了marker检测过程中所有特定的选项。</p>
-<p>​    在这一章节中，我们将介绍所有的参数。我们可以根据它们涉及的阶段来给这些参数分类。</p>
-<h4 id="阈值化"><a href="#阈值化" class="headerlink" title="阈值化"></a>阈值化</h4><p>​    检测的第一步是输入图像的阈值化。</p>
-<p>​    例如，上述样例中的图像阈值化的结果如下：</p>
+<p> <code>bytesList</code> 中的每一行代表字典中的一个marker。但是，这些marker的数据并不以二进制形式存储，而是以一种特殊的方式存储，这样可以简化检测的过程。</p>
+<p>幸运的是，我们可以简单地调用静态方法<code>Dictionary::getByteListFromBits()</code>来转换到这种形式。</p>
+<p>示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Dictionary dictionary; </span><br><span class="line"><span class="comment">// markers of 6x6 bits </span></span><br><span class="line">dictionary.markerSize = <span class="number">6</span>; </span><br><span class="line"><span class="comment">// maximum number of bit corrections </span></span><br><span class="line">dictionary.maxCorrectionBits = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// lets create a dictionary of 100 markers </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)</span><br><span class="line">&#123;<span class="comment">// assume generateMarkerBits() generate a new marker in binary format, so that </span></span><br><span class="line"><span class="comment">// markerBits is a 6x6 matrix of CV_8UC1 type, only containing 0s and 1s </span></span><br><span class="line">    cv::Mat markerBits = generateMarkerBits(); </span><br><span class="line">    cv::Mat markerCompressed = getByteListFromBits(markerBits); <span class="comment">// add the marker as a new row</span></span><br><span class="line">    dictionary.bytesList.push_back(markerCompressed); </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="检测参数"><a href="#检测参数" class="headerlink" title="检测参数"></a>检测参数</h2><p> <a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga306791ee1aab1513bc2c2b40d774f370">detectMarkers()</a>的一个参数是DetectorParameters对象。这一对象包含了marker检测过程中所有特定的选项。</p>
+<p>在这一章节中，我们将介绍所有的参数。我们可以根据它们涉及的阶段来给这些参数分类。</p>
+<h4 id="阈值化"><a href="#阈值化" class="headerlink" title="阈值化"></a>阈值化</h4><p>检测的第一步是输入图像的阈值化。</p>
+<p>例如，上述样例中的图像阈值化的结果如下：</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersthresh.png" alt="singlemarkersthresh.png"></p>
-<p>Thresholded image</p>
-<p>​    这一阈值化过程由以下几个参数决定：</p>
+<p>这一阈值化过程由以下几个参数决定：</p>
 <ul>
 <li><code>int adaptiveThreshWinSizeMin</code>, <code>intadaptiveThreshWinSizeMax</code>, <code>int adaptiveThreshWinSizeStep</code></li>
 </ul>
 <p>​    <code>adaptiveThreshWinSizeMin</code> 和 <code>adaptiveThreshWinSizeMax</code> 参数代表选择的自适应阈值窗口大小（以像素为单位）间隔（具体参见<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/opencv">opencv</a>的 <code>threshold()</code>函数）。</p>
-<p>​    参数adaptiveThreshWinSizeStep表明了窗口从adaptiveThreshWinSizeMin到adaptiveThreshWinSizeMax大小的增量。</p>
-<p>​    例如，对于adaptiveThreshWinSizeMin=5，adaptiveThreshWinSizeMax=21以及adaptiveThreshWinSizeStep=4，那么将会产生5个阈值化步骤，窗口大小分别为5, 9, 13, 17 和 21。在每个阈值化图像中，都会选出一些marker候选。</p>
-<p>​    如果marker大小太大的话，较小的窗口大小可能会切割marker的边界，所以它将不会被检测到，就像下图一样：</p>
+<p>参数adaptiveThreshWinSizeStep表明了窗口从adaptiveThreshWinSizeMin到adaptiveThreshWinSizeMax大小的增量。</p>
+<p>例如，对于adaptiveThreshWinSizeMin=5，adaptiveThreshWinSizeMax=21以及adaptiveThreshWinSizeStep=4，那么将会产生5个阈值化步骤，窗口大小分别为5, 9, 13, 17 和 21。在每个阈值化图像中，都会选出一些marker候选。</p>
+<p>如果marker大小太大的话，较小的窗口大小可能会切割marker的边界，所以它将不会被检测到，就像下图一样：</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersbrokenthresh.png" alt="singlemarkersbrokenthresh.png"></p>
 <p>Broken marker image</p>
-<p>​    另一方面，如果marker太小的话，较大的窗口大小也会有类似的效果。此外这一过程将会趋向于全局阈值，而失去了自适应的特性。</p>
-<p>​    最简单的例子是对adaptiveThreshWinSizeMin和 <code>adaptiveThreshWinSizeMax</code>使用相同的值，这样就只会执行一次阈值化步骤。但是，最好还是使用一个范围的值作为窗口大小，虽然较多的阈值化步骤会在一定程度上降低性能。</p>
-<p>​    缺省参数：<code>adaptiveThreshWinSizeMin</code>: 3, <code>adaptiveThreshWinSizeMax</code>: 23, <code>adaptiveThreshWinSizeStep</code>: 10</p>
+<p>另一方面，如果marker太小的话，较大的窗口大小也会有类似的效果。此外这一过程将会趋向于全局阈值，而失去了自适应的特性。</p>
+<p>最简单的例子是对adaptiveThreshWinSizeMin和 <code>adaptiveThreshWinSizeMax</code>使用相同的值，这样就只会执行一次阈值化步骤。但是，最好还是使用一个范围的值作为窗口大小，虽然较多的阈值化步骤会在一定程度上降低性能。</p>
+<p>缺省参数：<code>adaptiveThreshWinSizeMin</code>: 3, <code>adaptiveThreshWinSizeMax</code>: 23, <code>adaptiveThreshWinSizeStep</code>: 10</p>
 <ul>
-<li><code>double adaptiveThreshConstant</code></li>
+<li><p><code>double adaptiveThreshConstant</code></p>
+<p>这一参数表达了阈值状态下的常量（参见Opencv函数）。它的默认值是大多数例子下较好的情况。</p>
+</li>
 </ul>
-<p>​    这一参数表达了阈值状态下的常量（参见Opencv函数）。它的默认值是大多数例子下较好的情况。</p>
-<p>​    默认值: 7</p>
-<h4 id="轮廓滤波"><a href="#轮廓滤波" class="headerlink" title="轮廓滤波"></a>轮廓滤波</h4><p>​    阈值化之后，我们需要检测轮廓。但是，我们并不会把所有的轮廓都当作是候选。在不同步骤中，我们通过滤波剔除一些不太可能是marker的轮廓。这一章节中的参数可以自定义这一过程。</p>
-<p>​    需要注意到，大多数例子中我们需要平衡检测的性能和效率。所有考虑到的轮廓都会在接下来的过程中做进一步处理，这通常产生了更高的计算消耗。所以，我们希望能够在这一阶段就丢弃错误的候选，而不是下一阶段继续处理。</p>
-<p>​    另一方面，如果滤波的条件过于苛刻，事实上的marker轮廓可能会被错误地剔除，因此，没有检测到marker。</p>
+<p>默认值: 7</p>
+<h4 id="轮廓滤波"><a href="#轮廓滤波" class="headerlink" title="轮廓滤波"></a>轮廓滤波</h4><p>阈值化之后，我们需要检测轮廓。但是，我们并不会把所有的轮廓都当作是候选。在不同步骤中，我们通过滤波剔除一些不太可能是marker的轮廓。这一章节中的参数可以自定义这一过程。</p>
+<p> 需要注意到，大多数例子中我们需要平衡检测的性能和效率。所有考虑到的轮廓都会在接下来的过程中做进一步处理，这通常产生了更高的计算消耗。所以，我们希望能够在这一阶段就丢弃错误的候选，而不是下一阶段继续处理。</p>
+<p>另一方面，如果滤波的条件过于苛刻，事实上的marker轮廓可能会被错误地剔除，因此，没有检测到marker。</p>
 <ul>
-<li><code>double minMarkerPerimeterRate</code>, <code>doublemaxMarkerPerimeterRate</code></li>
+<li><p><code>double minMarkerPerimeterRate</code>, <code>doublemaxMarkerPerimeterRate</code></p>
+<p>这些参数决定了marker的最小值和最大值，具体来说，是最大最小marker的周长。它们并不是以绝对像素值作为单位，而是相对于输入图片的最大尺寸指定的。</p>
+</li>
 </ul>
-<p>​    这些参数决定了marker的最小值和最大值，具体来说，是最大最小marker的周长。它们并不是以绝对像素值作为单位，而是相对于输入图片的最大尺寸指定的。</p>
-<p>​    例如，大小为640x480，最小相对marker周长为0.05的图像，将会产生一个最小周长640x0.05 = 32(像素)的marker，因为640是图像的最大尺寸。参数 <code>maxMarkerPerimeterRate</code> 也是类似的。</p>
-<p>​    如果 <code>minMarkerPerimeterRate</code>太小，检测阶段性能会降低，因为会有更多的轮廓进入到接下来的阶段。这一弊端对于 <code>maxMarkerPerimeterRate</code>参数而言不是那么显著，因为小的轮廓数目通常要多于大的轮廓。选取 <code>minMarkerPerimeterRate</code>值为0以及值为4，就相当于考虑了图像中的所有轮廓，但是出于性能考虑这是不推荐的。</p>
-<p>​    缺省值：</p>
+<p>例如，大小为640x480，最小相对marker周长为0.05的图像，将会产生一个最小周长640x0.05 = 32(像素)的marker，因为640是图像的最大尺寸。参数 <code>maxMarkerPerimeterRate</code> 也是类似的。</p>
+<p> 如果 <code>minMarkerPerimeterRate</code>太小，检测阶段性能会降低，因为会有更多的轮廓进入到接下来的阶段。这一弊端对于 <code>maxMarkerPerimeterRate</code>参数而言不是那么显著，因为小的轮廓数目通常要多于大的轮廓。选取 <code>minMarkerPerimeterRate</code>值为0以及值为4，就相当于考虑了图像中的所有轮廓，但是出于性能考虑这是不推荐的。</p>
+<p> 缺省值：</p>
 <p>Default values:<code>minMarkerPerimeterRate</code> : 0.03, <code>maxMarkerPerimeterRate</code> : 4.0</p>
 <ul>
 <li><code>double polygonalApproxAccuracyRate</code></li>
 </ul>
-<p>​    我们对所有的候选进行多边形近似，只有近似结果为方形的形状才能通过<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/softwaretest">测试</a>。这一值决定了多边形近似产生的最大误差（参见<code>approxPolyDP()</code> 函数）。</p>
-<p>​    这一参数是相对于候选长度的（像素上）。所以如果候选的周长为100像素，polygonalApproxAccuracyRate的值为0.04，那么最大的误差应当为100x0.04=5.4像素。</p>
-<p>​    在大多例子中，缺省参数的表现已经很好了，但对高失真的图像，我们需要更大的误差值。</p>
+<p>我们对所有的候选进行多边形近似，只有近似结果为方形的形状才能通过<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/softwaretest">测试</a>。这一值决定了多边形近似产生的最大误差（参见<code>approxPolyDP()</code> 函数）。</p>
+<p> 这一参数是相对于候选长度的（像素上）。所以如果候选的周长为100像素，polygonalApproxAccuracyRate的值为0.04，那么最大的误差应当为100x0.04=5.4像素。</p>
+<p>在大多例子中，缺省参数的表现已经很好了，但对高失真的图像，我们需要更大的误差值。</p>
 <p>​    缺省值：0.05</p>
 <ul>
 <li><code>double minCornerDistanceRate</code></li>
 </ul>
-<p>​    同一张marker中每一对角的最小距离。这是相对于marker周长的值。像素的最小距离为Perimeter * minCornerDistanceRate.</p>
+<p>同一张marker中每一对角的最小距离。这是相对于marker周长的值。像素的最小距离为Perimeter * minCornerDistanceRate.</p>
 <p>​    缺省值: 0.05</p>
 <ul>
-<li><code>double minMarkerDistanceRate</code></li>
+<li><p><code>double minMarkerDistanceRate</code></p>
+<p>两张不同的marker之间的任一对角的最小距离。它表示相对于两个marker的最小标记周长。如果两个候选太接近，较小的一个被忽略。</p>
+</li>
 </ul>
-<p>​    两张不同的marker之间的任一对角的最小距离。它表示相对于两个marker的最小标记周长。如果两个候选太接近，较小的一个被忽略。</p>
 <p>​    缺省值：0.05</p>
 <ul>
 <li><code>int minDistanceToBorder</code></li>
 </ul>
-<p>​    marker角到图像边缘最小距离。部分图像边缘被遮挡的marker也能被正确地检测出来，如果遮挡部分比较小的话。但是，如果其中一个角被挡住了，返回的角通常在图像边界的一个错误的位置。</p>
-<p>​    如果marker角的位置很重要的话，例如你想要做pose检测，最好舍弃掉那些离图像边缘太接近的角。否则就没有必要。</p>
+<p>marker角到图像边缘最小距离。部分图像边缘被遮挡的marker也能被正确地检测出来，如果遮挡部分比较小的话。但是，如果其中一个角被挡住了，返回的角通常在图像边界的一个错误的位置。</p>
+<p>如果marker角的位置很重要的话，例如你想要做pose检测，最好舍弃掉那些离图像边缘太接近的角。否则就没有必要。</p>
 <p>​    缺省值：3</p>
-<h4 id="比特位提取"><a href="#比特位提取" class="headerlink" title="比特位提取"></a>比特位提取</h4><p>​    检测到候选之后，我们需要分析每个候选的比特位，来确定它们是不是marker。</p>
-<p>​    在分析二进制编码之前，我们需要提取出比特位。为了达到这个目的，将对透视变换后的图像使用Otsu进行阈值化，来分离黑色和白色像素。</p>
-<p>​    以下是一个透视变换后的图像：</p>
+<h4 id="比特位提取"><a href="#比特位提取" class="headerlink" title="比特位提取"></a>比特位提取</h4><p>检测到候选之后，我们需要分析每个候选的比特位，来确定它们是不是marker。</p>
+<p>在分析二进制编码之前，我们需要提取出比特位。为了达到这个目的，将对透视变换后的图像使用Otsu进行阈值化，来分离黑色和白色像素。</p>
+<p>以下是一个透视变换后的图像：</p>
 <p><img src="http://docs.opencv.org/3.1.0/removeperspective.png" alt="removeperspective.png"></p>
-<p>Perspective removing</p>
-<p>​    接下来，图像被划分为网格，和marker位数相同。在每个单元格里，我们统计黑色和白色的个数，决定这个单元格的比特位。</p>
+<p>接下来，图像被划分为网格，和marker位数相同。在每个单元格里，我们统计黑色和白色的个数，决定这个单元格的比特位。</p>
 <p><img src="http://docs.opencv.org/3.1.0/bitsextraction1.png" alt="bitsextraction1.png"></p>
-<p>Marker cells</p>
 <p>以下参数可以自定义这一过程：</p>
 <ul>
 <li><code>int markerBorderBits</code></li>
 </ul>
-<p>​    这一参数指定了marker边界的宽度。这和每个比特位的大小相关。因此，值为2意味着边界的长度是两个内部比特位的长度。</p>
-<p>​    这一参数需要和你使用的Marker边界大小一致，边界的大小可以在绘制函数如 <code>drawMarker()</code>中设置。</p>
+<p>这一参数指定了marker边界的宽度。这和每个比特位的大小相关。因此，值为2意味着边界的长度是两个内部比特位的长度。</p>
+<p>这一参数需要和你使用的Marker边界大小一致，边界的大小可以在绘制函数如 <code>drawMarker()</code>中设置。</p>
 <p>​    缺省值：1</p>
 <ul>
 <li><code>double minOtsuStdDev</code></li>
 </ul>
-<p>​    这个值决定了进行Otsu的最小标准差的像素值。如果偏差很低，这可能意味着所有方形都是黑色的(或白色的），Ostu将不起作用。如果是这样的话，所有的比特位都根据平均值大于还是小于128被设为0或者1.</p>
+<p>这个值决定了进行Otsu的最小标准差的像素值。如果偏差很低，这可能意味着所有方形都是黑色的(或白色的），Ostu将不起作用。如果是这样的话，所有的比特位都根据平均值大于还是小于128被设为0或者1.</p>
 <p>​    缺省值：5.0</p>
 <ul>
 <li><code>int perpectiveRemovePixelPerCell</code></li>
 </ul>
-<p>​    这一参数决定了透视变换后图像的像素数目（每个单元格，包含边界）。这是上图中红色正方形的大小。</p>
-<p>​    例如，让我们假设我们在处理5x5比特位、边界为1比特位的marker（参见markerBorderBit）。然后，每一维的单元格/比特位的个数为：5 + 2* 1 = 7（边界需要被统计2次）。单元格总体大小为：7x7。</p>
-<p>​    如果perpectiveRemovePixelPerCell的值为10，那么获取到的图像大小为10*7 = 70 -&gt; 70x70 </p>
-<p>​    这一参数选择更大的值可以提升比特位的提取过程（在某一程度上），但是它同样也降低了性能。</p>
+<p>这一参数决定了透视变换后图像的像素数目（每个单元格，包含边界）。这是上图中红色正方形的大小。</p>
+<p>例如，让我们假设我们在处理5x5比特位、边界为1比特位的marker（参见markerBorderBit）。然后，每一维的单元格/比特位的个数为：5 + 2* 1 = 7（边界需要被统计2次）。单元格总体大小为：7x7。</p>
+<p>如果perpectiveRemovePixelPerCell的值为10，那么获取到的图像大小为10*7 = 70 -&gt; 70x70 </p>
+<p>这一参数选择更大的值可以提升比特位的提取过程（在某一程度上），但是它同样也降低了性能。</p>
 <p>​    缺省值：4</p>
 <ul>
 <li><code>double perspectiveRemoveIgnoredMarginPerCell</code></li>
 </ul>
-<p>​    当提取每个单元格的比特位时，需要统计黑色和白色的像素个数。一般而言，我们不推荐考虑单元格的所有像素。反之，最好忽略单元格的一些像素。</p>
-<p>​    原因在于，透视变换之后，单元格的颜色不会完全分离，白色的单元格可能会混入一些黑色的单元格（反之亦然）。因此，最好忽略这些像素，以避免错误的像素计数。</p>
-<p>​    例如，以下图像：</p>
+<p>当提取每个单元格的比特位时，需要统计黑色和白色的像素个数。一般而言，我们不推荐考虑单元格的所有像素。反之，最好忽略单元格的一些像素。</p>
+<p>原因在于，透视变换之后，单元格的颜色不会完全分离，白色的单元格可能会混入一些黑色的单元格（反之亦然）。因此，最好忽略这些像素，以避免错误的像素计数。</p>
+<p>例如，以下图像：</p>
 <p><img src="http://docs.opencv.org/3.1.0/bitsextraction2.png" alt="bitsextraction2.png"></p>
-<p>Marker cell margins</p>
-<p>​     我们只考虑处在绿色正方形中的像素。我们可以在右边的图像中看到，最终的像素包含了邻域单元格更少的噪声。参数<code>perspectiveRemoveIgnoredMarginPerCell</code> 指明了红色和绿色正方形之间的距离。</p>
-<p>​    这一参数是相对于单元格整体的大小的。例如，如果单元格的大小为40像素，这一参数的值为0.1，那么大小为40*0.1=4像素的边界将被剔除。这意味着每个单元格实际上要分析的像素大小为32x32，而不是40x40。</p>
+<p>我们只考虑处在绿色正方形中的像素。我们可以在右边的图像中看到，最终的像素包含了邻域单元格更少的噪声。参数<code>perspectiveRemoveIgnoredMarginPerCell</code> 指明了红色和绿色正方形之间的距离。</p>
+<p>这一参数是相对于单元格整体的大小的。例如，如果单元格的大小为40像素，这一参数的值为0.1，那么大小为40*0.1=4像素的边界将被剔除。这意味着每个单元格实际上要分析的像素大小为32x32，而不是40x40。</p>
 <p>​     缺省值：0.13</p>
-<h4 id="Marker-ID"><a href="#Marker-ID" class="headerlink" title="Marker ID"></a>Marker ID</h4><p>​     比特位提取之后，接下来的步骤是检查提取的编码是否属于这个marker字典，有必要的话，还需要做错误检测步骤。</p>
+<h4 id="Marker-ID"><a href="#Marker-ID" class="headerlink" title="Marker ID"></a>Marker ID</h4><p>比特位提取之后，接下来的步骤是检查提取的编码是否属于这个marker字典，有必要的话，还需要做错误检测步骤。</p>
 <ul>
-<li><code>double maxErroneousBitsInBorderRate</code></li>
+<li><p><code>double maxErroneousBitsInBorderRate</code></p>
+<p>marker边界的比特位应当是黑色的。这一参数指明了允许的边界出错比特位的个数。如，边界可以出现的白色比特位的最大值。它的大小相对于marker中的比特位总数。</p>
+</li>
 </ul>
-<p>​    marker边界的比特位应当是黑色的。这一参数指明了允许的边界出错比特位的个数。如，边界可以出现的白色比特位的最大值。它的大小相对于marker中的比特位总数。</p>
 <p>​    缺省值：0.35</p>
 <ul>
 <li><code>double errorCorrectionRate</code></li>
 </ul>
-<p>​    每个marker字典有一位可以纠正的理论最大值（Dictionary.maxCorrectionBits）。但是，这个值可以由<code>errorCorrectionRate</code> 参数来修改。</p>
-<p>​    例如，如果允许纠正的比特位（对于使用的字典）数目为6， <code>errorCorrectionRate</code>的值为0.5，那么实际上最大的可以纠正的比特位个数为6*0.5=3</p>
-<p>​    这一值对减少错误容忍率以避免错误的位置识别很有帮助。</p>
+<p>每个marker字典有一位可以纠正的理论最大值（Dictionary.maxCorrectionBits）。但是，这个值可以由<code>errorCorrectionRate</code> 参数来修改。</p>
+<p> 例如，如果允许纠正的比特位（对于使用的字典）数目为6， <code>errorCorrectionRate</code>的值为0.5，那么实际上最大的可以纠正的比特位个数为6*0.5=3</p>
+<p>这一值对减少错误容忍率以避免错误的位置识别很有帮助。</p>
 <p>​    缺省值：0.6</p>
-<h4 id="角落细化（Corner-Refinement）"><a href="#角落细化（Corner-Refinement）" class="headerlink" title="角落细化（Corner Refinement）"></a>角落细化（Corner Refinement）</h4><p>​    当我们检测完marker，并且验证了它们的id之后，最后要做的一步是在角落处的亚像素级的细化（参见OpenCV <code>cornerSubPix()</code>)</p>
-<p>​    注意，这一步是可选的，仅在我们对marker角位置的准确性要求很高时才有意义。例如，pose的检测。这一步骤很耗费时间，所以默认下是不做的。</p>
+<h4 id="角落细化（Corner-Refinement）"><a href="#角落细化（Corner-Refinement）" class="headerlink" title="角落细化（Corner Refinement）"></a>角落细化（Corner Refinement）</h4><p>当我们检测完marker，并且验证了它们的id之后，最后要做的一步是在角落处的亚像素级的细化（参见OpenCV <code>cornerSubPix()</code>)</p>
+<p>注意，这一步是可选的，仅在我们对marker角位置的准确性要求很高时才有意义。例如，pose的检测。这一步骤很耗费时间，所以默认下是不做的。</p>
 <ul>
 <li><code>bool doCornerRefinement</code></li>
 </ul>
-<p>​    这一参数决定了是否要进行角落亚像素级细化过程，如果对角点的准确性要求不高，可以不进行这一过程。</p>
+<p>这一参数决定了是否要进行角落亚像素级细化过程，如果对角点的准确性要求不高，可以不进行这一过程。</p>
 <p>​    缺省值：false</p>
 <ul>
 <li><code>int cornerRefinementWinSize</code></li>
 </ul>
-<p>​    这一参数决定了亚像素级细化过程的窗口大小。</p>
-<p>​    较大的值可以产生窗口区域内比较靠近的图像角，marker角会移动到一个不同的错误的地方。除此之外这还会影响到性能。</p>
+<p>这一参数决定了亚像素级细化过程的窗口大小。</p>
+<p>较大的值可以产生窗口区域内比较靠近的图像角，marker角会移动到一个不同的错误的地方。除此之外这还会影响到性能。</p>
 <p>​    缺省值：5</p>
 <ul>
 <li><code>int cornerRefinementMaxIterations</code>, <code>doublecornerRefinementMinAccuracy</code></li>
 </ul>
-<p>​    这两个值决定了亚像素级细化过程的结束条件。cornerRefinementMaxIterations指明了迭代的最大次数，<code>cornerRefinementMinAccuracy</code> 是结束这一过程前的最小错误值。</p>
-<p>​    如果迭代次数过高，这会影响到性能。此外，如果太小的话，亚像素级细化就基本没有发挥作用。</p>
+<p>这两个值决定了亚像素级细化过程的结束条件。cornerRefinementMaxIterations指明了迭代的最大次数，<code>cornerRefinementMinAccuracy</code> 是结束这一过程前的最小错误值。</p>
+<p>如果迭代次数过高，这会影响到性能。此外，如果太小的话，亚像素级细化就基本没有发挥作用。</p>
 <p>​    缺省值：</p>
 <p><code>cornerRefinementMaxIterations</code>: 30, <code>cornerRefinementMinAccuracy</code>: 0.1</p>
 
