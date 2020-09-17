@@ -6,10 +6,6 @@ tags:
 - Aruco
 ---
 
-使用Aruco实现AR效果的方式，实在是很基础，对于相机标定，OpenGL等基础知识具有很好的加强作用，有待长期梳理更新
-
-<!--more-->
-
 # Aruco AR过程梳理-1
 
 ---
@@ -45,6 +41,8 @@ tags:
 > 相机标定完成后，得到的是相机内参与畸变参数，对于特定的相机来说，都是不变量，因此，相机标定只需要一次即可
 >
 > **通过aruco的marker，获得相机的外参（重点），并实时传入OpenGL的View Transform矩阵** 
+>
+> > 用 aruco 的 marker 检测相机位姿时，是从marker坐标系（marker中心）到相机坐标系的一个三维变换矩阵
 >
 > **相机内参的作用：用来构造Projection Transform** 
 
