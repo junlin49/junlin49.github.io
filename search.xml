@@ -343,9 +343,7 @@
   <entry>
     <title>Aruco实现AR梳理</title>
     <url>/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/</url>
-    <content><![CDATA[<p>使用Aruco实现AR效果的方式，实在是很基础，对于相机标定，OpenGL等基础知识具有很好的加强作用，有待长期梳理更新</p>
-<a id="more"></a>
-<h1 id="Aruco-AR过程梳理-1"><a href="#Aruco-AR过程梳理-1" class="headerlink" title="Aruco AR过程梳理-1"></a>Aruco AR过程梳理-1</h1><hr>
+    <content><![CDATA[<h1 id="Aruco-AR过程梳理-1"><a href="#Aruco-AR过程梳理-1" class="headerlink" title="Aruco AR过程梳理-1"></a>Aruco AR过程梳理-1</h1><hr>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>目的</strong>：在<em>VS2019</em>运行的<em>OpenGL</em>窗口上，<em>generated virtual computer generated 3D graphics on the realistic environment , i.e.</em> 在<em>OpenGL</em>的相机位置看到<em>AR</em>效果</p>
 <p><strong>思路</strong>：</p>
 <p><strong>OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果</strong></p>
