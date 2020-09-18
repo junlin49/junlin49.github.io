@@ -52,6 +52,12 @@ tags:
 
 ### Sensor-Based Tracking Techniques
 
+
+
+---
+
+---
+
 ### Vision-Based Tracking Techniques
 
 Vision-based tracking techniques can use image processing methods to **calculate the camera pose relative to real world objects.**
@@ -59,6 +65,12 @@ Vision-based tracking techniques can use image processing methods to **calculate
 #### feature-based
 
 The rationale underlying feature-based methods is to find a correspondence between 2D image features and their 3D world frame coordinates.
+
+---
+
+---
+
+---
 
 ##### Markers
 
@@ -68,11 +80,25 @@ Early computer vision papers at IWAR described marker tracking methods that coul
 
 ###### Natural Features,such as points, lines, edges or textures
 
+---
+
+---
+
+---
+
 #### model-based
 
+Model-based trackers usually construct their models based on lines or edges in the model.
 
+Texture is another useful feature for constructing models. 
+
+---
+
+---
 
 ### hybrid tracking techniques
+
+---
 
 
 
