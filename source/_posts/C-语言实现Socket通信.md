@@ -1,10 +1,10 @@
 ---
-title: ' C#语言实现Socket通信'
+title: ' C#语言实现Socket通信_1'
 date: 2020-09-18 15:08:41
 tags:
 ---
 
-# C#语言实现Socket通信
+# C#语言实现Socket通信_1
 
 ## 目标
 
