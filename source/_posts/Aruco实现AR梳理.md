@@ -1,12 +1,12 @@
 ---
-title: Aruco实现AR梳理
+title: Aruco实现AR梳理_1
 date: 2020-09-14 08:26:52
 categories: Aruco
 tags:
 - Aruco
 ---
 
-# Aruco AR过程梳理-1
+# Aruco AR过程梳理_1
 
 ---
 
