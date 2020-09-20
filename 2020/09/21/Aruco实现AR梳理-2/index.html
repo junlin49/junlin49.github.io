@@ -20,15 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="君路">
-<meta property="og:url" content="http://yoursite.com/tags/OpenCV/index.html">
+  <meta name="description" content="Aruco 实现AR过程梳理_2_概述上一篇说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。 目标效果 思路和之前的一篇一样  OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果  细节OpenCV与Aruco 将真实相机捕获的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aruco实现AR梳理_2">
+<meta property="og:url" content="http://yoursite.com/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/index.html">
 <meta property="og:site_name" content="君路">
+<meta property="og:description" content="Aruco 实现AR过程梳理_2_概述上一篇说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。 目标效果 思路和之前的一篇一样  OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果  细节OpenCV与Aruco 将真实相机捕获的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/JunLuJun/up/raw/master/20200921072739.gif">
+<meta property="article:published_time" content="2020-09-20T23:45:19.000Z">
+<meta property="article:modified_time" content="2020-09-20T23:45:55.795Z">
 <meta property="article:author" content="JunLu">
+<meta property="article:tag" content="Aruco">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/JunLuJun/up/raw/master/20200921072739.gif">
 
-<link rel="canonical" href="http://yoursite.com/tags/OpenCV/">
+<link rel="canonical" href="http://yoursite.com/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/">
 
 
 <script id="page-configurations">
@@ -36,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: OpenCV | 君路</title>
+  <title>Aruco实现AR梳理_2 | 君路</title>
   
 
 
@@ -178,57 +185,140 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
+      <meta itemprop="name" content="JunLu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="君路">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Aruco实现AR梳理_2
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-21 07:45:19 / 修改时间：07:45:55" itemprop="dateCreated datePublished" datetime="2020-09-21T07:45:19+08:00">2020-09-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Aruco/" itemprop="url" rel="index"><span itemprop="name">Aruco</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">OpenCV
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/09/21/Aruco实现AR梳理-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <h1 id="Aruco-实现AR过程梳理-2"><a href="#Aruco-实现AR过程梳理-2" class="headerlink" title="Aruco 实现AR过程梳理_2_"></a>Aruco 实现AR过程梳理_2_</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a target="_blank" rel="noopener" href="https://junlu.club/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">上一篇</a>说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。</p>
+<h2 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h2><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200921072739.gif" alt=""></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和之前的一篇一样</p>
+<blockquote>
+<p><strong>OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果</strong></p>
+</blockquote>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><h3 id="OpenCV与Aruco"><a href="#OpenCV与Aruco" class="headerlink" title="OpenCV与Aruco"></a>OpenCV与Aruco</h3><ul>
+<li>将真实相机捕获的画面，传递给OpenGL，用作背景</li>
+<li>相机标定，将真实相机的内参标定出来</li>
+</ul>
+<h3 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h3><ul>
+<li>将真实画面，正交投影至矩形中，充当背景</li>
+<li>定义虚拟的Cube顶点</li>
+<li>生成OpenGL窗口</li>
+<li>Cube经历的变换为 <em>MVP（model transform, view transform, projection transform）</em>变换</li>
+</ul>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><ul>
+<li><p>如何将真实的世界坐标系与OpenGL的世界坐标系重合呢？如何将相机位置重合呢？</p>
+<p>OpenGL中，相机的位置是固定不变的，我们看到的永远是相机看到的，所以，只要清楚相机与世界坐标系的转换矩阵，即View Matrix，就可以将世界坐标系重合了。</p>
+</li>
+<li><p>Aruco的作用是什么呢？</p>
+<p>获取真实相机相对于Marker的位姿（相机外参），传给OpenGL</p>
+</li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-02T18:21:55+08:00"
-              content="2020-04-02">
-          04-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Aruco/" rel="tag"><i class="fa fa-tag"></i> Aruco</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/04/02/Opencv-VS2019%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url">
-            <span itemprop="name">Opencv-VS2019环境配置</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" rel="prev" title="关于AR键盘">
+      <i class="fa fa-chevron-left"></i> 关于AR键盘
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -275,6 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Aruco-%E5%AE%9E%E7%8E%B0AR%E8%BF%87%E7%A8%8B%E6%A2%B3%E7%90%86-2"><span class="nav-number">1.</span> <span class="nav-text">Aruco 实现AR过程梳理_2_</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.</span> <span class="nav-text">目标效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.</span> <span class="nav-text">细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenCV%E4%B8%8EAruco"><span class="nav-number">1.4.1.</span> <span class="nav-text">OpenCV与Aruco</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenGL"><span class="nav-number">1.4.2.</span> <span class="nav-text">OpenGL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.3.</span> <span class="nav-text">其他问题</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,6 +559,26 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/";
+    this.page.identifier = "2020/09/21/Aruco实现AR梳理-2/";
+    this.page.title = "Aruco实现AR梳理_2";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://junlu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
 </script>
 
 </body>
