@@ -246,7 +246,7 @@
 <p>更多有关字典的信息在“选择字典”部分提及。</p>
 <h2 id="创建Marker"><a href="#创建Marker" class="headerlink" title="创建Marker"></a>创建Marker</h2><p>​    在检测之前，我们需要打印marker，以把它们放到环境中。marker的图像可以使用<a href="http://docs.opencv.org/3.1.0/d6/d6e/group__imgproc__draw.html#ga482fa7b0f578fcdd8a174904592a6250">drawMarker()</a>函数生成。</p>
 <p>​    例如，让我们分析一下如下的调用：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat markerImage; cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat markerImage;</span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">  cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>首先，我们通过选择aruco模块中一个预定义的字典来创建一个字典对象，具体而言，这个字典是由250个marker组成的，每个marker的大小为6x6bits(DICT_6X6_250)</p>
 <p>​     <code>drawMarker</code>的参数如下：</p>
 <ul>
@@ -273,12 +273,11 @@
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersoriginal.png" alt="singlemarkersoriginal.png"></p>
 <p>这些是检测出来的marker（用绿色标记）</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersdetection.png" alt="singlemarkersdetection.png"></p>
-<p>Image with detected markers</p>
 <p>以下是识别阶段被剔除的Marker候选（用粉红色标记）：</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersrejected.png" alt="singlemarkersrejected.png"></p>
 <p>在aruco模块，检测是由<code>detectMarkers()</code> 函数完成的，这一函数是这个模块中最重要的函数，因为剩下的所有函数操作都基于detectMarkers()返回的检测出的markers。</p>
 <p>一个marker检测的例子：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">[cv::Mat](http:<span class="comment">//docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html) inputImage;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line"></span><br><span class="line">[cv::aruco::DetectorParameters](http:<span class="comment">//docs.opencv.org/3.1.0/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html) parameters; </span></span><br><span class="line"></span><br><span class="line">[cv::aruco::Dictionary](http:<span class="comment">//docs.opencv.org/3.1.0/d5/d0b/classcv_1_1aruco_1_1Dictionary.html) dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span></span><br><span class="line"></span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat inputImage;</span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line">cv::aruco::DetectorParameters parameters; </span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
 <p><code>detectMarkers</code> 的参数为：</p>
 <ul>
 <li>第一个参数是待检测marker的图像。</li>

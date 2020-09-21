@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="website">
@@ -820,10 +820,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-17 10:21:35 / 修改时间：16:00:41" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
+              <time title="创建时间：2020-09-17 10:21:35" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-22 07:46:46" itemprop="dateModified" datetime="2020-09-22T07:46:46+08:00">2020-09-22</time>
+              </span>
 
           
   
@@ -876,7 +882,7 @@
 <p>更多有关字典的信息在“选择字典”部分提及。</p>
 <h2 id="创建Marker"><a href="#创建Marker" class="headerlink" title="创建Marker"></a>创建Marker</h2><p>​    在检测之前，我们需要打印marker，以把它们放到环境中。marker的图像可以使用<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d6/d6e/group__imgproc__draw.html#ga482fa7b0f578fcdd8a174904592a6250">drawMarker()</a>函数生成。</p>
 <p>​    例如，让我们分析一下如下的调用：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat markerImage; cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat markerImage;</span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">  cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>首先，我们通过选择aruco模块中一个预定义的字典来创建一个字典对象，具体而言，这个字典是由250个marker组成的，每个marker的大小为6x6bits(DICT_6X6_250)</p>
 <p>​     <code>drawMarker</code>的参数如下：</p>
 <ul>
@@ -903,12 +909,11 @@
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersoriginal.png" alt="singlemarkersoriginal.png"></p>
 <p>这些是检测出来的marker（用绿色标记）</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersdetection.png" alt="singlemarkersdetection.png"></p>
-<p>Image with detected markers</p>
 <p>以下是识别阶段被剔除的Marker候选（用粉红色标记）：</p>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersrejected.png" alt="singlemarkersrejected.png"></p>
 <p>在aruco模块，检测是由<code>detectMarkers()</code> 函数完成的，这一函数是这个模块中最重要的函数，因为剩下的所有函数操作都基于detectMarkers()返回的检测出的markers。</p>
 <p>一个marker检测的例子：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[cv::Mat](http:<span class="comment">//docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html) inputImage;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line"></span><br><span class="line">[cv::aruco::DetectorParameters](http:<span class="comment">//docs.opencv.org/3.1.0/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html) parameters; </span></span><br><span class="line"></span><br><span class="line">[cv::aruco::Dictionary](http:<span class="comment">//docs.opencv.org/3.1.0/d5/d0b/classcv_1_1aruco_1_1Dictionary.html) dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span></span><br><span class="line"></span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat inputImage;</span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line">cv::aruco::DetectorParameters parameters; </span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
 <p><code>detectMarkers</code> 的参数为：</p>
 <ul>
 <li>第一个参数是待检测marker的图像。</li>
@@ -1582,7 +1587,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">JunLu</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
