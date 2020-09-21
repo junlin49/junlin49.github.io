@@ -4,7 +4,7 @@
     <title>Aruco实现AR梳理_2</title>
     <url>/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Aruco-实现AR过程梳理-2"><a href="#Aruco-实现AR过程梳理-2" class="headerlink" title="Aruco 实现AR过程梳理_2_"></a>Aruco 实现AR过程梳理_2_</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://junlu.club/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">上一篇</a>说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。</p>
-<h2 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h2><iframe src="/iframe/aruco04.gif" width="[384]" height="[216]" frameborder="0" loading="lazy" allowfullscreen></iframe>
+<h2 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h2><iframe src="/iframe/aruco04.gif" width="[19.2]" height="[10.8]" frameborder="0" loading="lazy" allowfullscreen></iframe>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和之前的一篇一样</p>
 <blockquote>
 <p><strong>OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果</strong></p>
