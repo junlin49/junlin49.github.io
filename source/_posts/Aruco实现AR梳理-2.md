@@ -16,8 +16,6 @@ tags:
 
 ![](\iframe\aruco04.gif) 
 
-![](https://gitee.com/JunLuJun/up/raw/master/20200921072739.gif)
-
 ## 思路
 
 和之前的一篇一样
