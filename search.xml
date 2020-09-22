@@ -290,7 +290,7 @@
 <li>第四个参数是类型的对象 <code>DetectionParameters</code>. 这一对象包含了检测阶段的所有参数。这一参数将在 下一章节详细介绍。</li>
 <li><p>最后的参数, <code>rejectedCandidates</code>, 返回了所有的marker候选, 例如， 那些被检测出来的不是有效编码的方形。每个候选同样由四个角定义， 它的 形式和markerCorners的参数一样。这一参数可以省略，它仅仅用于debug阶段，或是用于“再次寻找”策略（见<a href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga90374a799f1da566e5de16f277b12463">refineDetectedMarkers()</a>）</p>
 <p><code>detectMarkers()</code>之后，接下来你想要做的事情可能是检查你的marker是否被正确地检测出来了。幸运的是，aruco模块提供了一个函数，它能在输入图像中来绘制检测出来的markers，这个函数就是<a href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga2ad34b0f277edebb6a132d3069ed2909">drawDetectedMarkers()</a> ,例子如下：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat outputImage cv::aruco::drawDetectedMarkers(<span class="built_in">image</span>, markerCorners, markerIds);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat outputImage;</span><br><span class="line">cv::aruco::drawDetectedMarkers(<span class="built_in">image</span>, markerCorners, markerIds);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>image</code> 是输入/输出图像，程序将在这张图上绘制marker。（它通常就是检测出marker的那张图像）</p>
 </li>
