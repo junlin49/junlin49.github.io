@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>摄像机模型详解</title>
+    <url>/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摄像机几何模型详解"><a href="#摄像机几何模型详解" class="headerlink" title="摄像机几何模型详解"></a>摄像机几何模型详解</h1><h2 id="针孔模型-amp-透镜"><a href="#针孔模型-amp-透镜" class="headerlink" title="针孔模型&amp;透镜"></a>针孔模型&amp;透镜</h2><h3 id="问题引出-我们如何记录世界？"><a href="#问题引出-我们如何记录世界？" class="headerlink" title="问题引出 - 我们如何记录世界？"></a>问题引出 - 我们如何记录世界？</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926200942.png" alt="图1 如何记录世界？"></p>
+<p>如果按照上面图片的设计，物体的每一个点，都会在胶片的同一个地方，留下自己的信息；由此胶片上的每一个地方都是物体每一点的信息集合，根本无法记录现实物体。</p>
+<h3 id="改进方案-针孔摄像机"><a href="#改进方案-针孔摄像机" class="headerlink" title="改进方案 - 针孔摄像机"></a>改进方案 - 针孔摄像机</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201249.png" alt="图2 针孔摄像机"></p>
+<p>与原有的设计相比，此改进方案增加了一个隔板，只留下了一个孔；正如图上所标注的，光线穿过针孔，物体的每一个点，都在胶片的不同位置留下了自己的信息，不会像之前设计的胶片信息杂乱混合。</p>
+<p>胶片就这样记录下了物体的信息。</p>
+<h3 id="针孔摄像机模型"><a href="#针孔摄像机模型" class="headerlink" title="针孔摄像机模型"></a>针孔摄像机模型</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201625.png" alt="图3 针孔摄像机模型"></p>
+<p>图中的各个参数的含义如下：</p>
+<blockquote>
+<p><strong>f</strong> ：摄像机模型的<strong>焦距</strong> </p>
+<p><strong>O</strong> ：针孔，亦称<strong>光圈</strong>/<strong>摄像机中心</strong> </p>
+</blockquote>
+<p>像平面与虚拟像平面相对于摄像机中心对称，唯一的不同是，虚拟像平面成像是正的，我们一般都是讨论虚拟像平面；像平面成像是倒着的。</p>
+<h3 id="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）"><a href="#相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）" class="headerlink" title="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）"></a><strong>相机坐标系下的空间点</strong>与<strong>像平面坐标系上的平面点</strong>之间的映射（1）</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926202434.png" alt="图4 摄像机坐标系与像平面坐标系之间，点的映射关系"></p>
+<p>上图各个符号的含义如下：</p>
+<blockquote>
+<p>P：真实物理空间中的某一点，在摄像机坐标系下，其坐标为（x，y，z）</p>
+<p>O：摄像机坐标系的原点</p>
+<p>i，j，k：摄像机坐标系的单位向量，构成坐标轴</p>
+<p>f：摄像机模型的焦距</p>
+<p>C’：像平面坐标系的原点</p>
+<p>P’：真实空间点P在成像平面上成像的点，在像平面坐标系下，其坐标为（x’，y’）</p>
+</blockquote>
+<p>以-i方向观察上图，可以简化为：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926203254.png" alt="图5 以-i方向观察图4"></p>
+<p>采用相似三角形法则，可以得出：</p>
+<script type="math/tex; mode=display">
+\frac{y'}{f}=\frac{y}{z}\Rightarrow y'=f\frac{y}{z}</script><p>又因为$ P=\left[\begin{array}{l}<br>x \\<br>y \\<br>z<br>\end{array}\right] $，$P^{\prime}=\left[\begin{array}{l}<br>x^{\prime} \\<br>y^{\prime}<br>\end{array}\right]$；</p>
+<p>所以：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{1}
+x^{\prime}=f \frac{x}{z} \\
+y^{\prime}=f \frac{y}{z}
+\end{array}\right.
+\tag {公式1}</script><h3 id="透镜"><a href="#透镜" class="headerlink" title="透镜"></a>透镜</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201249.png" alt="图2 针孔摄像机"></p>
+<p>光圈，亦称针孔；</p>
+<p>光圈的尺寸大小与成像的关系：</p>
+<blockquote>
+<p>光圈越大，成像越模糊，但是也越亮</p>
+<p>光圈越小，成像越清晰，但是也越暗</p>
+</blockquote>
+<p>光圈越大，穿过光圈的光线越多，因此也更亮，但是随着光圈的增大，物体上不同的，但是相近的位置点，都会发射光线到达胶片上的同一点，因此成像也越模糊。</p>
+<p>光圈越小，穿过光圈的光线越少，因此也更暗，但是随着光圈的减小，物体上不同的，发射光线到达胶片上的同一点的概率也越小，因此成像也越模糊。</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926211838.png" alt="图6 光圈尺寸与成像的关系"></p>
+<p>毫无疑问，我们最终想要的是既明亮又清晰的图像，如何能在光圈小的情况下，增大亮度，即让物体同一点的光线到胶片上同一点的光线数量越多？</p>
+<p>答案是<strong>增加透镜</strong></p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212145.png" alt="图7 增加透镜"></p>
+<p>透镜将物体上同一点的多条光线聚集到胶片上的同一点，增大了亮度</p>
+<p>透镜焦距的定义：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212659.png" alt="图8 透镜焦距的定义"></p>
+<blockquote>
+<p>f：透镜的焦距</p>
+</blockquote>
+<h3 id="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）"><a href="#相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）" class="headerlink" title="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）"></a><strong>相机坐标系下的空间点</strong>与<strong>像平面坐标系上的平面点</strong>之间的映射（2）</h3><p>将上述讨论的透镜，加入模型中：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212904.png" alt="图9 透镜加入模型"></p>
+<p>参数说明：</p>
+<blockquote>
+<p>f：透镜的焦距</p>
+<p>$z_0$：透镜的焦点到胶片的距离</p>
+<p>Z’：摄像机模型的焦距</p>
+</blockquote>
+<p>上述参数满足：$Z’=F+Z_0$</p>
+<p>以后，以字母f代表摄像机模型的焦距Z‘</p>
+<h3 id="像平面坐标系下的平面点-在像平面坐标系与像素平面坐标系的转换"><a href="#像平面坐标系下的平面点-在像平面坐标系与像素平面坐标系的转换" class="headerlink" title="像平面坐标系下的平面点 在像平面坐标系与像素平面坐标系的转换"></a>像平面坐标系下的平面点 在像平面坐标系与像素平面坐标系的转换</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926215929.png" alt="图10 像坐标系与像素坐标系" style="zoom:70%;" /></p>
+<blockquote>
+<p>像素坐标系：</p>
+<ul>
+<li>以胶片的左下角为坐标原点的二维坐标系</li>
+<li>单位是像素</li>
+</ul>
+<p>像坐标系：</p>
+<ul>
+<li>同样成为像平面坐标系，以胶片中心为C’为坐标原点</li>
+<li>单位是米</li>
+</ul>
+</blockquote>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926220338.png" alt="图11 示意图"></p>
+<h3 id="摄像机坐标系下的空间点-与-像素坐标系下的平面点-之间的转换"><a href="#摄像机坐标系下的空间点-与-像素坐标系下的平面点-之间的转换" class="headerlink" title="摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换"></a>摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换</h3><p>此转换亦为3D与2D之间的转换；</p>
+<p>坐标转换为：</p>
+<script type="math/tex; mode=display">
+\left.(x, y, z) \rightarrow(f k \frac{x}{z}+c_{x}, f l \frac{y}{z}+c_{y}\right)
+\\
+\alpha = fk
+\\
+\beta = fl
+\tag{公式3}</script><blockquote>
+<p>k,l单位为pixel/m</p>
+<p>f单位为m</p>
+<p>$\alpha，\beta$ 单位：pixel</p>
+</blockquote>
+<p>由于上述变换是非线性变换，后续处理采用齐次坐标的概念</p>
+<h2 id="摄像机几何"><a href="#摄像机几何" class="headerlink" title="摄像机几何"></a>摄像机几何</h2><h2 id="其他摄像机模型"><a href="#其他摄像机模型" class="headerlink" title="其他摄像机模型"></a>其他摄像机模型</h2>]]></content>
+  </entry>
+  <entry>
     <title>Aruco实现AR梳理_2</title>
     <url>/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Aruco-实现AR过程梳理-2"><a href="#Aruco-实现AR过程梳理-2" class="headerlink" title="Aruco 实现AR过程梳理_2_"></a>Aruco 实现AR过程梳理_2_</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="https://junlu.club/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">上一篇</a>说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。</p>

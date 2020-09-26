@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>摄像机模型详解 | 君路</title><meta name="description" content="摄像机几何模型详解针孔模型&amp;透镜问题引出 - 我们如何记录世界？ 如果按照上面图片的设计，物体的每一个点，都会在胶片的同一个地方，留下自己的信息；由此胶片上的每一个地方都是物体每一点的信息集合，根本无法记录现实物体。 改进方案 - 针孔摄像机 与原有的设计相比，此改进方案增加了一个隔板，只留下了一个孔；正如图上所标注的，光线穿过针孔，物体的每一个点，都在胶片的不同位置留下了自己的信息，不会"><meta name="author" content="JunLu"><meta name="copyright" content="JunLu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="摄像机模型详解"><meta property="og:url" content="http://yoursite.com/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/"><meta property="og:site_name" content="君路"><meta property="og:description" content="摄像机几何模型详解针孔模型&amp;透镜问题引出 - 我们如何记录世界？ 如果按照上面图片的设计，物体的每一个点，都会在胶片的同一个地方，留下自己的信息；由此胶片上的每一个地方都是物体每一点的信息集合，根本无法记录现实物体。 改进方案 - 针孔摄像机 与原有的设计相比，此改进方案增加了一个隔板，只留下了一个孔；正如图上所标注的，光线穿过针孔，物体的每一个点，都在胶片的不同位置留下了自己的信息，不会"><meta property="og:image" content="http://yoursite.com/img/av.jpg"><meta property="article:published_time" content="2020-09-26T14:18:05.000Z"><meta property="article:modified_time" content="2020-09-26T14:18:24.108Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: {"limitCount":50,"languages":{"author":"作者: JunLu","link":"链接: ","source":"来源: 君路","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-26 22:18:24'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">43</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA%E5%87%A0%E4%BD%95%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">摄像机几何模型详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%92%88%E5%AD%94%E6%A8%A1%E5%9E%8B-amp-%E9%80%8F%E9%95%9C"><span class="toc-number">1.1.</span> <span class="toc-text">针孔模型&amp;透镜</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%87%BA-%E6%88%91%E4%BB%AC%E5%A6%82%E4%BD%95%E8%AE%B0%E5%BD%95%E4%B8%96%E7%95%8C%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">问题引出 - 我们如何记录世界？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E8%BF%9B%E6%96%B9%E6%A1%88-%E9%92%88%E5%AD%94%E6%91%84%E5%83%8F%E6%9C%BA"><span class="toc-number">1.1.2.</span> <span class="toc-text">改进方案 - 针孔摄像机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AD%94%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">针孔摄像机模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E7%A9%BA%E9%97%B4%E7%82%B9%E4%B8%8E%E5%83%8F%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8A%E7%9A%84%E5%B9%B3%E9%9D%A2%E7%82%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84%EF%BC%881%EF%BC%89"><span class="toc-number">1.1.4.</span> <span class="toc-text">相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%8F%E9%95%9C"><span class="toc-number">1.1.5.</span> <span class="toc-text">透镜</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%9C%BA%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E7%A9%BA%E9%97%B4%E7%82%B9%E4%B8%8E%E5%83%8F%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8A%E7%9A%84%E5%B9%B3%E9%9D%A2%E7%82%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E6%98%A0%E5%B0%84%EF%BC%882%EF%BC%89"><span class="toc-number">1.1.6.</span> <span class="toc-text">相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%83%8F%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E5%B9%B3%E9%9D%A2%E7%82%B9-%E5%9C%A8%E5%83%8F%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8E%E5%83%8F%E7%B4%A0%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.7.</span> <span class="toc-text">像平面坐标系下的平面点 在像平面坐标系与像素平面坐标系的转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E7%A9%BA%E9%97%B4%E7%82%B9-%E4%B8%8E-%E5%83%8F%E7%B4%A0%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8B%E7%9A%84%E5%B9%B3%E9%9D%A2%E7%82%B9-%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.8.</span> <span class="toc-text">摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA%E5%87%A0%E4%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">摄像机几何</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">其他摄像机模型</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">君路</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">摄像机模型详解</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-26T14:18:05.000Z" title="发表于 2020-09-26 22:18:05">2020-09-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-26T14:18:24.108Z" title="更新于 2020-09-26 22:18:24">2020-09-26</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="摄像机几何模型详解"><a href="#摄像机几何模型详解" class="headerlink" title="摄像机几何模型详解"></a>摄像机几何模型详解</h1><h2 id="针孔模型-amp-透镜"><a href="#针孔模型-amp-透镜" class="headerlink" title="针孔模型&amp;透镜"></a>针孔模型&amp;透镜</h2><h3 id="问题引出-我们如何记录世界？"><a href="#问题引出-我们如何记录世界？" class="headerlink" title="问题引出 - 我们如何记录世界？"></a>问题引出 - 我们如何记录世界？</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926200942.png" alt="图1 如何记录世界？"></p>
+<p>如果按照上面图片的设计，物体的每一个点，都会在胶片的同一个地方，留下自己的信息；由此胶片上的每一个地方都是物体每一点的信息集合，根本无法记录现实物体。</p>
+<h3 id="改进方案-针孔摄像机"><a href="#改进方案-针孔摄像机" class="headerlink" title="改进方案 - 针孔摄像机"></a>改进方案 - 针孔摄像机</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201249.png" alt="图2 针孔摄像机"></p>
+<p>与原有的设计相比，此改进方案增加了一个隔板，只留下了一个孔；正如图上所标注的，光线穿过针孔，物体的每一个点，都在胶片的不同位置留下了自己的信息，不会像之前设计的胶片信息杂乱混合。</p>
+<p>胶片就这样记录下了物体的信息。</p>
+<h3 id="针孔摄像机模型"><a href="#针孔摄像机模型" class="headerlink" title="针孔摄像机模型"></a>针孔摄像机模型</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201625.png" alt="图3 针孔摄像机模型"></p>
+<p>图中的各个参数的含义如下：</p>
+<blockquote>
+<p><strong>f</strong> ：摄像机模型的<strong>焦距</strong> </p>
+<p><strong>O</strong> ：针孔，亦称<strong>光圈</strong>/<strong>摄像机中心</strong> </p>
+</blockquote>
+<p>像平面与虚拟像平面相对于摄像机中心对称，唯一的不同是，虚拟像平面成像是正的，我们一般都是讨论虚拟像平面；像平面成像是倒着的。</p>
+<h3 id="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）"><a href="#相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）" class="headerlink" title="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（1）"></a><strong>相机坐标系下的空间点</strong>与<strong>像平面坐标系上的平面点</strong>之间的映射（1）</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926202434.png" alt="图4 摄像机坐标系与像平面坐标系之间，点的映射关系"></p>
+<p>上图各个符号的含义如下：</p>
+<blockquote>
+<p>P：真实物理空间中的某一点，在摄像机坐标系下，其坐标为（x，y，z）</p>
+<p>O：摄像机坐标系的原点</p>
+<p>i，j，k：摄像机坐标系的单位向量，构成坐标轴</p>
+<p>f：摄像机模型的焦距</p>
+<p>C’：像平面坐标系的原点</p>
+<p>P’：真实空间点P在成像平面上成像的点，在像平面坐标系下，其坐标为（x’，y’）</p>
+</blockquote>
+<p>以-i方向观察上图，可以简化为：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926203254.png" alt="图5 以-i方向观察图4"></p>
+<p>采用相似三角形法则，可以得出：</p>
+<script type="math/tex; mode=display">
+\frac{y'}{f}=\frac{y}{z}\Rightarrow y'=f\frac{y}{z}</script><p>又因为$ P=\left[\begin{array}{l}<br>x \\<br>y \\<br>z<br>\end{array}\right] $，$P^{\prime}=\left[\begin{array}{l}<br>x^{\prime} \\<br>y^{\prime}<br>\end{array}\right]$；</p>
+<p>所以：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{1}
+x^{\prime}=f \frac{x}{z} \\
+y^{\prime}=f \frac{y}{z}
+\end{array}\right.
+\tag {公式1}</script><h3 id="透镜"><a href="#透镜" class="headerlink" title="透镜"></a>透镜</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926201249.png" alt="图2 针孔摄像机"></p>
+<p>光圈，亦称针孔；</p>
+<p>光圈的尺寸大小与成像的关系：</p>
+<blockquote>
+<p>光圈越大，成像越模糊，但是也越亮</p>
+<p>光圈越小，成像越清晰，但是也越暗</p>
+</blockquote>
+<p>光圈越大，穿过光圈的光线越多，因此也更亮，但是随着光圈的增大，物体上不同的，但是相近的位置点，都会发射光线到达胶片上的同一点，因此成像也越模糊。</p>
+<p>光圈越小，穿过光圈的光线越少，因此也更暗，但是随着光圈的减小，物体上不同的，发射光线到达胶片上的同一点的概率也越小，因此成像也越模糊。</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926211838.png" alt="图6 光圈尺寸与成像的关系"></p>
+<p>毫无疑问，我们最终想要的是既明亮又清晰的图像，如何能在光圈小的情况下，增大亮度，即让物体同一点的光线到胶片上同一点的光线数量越多？</p>
+<p>答案是<strong>增加透镜</strong></p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212145.png" alt="图7 增加透镜"></p>
+<p>透镜将物体上同一点的多条光线聚集到胶片上的同一点，增大了亮度</p>
+<p>透镜焦距的定义：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212659.png" alt="图8 透镜焦距的定义"></p>
+<blockquote>
+<p>f：透镜的焦距</p>
+</blockquote>
+<h3 id="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）"><a href="#相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）" class="headerlink" title="相机坐标系下的空间点与像平面坐标系上的平面点之间的映射（2）"></a><strong>相机坐标系下的空间点</strong>与<strong>像平面坐标系上的平面点</strong>之间的映射（2）</h3><p>将上述讨论的透镜，加入模型中：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926212904.png" alt="图9 透镜加入模型"></p>
+<p>参数说明：</p>
+<blockquote>
+<p>f：透镜的焦距</p>
+<p>$z_0$：透镜的焦点到胶片的距离</p>
+<p>Z’：摄像机模型的焦距</p>
+</blockquote>
+<p>上述参数满足：$Z’=F+Z_0$</p>
+<p>以后，以字母f代表摄像机模型的焦距Z‘</p>
+<h3 id="像平面坐标系下的平面点-在像平面坐标系与像素平面坐标系的转换"><a href="#像平面坐标系下的平面点-在像平面坐标系与像素平面坐标系的转换" class="headerlink" title="像平面坐标系下的平面点 在像平面坐标系与像素平面坐标系的转换"></a>像平面坐标系下的平面点 在像平面坐标系与像素平面坐标系的转换</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926215929.png" alt="图10 像坐标系与像素坐标系" style="zoom:70%;" /></p>
+<blockquote>
+<p>像素坐标系：</p>
+<ul>
+<li>以胶片的左下角为坐标原点的二维坐标系</li>
+<li>单位是像素</li>
+</ul>
+<p>像坐标系：</p>
+<ul>
+<li>同样成为像平面坐标系，以胶片中心为C’为坐标原点</li>
+<li>单位是米</li>
+</ul>
+</blockquote>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926220338.png" alt="图11 示意图"></p>
+<h3 id="摄像机坐标系下的空间点-与-像素坐标系下的平面点-之间的转换"><a href="#摄像机坐标系下的空间点-与-像素坐标系下的平面点-之间的转换" class="headerlink" title="摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换"></a>摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换</h3><p>此转换亦为3D与2D之间的转换；</p>
+<p>坐标转换为：</p>
+<script type="math/tex; mode=display">
+\left.(x, y, z) \rightarrow(f k \frac{x}{z}+c_{x}, f l \frac{y}{z}+c_{y}\right)
+\\
+\alpha = fk
+\\
+\beta = fl
+\tag{公式3}</script><blockquote>
+<p>k,l单位为pixel/m</p>
+<p>f单位为m</p>
+<p>$\alpha，\beta$ 单位：pixel</p>
+</blockquote>
+<p>由于上述变换是非线性变换，后续处理采用齐次坐标的概念</p>
+<h2 id="摄像机几何"><a href="#摄像机几何" class="headerlink" title="摄像机几何"></a>摄像机几何</h2><h2 id="其他摄像机模型"><a href="#其他摄像机模型" class="headerlink" title="其他摄像机模型"></a>其他摄像机模型</h2></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">JunLu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/">http://yoursite.com/2020/09/26/摄像机模型详解/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">君路</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/av.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Aruco实现AR梳理_2</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By JunLu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  var script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'KFCqjgf0rMWEOARLXifgdoTP-gzGzoHsz',
+      appKey: 'f2AGSKWVYlQWgd6deOHoLq8e',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
