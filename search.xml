@@ -352,6 +352,63 @@
       </tags>
   </entry>
   <entry>
+    <title>Augument Reality : Review 1</title>
+    <url>/2020/09/17/Augument-Reality-Review-1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Augument-Reality-Review-1"><a href="#Augument-Reality-Review-1" class="headerlink" title="Augument Reality : Review 1"></a>Augument Reality : Review 1</h1><h2 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h2><blockquote>
+<p>Azuma [3] provides a commonly accepted definition of AR as a technology which (1) combines real and virtual imagery, (2)  is interactive in real time, and (3) registers the virtual imagery with the real world.</p>
+<p>—-<Trends in Augmented Reality Tracking, Interaction and Display : A Review of Ten Years of ISMAR></p>
+<ol>
+<li><p>Combines real and virtual</p>
+</li>
+<li><p>Is interactive in real time</p>
+</li>
+<li>Is registered in three dimensions</li>
+</ol>
+<p>—-<A Survey of Augmented Reality></p>
+</blockquote>
+<hr>
+<h2 id="AR-Research-Topics"><a href="#AR-Research-Topics" class="headerlink" title="AR Research Topics"></a>AR Research Topics</h2><ol>
+<li><p>Graphics rendering hardware and software</p>
+<p>Graphics rendering hardware and software that can create the virtual content for overlaying the real world.</p>
+</li>
+<li><p><strong>Tracking techniques</strong></p>
+<p>Tracking techniques so that <strong>the changes in the viewer’s position can be properly reflected in the rendered graphics</strong></p>
+</li>
+<li><p><strong>Tracker calibration and registration tools</strong></p>
+<p>Tracker calibration and registration tools for <strong>precisely aligning the real and virtual views when the user view is fixed</strong></p>
+</li>
+<li><p>Display hardware</p>
+<p>Display hardware for merging virtual images with views of the real world</p>
+</li>
+<li><p>Computer processing hardware for running AR simulation code and supporting input and output devices</p>
+</li>
+<li><p>Interaction techniques</p>
+<p>Interaction techniques specifying how the user can manipulate the AR virtual content.</p>
+</li>
+</ol>
+<hr>
+<h2 id="Tracking-Techniques"><a href="#Tracking-Techniques" class="headerlink" title="Tracking Techniques"></a>Tracking Techniques</h2><h3 id="Sensor-Based-Tracking-Techniques"><a href="#Sensor-Based-Tracking-Techniques" class="headerlink" title="Sensor-Based Tracking Techniques"></a>Sensor-Based Tracking Techniques</h3><hr>
+<hr>
+<h3 id="Vision-Based-Tracking-Techniques"><a href="#Vision-Based-Tracking-Techniques" class="headerlink" title="Vision-Based Tracking Techniques"></a>Vision-Based Tracking Techniques</h3><p>Vision-based tracking techniques can use image processing methods to <strong>calculate the camera pose relative to real world objects.</strong></p>
+<h4 id="feature-based"><a href="#feature-based" class="headerlink" title="feature-based"></a>feature-based</h4><p>The rationale underlying feature-based methods is to find a correspondence between 2D image features and their 3D world frame coordinates.</p>
+<hr>
+<hr>
+<hr>
+<h5 id="Markers"><a href="#Markers" class="headerlink" title="Markers"></a>Markers</h5><h6 id="Artificial-markers"><a href="#Artificial-markers" class="headerlink" title="Artificial markers"></a>Artificial markers</h6><p>Early computer vision papers at IWAR described marker tracking methods that could be used to calculate camera pose in real time from artificial markers.</p>
+<h6 id="Natural-Features-such-as-points-lines-edges-or-textures"><a href="#Natural-Features-such-as-points-lines-edges-or-textures" class="headerlink" title="Natural Features,such as points, lines, edges or textures"></a>Natural Features,such as points, lines, edges or textures</h6><hr>
+<hr>
+<hr>
+<h4 id="model-based"><a href="#model-based" class="headerlink" title="model-based"></a>model-based</h4><p>Model-based trackers usually construct their models based on lines or edges in the model.</p>
+<p>Texture is another useful feature for constructing models. </p>
+<hr>
+<hr>
+<h3 id="hybrid-tracking-techniques"><a href="#hybrid-tracking-techniques" class="headerlink" title="hybrid tracking techniques"></a>hybrid tracking techniques</h3><hr>
+]]></content>
+      <tags>
+        <tag>review</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Aruco实现AR梳理_1</title>
     <url>/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Aruco-AR过程梳理-1"><a href="#Aruco-AR过程梳理-1" class="headerlink" title="Aruco AR过程梳理_1"></a>Aruco AR过程梳理_1</h1><hr>
@@ -429,63 +486,6 @@
 ]]></content>
       <tags>
         <tag>Aruco</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Augument Reality : Review 1</title>
-    <url>/2020/09/17/Augument-Reality-Review-1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Augument-Reality-Review-1"><a href="#Augument-Reality-Review-1" class="headerlink" title="Augument Reality : Review 1"></a>Augument Reality : Review 1</h1><h2 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h2><blockquote>
-<p>Azuma [3] provides a commonly accepted definition of AR as a technology which (1) combines real and virtual imagery, (2)  is interactive in real time, and (3) registers the virtual imagery with the real world.</p>
-<p>—-<Trends in Augmented Reality Tracking, Interaction and Display : A Review of Ten Years of ISMAR></p>
-<ol>
-<li><p>Combines real and virtual</p>
-</li>
-<li><p>Is interactive in real time</p>
-</li>
-<li>Is registered in three dimensions</li>
-</ol>
-<p>—-<A Survey of Augmented Reality></p>
-</blockquote>
-<hr>
-<h2 id="AR-Research-Topics"><a href="#AR-Research-Topics" class="headerlink" title="AR Research Topics"></a>AR Research Topics</h2><ol>
-<li><p>Graphics rendering hardware and software</p>
-<p>Graphics rendering hardware and software that can create the virtual content for overlaying the real world.</p>
-</li>
-<li><p><strong>Tracking techniques</strong></p>
-<p>Tracking techniques so that <strong>the changes in the viewer’s position can be properly reflected in the rendered graphics</strong></p>
-</li>
-<li><p><strong>Tracker calibration and registration tools</strong></p>
-<p>Tracker calibration and registration tools for <strong>precisely aligning the real and virtual views when the user view is fixed</strong></p>
-</li>
-<li><p>Display hardware</p>
-<p>Display hardware for merging virtual images with views of the real world</p>
-</li>
-<li><p>Computer processing hardware for running AR simulation code and supporting input and output devices</p>
-</li>
-<li><p>Interaction techniques</p>
-<p>Interaction techniques specifying how the user can manipulate the AR virtual content.</p>
-</li>
-</ol>
-<hr>
-<h2 id="Tracking-Techniques"><a href="#Tracking-Techniques" class="headerlink" title="Tracking Techniques"></a>Tracking Techniques</h2><h3 id="Sensor-Based-Tracking-Techniques"><a href="#Sensor-Based-Tracking-Techniques" class="headerlink" title="Sensor-Based Tracking Techniques"></a>Sensor-Based Tracking Techniques</h3><hr>
-<hr>
-<h3 id="Vision-Based-Tracking-Techniques"><a href="#Vision-Based-Tracking-Techniques" class="headerlink" title="Vision-Based Tracking Techniques"></a>Vision-Based Tracking Techniques</h3><p>Vision-based tracking techniques can use image processing methods to <strong>calculate the camera pose relative to real world objects.</strong></p>
-<h4 id="feature-based"><a href="#feature-based" class="headerlink" title="feature-based"></a>feature-based</h4><p>The rationale underlying feature-based methods is to find a correspondence between 2D image features and their 3D world frame coordinates.</p>
-<hr>
-<hr>
-<hr>
-<h5 id="Markers"><a href="#Markers" class="headerlink" title="Markers"></a>Markers</h5><h6 id="Artificial-markers"><a href="#Artificial-markers" class="headerlink" title="Artificial markers"></a>Artificial markers</h6><p>Early computer vision papers at IWAR described marker tracking methods that could be used to calculate camera pose in real time from artificial markers.</p>
-<h6 id="Natural-Features-such-as-points-lines-edges-or-textures"><a href="#Natural-Features-such-as-points-lines-edges-or-textures" class="headerlink" title="Natural Features,such as points, lines, edges or textures"></a>Natural Features,such as points, lines, edges or textures</h6><hr>
-<hr>
-<hr>
-<h4 id="model-based"><a href="#model-based" class="headerlink" title="model-based"></a>model-based</h4><p>Model-based trackers usually construct their models based on lines or edges in the model.</p>
-<p>Texture is another useful feature for constructing models. </p>
-<hr>
-<hr>
-<h3 id="hybrid-tracking-techniques"><a href="#hybrid-tracking-techniques" class="headerlink" title="hybrid tracking techniques"></a>hybrid tracking techniques</h3><hr>
-]]></content>
-      <tags>
-        <tag>review</tag>
       </tags>
   </entry>
   <entry>
@@ -660,58 +660,6 @@
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><blockquote>
 <p><a href="https://blog.csdn.net/littlehaes/article/details/84370393">https://blog.csdn.net/littlehaes/article/details/84370393</a></p>
 <p><a href="https://andyvj.coding.me/2019/02/26/190226-02/">https://andyvj.coding.me/2019/02/26/190226-02/</a></p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Next主题优化记录</title>
-    <url>/2020/04/02/Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>经典主题！</p>
-<a id="more"></a>
-<h3 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h3><ul>
-<li>站点配置文件：指文件所在路径为：根目录\_config.yml </li>
-<li>主题配置文件：指文件所在路径为：根目录\themes\next\_config.yml </li>
-</ul>
-<h3 id="配置1：语言与基本信息更改"><a href="#配置1：语言与基本信息更改" class="headerlink" title="配置1：语言与基本信息更改"></a>配置1：语言与基本信息更改</h3><p>改变博客的语言为中文，博客标题，博客作者</p>
-<ul>
-<li>打开站点配置文件</li>
-<li>找到代码并修改如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: JunLuBlog #要修改的内容区域</span><br><span class="line">subtitle: &#39;&#39;</span><br><span class="line">description: &#39;&#39;</span><br><span class="line">keywords:</span><br><span class="line">author: JunLu #要修改的内容区域</span><br><span class="line">language: zh-Hans #要修改的内容区域</span><br><span class="line">timezone: &#39;&#39;</span><br></pre></td></tr></table></figure>
-<h3 id="配置2：主题样式修改"><a href="#配置2：主题样式修改" class="headerlink" title="配置2：主题样式修改"></a>配置2：主题样式修改</h3><p>Next主题提供了多种样式以供选择</p>
-<ul>
-<li>打开主题配置文件</li>
-<li>修改代码如下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces 若选择此样式，将其前面的#去掉即可</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-<h3 id="配置3：菜单设置"><a href="#配置3：菜单设置" class="headerlink" title="配置3：菜单设置"></a>配置3：菜单设置</h3><p>在博客顶端需要有标签，分类，关于等菜单栏</p>
-<ul>
-<li>在根目录开启 <code>Git Bash Here</code></li>
-<li>命令：<code>hexo new page &quot;tags&quot;</code></li>
-<li>命令：<code>hexo new page &quot;categories&quot;</code></li>
-<li>命令：<code>hexo new page &quot;about&quot;</code></li>
-<li>进入路径：根目录\\source，可以看到新建了分类，标签，关于的文件夹</li>
-<li>打开主题配置文件，修改代码如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;|| home</span><br><span class="line">  about: &#x2F;about&#x2F;|| user</span><br><span class="line">  tags: &#x2F;tags&#x2F;|| tags</span><br><span class="line">  categories: &#x2F;categories&#x2F;|| th</span><br><span class="line">  archives: &#x2F;archives&#x2F;|| archive</span><br><span class="line">  #schedule: &#x2F;schedule&#x2F; || calendar</span><br><span class="line">  #sitemap: &#x2F;sitemap.xml || sitemap</span><br><span class="line">  #commonweal: &#x2F;404&#x2F; || heartbeat</span><br></pre></td></tr></table></figure>
-<p>PS：一丁点空格也不许错</p>
-<h3 id="配置3-：侧边栏"><a href="#配置3-：侧边栏" class="headerlink" title="配置3 ：侧边栏"></a>配置3 ：侧边栏</h3><p>Next主题提供了侧边栏的左右放置方向</p>
-<ul>
-<li>打开主题配置文件</li>
-<li>修改代码如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position, available value: left | right (only for Pisces | Gemini).</span><br><span class="line">  #position: left</span><br><span class="line">  position: right</span><br></pre></td></tr></table></figure>
-<h3 id="配置4：-开启动态背景"><a href="#配置4：-开启动态背景" class="headerlink" title="配置4： 开启动态背景"></a>配置4： 开启动态背景</h3><ul>
-<li>打开主题配置文件</li>
-<li>修改代码如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Canvas-nest</span><br><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
-<p><a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a></p>
 </blockquote>
 ]]></content>
       <tags>
@@ -938,6 +886,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Next主题优化记录</title>
+    <url>/2020/04/02/Next%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>经典主题！</p>
+<a id="more"></a>
+<h3 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h3><ul>
+<li>站点配置文件：指文件所在路径为：根目录\_config.yml </li>
+<li>主题配置文件：指文件所在路径为：根目录\themes\next\_config.yml </li>
+</ul>
+<h3 id="配置1：语言与基本信息更改"><a href="#配置1：语言与基本信息更改" class="headerlink" title="配置1：语言与基本信息更改"></a>配置1：语言与基本信息更改</h3><p>改变博客的语言为中文，博客标题，博客作者</p>
+<ul>
+<li>打开站点配置文件</li>
+<li>找到代码并修改如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: JunLuBlog #要修改的内容区域</span><br><span class="line">subtitle: &#39;&#39;</span><br><span class="line">description: &#39;&#39;</span><br><span class="line">keywords:</span><br><span class="line">author: JunLu #要修改的内容区域</span><br><span class="line">language: zh-Hans #要修改的内容区域</span><br><span class="line">timezone: &#39;&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="配置2：主题样式修改"><a href="#配置2：主题样式修改" class="headerlink" title="配置2：主题样式修改"></a>配置2：主题样式修改</h3><p>Next主题提供了多种样式以供选择</p>
+<ul>
+<li>打开主题配置文件</li>
+<li>修改代码如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces 若选择此样式，将其前面的#去掉即可</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+<h3 id="配置3：菜单设置"><a href="#配置3：菜单设置" class="headerlink" title="配置3：菜单设置"></a>配置3：菜单设置</h3><p>在博客顶端需要有标签，分类，关于等菜单栏</p>
+<ul>
+<li>在根目录开启 <code>Git Bash Here</code></li>
+<li>命令：<code>hexo new page &quot;tags&quot;</code></li>
+<li>命令：<code>hexo new page &quot;categories&quot;</code></li>
+<li>命令：<code>hexo new page &quot;about&quot;</code></li>
+<li>进入路径：根目录\\source，可以看到新建了分类，标签，关于的文件夹</li>
+<li>打开主题配置文件，修改代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;|| home</span><br><span class="line">  about: &#x2F;about&#x2F;|| user</span><br><span class="line">  tags: &#x2F;tags&#x2F;|| tags</span><br><span class="line">  categories: &#x2F;categories&#x2F;|| th</span><br><span class="line">  archives: &#x2F;archives&#x2F;|| archive</span><br><span class="line">  #schedule: &#x2F;schedule&#x2F; || calendar</span><br><span class="line">  #sitemap: &#x2F;sitemap.xml || sitemap</span><br><span class="line">  #commonweal: &#x2F;404&#x2F; || heartbeat</span><br></pre></td></tr></table></figure>
+<p>PS：一丁点空格也不许错</p>
+<h3 id="配置3-：侧边栏"><a href="#配置3-：侧边栏" class="headerlink" title="配置3 ：侧边栏"></a>配置3 ：侧边栏</h3><p>Next主题提供了侧边栏的左右放置方向</p>
+<ul>
+<li>打开主题配置文件</li>
+<li>修改代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position, available value: left | right (only for Pisces | Gemini).</span><br><span class="line">  #position: left</span><br><span class="line">  position: right</span><br></pre></td></tr></table></figure>
+<h3 id="配置4：-开启动态背景"><a href="#配置4：-开启动态背景" class="headerlink" title="配置4： 开启动态背景"></a>配置4： 开启动态背景</h3><ul>
+<li>打开主题配置文件</li>
+<li>修改代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Canvas-nest</span><br><span class="line">canvas_nest: true</span><br></pre></td></tr></table></figure>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>
+<p><a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a></p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title> OpenCV调用Azure Kinect 实现过程</title>
     <url>/2020/08/01/OpenCV%E8%B0%83%E7%94%A8Azure-Kinect-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
@@ -1111,19 +1111,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Unity重新激活许可证</title>
-    <url>/2020/05/06/Unity%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB%E8%AE%B8%E5%8F%AF%E8%AF%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</p>
-<a id="more"></a>
-<h2 id="关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误"><a href="#关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误" class="headerlink" title="关于出现 your license does not cover Universal Windows Platform Publishing 的错误"></a>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</h2><p>错误截图如下：</p>
-<p><a href="https://imgchr.com/i/YPoiYn"><img src="https://s1.ax1x.com/2020/05/05/YPoiYn.png" alt="YPoiYn.png"></a></p>
-<p>解决方法：重新激活许可证即可解决</p>
-]]></content>
-      <tags>
-        <tag>Unity</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>VisonLib SDK 初接触</title>
     <url>/2020/05/18/VisonLib-SDK-%E5%88%9D%E6%8E%A5%E8%A7%A6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>AR质检方案</p>
@@ -1195,47 +1182,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Vuforia-ImageTarget阶段Demo小总结</title>
-    <url>/2020/04/02/Vuforia-%E9%98%B6%E6%AE%B5Demo%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://github.com/junlin49/VuforiaDemo">https://github.com/junlin49/VuforiaDemo</a></p>
-<p>VuforiaImageDemo_1_Ashe</p>
-<hr>
-<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>实现如下效果：</p>
-<ul>
-<li>相机对准黑桃K后，出现人物</li>
-<li>人物先从纸牌中出现，后跳舞，再奔跑，最后攻击</li>
-<li>有特效要求</li>
-<li>要有截屏，闪光灯，自动对焦功能</li>
-<li>双击人物，人物消失</li>
-<li>可以两指放大，缩小</li>
-<li>可旋转</li>
-</ul>
-<hr>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><ol>
-<li><p>自动对焦</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="keyword">var</span> vuforia = VuforiaARController.Instance;</span><br><span class="line">       vuforia.RegisterVuforiaStartedCallback(OnVuforiaStarted);<span class="comment">// Vuforia启动完成时的回调函数</span></span><br><span class="line">       vuforia.RegisterOnPauseCallback(OnVuforiaPaused);<span class="comment">//Vuforia暂停时的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnVuforiaStarted</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="comment">//程序启动，自动对焦</span></span><br><span class="line">       CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);<span class="comment">//连续自动对焦</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnVuforiaPaused</span>(<span class="params"><span class="keyword">bool</span> isPaused</span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetCameraFocus</span>(<span class="params"></span>)<span class="comment">//手动单次对焦</span></span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_TRIGGERAUTO);<span class="comment">//手动单次对焦</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>闪光灯</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetFlash</span>(<span class="params"></span>)<span class="comment">//设置闪光灯</span></span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        CameraDevice.Instance.SetFlashTorchMode(openFlash);</span><br><span class="line">        openFlash = !openFlash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>双击消失</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> touchTime;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">bool</span> touchNew = <span class="literal">false</span>;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))<span class="comment">//有触屏</span></span><br><span class="line">       &#123;</span><br><span class="line">           <span class="comment">//从点击位置发射射线</span></span><br><span class="line">           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">          <span class="comment">//接受返回信息</span></span><br><span class="line">           RaycastHit hitInfor;</span><br><span class="line">   </span><br><span class="line">           <span class="keyword">if</span> (Physics.Raycast(ray,<span class="keyword">out</span> hitInfor))<span class="comment">//如果接受到信息</span></span><br><span class="line">           &#123;</span><br><span class="line">             <span class="comment">//  if(Input.touchCount == 1 &amp;&amp; Input.GetTouch(0).phase == TouchPhase.Began)//1根手指点击，且刚刚点击</span></span><br><span class="line">              <span class="comment">// &#123;</span></span><br><span class="line">                   <span class="comment">//双击</span></span><br><span class="line">                   <span class="comment">//if(Input.GetTouch(0).tapCount == 2)//双击</span></span><br><span class="line">                   <span class="comment">//&#123;</span></span><br><span class="line">                   <span class="comment">//    Destroy(hitInfor.collider.gameObject);//射线射到的collider所属的游戏物体，销毁</span></span><br><span class="line">                   <span class="comment">//&#125;</span></span><br><span class="line">   </span><br><span class="line">                   <span class="comment">//长按aixi，销毁</span></span><br><span class="line">                   <span class="keyword">if</span> (Input.touchCount == <span class="number">1</span>)<span class="comment">//1根手指按</span></span><br><span class="line">                   &#123;</span><br><span class="line">                       Touch touch = Input.GetTouch(<span class="number">0</span>);<span class="comment">//第一根触摸的手指</span></span><br><span class="line">                       <span class="keyword">if</span> (touch.phase == TouchPhase.Began)<span class="comment">//刚按，A finger touched the screen.</span></span><br><span class="line">                   &#123;</span><br><span class="line">                           touchNew = <span class="literal">true</span>;</span><br><span class="line">                           touchTime = Time.time;<span class="comment">//记录开始按的时候的时间</span></span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">else</span> <span class="keyword">if</span> (touch.phase == TouchPhase.Stationary)<span class="comment">//按住静止不动；A finger is touching the screen but hasn&#x27;t moved.</span></span><br><span class="line">                   &#123;</span><br><span class="line">                         <span class="keyword">if</span> (touchNew == <span class="literal">true</span> &amp;&amp; Time.time-touchTime&gt;<span class="number">1</span>)<span class="comment">//长按1s后</span></span><br><span class="line">                           &#123;</span><br><span class="line">                               touchNew = <span class="literal">false</span>;</span><br><span class="line">                               Destroy(hitInfor.collider.gameObject);</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">else</span></span><br><span class="line">                       &#123;</span><br><span class="line">                           touchNew = <span class="literal">false</span>;</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">              <span class="comment">// &#125;</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ol>
-<li><p>旋转放缩</p>
-<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))<span class="comment">//触屏了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Input.touchCount == <span class="number">1</span>)<span class="comment">//一个手指头</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Input.GetTouch(<span class="number">0</span>).phase == TouchPhase.Moved)<span class="comment">//状态移动</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">this</span>.transform.Rotate(<span class="number">0</span>, -xRotationSpeed * Time.deltaTime * Input.GetAxis (<span class="string">&quot;Mouse X&quot;</span>),<span class="number">0</span>,Space.World);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (Input.touchCount == <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Input.GetTouch(<span class="number">0</span>).phase == TouchPhase.Moved || Input.GetTouch(<span class="number">1</span>).phase == TouchPhase.Moved)</span><br><span class="line">                &#123;</span><br><span class="line">                    Vector2 temPositon1 = Input.GetTouch(<span class="number">0</span>).position;</span><br><span class="line">                    Vector2 temPositon2 = Input.GetTouch(<span class="number">1</span>).position;</span><br><span class="line">                    <span class="keyword">if</span> (IsLarge(oldPositon1,oldPositon2,temPositon1,temPositon2))</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">//arCamera.fieldOfView -= arCamera.fieldOfView*0.01*</span></span><br><span class="line">                        <span class="keyword">this</span>.transform.localScale = <span class="keyword">new</span> Vector3(</span><br><span class="line">                            <span class="keyword">this</span>.transform.localScale.x * scaleOut, <span class="keyword">this</span>.transform.localScale.y * scaleOut, <span class="keyword">this</span>.transform.localScale.z * scaleOut);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">this</span>.transform.localScale = <span class="keyword">new</span> Vector3(</span><br><span class="line">                           <span class="keyword">this</span>.transform.localScale.x * scaleIn, <span class="keyword">this</span>.transform.localScale.y * scaleIn, <span class="keyword">this</span>.transform.localScale.z * scaleIn);</span><br><span class="line">                    &#125;</span><br><span class="line">                    oldPositon1 = temPositon1;</span><br><span class="line">                    oldPositon2 = temPositon2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">bool</span> <span class="title">IsLarge</span>(<span class="params">Vector2 oldPoint1, Vector2 oldPoint2 , Vector2 newPoint1 , Vector2 newPoint2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Vector2.Distance(oldPoint1, oldPoint2) &lt; Vector2.Distance(newPoint1,newPoint2))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h1><p><a href="https://imgchr.com/i/8OLECj"><img src="https://s1.ax1x.com/2020/03/25/8OLECj.jpg" alt="8OLECj.jpg"></a></p>
-</li>
-</ol>
+    <title>Unity重新激活许可证</title>
+    <url>/2020/05/06/Unity%E9%87%8D%E6%96%B0%E6%BF%80%E6%B4%BB%E8%AE%B8%E5%8F%AF%E8%AF%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</p>
+<a id="more"></a>
+<h2 id="关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误"><a href="#关于出现-your-license-does-not-cover-Universal-Windows-Platform-Publishing-的错误" class="headerlink" title="关于出现 your license does not cover Universal Windows Platform Publishing 的错误"></a>关于出现 <em>your license does not cover Universal Windows Platform Publishing</em> 的错误</h2><p>错误截图如下：</p>
+<p><a href="https://imgchr.com/i/YPoiYn"><img src="https://s1.ax1x.com/2020/05/05/YPoiYn.png" alt="YPoiYn.png"></a></p>
+<p>解决方法：重新激活许可证即可解决</p>
 ]]></content>
       <tags>
-        <tag>Vuforia</tag>
+        <tag>Unity</tag>
       </tags>
   </entry>
   <entry>
@@ -1305,18 +1261,48 @@
       </tags>
   </entry>
   <entry>
-    <title>git clone 速度满，加快速度方法</title>
-    <url>/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="git-clone-速度满，加快速度方法"><a href="#git-clone-速度满，加快速度方法" class="headerlink" title="git clone 速度满，加快速度方法"></a>git clone 速度满，加快速度方法</h1><blockquote>
-<p>转载于</p>
-<p><a href="https://www.cnblogs.com/PieDaoChuan/p/9773039.html">https://www.cnblogs.com/PieDaoChuan/p/9773039.html</a></p>
-</blockquote>
-<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https:&#x2F;&#x2F;127.0.0.1:1080</span><br></pre></td></tr></table></figure>
-<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：端口号1080为VPN设置的代理端口，可自行修改为自己的VPN代理端口</strong></p>
-<p>有人使用第一种无加速效果，第二种代理方式速度得到明显提升，峰值可达1M/s。</p>
-<h3 id="取消git代理设置"><a href="#取消git代理设置" class="headerlink" title="取消git代理设置"></a>取消git代理设置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+    <title>Vuforia-ImageTarget阶段Demo小总结</title>
+    <url>/2020/04/02/Vuforia-%E9%98%B6%E6%AE%B5Demo%E5%B0%8F%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://github.com/junlin49/VuforiaDemo">https://github.com/junlin49/VuforiaDemo</a></p>
+<p>VuforiaImageDemo_1_Ashe</p>
+<hr>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>实现如下效果：</p>
+<ul>
+<li>相机对准黑桃K后，出现人物</li>
+<li>人物先从纸牌中出现，后跳舞，再奔跑，最后攻击</li>
+<li>有特效要求</li>
+<li>要有截屏，闪光灯，自动对焦功能</li>
+<li>双击人物，人物消失</li>
+<li>可以两指放大，缩小</li>
+<li>可旋转</li>
+</ul>
+<hr>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><ol>
+<li><p>自动对焦</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="keyword">var</span> vuforia = VuforiaARController.Instance;</span><br><span class="line">       vuforia.RegisterVuforiaStartedCallback(OnVuforiaStarted);<span class="comment">// Vuforia启动完成时的回调函数</span></span><br><span class="line">       vuforia.RegisterOnPauseCallback(OnVuforiaPaused);<span class="comment">//Vuforia暂停时的回调函数</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnVuforiaStarted</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="comment">//程序启动，自动对焦</span></span><br><span class="line">       CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);<span class="comment">//连续自动对焦</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnVuforiaPaused</span>(<span class="params"><span class="keyword">bool</span> isPaused</span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">   </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetCameraFocus</span>(<span class="params"></span>)<span class="comment">//手动单次对焦</span></span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_TRIGGERAUTO);<span class="comment">//手动单次对焦</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>闪光灯</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetFlash</span>(<span class="params"></span>)<span class="comment">//设置闪光灯</span></span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        CameraDevice.Instance.SetFlashTorchMode(openFlash);</span><br><span class="line">        openFlash = !openFlash;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>双击消失</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">float</span> touchTime;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">bool</span> touchNew = <span class="literal">false</span>;</span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))<span class="comment">//有触屏</span></span><br><span class="line">       &#123;</span><br><span class="line">           <span class="comment">//从点击位置发射射线</span></span><br><span class="line">           Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);</span><br><span class="line">          <span class="comment">//接受返回信息</span></span><br><span class="line">           RaycastHit hitInfor;</span><br><span class="line">   </span><br><span class="line">           <span class="keyword">if</span> (Physics.Raycast(ray,<span class="keyword">out</span> hitInfor))<span class="comment">//如果接受到信息</span></span><br><span class="line">           &#123;</span><br><span class="line">             <span class="comment">//  if(Input.touchCount == 1 &amp;&amp; Input.GetTouch(0).phase == TouchPhase.Began)//1根手指点击，且刚刚点击</span></span><br><span class="line">              <span class="comment">// &#123;</span></span><br><span class="line">                   <span class="comment">//双击</span></span><br><span class="line">                   <span class="comment">//if(Input.GetTouch(0).tapCount == 2)//双击</span></span><br><span class="line">                   <span class="comment">//&#123;</span></span><br><span class="line">                   <span class="comment">//    Destroy(hitInfor.collider.gameObject);//射线射到的collider所属的游戏物体，销毁</span></span><br><span class="line">                   <span class="comment">//&#125;</span></span><br><span class="line">   </span><br><span class="line">                   <span class="comment">//长按aixi，销毁</span></span><br><span class="line">                   <span class="keyword">if</span> (Input.touchCount == <span class="number">1</span>)<span class="comment">//1根手指按</span></span><br><span class="line">                   &#123;</span><br><span class="line">                       Touch touch = Input.GetTouch(<span class="number">0</span>);<span class="comment">//第一根触摸的手指</span></span><br><span class="line">                       <span class="keyword">if</span> (touch.phase == TouchPhase.Began)<span class="comment">//刚按，A finger touched the screen.</span></span><br><span class="line">                   &#123;</span><br><span class="line">                           touchNew = <span class="literal">true</span>;</span><br><span class="line">                           touchTime = Time.time;<span class="comment">//记录开始按的时候的时间</span></span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">else</span> <span class="keyword">if</span> (touch.phase == TouchPhase.Stationary)<span class="comment">//按住静止不动；A finger is touching the screen but hasn&#x27;t moved.</span></span><br><span class="line">                   &#123;</span><br><span class="line">                         <span class="keyword">if</span> (touchNew == <span class="literal">true</span> &amp;&amp; Time.time-touchTime&gt;<span class="number">1</span>)<span class="comment">//长按1s后</span></span><br><span class="line">                           &#123;</span><br><span class="line">                               touchNew = <span class="literal">false</span>;</span><br><span class="line">                               Destroy(hitInfor.collider.gameObject);</span><br><span class="line">                           &#125;</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">else</span></span><br><span class="line">                       &#123;</span><br><span class="line">                           touchNew = <span class="literal">false</span>;</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">              <span class="comment">// &#125;</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>旋转放缩</p>
+<figure class="highlight c#"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Input.GetMouseButton(<span class="number">0</span>))<span class="comment">//触屏了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Input.touchCount == <span class="number">1</span>)<span class="comment">//一个手指头</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Input.GetTouch(<span class="number">0</span>).phase == TouchPhase.Moved)<span class="comment">//状态移动</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">this</span>.transform.Rotate(<span class="number">0</span>, -xRotationSpeed * Time.deltaTime * Input.GetAxis (<span class="string">&quot;Mouse X&quot;</span>),<span class="number">0</span>,Space.World);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (Input.touchCount == <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (Input.GetTouch(<span class="number">0</span>).phase == TouchPhase.Moved || Input.GetTouch(<span class="number">1</span>).phase == TouchPhase.Moved)</span><br><span class="line">                &#123;</span><br><span class="line">                    Vector2 temPositon1 = Input.GetTouch(<span class="number">0</span>).position;</span><br><span class="line">                    Vector2 temPositon2 = Input.GetTouch(<span class="number">1</span>).position;</span><br><span class="line">                    <span class="keyword">if</span> (IsLarge(oldPositon1,oldPositon2,temPositon1,temPositon2))</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">//arCamera.fieldOfView -= arCamera.fieldOfView*0.01*</span></span><br><span class="line">                        <span class="keyword">this</span>.transform.localScale = <span class="keyword">new</span> Vector3(</span><br><span class="line">                            <span class="keyword">this</span>.transform.localScale.x * scaleOut, <span class="keyword">this</span>.transform.localScale.y * scaleOut, <span class="keyword">this</span>.transform.localScale.z * scaleOut);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">this</span>.transform.localScale = <span class="keyword">new</span> Vector3(</span><br><span class="line">                           <span class="keyword">this</span>.transform.localScale.x * scaleIn, <span class="keyword">this</span>.transform.localScale.y * scaleIn, <span class="keyword">this</span>.transform.localScale.z * scaleIn);</span><br><span class="line">                    &#125;</span><br><span class="line">                    oldPositon1 = temPositon1;</span><br><span class="line">                    oldPositon2 = temPositon2;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">bool</span> <span class="title">IsLarge</span>(<span class="params">Vector2 oldPoint1, Vector2 oldPoint2 , Vector2 newPoint1 , Vector2 newPoint2</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Vector2.Distance(oldPoint1, oldPoint2) &lt; Vector2.Distance(newPoint1,newPoint2))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h1><p><a href="https://imgchr.com/i/8OLECj"><img src="https://s1.ax1x.com/2020/03/25/8OLECj.jpg" alt="8OLECj.jpg"></a></p>
+</li>
+</ol>
 ]]></content>
+      <tags>
+        <tag>Vuforia</tag>
+      </tags>
   </entry>
   <entry>
     <title>chorme插件记录</title>
@@ -1369,6 +1355,49 @@
 ]]></content>
       <tags>
         <tag>chorme插件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git clone 速度满，加快速度方法</title>
+    <url>/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="git-clone-速度满，加快速度方法"><a href="#git-clone-速度满，加快速度方法" class="headerlink" title="git clone 速度满，加快速度方法"></a>git clone 速度满，加快速度方法</h1><blockquote>
+<p>转载于</p>
+<p><a href="https://www.cnblogs.com/PieDaoChuan/p/9773039.html">https://www.cnblogs.com/PieDaoChuan/p/9773039.html</a></p>
+</blockquote>
+<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https:&#x2F;&#x2F;127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：端口号1080为VPN设置的代理端口，可自行修改为自己的VPN代理端口</strong></p>
+<p>有人使用第一种无加速效果，第二种代理方式速度得到明显提升，峰值可达1M/s。</p>
+<h3 id="取消git代理设置"><a href="#取消git代理设置" class="headerlink" title="取消git代理设置"></a>取消git代理设置</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>word中美观地插入代码方法</title>
+    <url>/2020/05/18/word%E4%B8%AD%E7%BE%8E%E8%A7%82%E5%9C%B0%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如何在word中美观的写入code呢？</p>
+<a id="more"></a>
+<h2 id="优雅的在-Microsoft-word中插入代码，使文档更美观！！！"><a href="#优雅的在-Microsoft-word中插入代码，使文档更美观！！！" class="headerlink" title="优雅的在 Microsoft word中插入代码，使文档更美观！！！"></a>优雅的在 Microsoft word中插入代码，使文档更美观！！！</h2><blockquote>
+<p>本文转载自 <a href="https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy">https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy</a></p>
+</blockquote>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://i.loli.net/2020/05/18/a7OuKt9znPI5xHM.png" alt=""></p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>浏览器打开网页<a href="http://www.planetb.ca/syntax-highlight-word">PlanetB</a></p>
+<p><img src="https://i.loli.net/2020/05/18/d9HalcCbJYkyULP.png" alt=""></p>
+</li>
+<li><p>将要复制的代码粘贴进网页下方的<em>code</em>白框中</p>
+<p><img src="https://i.loli.net/2020/05/18/mIeGjQL6f1FYbJ3.png" alt=""></p>
+</li>
+<li><p>选择语言类型</p>
+</li>
+<li><p>点击<em>Show HighLighted</em></p>
+</li>
+<li><p>在新打开的页面上<em>Ctrl+A</em>全选，复制，粘贴进<em>word</em>中。</p>
+<p><img src="https://i.loli.net/2020/05/18/lEaDSFz5gIA3ctH.png" alt=""></p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>word中插入代码</tag>
       </tags>
   </entry>
   <entry>
@@ -1565,35 +1594,6 @@ y_w \\
 M=\begin{bmatrix}\frac{f}{d_x} & 0 & u_0 \\0 & \frac{f}{d_y} & v_0 \\0 & 0 & 1 \\\end{bmatrix}=\begin{bmatrix}f_x & 0 & u_0 \\0 & f_y & v_0 \\0 & 0 & 1 \\\end{bmatrix}</script>]]></content>
       <tags>
         <tag>相机标定</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>word中美观地插入代码方法</title>
-    <url>/2020/05/18/word%E4%B8%AD%E7%BE%8E%E8%A7%82%E5%9C%B0%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如何在word中美观的写入code呢？</p>
-<a id="more"></a>
-<h2 id="优雅的在-Microsoft-word中插入代码，使文档更美观！！！"><a href="#优雅的在-Microsoft-word中插入代码，使文档更美观！！！" class="headerlink" title="优雅的在 Microsoft word中插入代码，使文档更美观！！！"></a>优雅的在 Microsoft word中插入代码，使文档更美观！！！</h2><blockquote>
-<p>本文转载自 <a href="https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy">https://blog.csdn.net/u011303443/article/details/50992651?utm_source=copy</a></p>
-</blockquote>
-<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://i.loli.net/2020/05/18/a7OuKt9znPI5xHM.png" alt=""></p>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
-<li><p>浏览器打开网页<a href="http://www.planetb.ca/syntax-highlight-word">PlanetB</a></p>
-<p><img src="https://i.loli.net/2020/05/18/d9HalcCbJYkyULP.png" alt=""></p>
-</li>
-<li><p>将要复制的代码粘贴进网页下方的<em>code</em>白框中</p>
-<p><img src="https://i.loli.net/2020/05/18/mIeGjQL6f1FYbJ3.png" alt=""></p>
-</li>
-<li><p>选择语言类型</p>
-</li>
-<li><p>点击<em>Show HighLighted</em></p>
-</li>
-<li><p>在新打开的页面上<em>Ctrl+A</em>全选，复制，粘贴进<em>word</em>中。</p>
-<p><img src="https://i.loli.net/2020/05/18/lEaDSFz5gIA3ctH.png" alt=""></p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>word中插入代码</tag>
       </tags>
   </entry>
   <entry>
@@ -1856,26 +1856,6 @@ v_{12}^Tb = 0 \\v_{11}^Tb = v_{22}^Tb</script><p>化简得：</p>
       </tags>
   </entry>
   <entry>
-    <title>问题-Vuforia错误：Failed-load-data-set-xxx</title>
-    <url>/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E9%94%99%E8%AF%AF%EF%BC%9AFailed-load-data-set-xxx/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>vuforia运行问题</p>
-<a id="more"></a>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>按照常规套路，布置好AR Camera , 2个model target 之后，运行会报错。提示 failed-load-data-set-xxx </p>
-<!-- more -->
-<p>错误提示：</p>
-<blockquote>
-<p>Failed to load data set all.<br>UnityEngine.Debug:LogError(Object)<br>Vuforia.DatabaseLoadARController:LoadDatasets()<br>Vuforia.VuforiaARController:StartAfterInitializationCompleted()<br>Vuforia.VuforiaARController:Start()<br>System.Delegate:DynamicInvoke(Object[])<br>Vuforia.DelegateHelper:InvokeDelegate(Delegate, Object[])<br>Vuforia.DelegateHelper:InvokeWithExceptionHandling(Action)<br>Vuforia.VuforiaBehaviour:Start()</p>
-</blockquote>
-<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><p>推荐 Vuforia 官方论坛搜索，此问题已经有人反映过，链接：<a href="https://developer.vuforia.com/forum/model-targets/failed-load-data-set-xxx">https://developer.vuforia.com/forum/model-targets/failed-load-data-set-xxx</a> ；</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>尝试换Key，但是没啥用；</p>
-<p>亲测解决方法：Unity 版本2019及以上，Vuforia 9.0 即可，就没有报错了</p>
-<p>Vuforia 更新可以看我的另一篇文章：<a href="https://junlu.club/2020/04/02/问题-Vuforia更新错误-Failed-to-resolve-packages/">https://junlu.club/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E6%9B%B4%E6%96%B0%E9%94%99%E8%AF%AF-Failed-to-resolve-packages/</a></p>
-]]></content>
-      <tags>
-        <tag>问题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>问题-Vuforia更新错误:Failed to resolve packages</title>
     <url>/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E6%9B%B4%E6%96%B0%E9%94%99%E8%AF%AF-Failed-to-resolve-packages/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>新冠期间总是不开学，最近Vuforia更新了9.0版本，所以尝试下</p>
@@ -1896,6 +1876,26 @@ v_{12}^Tb = 0 \\v_{11}^Tb = v_{22}^Tb</script><p>化简得：</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>按照官方链接的最后一个方法，下载 Vuforia Engine软件包，解压后将原名为<em>package</em>的文件夹，改名为<em>com.ptc.vuforia.engine</em>，放进项目对应的 package 目录，即可发现 Unity 界面已经开始导入。</p>
 <p><a href="https://imgchr.com/i/G3L5TS"><img src="https://s1.ax1x.com/2020/04/01/G3L5TS.png" alt="G3L5TS.png"></a></p>
 <h2 id="后续问题"><a href="#后续问题" class="headerlink" title="后续问题"></a>后续问题</h2><p><del>发现不能直接拖拽 .unitypackage 文件进行导入，只能通过右键菜单里的导入进行操作</del></p>
+]]></content>
+      <tags>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>问题-Vuforia错误：Failed-load-data-set-xxx</title>
+    <url>/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E9%94%99%E8%AF%AF%EF%BC%9AFailed-load-data-set-xxx/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>vuforia运行问题</p>
+<a id="more"></a>
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>按照常规套路，布置好AR Camera , 2个model target 之后，运行会报错。提示 failed-load-data-set-xxx </p>
+<!-- more -->
+<p>错误提示：</p>
+<blockquote>
+<p>Failed to load data set all.<br>UnityEngine.Debug:LogError(Object)<br>Vuforia.DatabaseLoadARController:LoadDatasets()<br>Vuforia.VuforiaARController:StartAfterInitializationCompleted()<br>Vuforia.VuforiaARController:Start()<br>System.Delegate:DynamicInvoke(Object[])<br>Vuforia.DelegateHelper:InvokeDelegate(Delegate, Object[])<br>Vuforia.DelegateHelper:InvokeWithExceptionHandling(Action)<br>Vuforia.VuforiaBehaviour:Start()</p>
+</blockquote>
+<h3 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h3><p>推荐 Vuforia 官方论坛搜索，此问题已经有人反映过，链接：<a href="https://developer.vuforia.com/forum/model-targets/failed-load-data-set-xxx">https://developer.vuforia.com/forum/model-targets/failed-load-data-set-xxx</a> ；</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>尝试换Key，但是没啥用；</p>
+<p>亲测解决方法：Unity 版本2019及以上，Vuforia 9.0 即可，就没有报错了</p>
+<p>Vuforia 更新可以看我的另一篇文章：<a href="https://junlu.club/2020/04/02/问题-Vuforia更新错误-Failed-to-resolve-packages/">https://junlu.club/2020/04/02/%E9%97%AE%E9%A2%98-Vuforia%E6%9B%B4%E6%96%B0%E9%94%99%E8%AF%AF-Failed-to-resolve-packages/</a></p>
 ]]></content>
       <tags>
         <tag>问题</tag>
