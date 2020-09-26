@@ -59,7 +59,8 @@ markers的字典是在一个特殊应用中使用到的marker的集合。这仅�
 ​    例如，让我们分析一下如下的调用：
 
 ```c++
-  cv::Mat markerImage; cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+cv::Mat markerImage;
+cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
 
   cv::aruco::drawMarker(dictionary, 23, 200, markerImage, 1);
 ```
@@ -99,8 +100,6 @@ marker检测过程由以下两个主要步骤构成：
 
 ![singlemarkersdetection.png](http://docs.opencv.org/3.1.0/singlemarkersdetection.png)
 
-Image with detected markers
-
 以下是识别阶段被剔除的Marker候选（用粉红色标记）：
 
 ![singlemarkersrejected.png](http://docs.opencv.org/3.1.0/singlemarkersrejected.png)
@@ -110,16 +109,11 @@ Image with detected markers
 一个marker检测的例子：
 
 ```c++
-[cv::Mat](http://docs.opencv.org/3.1.0/d3/d63/classcv_1_1Mat.html) inputImage;
-
+cv::Mat inputImage;
 vector< int > markerIds; 
-
 vector< vector<Point2f> > markerCorners, rejectedCandidates; 
-
-[cv::aruco::DetectorParameters](http://docs.opencv.org/3.1.0/d1/dcd/structcv_1_1aruco_1_1DetectorParameters.html) parameters; 
-
-[cv::aruco::Dictionary](http://docs.opencv.org/3.1.0/d5/d0b/classcv_1_1aruco_1_1Dictionary.html) dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); 
-
+cv::aruco::DetectorParameters parameters; 
+cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); 
 cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); 
 ```
 
@@ -136,7 +130,8 @@ cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, param
  `detectMarkers()`之后，接下来你想要做的事情可能是检查你的marker是否被正确地检测出来了。幸运的是，aruco模块提供了一个函数，它能在输入图像中来绘制检测出来的markers，这个函数就是[drawDetectedMarkers()](http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga2ad34b0f277edebb6a132d3069ed2909) ,例子如下：
 
  ```c++
- cv::Mat outputImage cv::aruco::drawDetectedMarkers(image, markerCorners, markerIds);
+ cv::Mat outputImage;
+ cv::aruco::drawDetectedMarkers(image, markerCorners, markerIds);
  ```
 
 - `image` 是输入/输出图像，程序将在这张图上绘制marker。（它通常就是检测出marker的那张图像）

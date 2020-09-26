@@ -46,7 +46,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace: ''
   wrap: true
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -112,3 +112,40 @@ search:
   field: post
   format: html
   limit: 10000
+  
+excerpt:
+  depth: 5
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
+
+#7.live2d配置宠物
+live2d:
+  # 当enable 为true的时候，会启用yaliya主题自带宠物shizuku,橘头发小姐姐，而且不可以配置位置，所以需要讲enable注释掉
+  enable: false
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  model:
+    # live2d-widget-model-wanko 是一只趴在碗里的狗狗
+    #use: live2d-widget-model-wanko # 通过修改use来确定使用哪种model
+     # hibiki 是一个御姐
+    # use: live2d-widget-model-hibiki
+    # haruto 海军服女孩，有点难看
+    # use: live2d-widget-model-haruto
+  display:
+    position: left
+    width: 150
+    height: 300
+    # 一个比较可爱的位置
+    # hOffset: 200 
+    # vOffset: -100
+    # 第二个位置配置，这个在左侧边栏位置很居中
+    hOffset: 80  # 调节水平位置
+    vOffset: -50  # 调节垂直位置
+  mobile:
+    show: false
+
+
+

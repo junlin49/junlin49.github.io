@@ -14,7 +14,7 @@ tags:
 
 ## 目标效果
 
-![](\iframe\aruco04.gif) 
+![](https://gitee.com/JunLuJun/up/raw/master/20200926164001.gif)
 
 ## 思路
 
