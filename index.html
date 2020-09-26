@@ -1,1428 +1,279 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>君路 - 巨人之肩，更进一步</title><meta name="description"><meta name="author" content="JunLu"><meta name="copyright" content="JunLu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="君路"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="君路"><meta property="og:description"><meta property="og:image" content="http://yoursite.com/img/av.jpg"><meta property="article:published_time" content="2020-09-26T05:22:05.071Z"><meta property="article:modified_time" content="2020-09-26T05:22:05.071Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
 
-<link rel="stylesheet" href="/css/main.css">
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
 
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="君路">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="君路">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="JunLu">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>君路</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
   }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-09-26 13:22:05'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-</head>
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">42</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20200926130801.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">君路</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">君路</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" title="Aruco实现AR梳理_2">Aruco实现AR梳理_2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T23:45:19.000Z" title="发表于 2020-09-21 07:45:19">2020-09-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Aruco/">Aruco</a></span></div><div class="content">Aruco 实现AR过程梳理_2_概述上一篇说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。
+目标效果 
+思路和之前的一篇一样
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
+细节OpenCV与Aruco
+将真实相机捕获的画面，传递给OpenGL，用作背景
+相机标定，将真实相机的内参标定出来
 
-  <div class="site-meta">
+OpenGL
+将真实画面，正交投影至矩形中，充当背景
+定义虚拟的Cube顶点
+生成OpenGL窗口
+Cube经历的变换为 MVP（model transform, view transform, projection transform）变换
 
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">君路</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">巨人之肩，更进一步</p>
-  </div>
+其他问题
+如何将真实的世界坐标系与OpenGL的世界坐标系重合呢？如何将相机位置重合呢？
+OpenGL中，相机的位置是固定不变的，我们看到的永远是相机看到的，所以，只要清楚相机与世界坐标系的转换矩阵，即View Matrix，就可以将世界坐标系重合了。
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
+Aruco的作用是什么 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" title="关于AR键盘">关于AR键盘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:46.000Z" title="发表于 2020-09-19 21:40:46">2020-09-19</time></span></div><div class="content">AR Keyboard
+参考链接：
+https://www.cnblogs.com/mantgh/p/5680580.html#other
 
+概述任何一套成熟的开发系统，都需要一整套开发套件，其中UI套件必不可少，其实用性，美观性关系着开发者的体验以及用户的体验。
+目前，截至现在，Hololens2的开发工作，在Unity上的UI套件主要包括以下几种：
+我有一个虚拟键盘的需求，类似于Hololens2的系统键盘那样，但是根据官方手册的指导，进展的并不顺利。
+需求在混合现实主页的模式（即全息三维模式）下，使用虚拟键盘输入文本，类似于Unity 2D模式下的InputFiled。
+环境
+Unity
+MRTK
 
+过程
+首先我想到的是查看官方手册，该如何调用系统键盘，能不能实现在应用内部调用系统键盘，从而实现上述需求
+官方主页链接
 
+官方链接里面内容说的很清楚，这里不再赘述，将代码列在下方。
 
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
+how to invoke the system keyboard
+public TouchScreenKeyboard keyboard;...public void OpenSystemKeyboa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" title="git clone 速度满，加快速度方法">git clone 速度满，加快速度方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:37.000Z" title="发表于 2020-09-19 21:40:37">2020-09-19</time></span></div><div class="content">git clone 速度满，加快速度方法
+转载于
+https://www.cnblogs.com/PieDaoChuan/p/9773039.html
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
+设置方法方法1git config --global https.proxy http:&#x2F;&#x2F;127.0.0.1:1080git config --global https.proxy https:&#x2F;&#x2F;127.0.0.1:1080
+方法2git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;
+注意：端口号1080为VPN设置的代理端口，可自行修改为自己的VPN代理端口
+有人使用第一种无加速效果，第二种代理方式速度得到明显提升，峰值可达1M/s。
+取消git代理设置git config --global --unset http.proxygit config ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/" title="C#语言实现Socket通信_2">C#语言实现Socket通信_2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-18T11:56:37.000Z" title="发表于 2020-09-18 19:56:37">2020-09-18</time></span></div><div class="content">C#语言实现Socket通信_2序言上一篇说的c#语言实现Socket通信_1存在以下问题：
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+服务器端
+只能接收1个客户端的连接
+只能发送与接收各1条消息
 
-          <div class="content index posts-expand">
+
+客户端
+只能发送与接收各1条消息
+
+
+
+
+此篇文章使用Unity建立客户端，VS2019建立服务器端，实现双向通信，且不限制客户端的数量，不限制收发消息的数量
+涉及知识
+Unity
+Ngui
+Socket
+线程
+
+具体实现服务器端using System;using System.Collections.Generic;using System.Net;using System.Net.Sockets;using System.Text;using System.Threading;using System.Threading.Tasks;namespace ConsoleApp4&#123;    class Client    &#123;        private Socket clientSocket;        private Thread t;        private byte[] data = n ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/" title=" C#语言实现Socket通信_1"> C#语言实现Socket通信_1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-18T07:08:41.000Z" title="发表于 2020-09-18 15:08:41">2020-09-18</time></span></div><div class="content">C#语言实现Socket通信_1目标实现1个服务器端，1个客户端，两者相互通信
+主要步骤服务器端
+创建socket
+/* * AddressFamily.InterNetwork -- 内网 * SocketType.Stream -- 流形式 * ProtocolType.Tcp -- Tcp协议 */Socket tcpSever = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+绑定自身IP，分配端口号
+//IP地址：两台计算机之间的识别，局域网一般是192.168.xxx//端口号：两台计算机上的软件之间的通讯（一个软件占用一个端口号），一般分布在0-6w之间//端口号一般申请4位数，不容易被软件使用//一个计算机上可能有多个IP地址（网卡多）IPAddress ipaddress = new IPAddress(new byte[] &#123; 192,168,1,107 &#125;);EndPoint point = new IPEndPoint(ipaddre ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/17/Augument-Reality-Review-1/" title="Augument Reality : Review 1">Augument Reality : Review 1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T08:07:50.000Z" title="发表于 2020-09-17 16:07:50">2020-09-17</time></span></div><div class="content">Augument Reality : Review 1definition
+Azuma [3] provides a commonly accepted definition of AR as a technology which (1) combines real and virtual imagery, (2)  is interactive in real time, and (3) registers the virtual imagery with the real world.
+—-
+
+Combines real and virtual
+
+Is interactive in real time
+
+Is registered in three dimensions
+
+—-
+
+
+AR Research Topics
+Graphics rendering hardware and software
+Graphics rendering hardware and software that can create the virtual content for overlaying  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" title="OpenCV中的Aruco识别">OpenCV中的Aruco识别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T02:21:35.000Z" title="发表于 2020-09-17 10:21:35">2020-09-17</time></span></div><div class="content">OpenCV中的Aruco识别
+转载博客：
+https://blog.csdn.net/u010260681/article/details/77089657
+如有侵权，立即删除
+
+姿态估计（Pose estimation）在计算机视觉领域扮演着十分重要的角色：机器人导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的Marker来让这一切变得更容易。
+最为流行的一个途径是基于二进制平方的标记。这种Marker的主要便利之处在于，一个Marker提供了足够多的对应（四个角）来获取相机的信息。同样的，内部的二进制编码使得算法非常健壮，允许应用错误检测和校正技术的可能性。
+aruco模块基于ArUco库，这是一个检测二进制marker的非常流行的库，是由Rafael Muñoz和Sergio Garrido完成的。
+aruco的函数包含在c++：链接地址
+#include &lt;opencv2&#x2F;aruco.hpp&gt;
+Marker和字典一个ArUco marker是一个二进制平方标记，它由一个宽的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" title="关于Windows10设置Windows terminal 当前目录打开">关于Windows10设置Windows terminal 当前目录打开</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:42.000Z" title="发表于 2020-09-15 20:36:42">2020-09-15</time></span></div><div class="content">关于Win10 设置Windows terminal 的特定目录打开设置
+参考博客:
+https://blog.csdn.net/andyL_05/article/details/105943820
+以下内容全部来自参考博客，如有侵权，请联系我删除，感谢
+
+Windows Terminal 简介Windows Terminal 是微软推出的Windows端新的命令行工具，相比于之前一直被吐槽丑的command 和 powershell，Windows Terminal更加“现代”，界面好看，使用方便。
+作为一款开源工具，repo位于Windows Terminal这里。当前（2020年5月初）版本为v0.11.1251.0，也是v1.0rc1，基本上就是预览版（preview）的最后一个版本了，在源码仓库里时间表上也可以看到预计就是本月推出正式版的windows terminal了。以往的预览版通常无法直接安装，需要从源码自行编译。目前已经可以直接从Microsoft Store里直接安装，不过要求系统版本在1903或更新。
+
+Windows Terminal设置简要介绍安装后直接打开 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" title="GitHub上传项目文件">GitHub上传项目文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:32.000Z" title="发表于 2020-09-15 20:36:32">2020-09-15</time></span></div><div class="content">在GitHub上，上传项目文件步骤
+新建仓库
+将仓库下载到本地
+把要上传的项目文件夹，放进下载的仓库文件夹中
+使用以下代码push到GitHub：
+
+git add .        git commit  -m  &quot;提交信息&quot;  git push -u origin master   
+
+问题对于体积较大的项目文件，可能会遇到如下错误：
+fatal: the remote end hung up unexpectedly Everything up-to-date
+错误原因：
+文件太大
+解决办法 :
+
+转载自https://blog.csdn.net/qq_21770005/article/details/78733008
+
+
+windows:
+
+在 .git/config 文件中加入
+[http]postBuffer &#x3D; 524288000
+
+linux:
+
+在 .git/config 文件中加入
+linux:git config http.postBuffer 524288000
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/" title="Aruco实现AR梳理_1">Aruco实现AR梳理_1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-14T00:26:52.000Z" title="发表于 2020-09-14 08:26:52">2020-09-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Aruco/">Aruco</a></span></div><div class="content">Aruco AR过程梳理_1
+概述目的：在VS2019运行的OpenGL窗口上，generated virtual computer generated 3D graphics on the realistic environment , i.e. 在OpenGL的相机位置看到AR效果
+思路：
+OpenGL的世界中有虚拟相机，现实世界中有真实相机，只要将两个世界的世界坐标重合，相机位置重合，分别渲染虚拟模型与真实场景，即可达到AR效果
+
+生成OpenGL窗口
+将外部相机捕获的frame传递到OpenGL中，作为背景
+定义虚拟的三维物体，将其渲染
+相机捕获的背景，不需要透视变换，正交变换即可
+虚拟物体，需要MVP（model transform, view transform, projection transform）变换
+
+世界坐标系重合，使用OpenCV去做
+
+
+
+细节两个世界的世界坐标系要完全重合，相机位置完全重合
+
+OpenGL中的世界坐标与虚拟物体局部坐标系的变换为Model Transform，世界坐标系与相机坐标系之间的变换为View Transform；
+OpenCV中 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/av.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">JunLu</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">42</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><div class="content"><a class="title" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" title="Aruco实现AR梳理_2">Aruco实现AR梳理_2</a><time datetime="2020-09-20T23:45:19.000Z" title="发表于 2020-09-21 07:45:19">2020-09-21</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" title="关于AR键盘">关于AR键盘</a><time datetime="2020-09-19T13:40:46.000Z" title="发表于 2020-09-19 21:40:46">2020-09-19</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" title="git clone 速度满，加快速度方法">git clone 速度满，加快速度方法</a><time datetime="2020-09-19T13:40:37.000Z" title="发表于 2020-09-19 21:40:37">2020-09-19</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/" title="C#语言实现Socket通信_2">C#语言实现Socket通信_2</a><time datetime="2020-09-18T11:56:37.000Z" title="发表于 2020-09-18 19:56:37">2020-09-18</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/" title=" C#语言实现Socket通信_1"> C#语言实现Socket通信_1</a><time datetime="2020-09-18T07:08:41.000Z" title="发表于 2020-09-18 15:08:41">2020-09-18</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Aruco/"><span class="card-category-list-name">Aruco</span><span class="card-category-list-count">2</span></a></li>
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" class="post-title-link" itemprop="url">Aruco实现AR梳理_2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-21 07:45:19 / 修改时间：13:05:58" itemprop="dateCreated datePublished" datetime="2020-09-21T07:45:19+08:00">2020-09-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Aruco/" itemprop="url" rel="index"><span itemprop="name">Aruco</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" class="post-meta-item leancloud_visitors" data-flag-title="Aruco实现AR梳理_2" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Aruco-实现AR过程梳理-2"><a href="#Aruco-实现AR过程梳理-2" class="headerlink" title="Aruco 实现AR过程梳理_2_"></a>Aruco 实现AR过程梳理_2_</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a target="_blank" rel="noopener" href="https://junlu.club/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">上一篇</a>说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。</p>
-<h2 id="目标效果"><a href="#目标效果" class="headerlink" title="目标效果"></a>目标效果</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" class="post-title-link" itemprop="url">关于AR键盘</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-19 21:40:46 / 修改时间：21:41:00" itemprop="dateCreated datePublished" datetime="2020-09-19T21:40:46+08:00">2020-09-19</time>
-            </span>
-
-          
-            <span id="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" class="post-meta-item leancloud_visitors" data-flag-title="关于AR键盘" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="AR-Keyboard"><a href="#AR-Keyboard" class="headerlink" title="AR Keyboard"></a>AR Keyboard</h1><blockquote>
-<p>参考链接：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mantgh/p/5680580.html#other">https://www.cnblogs.com/mantgh/p/5680580.html#other</a></p>
-</blockquote>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>任何一套成熟的开发系统，都需要一整套开发套件，其中UI套件必不可少，其实用性，美观性关系着开发者的体验以及用户的体验。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">git clone 速度满，加快速度方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-19 21:40:37 / 修改时间：21:41:11" itemprop="dateCreated datePublished" datetime="2020-09-19T21:40:37+08:00">2020-09-19</time>
-            </span>
-
-          
-            <span id="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="git clone 速度满，加快速度方法" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="git-clone-速度满，加快速度方法"><a href="#git-clone-速度满，加快速度方法" class="headerlink" title="git clone 速度满，加快速度方法"></a>git clone 速度满，加快速度方法</h1><blockquote>
-<p>转载于</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/PieDaoChuan/p/9773039.html">https://www.cnblogs.com/PieDaoChuan/p/9773039.html</a></p>
-</blockquote>
-<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/" class="post-title-link" itemprop="url">C#语言实现Socket通信_2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-18 19:56:37 / 修改时间：19:58:02" itemprop="dateCreated datePublished" datetime="2020-09-18T19:56:37+08:00">2020-09-18</time>
-            </span>
-
-          
-            <span id="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/" class="post-meta-item leancloud_visitors" data-flag-title="C#语言实现Socket通信_2" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-语言实现Socket通信-2"><a href="#C-语言实现Socket通信-2" class="headerlink" title="C#语言实现Socket通信_2"></a>C#语言实现Socket通信_2</h1><h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>上一篇说的<a target="_blank" rel="noopener" href="https://junlu.club/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/">c#语言实现Socket通信_1</a>存在以下问题：</p>
-<blockquote>
-<ul>
-<li>服务器端<ol>
-<li>只能接收1个客户端的连接</li>
-<li>只能发送与接收各1条消息</li>
-</ol>
-</li>
-<li>客户端<ol>
-<li>只能发送与接收各1条消息</li>
-</ol>
-</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url"> C#语言实现Socket通信_1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-18 15:08:41 / 修改时间：19:14:58" itemprop="dateCreated datePublished" datetime="2020-09-18T15:08:41+08:00">2020-09-18</time>
-            </span>
-
-          
-            <span id="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/" class="post-meta-item leancloud_visitors" data-flag-title=" C#语言实现Socket通信_1" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C-语言实现Socket通信-1"><a href="#C-语言实现Socket通信-1" class="headerlink" title="C#语言实现Socket通信_1"></a>C#语言实现Socket通信_1</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>实现1个服务器端，1个客户端，两者相互通信</p>
-<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/18/C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0Socket%E9%80%9A%E4%BF%A1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/Augument-Reality-Review-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/17/Augument-Reality-Review-1/" class="post-title-link" itemprop="url">Augument Reality : Review 1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-17 16:07:50 / 修改时间：17:02:23" itemprop="dateCreated datePublished" datetime="2020-09-17T16:07:50+08:00">2020-09-17</time>
-            </span>
-
-          
-            <span id="/2020/09/17/Augument-Reality-Review-1/" class="post-meta-item leancloud_visitors" data-flag-title="Augument Reality : Review 1" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/17/Augument-Reality-Review-1/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/17/Augument-Reality-Review-1/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Augument-Reality-Review-1"><a href="#Augument-Reality-Review-1" class="headerlink" title="Augument Reality : Review 1"></a>Augument Reality : Review 1</h1><h2 id="definition"><a href="#definition" class="headerlink" title="definition"></a>definition</h2><blockquote>
-<p>Azuma [3] provides a commonly accepted definition of AR as a technology which (1) combines real and virtual imagery, (2)  is interactive in real time, and (3) registers the virtual imagery with the real world.</p>
-<p>—-<trends in augmented reality tracking, interaction and display : a review of ten years ismar></trends></p>
-<ol>
-<li><p>Combines real and virtual</p>
-</li>
-<li><p>Is interactive in real time</p>
-</li>
-<li>Is registered in three dimensions</li>
-</ol>
-<p>—-<a survey of augmented reality></a></p>
-</blockquote>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/17/Augument-Reality-Review-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" class="post-title-link" itemprop="url">OpenCV中的Aruco识别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-17 10:21:35" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 08:11:32" itemprop="dateModified" datetime="2020-09-22T08:11:32+08:00">2020-09-22</time>
-              </span>
-
-          
-            <span id="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" class="post-meta-item leancloud_visitors" data-flag-title="OpenCV中的Aruco识别" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="OpenCV中的Aruco识别"><a href="#OpenCV中的Aruco识别" class="headerlink" title="OpenCV中的Aruco识别"></a>OpenCV中的Aruco识别</h1><blockquote>
-<p>转载博客：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010260681/article/details/77089657">https://blog.csdn.net/u010260681/article/details/77089657</a></p>
-<p>如有侵权，立即删除</p>
-</blockquote>
-<p>姿态估计（Pose estimation）在<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/computervison">计算机视觉</a>领域扮演着十分重要的角色：<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/robot">机器人</a>导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的Marker来让这一切变得更容易。</p>
-<p>最为流行的一个途径是基于二进制平方的标记。这种Marker的主要便利之处在于，一个Marker提供了足够多的对应（四个角）来获取相机的信息。同样的，内部的二进制编码使得<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/datastructure">算法</a>非常健壮，允许应用错误检测和校正技术的可能性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" class="post-title-link" itemprop="url">关于Windows10设置Windows terminal 当前目录打开</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-15 20:36:42 / 修改时间：20:37:41" itemprop="dateCreated datePublished" datetime="2020-09-15T20:36:42+08:00">2020-09-15</time>
-            </span>
-
-          
-            <span id="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" class="post-meta-item leancloud_visitors" data-flag-title="关于Windows10设置Windows terminal 当前目录打开" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="关于Win10-设置Windows-terminal-的特定目录打开设置"><a href="#关于Win10-设置Windows-terminal-的特定目录打开设置" class="headerlink" title="关于Win10 设置Windows terminal 的特定目录打开设置"></a>关于Win10 设置Windows terminal 的特定目录打开设置</h1><blockquote>
-<p>参考博客:</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/andyL_05/article/details/105943820">https://blog.csdn.net/andyL_05/article/details/105943820</a></p>
-<p>以下内容全部来自参考博客，如有侵权，请联系我删除，感谢</p>
-</blockquote>
-<h2 id="Windows-Terminal-简介"><a href="#Windows-Terminal-简介" class="headerlink" title="Windows Terminal 简介"></a>Windows Terminal 简介</h2><p>Windows Terminal 是微软推出的Windows端新的命令行工具，相比于之前一直被吐槽丑的command 和 powershell，Windows Terminal更加“现代”，界面好看，使用方便。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">GitHub上传项目文件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-15 20:36:32 / 修改时间：21:51:10" itemprop="dateCreated datePublished" datetime="2020-09-15T20:36:32+08:00">2020-09-15</time>
-            </span>
-
-          
-            <span id="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" class="post-meta-item leancloud_visitors" data-flag-title="GitHub上传项目文件" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="在GitHub上，上传项目文件"><a href="#在GitHub上，上传项目文件" class="headerlink" title="在GitHub上，上传项目文件"></a>在GitHub上，上传项目文件</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>新建仓库</li>
-<li>将仓库下载到本地</li>
-<li>把要上传的项目文件夹，放进下载的仓库文件夹中</li>
-<li>使用以下代码push到GitHub：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .        </span><br><span class="line">git commit  -m  &quot;提交信息&quot;  </span><br><span class="line">git push -u origin master   </span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/" class="post-title-link" itemprop="url">Aruco实现AR梳理_1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-14 08:26:52" itemprop="dateCreated datePublished" datetime="2020-09-14T08:26:52+08:00">2020-09-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-21 07:43:21" itemprop="dateModified" datetime="2020-09-21T07:43:21+08:00">2020-09-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Aruco/" itemprop="url" rel="index"><span itemprop="name">Aruco</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="Aruco实现AR梳理_1" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Aruco-AR过程梳理-1"><a href="#Aruco-AR过程梳理-1" class="headerlink" title="Aruco AR过程梳理_1"></a>Aruco AR过程梳理_1</h1><hr>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><strong>目的</strong>：在<em>VS2019</em>运行的<em>OpenGL</em>窗口上，<em>generated virtual computer generated 3D graphics on the realistic environment , i.e.</em> 在<em>OpenGL</em>的相机位置看到<em>AR</em>效果</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/14/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="JunLu"
-      src="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">JunLu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">42</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">26</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/junlin49" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;junlin49" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:2998963449@qq.com" title="E-Mail → mailto:2998963449@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">JunLu</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
-
-  
-
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'KFCqjgf0rMWEOARLXifgdoTP-gzGzoHsz',
-      appKey     : 'f2AGSKWVYlQWgd6deOHoLq8e',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : true,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
-</html>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ARCore/" style="font-size: 1.1em; color: #999">ARCore</a> <a href="/tags/Aruco/" style="font-size: 1.5em; color: #99a9bf">Aruco</a> <a href="/tags/Azure-Kinect/" style="font-size: 1.23em; color: #999ea6">Azure Kinect</a> <a href="/tags/HelloAR/" style="font-size: 1.1em; color: #999">HelloAR</a> <a href="/tags/Hexo/" style="font-size: 1.37em; color: #99a4b2">Hexo</a> <a href="/tags/Next/" style="font-size: 1.23em; color: #999ea6">Next</a> <a href="/tags/OpenCV/" style="font-size: 1.1em; color: #999">OpenCV</a> <a href="/tags/Socket/" style="font-size: 1.1em; color: #999">Socket</a> <a href="/tags/Unity/" style="font-size: 1.37em; color: #99a4b2">Unity</a> <a href="/tags/VIP/" style="font-size: 1.1em; color: #999">VIP</a> <a href="/tags/VS2019/" style="font-size: 1.1em; color: #999">VS2019</a> <a href="/tags/VisonLib/" style="font-size: 1.1em; color: #999">VisonLib</a> <a href="/tags/Vuforia/" style="font-size: 1.23em; color: #999ea6">Vuforia</a> <a href="/tags/Windows-terminal/" style="font-size: 1.1em; color: #999">Windows terminal</a> <a href="/tags/YouTuBe/" style="font-size: 1.1em; color: #999">YouTuBe</a> <a href="/tags/chorme%E6%8F%92%E4%BB%B6/" style="font-size: 1.1em; color: #999">chorme插件</a> <a href="/tags/dll/" style="font-size: 1.1em; color: #999">dll</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/review/" style="font-size: 1.1em; color: #999">review</a> <a href="/tags/word%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81/" style="font-size: 1.1em; color: #999">word中插入代码</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%9B%BE/" style="font-size: 1.1em; color: #999">工程图</a> <a href="/tags/%E6%9C%89%E9%81%93/" style="font-size: 1.1em; color: #999">有道</a> <a href="/tags/%E6%AF%95%E8%AE%BE/" style="font-size: 1.1em; color: #999">毕设</a> <a href="/tags/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A/" style="font-size: 1.23em; color: #999ea6">相机标定</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 1.1em; color: #999">资源</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.37em; color: #99a4b2">问题</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">19</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">42</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">31k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2020-09-26T05:22:04.892Z"></div></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By JunLu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body></html>

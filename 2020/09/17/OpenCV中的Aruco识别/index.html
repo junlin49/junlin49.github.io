@@ -1,284 +1,124 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OpenCV中的Aruco识别 | 君路</title><meta name="description" content="OpenCV中的Aruco识别 转载博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010260681&#x2F;article&#x2F;details&#x2F;77089657 如有侵权，立即删除  姿态估计（Pose estimation）在计算机视觉领域扮演着十分重要的角色：机器人导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的M"><meta name="keywords" content="Aruco"><meta name="author" content="JunLu"><meta name="copyright" content="JunLu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="OpenCV中的Aruco识别"><meta property="og:url" content="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/"><meta property="og:site_name" content="君路"><meta property="og:description" content="OpenCV中的Aruco识别 转载博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010260681&#x2F;article&#x2F;details&#x2F;77089657 如有侵权，立即删除  姿态估计（Pose estimation）在计算机视觉领域扮演着十分重要的角色：机器人导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的M"><meta property="og:image" content="http://yoursite.com/img/av.jpg"><meta property="article:published_time" content="2020-09-17T02:21:35.000Z"><meta property="article:modified_time" content="2020-09-22T00:11:32.088Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
 
-<link rel="stylesheet" href="/css/main.css">
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
 
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="OpenCV中的Aruco识别 转载博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010260681&#x2F;article&#x2F;details&#x2F;77089657 如有侵权，立即删除  姿态估计（Pose estimation）在计算机视觉领域扮演着十分重要的角色：机器人导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的M">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV中的Aruco识别">
-<meta property="og:url" content="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/index.html">
-<meta property="og:site_name" content="君路">
-<meta property="og:description" content="OpenCV中的Aruco识别 转载博客： https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010260681&#x2F;article&#x2F;details&#x2F;77089657 如有侵权，立即删除  姿态估计（Pose estimation）在计算机视觉领域扮演着十分重要的角色：机器人导航、增强现实以及其它。这一过程的基础是找到现实世界和图像投影之间的对应点。这通常是很困难的一步，因此我们常常用自己制作的或基本的M">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/markers.jpg">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/marker23.jpg">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersoriginal.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersdetection.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersrejected.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersdetection.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersaxis.png">
-<meta property="og:image" content="http://img.youtube.com/vi/IsXWrcB_Hvs/0.jpg">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersthresh.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/singlemarkersbrokenthresh.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/removeperspective.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/bitsextraction1.png">
-<meta property="og:image" content="http://docs.opencv.org/3.1.0/bitsextraction2.png">
-<meta property="article:published_time" content="2020-09-17T02:21:35.000Z">
-<meta property="article:modified_time" content="2020-09-22T00:11:32.088Z">
-<meta property="article:author" content="JunLu">
-<meta property="article:tag" content="Aruco">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://docs.opencv.org/3.1.0/markers.jpg">
-
-<link rel="canonical" href="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>OpenCV中的Aruco识别 | 君路</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
   }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-09-22 08:11:32'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
 
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">君路</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">巨人之肩，更进一步</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-  <div class="reading-progress-bar"></div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-      <meta itemprop="name" content="JunLu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="君路">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          OpenCV中的Aruco识别
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-17 10:21:35" itemprop="dateCreated datePublished" datetime="2020-09-17T10:21:35+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 08:11:32" itemprop="dateModified" datetime="2020-09-22T08:11:32+08:00">2020-09-22</time>
-              </span>
-
-          
-            <span id="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" class="post-meta-item leancloud_visitors" data-flag-title="OpenCV中的Aruco识别" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="OpenCV中的Aruco识别"><a href="#OpenCV中的Aruco识别" class="headerlink" title="OpenCV中的Aruco识别"></a>OpenCV中的Aruco识别</h1><blockquote>
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">42</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">26</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">OpenCV中的Aruco识别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Marker%E5%92%8C%E5%AD%97%E5%85%B8"><span class="toc-number">1.1.</span> <span class="toc-text">Marker和字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAMarker"><span class="toc-number">1.2.</span> <span class="toc-text">创建Marker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8BMarker"><span class="toc-number">1.3.</span> <span class="toc-text">检测Marker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pose%E6%A3%80%E6%B5%8B"><span class="toc-number">1.4.</span> <span class="toc-text">Pose检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%AD%97%E5%85%B8"><span class="toc-number">1.5.</span> <span class="toc-text">选择字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E5%8F%82%E6%95%B0"><span class="toc-number">1.6.</span> <span class="toc-text">检测参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%88%E5%80%BC%E5%8C%96"><span class="toc-number">1.6.0.1.</span> <span class="toc-text">阈值化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AE%E5%BB%93%E6%BB%A4%E6%B3%A2"><span class="toc-number">1.6.0.2.</span> <span class="toc-text">轮廓滤波</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E7%89%B9%E4%BD%8D%E6%8F%90%E5%8F%96"><span class="toc-number">1.6.0.3.</span> <span class="toc-text">比特位提取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Marker-ID"><span class="toc-number">1.6.0.4.</span> <span class="toc-text">Marker ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%92%E8%90%BD%E7%BB%86%E5%8C%96%EF%BC%88Corner-Refinement%EF%BC%89"><span class="toc-number">1.6.0.5.</span> <span class="toc-text">角落细化（Corner Refinement）</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">君路</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">OpenCV中的Aruco识别</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-17T02:21:35.000Z" title="发表于 2020-09-17 10:21:35">2020-09-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-22T00:11:32.088Z" title="更新于 2020-09-22 08:11:32">2020-09-22</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="OpenCV中的Aruco识别"><a href="#OpenCV中的Aruco识别" class="headerlink" title="OpenCV中的Aruco识别"></a>OpenCV中的Aruco识别</h1><blockquote>
 <p>转载博客：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010260681/article/details/77089657">https://blog.csdn.net/u010260681/article/details/77089657</a></p>
 <p>如有侵权，立即删除</p>
@@ -287,7 +127,7 @@
 <p>最为流行的一个途径是基于二进制平方的标记。这种Marker的主要便利之处在于，一个Marker提供了足够多的对应（四个角）来获取相机的信息。同样的，内部的二进制编码使得<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/datastructure">算法</a>非常健壮，允许应用错误检测和校正技术的可能性。</p>
 <p>aruco模块基于ArUco库，这是一个检测二进制marker的非常流行的库，是由Rafael Muñoz和Sergio Garrido完成的。</p>
 <p>aruco的函数包含在c++：<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d53/aruco_8hpp.html">链接地址</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;opencv2&#x2F;aruco.hpp&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;opencv2&#x2F;aruco.hpp&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="Marker和字典"><a href="#Marker和字典" class="headerlink" title="Marker和字典"></a>Marker和字典</h2><p>一个ArUco marker是一个二进制平方标记，它由一个宽的黑边和一个内部的二进制矩阵组成，内部的矩阵决定了它们的id。黑色的边界有利于快速检测到图像，二进制编码可以验证id，并且允许错误检测和矫正技术的应用。marker的大小决定了内部矩阵的大小。例如，一个4x4的marker由16bits组成。</p>
 <p>一些ArUco markers的例子：</p>
 <p><img src="http://docs.opencv.org/3.1.0/markers.jpg" alt="markers.jpg"></p>
@@ -304,7 +144,7 @@
 <p>更多有关字典的信息在“选择字典”部分提及。</p>
 <h2 id="创建Marker"><a href="#创建Marker" class="headerlink" title="创建Marker"></a>创建Marker</h2><p>​    在检测之前，我们需要打印marker，以把它们放到环境中。marker的图像可以使用<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d6/d6e/group__imgproc__draw.html#ga482fa7b0f578fcdd8a174904592a6250">drawMarker()</a>函数生成。</p>
 <p>​    例如，让我们分析一下如下的调用：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat markerImage;</span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">  cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat markerImage;</span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line">  cv::aruco::drawMarker(dictionary, <span class="number">23</span>, <span class="number">200</span>, markerImage, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>首先，我们通过选择aruco模块中一个预定义的字典来创建一个字典对象，具体而言，这个字典是由250个marker组成的，每个marker的大小为6x6bits(DICT_6X6_250)</p>
 <p>​     <code>drawMarker</code>的参数如下：</p>
 <ul>
@@ -335,7 +175,7 @@
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersrejected.png" alt="singlemarkersrejected.png"></p>
 <p>在aruco模块，检测是由<code>detectMarkers()</code> 函数完成的，这一函数是这个模块中最重要的函数，因为剩下的所有函数操作都基于detectMarkers()返回的检测出的markers。</p>
 <p>一个marker检测的例子：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat inputImage;</span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line">cv::aruco::DetectorParameters parameters; </span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat inputImage;</span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="keyword">int</span> &gt; markerIds; </span><br><span class="line"><span class="built_in">vector</span>&lt; <span class="built_in">vector</span>&lt;Point2f&gt; &gt; markerCorners, rejectedCandidates; </span><br><span class="line">cv::aruco::DetectorParameters parameters; </span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line">cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates); </span><br></pre></td></tr></table></figure>
 <p><code>detectMarkers</code> 的参数为：</p>
 <ul>
 <li>第一个参数是待检测marker的图像。</li>
@@ -348,7 +188,7 @@
 <li>第四个参数是类型的对象 <code>DetectionParameters</code>. 这一对象包含了检测阶段的所有参数。这一参数将在 下一章节详细介绍。</li>
 <li><p>最后的参数, <code>rejectedCandidates</code>, 返回了所有的marker候选, 例如， 那些被检测出来的不是有效编码的方形。每个候选同样由四个角定义， 它的 形式和markerCorners的参数一样。这一参数可以省略，它仅仅用于debug阶段，或是用于“再次寻找”策略（见<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga90374a799f1da566e5de16f277b12463">refineDetectedMarkers()</a>）</p>
 <p><code>detectMarkers()</code>之后，接下来你想要做的事情可能是检查你的marker是否被正确地检测出来了。幸运的是，aruco模块提供了一个函数，它能在输入图像中来绘制检测出来的markers，这个函数就是<a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga2ad34b0f277edebb6a132d3069ed2909">drawDetectedMarkers()</a> ,例子如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cv::Mat outputImage;</span><br><span class="line">cv::aruco::drawDetectedMarkers(<span class="built_in">image</span>, markerCorners, markerIds);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::Mat outputImage;</span><br><span class="line">cv::aruco::drawDetectedMarkers(image, markerCorners, markerIds);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>image</code> 是输入/输出图像，程序将在这张图上绘制marker。（它通常就是检测出marker的那张图像）</p>
 </li>
@@ -357,7 +197,7 @@
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersdetection.png" alt="singlemarkersdetection.png"></p>
 <p> 注意到这个函数仅仅用于可视化，而没有别的什么用途。</p>
 <p>使用这两个函数我们完成了基本的marker识别步骤，我们可以从相机中检测出Marker了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">cv::VideoCapture inputVideo; </span><br><span class="line"></span><br><span class="line">inputVideo.<span class="built_in">open</span>(<span class="number">0</span>); </span><br><span class="line"></span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (inputVideo.grab()) </span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">    cv::Mat <span class="built_in">image</span>, imageCopy;</span><br><span class="line">    inputVideo.retrieve(<span class="built_in">image</span>); </span><br><span class="line">    <span class="built_in">image</span>.copyTo(imageCopy);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids; <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; &gt; corners; </span><br><span class="line">    cv::aruco::detectMarkers(<span class="built_in">image</span>, dictionary, corners, ids);</span><br><span class="line">    <span class="comment">// if at least one marker detected </span></span><br><span class="line">    <span class="keyword">if</span> (ids.<span class="built_in">size</span>() &gt; <span class="number">0</span>) </span><br><span class="line">        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);</span><br><span class="line">    cv::imshow(<span class="string">&quot;out&quot;</span>, imageCopy); </span><br><span class="line">    <span class="keyword">char</span> key = (<span class="keyword">char</span>) cv::waitKey(waitTime); </span><br><span class="line">    <span class="keyword">if</span> (key == <span class="number">27</span>) <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::VideoCapture inputVideo; </span><br><span class="line"></span><br><span class="line">inputVideo.open(<span class="number">0</span>); </span><br><span class="line"></span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (inputVideo.grab()) </span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">    cv::Mat image, imageCopy;</span><br><span class="line">    inputVideo.retrieve(image); </span><br><span class="line">    image.copyTo(imageCopy);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids; <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; &gt; corners; </span><br><span class="line">    cv::aruco::detectMarkers(image, dictionary, corners, ids);</span><br><span class="line">    <span class="comment">// if at least one marker detected </span></span><br><span class="line">    <span class="keyword">if</span> (ids.size() &gt; <span class="number">0</span>) </span><br><span class="line">        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);</span><br><span class="line">    cv::imshow(<span class="string">&quot;out&quot;</span>, imageCopy); </span><br><span class="line">    <span class="keyword">char</span> key = (<span class="keyword">char</span>) cv::waitKey(waitTime); </span><br><span class="line">    <span class="keyword">if</span> (key == <span class="number">27</span>) <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <p>​    注意到这里忽略了有些可选的参数，比如检测参数对象、以及输出的被剔除的候选对象向量。</p>
 <p>​    完整的工程代码包含在模块样例文件夹中的<code>detect_markers.cpp</code> </p>
 <h2 id="Pose检测"><a href="#Pose检测" class="headerlink" title="Pose检测"></a>Pose检测</h2><p>接下来你想要做的应当是通过Marker检测来获取相机pose。</p>
@@ -366,7 +206,7 @@
 <p>当你用ArUco marker来检测相机Pose时，你可以单独地检测每个Marker的pose。如果你想要从一堆Marker里检测出一个pose，你需要的是aruco板。（参见ArUco板教程）</p>
 <p>涉及到marker的相机pose是一个从marker坐标系统到相机坐标系统的三维变换。这是由一个旋转和一个平移向量确定的（参见 <code>solvePnP()</code> 函数）</p>
 <p>aruco模块提供了一个函数，用来检测所有探测到的Marker的pose。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Mat cameraMatrix, distCoeffs; </span><br><span class="line"></span><br><span class="line">... </span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; Vec3d &gt; rvecs, tvecs; </span><br><span class="line"></span><br><span class="line">cv::aruco::estimatePoseSingleMarkers(corners, <span class="number">0.05</span>, cameraMatrix, distCoeffs, rvecs, tvecs); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Mat cameraMatrix, distCoeffs; </span><br><span class="line"></span><br><span class="line">... </span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt; Vec3d &gt; rvecs, tvecs; </span><br><span class="line"></span><br><span class="line">cv::aruco::estimatePoseSingleMarkers(corners, <span class="number">0.05</span>, cameraMatrix, distCoeffs, rvecs, tvecs); </span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>corners</code> 参数是marker的角向量，是由<code>detectMarkers()</code> 函数返回的。</li>
 <li>第二个参数是marker的大小（单位是米或者其它）。注意Pose检测的平移矩阵单位都是相同的。</li>
@@ -377,7 +217,7 @@
 </ul>
 <p><img src="http://docs.opencv.org/3.1.0/singlemarkersaxis.png" alt="singlemarkersaxis.png"></p>
 <p>aruco模块提供了一个函数绘制上图中的坐标，所以我们可以检查pose检测的正确性。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv::aruco::drawAxis (<span class="built_in">image</span>, cameraMatrix, distCoeffs, rvec, tvec, <span class="number">0.1</span>); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::aruco::drawAxis (image, cameraMatrix, distCoeffs, rvec, tvec, <span class="number">0.1</span>); </span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>image</code> 是输入/输出图像，坐标将会在这张图像上绘制（通常就是检测marker的那张图像）。</li>
 <li><code>cameraMatrix</code> 和 <code>distCoeffs</code> 是相机校准参数。</li>
@@ -385,7 +225,7 @@
 <li>最后一个参数是坐标轴的长度，和tvec单位一样（通常是米）。</li>
 </ul>
 <p>针对一个marker的pose检测的基本的完整示例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cv::VideoCapture inputVideo;</span><br><span class="line">inputVideo.<span class="built_in">open</span>(<span class="number">0</span>);</span><br><span class="line">cv::Mat cameraMatrix, distCoeffs; <span class="comment">// camera parameters are read from somewhere </span></span><br><span class="line"></span><br><span class="line">readCameraParameters(cameraMatrix, distCoeffs);</span><br><span class="line"></span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (inputVideo.grab()) &#123; </span><br><span class="line">    cv::Mat <span class="built_in">image</span>, imageCopy;</span><br><span class="line">    inputVideo.retrieve(<span class="built_in">image</span>); </span><br><span class="line">    <span class="built_in">image</span>.copyTo(imageCopy);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; &gt; corners; </span><br><span class="line">    cv::aruco::detectMarkers(<span class="built_in">image</span>, dictionary, corners, ids);<span class="comment">// if at least one marker detected </span></span><br><span class="line">    <span class="keyword">if</span> (ids.<span class="built_in">size</span>() &gt; <span class="number">0</span>) &#123; </span><br><span class="line">        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);</span><br><span class="line">        <span class="built_in">vector</span>&lt; Mat &gt; rvecs, tvecs; </span><br><span class="line">        cv::aruco::estimatePoseSingleMarkers(corners, <span class="number">0.05</span>, cameraMatrix, distCoeffs, rvecs, tvecs); <span class="comment">// draw axis for each marker </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ids.<span class="built_in">size</span>(); i++) </span><br><span class="line">        &#123;</span><br><span class="line">            cv::aruco::drawAxis(imageCopy, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], <span class="number">0.1</span>); </span><br><span class="line">        &#125;</span><br><span class="line">        cv::imshow(<span class="string">&quot;out&quot;</span>, imageCopy); </span><br><span class="line">        <span class="keyword">char</span> key = (<span class="keyword">char</span>) cv::waitKey(waitTime); </span><br><span class="line">        <span class="keyword">if</span> (key == <span class="number">27</span>) <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::VideoCapture inputVideo;</span><br><span class="line">inputVideo.open(<span class="number">0</span>);</span><br><span class="line">cv::Mat cameraMatrix, distCoeffs; <span class="comment">// camera parameters are read from somewhere </span></span><br><span class="line"></span><br><span class="line">readCameraParameters(cameraMatrix, distCoeffs);</span><br><span class="line"></span><br><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (inputVideo.grab()) &#123; </span><br><span class="line">	cv::Mat image, imageCopy;</span><br><span class="line">	inputVideo.retrieve(image); </span><br><span class="line">	image.copyTo(imageCopy);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ids; </span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;cv::Point2f&gt; &gt; corners; </span><br><span class="line">	cv::aruco::detectMarkers(image, dictionary, corners, ids);<span class="comment">// if at least one marker detected </span></span><br><span class="line">	<span class="keyword">if</span> (ids.size() &gt; <span class="number">0</span>) &#123; </span><br><span class="line">		cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);</span><br><span class="line">        <span class="built_in">vector</span>&lt; Mat &gt; rvecs, tvecs; </span><br><span class="line">        cv::aruco::estimatePoseSingleMarkers(corners, <span class="number">0.05</span>, cameraMatrix, distCoeffs, rvecs, tvecs); <span class="comment">// draw axis for each marker </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;ids.size(); i++) </span><br><span class="line">        &#123;</span><br><span class="line">            cv::aruco::drawAxis(imageCopy, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], <span class="number">0.1</span>); </span><br><span class="line">        &#125;</span><br><span class="line">        cv::imshow(<span class="string">&quot;out&quot;</span>, imageCopy); </span><br><span class="line">        <span class="keyword">char</span> key = (<span class="keyword">char</span>) cv::waitKey(waitTime); </span><br><span class="line">        <span class="keyword">if</span> (key == <span class="number">27</span>) <span class="keyword">break</span>; </span><br><span class="line"></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <p>​    样例视频:</p>
 <p>​    <a target="_blank" rel="noopener" href="https://youtu.be/IsXWrcB_Hvs"><img src="http://img.youtube.com/vi/IsXWrcB_Hvs/0.jpg" alt="ArUco markers detection video"></a></p>
 <p>​    完整的工程代码包含在模块样例文件夹中的 <code>detect_markers.cpp</code></p>
@@ -398,26 +238,26 @@
 <li>预定义的字典：</li>
 </ul>
 <p>这是选择字典最简单的办法。aruco模块包含了一系列预定义的字典，涵盖了不同的marker大小和marker数量。例如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250); </span><br></pre></td></tr></table></figure>
 <p>DICT_6X6_250 是一个预定义的字典，它包含6x6位的marker，总共有250个marker。</p>
 <p>在所有提供的字典中，我们推荐使用你选择尽可能小的marker。例如，如果你需要6x6位的200个marker，选择DICT_6X6_250要优于选择DICT_6X6_1000。字典越小，内部距离就越大。</p>
 <ul>
 <li>自动生成的字典:</li>
 </ul>
 <p>我们可以针对想要的marker数量和位来生成字典，以得到最优的内部Marker距离。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::generateCustomDictionary(<span class="number">36</span>, <span class="number">5</span>); </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cv::aruco::Dictionary dictionary = cv::aruco::generateCustomDictionary(<span class="number">36</span>, <span class="number">5</span>); </span><br></pre></td></tr></table></figure>
 <p>这将会产生一个由36个5X5位字典组成的标准字典。这个过程需要几秒钟，具体时间取决于你的参数（更大的字典和更多的位数会耗费更多的时间）</p>
 <ul>
 <li>手动生成的字典:</li>
 </ul>
 <p>最终，我们可以手动设置字典，方便做任何修改。为了做到这一点，我们需要手动给 <code>Dictionary</code> 对象参数赋值。必须注意的是，除非你有一些特别的理由需要自己来生成字典，一般情况下我们推荐前面的任一种方案。</p>
 <p>字典参数为：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dictionary</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Mat bytesList; </span><br><span class="line">        <span class="keyword">int</span> markerSize; </span><br><span class="line">        <span class="keyword">int</span> maxCorrectionBits; <span class="comment">// maximum number of bits that can be corrected</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dictionary</span> </span></span><br><span class="line"><span class="class">&#123;</span> </span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">    	Mat bytesList; </span><br><span class="line">    	<span class="keyword">int</span> markerSize; </span><br><span class="line">    	<span class="keyword">int</span> maxCorrectionBits; <span class="comment">// maximum number of bits that can be corrected</span></span><br><span class="line">    	...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>bytesList</code> 是一个数组，它包含了所有marker代码的信息。markerSize是每个marker的维度（例如，参数为5代表5x5位）。最终， <code>maxCorrectionBits</code>是marker检测中 可校正的最大比特数，如果这个值过大，会得到大量的错误位置。</p>
 <p> <code>bytesList</code> 中的每一行代表字典中的一个marker。但是，这些marker的数据并不以二进制形式存储，而是以一种特殊的方式存储，这样可以简化检测的过程。</p>
 <p>幸运的是，我们可以简单地调用静态方法<code>Dictionary::getByteListFromBits()</code>来转换到这种形式。</p>
 <p>示例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Dictionary dictionary; </span><br><span class="line"><span class="comment">// markers of 6x6 bits </span></span><br><span class="line">dictionary.markerSize = <span class="number">6</span>; </span><br><span class="line"><span class="comment">// maximum number of bit corrections </span></span><br><span class="line">dictionary.maxCorrectionBits = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// lets create a dictionary of 100 markers </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)</span><br><span class="line">&#123;<span class="comment">// assume generateMarkerBits() generate a new marker in binary format, so that </span></span><br><span class="line"><span class="comment">// markerBits is a 6x6 matrix of CV_8UC1 type, only containing 0s and 1s </span></span><br><span class="line">    cv::Mat markerBits = generateMarkerBits(); </span><br><span class="line">    cv::Mat markerCompressed = getByteListFromBits(markerBits); <span class="comment">// add the marker as a new row</span></span><br><span class="line">    dictionary.bytesList.push_back(markerCompressed); </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Dictionary dictionary; </span><br><span class="line"><span class="comment">// markers of 6x6 bits </span></span><br><span class="line">dictionary.markerSize = <span class="number">6</span>; </span><br><span class="line"><span class="comment">// maximum number of bit corrections </span></span><br><span class="line">dictionary.maxCorrectionBits = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// lets create a dictionary of 100 markers </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++)</span><br><span class="line">&#123;<span class="comment">// assume generateMarkerBits() generate a new marker in binary format, so that </span></span><br><span class="line"><span class="comment">// markerBits is a 6x6 matrix of CV_8UC1 type, only containing 0s and 1s </span></span><br><span class="line">	cv::Mat markerBits = generateMarkerBits(); </span><br><span class="line">	cv::Mat markerCompressed = getByteListFromBits(markerBits); <span class="comment">// add the marker as a new row</span></span><br><span class="line">	dictionary.bytesList.push_back(markerCompressed); </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <h2 id="检测参数"><a href="#检测参数" class="headerlink" title="检测参数"></a>检测参数</h2><p> <a target="_blank" rel="noopener" href="http://docs.opencv.org/3.1.0/d9/d6a/group__aruco.html#ga306791ee1aab1513bc2c2b40d774f370">detectMarkers()</a>的一个参数是DetectorParameters对象。这一对象包含了marker检测过程中所有特定的选项。</p>
 <p>在这一章节中，我们将介绍所有的参数。我们可以根据它们涉及的阶段来给这些参数分类。</p>
 <h4 id="阈值化"><a href="#阈值化" class="headerlink" title="阈值化"></a>阈值化</h4><p>检测的第一步是输入图像的阈值化。</p>
@@ -548,324 +388,102 @@
 <p>如果迭代次数过高，这会影响到性能。此外，如果太小的话，亚像素级细化就基本没有发挥作用。</p>
 <p>​    缺省值：</p>
 <p><code>cornerRefinementMaxIterations</code>: 30, <code>cornerRefinementMinAccuracy</code>: 0.1</p>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Aruco/" rel="tag"><i class="fa fa-tag"></i> Aruco</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" rel="prev" title="关于Windows10设置Windows terminal 当前目录打开">
-      <i class="fa fa-chevron-left"></i> 关于Windows10设置Windows terminal 当前目录打开
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/17/Augument-Reality-Review-1/" rel="next" title="Augument Reality : Review 1">
-      Augument Reality : Review 1 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-    <div class="comments" id="valine-comments"></div>
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">JunLu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/">http://yoursite.com/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">君路</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Aruco/">Aruco</a></div><div class="post_share"><div class="social-share" data-image="/img/av.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/09/17/Augument-Reality-Review-1/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Augument Reality : Review 1</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">关于Windows10设置Windows terminal 当前目录打开</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By JunLu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
   }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+  var script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">OpenCV中的Aruco识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Marker%E5%92%8C%E5%AD%97%E5%85%B8"><span class="nav-number">1.1.</span> <span class="nav-text">Marker和字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAMarker"><span class="nav-number">1.2.</span> <span class="nav-text">创建Marker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8BMarker"><span class="nav-number">1.3.</span> <span class="nav-text">检测Marker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pose%E6%A3%80%E6%B5%8B"><span class="nav-number">1.4.</span> <span class="nav-text">Pose检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%AD%97%E5%85%B8"><span class="nav-number">1.5.</span> <span class="nav-text">选择字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E5%8F%82%E6%95%B0"><span class="nav-number">1.6.</span> <span class="nav-text">检测参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%88%E5%80%BC%E5%8C%96"><span class="nav-number">1.6.0.1.</span> <span class="nav-text">阈值化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AE%E5%BB%93%E6%BB%A4%E6%B3%A2"><span class="nav-number">1.6.0.2.</span> <span class="nav-text">轮廓滤波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E7%89%B9%E4%BD%8D%E6%8F%90%E5%8F%96"><span class="nav-number">1.6.0.3.</span> <span class="nav-text">比特位提取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Marker-ID"><span class="nav-number">1.6.0.4.</span> <span class="nav-text">Marker ID</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%92%E8%90%BD%E7%BB%86%E5%8C%96%EF%BC%88Corner-Refinement%EF%BC%89"><span class="nav-number">1.6.0.5.</span> <span class="nav-text">角落细化（Corner Refinement）</span></a></li></ol></li></ol></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="JunLu"
-      src="https://cdn.jsdelivr.net/gh/junlin49/up/20200913205449.jpg#/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">JunLu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">42</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">26</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/junlin49" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;junlin49" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:2998963449@qq.com" title="E-Mail → mailto:2998963449@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">JunLu</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk({
+      clientID: '3e4cc01e7edb8b26ef49',
+      clientSecret: 'd5ed9a945c6122fba9db929a5e79d75fa1d8665b',
+      repo: 'MyGitalk',
+      owner: 'junlin49',
+      admin: ['junlin49'],
+      id: '40b144209bcdc5e4866212335213ba45',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    })
+    gitalk.render('gitalk-container')
   }
-</script>
 
-    
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    $.getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js', initGitalk)
+  }
+}
 
-  
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
 
-
-<script>
-NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
-  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.includes(item);
-    });
-    new Valine({
-      el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
-      appId      : 'KFCqjgf0rMWEOARLXifgdoTP-gzGzoHsz',
-      appKey     : 'f2AGSKWVYlQWgd6deOHoLq8e',
-      placeholder: "Just go go",
-      avatar     : 'mm',
-      meta       : guest,
-      pageSize   : '10' || 10,
-      visitor    : true,
-      lang       : '' || 'zh-cn',
-      path       : location.pathname,
-      recordIP   : false,
-      serverURLs : ''
-    });
-  }, window.Valine);
-});
-</script>
-
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
-</html>
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body></html>
