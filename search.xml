@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MarkerLessARDemo01</title>
+    <url>/2020/09/27/MarkerLessARDemo01/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="MarkerLess-AR-Demo-01"><a href="#MarkerLess-AR-Demo-01" class="headerlink" title="MarkerLess AR Demo 01"></a>MarkerLess AR Demo 01</h1><p><img src="/iframe/aruco06.gif" alt=""></p>
+]]></content>
+      <categories>
+        <category>AR</category>
+      </categories>
+      <tags>
+        <tag>Demo</tag>
+        <tag>AR</tag>
+        <tag>Markerless</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>摄像机模型详解</title>
     <url>/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="摄像机几何模型详解"><a href="#摄像机几何模型详解" class="headerlink" title="摄像机几何模型详解"></a>摄像机几何模型详解</h1><h2 id="针孔模型-amp-透镜"><a href="#针孔模型-amp-透镜" class="headerlink" title="针孔模型&amp;透镜"></a>针孔模型&amp;透镜</h2><h3 id="问题引出-我们如何记录世界？"><a href="#问题引出-我们如何记录世界？" class="headerlink" title="问题引出 - 我们如何记录世界？"></a>问题引出 - 我们如何记录世界？</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20200926200942.png" alt="图1 如何记录世界？"></p>
