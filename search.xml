@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>视觉SLAM14讲总结-0</title>
+    <url>/2020/10/06/%E8%A7%86%E8%A7%89SLAM14%E8%AE%B2%E6%80%BB%E7%BB%93-0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="视觉SLAM14讲总结-0"><a href="#视觉SLAM14讲总结-0" class="headerlink" title="视觉SLAM14讲总结-0"></a>视觉SLAM14讲总结-0</h1><blockquote>
+<p>第2讲，初始SLAM</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>总结一下自己看过的</p>
+<h2 id="什么是视觉SLAM？"><a href="#什么是视觉SLAM？" class="headerlink" title="什么是视觉SLAM？"></a>什么是视觉SLAM？</h2><p><strong>SLAM</strong>：Simultaneous Localization and Mapping</p>
+<p>同时定位与地图构建</p>
+<p><strong>标准定义：</strong>搭载特定传感器的主体，在没有环境先验信息的情况下，于运动过程中建立环境的模型，同时估计自己的运动</p>
+<p><strong>视觉SLAM</strong>：指的是传感器是相机</p>
+<h2 id="视觉SLAM的经典框架"><a href="#视觉SLAM的经典框架" class="headerlink" title="视觉SLAM的经典框架"></a>视觉SLAM的经典框架</h2><p><img src="https://gitee.com/JunLuJun/up/raw/master/20201006160322.png" alt=""></p>
+<ol>
+<li>传感器信息读取</li>
+<li>视觉里程计</li>
+<li>后端优化</li>
+<li>回环检测</li>
+<li>建图</li>
+</ol>
+<h2 id="视觉里程计"><a href="#视觉里程计" class="headerlink" title="视觉里程计"></a>视觉里程计</h2><h3 id="主要任务"><a href="#主要任务" class="headerlink" title="主要任务"></a>主要任务</h3><p>如何确定相机的运动？</p>
+<p>通过相邻帧之间的图像，估计相机的运动，恢复场景的空间结构</p>
+<h3 id="地位"><a href="#地位" class="headerlink" title="地位"></a>地位</h3><p>视觉里程计是SLAM的关键，如果忽略漂移等问题，视觉里程计就可以实现SLAM的目标</p>
+<h3 id="涉及领域"><a href="#涉及领域" class="headerlink" title="涉及领域"></a>涉及领域</h3><p>计算机视觉，如特征匹配，特征提取</p>
+<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><h3 id="主要任务-1"><a href="#主要任务-1" class="headerlink" title="主要任务"></a>主要任务</h3><p>处理SLAM过程中的噪声问题，从带有噪声的数据中估计整个系统的状态，以及这个状态估计的不确定性有多大</p>
+<p>视觉里程计作出的相机运动估计，有多大的噪声？我们对这个估计又有多大的自信？</p>
+<h3 id="涉及领域-1"><a href="#涉及领域-1" class="headerlink" title="涉及领域"></a>涉及领域</h3><p>滤波，非线性优化</p>
+<h2 id="回环检测"><a href="#回环检测" class="headerlink" title="回环检测"></a>回环检测</h2><h3 id="主要任务-2"><a href="#主要任务-2" class="headerlink" title="主要任务"></a>主要任务</h3><p>解决位置估计随着时间漂移的问题</p>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p>利用相机，判断图像的相似性，判断是否来过此处</p>
+]]></content>
+      <tags>
+        <tag>SLAM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows+pcl1.11.1+vs2019环境配置</title>
     <url>/2020/10/05/Windows-pcl1-11-1-vs2019%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Windows-pcl1-11-1-vs2019环境配置"><a href="#Windows-pcl1-11-1-vs2019环境配置" class="headerlink" title="Windows+pcl1.11.1+vs2019环境配置"></a>Windows+pcl1.11.1+vs2019环境配置</h1><blockquote>
