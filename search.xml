@@ -52,7 +52,8 @@ d\left(p, M P^{*}\right)+d\left(p^{\prime}, M^{\prime} P^{*}\right)</script><p>�
 <p>基线：$O_1$与$O_2$的连线</p>
 <p>极线：极平面与成像平面的交线</p>
 <p>极点：基线与成像平面的交点</p>
-<h3 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h3>]]></content>
+<h3 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h3><p>定义：本质矩阵</p>
+]]></content>
       <categories>
         <category>计算机视觉</category>
       </categories>
@@ -168,8 +169,8 @@ d\left(p, M P^{*}\right)+d\left(p^{\prime}, M^{\prime} P^{*}\right)</script><p>�
       </categories>
       <tags>
         <tag>Socket</tag>
-        <tag>Hololens2</tag>
         <tag>NKeyBoard</tag>
+        <tag>Hololens2</tag>
       </tags>
   </entry>
   <entry>
