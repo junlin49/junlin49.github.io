@@ -137,6 +137,30 @@ d\left(p, M P^{*}\right)+d\left(p^{\prime}, M^{\prime} P^{*}\right)</script><p>�
 <p>极线：极平面与成像平面的交线</p>
 <p>极点：基线与成像平面的交点</p>
 <h3 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h3><p>定义：本质矩阵是对<code>规范化摄像机</code>拍摄的两个视点图像间的极几何关系进行代数描述</p>
+<h3 id="推导本质矩阵"><a href="#推导本质矩阵" class="headerlink" title="推导本质矩阵"></a>推导本质矩阵</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20201127092425.png" alt=""></p>
+<ol>
+<li><p>三维点$p’$ 在$O_1$下的坐标是多少？</p>
+<p>设$p’$在$O_2$下的坐标为$P_{O2}$，$p’$在$O_1$下的坐标为$P_{O1}$</p>
+<script type="math/tex; mode=display">
+P'_{O2} = RP'_{O1}+T</script><p>由上述公式可以推导出:</p>
+<script type="math/tex; mode=display">
+P'_{O1} = R^T(P'_{O2} - T) \\
+= R^TP'_{O2} - R^TT</script></li>
+<li><p>三维点$O_2$在$O_1$下的坐标是多少？</p>
+<p>根据上面的公式，令$P’_{O2}$为0，即$P’$与$O_2$重合，可得三维点$O_2$在$O_1$下的坐标是$-R^TT$</p>
+</li>
+<li><p>两个向量叉乘，得到垂直于极平面的向量，与$p$点在$O_1$下的向量，点乘为0</p>
+<script type="math/tex; mode=display">
+\vec{a} =R^TT \times (R^TP'_{O2}-R^TT) \\
+\vec{b}=P_{O1} \\
+\vec{a} ^T\cdot \vec{b} = 0</script><p>最终得到</p>
+<script type="math/tex; mode=display">
+[R^TT \times (R^TP'_{O2}-R^TT) ]^T \cdot P_{O1} = 0</script></li>
+<li><p>叉乘变成矩阵乘法</p>
+<p>若$\vec{a} =\begin{bmatrix}\ a_1 \\ \ a_2 \\ \ a_3 \end{bmatrix}$，$\vec{b} =\begin{bmatrix}\ b_1 \\ \ b_2 \\ \ b_3 \end{bmatrix}$</p>
+<p>则$\vec{a} \times \vec{b} = \begin{bmatrix} \ 0 &amp;-a_3  &amp;a_2 \\ \ a_3 &amp;0 &amp;-a_1 \\ \ -a_2 &amp;a_1 &amp;0\end{bmatrix}\begin{bmatrix} \ b_1 \\ \ b_2 \\ \ b_3 \end{bmatrix}$</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>计算机视觉</category>
