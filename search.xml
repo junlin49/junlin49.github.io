@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>将ubuntu默认中文文件夹名称改为英文</title>
+    <url>/2020/11/27/%E5%B0%86ubuntu%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E6%94%B9%E4%B8%BA%E8%8B%B1%E6%96%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="将Ubuntu默认中文文件夹名称改为英文"><a href="#将Ubuntu默认中文文件夹名称改为英文" class="headerlink" title="将Ubuntu默认中文文件夹名称改为英文"></a>将Ubuntu默认中文文件夹名称改为英文</h1><blockquote>
+<p>转载于<a href="https://blog.csdn.net/jeffrey_li/article/details/54947502">https://blog.csdn.net/jeffrey_li/article/details/54947502</a></p>
+</blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li><p><strong>方法一：</strong><br>打开 系统设置-》语言支持 将“english”拖动到最上端，重启系统。<br>重启后，会提示更新文件名称，更新后在将语言”中文“拖动到顶部，重启系统 。</p>
+</li>
+<li><p><strong>方法二：</strong>编辑~/.config/user-dirs.dirs文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;user-dirs.dirs1</span><br></pre></td></tr></table></figure>
+<p>修改文件内容为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XDG_DESKTOP_DIR&#x3D;&quot;$HOME&#x2F;Desktop&quot;</span><br><span class="line">XDG_DOWNLOAD_DIR&#x3D;&quot;$HOME&#x2F;Downloads&quot;</span><br><span class="line">XDG_TEMPLATES_DIR&#x3D;&quot;$HOME&#x2F;Templates&quot;</span><br><span class="line">XDG_PUBLICSHARE_DIR&#x3D;&quot;$HOME&#x2F;Public&quot;</span><br><span class="line">XDG_DOCUMENTS_DIR&#x3D;&quot;$HOME&#x2F;Documents&quot;</span><br><span class="line">XDG_MUSIC_DIR&#x3D;&quot;$HOME&#x2F;Music&quot;</span><br><span class="line">XDG_PICTURES_DIR&#x3D;&quot;$HOME&#x2F;Pictures&quot;</span><br><span class="line">XDG_VIDEOS_DIR&#x3D;&quot;$HOME&#x2F;Videos&quot;12345678</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方法三：</strong><br>打开终端，在终端中输入命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LANG&#x3D;en_US</span><br><span class="line">xdg-user-dirs-gtk-update12</span><br></pre></td></tr></table></figure>
+<p>跳出对话框询问是否将目录转化为英文路径,同意并关闭。<br>在终端中输入命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LANG&#x3D;zh_CN1</span><br></pre></td></tr></table></figure>
+<p>重新启动系统，系统会提示更新文件名称，选择不再提示,并取消修改。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>clion输入中文</title>
+    <url>/2020/11/27/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu20-04下clion无法输入中文问题解决"><a href="#Ubuntu20-04下clion无法输入中文问题解决" class="headerlink" title="Ubuntu20.04下clion无法输入中文问题解决"></a>Ubuntu20.04下clion无法输入中文问题解决</h1><blockquote>
+<p>转载于<a href="https://blog.csdn.net/dyg7777/article/details/108334293?utm_medium=distribute.pc_relevant.none-task-blog-title-2&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/dyg7777/article/details/108334293?utm_medium=distribute.pc_relevant.none-task-blog-title-2&amp;spm=1001.2101.3001.4242</a></p>
+</blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li><p>设置输入法</p>
+<p>将 Ubuntu 的输入法设置为 Ibus Pinyin</p>
+<p><a href="https://blog.forgiveher.cn/2020/08/20/1597932898303/ibus.png"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ibG9nLmZvcmdpdmVoZXIuY24vMjAyMC8wOC8yMC8xNTk3OTMyODk4MzAzL2lidXMucG5n?x-oss-process=image/format,png" alt="Ibus"></a></p>
+</li>
+<li><p>下载JBR</p>
+<p>下载解压 <a href="https://confluence.jetbrains.com/pages/viewpage.action?pageId=173178989">JBR</a></p>
+<p><a href="https://blog.forgiveher.cn/2020/08/20/1597932898303/jbr.png"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ibG9nLmZvcmdpdmVoZXIuY24vMjAyMC8wOC8yMC8xNTk3OTMyODk4MzAzL2pici5wbmc?x-oss-process=image/format,png" alt="JBR"></a></p>
+</li>
+<li><p>安装runtime插件</p>
+<p>打开 IDE，下载插件 <a href="https://www.jetbrains.com/help/idea/switching-boot-jdk.html">Choose Runtime</a></p>
+</li>
+<li><p>IDE在jbr下运行</p>
+<p>在 CLion中按下 <code>Ctrl + Shift + A</code>， 随后输入 <code>Choose Runtime</code>，打开对话框，随后选择下载解压的 JBR，点击 <code>Install</code>，随后 IDE 会在自动重启</p>
+<p>就此结束</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>clion</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu18.04拨号上网</title>
+    <url>/2020/11/27/ubuntu18-04%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu18-04-拨号上网方法"><a href="#Ubuntu18-04-拨号上网方法" class="headerlink" title="Ubuntu18.04 拨号上网方法"></a>Ubuntu18.04 拨号上网方法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于20.04系统还没有成熟，博主使用的相关的开发工具还没有支持20系统，所以又重新格式化装了18.04；但是上网步骤这里卡住了，特此记录</p>
+<p>网上的大多数方法，比如改正true之类的，对我都没有太大用处。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><blockquote>
+<p>转载于<a href="https://blog.csdn.net/qq_38649880/article/details/102651760">https://blog.csdn.net/qq_38649880/article/details/102651760</a></p>
+</blockquote>
+<ol>
+<li><p>输入命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmcli con edit type pppoe con-name “YOUR_CONNECTION_NAME”</span><br></pre></td></tr></table></figure>
+<p>把里面的<code>YOUR_CONNECTION_NAME</code>改成新建立的拨号上网的名字。<br>然后命令行界面会有所变化，接下来开始设置用户名和密码就行了.</p>
+</li>
+<li><p>依次输入命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set pppoe.username YOUR_DSL_ACCOUNT_USERNAME</span><br><span class="line">set pppoe.password YOUR_DSL_ACCOUNT_PASSWORD</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<p>把用户名和密码填成你自己的账号和密码就OK。<br>接下来回询问你是否想设置成自动连接，经常用的话输入<code>yes</code>就可以，开机就会自动连接，比较方便。<br>这就设置好了，然后输入<code>quit</code>退出即可。</p>
+<p>就此结束</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>拨号上网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>三维重建基础与极几何</title>
     <url>/2020/11/09/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA%E4%B8%8E%E6%9E%81%E5%87%A0%E4%BD%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="三维重建基础与极几何"><a href="#三维重建基础与极几何" class="headerlink" title="三维重建基础与极几何"></a>三维重建基础与极几何</h1><blockquote>
