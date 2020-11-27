@@ -137,6 +137,52 @@ d\left(p, M P^{*}\right)+d\left(p^{\prime}, M^{\prime} P^{*}\right)</script><p>�
 <p>极线：极平面与成像平面的交线</p>
 <p>极点：基线与成像平面的交点</p>
 <h3 id="本质矩阵"><a href="#本质矩阵" class="headerlink" title="本质矩阵"></a>本质矩阵</h3><p>定义：本质矩阵是对<code>规范化摄像机</code>拍摄的两个视点图像间的极几何关系进行代数描述</p>
+<h3 id="规范化摄像机"><a href="#规范化摄像机" class="headerlink" title="规范化摄像机"></a>规范化摄像机</h3><p>实际情况下，摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换：</p>
+<script type="math/tex; mode=display">
+P'=
+K
+\begin{bmatrix}
+\ E & 0 \\
+\end{bmatrix}
+P
+=
+\begin{bmatrix}
+\ u \\
+\ v \\
+\ z \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\ \alpha & -\alpha cot\theta & c_x \\
+0 & \frac{\beta}{sin\theta} & c_y \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+\ x \\
+\ y \\
+\ z \\
+\ 1 \\
+\end{bmatrix}
+\\\\
+= 
+\begin{bmatrix}
+\ \alpha & -\alpha cot\theta & c_x & 0 \\
+0 & \frac{\beta}{sin\theta} & c_y & 0 \\
+0 & 0 & 1 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+\ x \\
+\ y \\
+\ z \\
+\ 1 \\
+\end{bmatrix}
+=
+MP</script><p>规范化摄像机指的是K = 0的情况下。</p>
 <h3 id="推导本质矩阵"><a href="#推导本质矩阵" class="headerlink" title="推导本质矩阵"></a>推导本质矩阵</h3><p><img src="https://gitee.com/JunLuJun/up/raw/master/20201127092425.png" alt=""></p>
 <ol>
 <li><p>三维点$p’$ 在$O_1$下的坐标是多少？</p>
@@ -153,14 +199,79 @@ P'_{O1} = R^T(P'_{O2} - T) \\
 <script type="math/tex; mode=display">
 \vec{a} =R^TT \times (R^TP'_{O2}-R^TT) \\
 \vec{b}=P_{O1} \\
-\vec{a} ^T\cdot \vec{b} = 0</script><p>最终得到</p>
+\vec{a} ^T\cdot \vec{b} = 0</script><p>最终得到：</p>
 <script type="math/tex; mode=display">
-[R^TT \times (R^TP'_{O2}-R^TT) ]^T \cdot P_{O1} = 0</script></li>
+[R^TT \times (R^TP'_{O2}-R^TT) ]^T \cdot P_{O1} = 0</script><p>最终化简得到：</p>
+<script type="math/tex; mode=display">
+p'^{T}[T \times R]p = 0</script><blockquote>
+<p>p’：1x3，右边图像像素坐标系下的p’的齐次坐标</p>
+<p>p： 3x1，左边图像像素坐标系下的p 的齐次坐标</p>
+</blockquote>
+</li>
+</ol>
+<ol>
 <li><p>叉乘变成矩阵乘法</p>
 <p>若$\vec{a} =\begin{bmatrix}\ a_1 \\ \ a_2 \\ \ a_3 \end{bmatrix}$，$\vec{b} =\begin{bmatrix}\ b_1 \\ \ b_2 \\ \ b_3 \end{bmatrix}$</p>
 <p>则$\vec{a} \times \vec{b} = \begin{bmatrix} \ 0 &amp;-a_3  &amp;a_2 \\ \ a_3 &amp;0 &amp;-a_1 \\ \ -a_2 &amp;a_1 &amp;0\end{bmatrix}\begin{bmatrix} \ b_1 \\ \ b_2 \\ \ b_3 \end{bmatrix}$</p>
 </li>
+<li><p>将3中的最终得到的公式，将叉乘变为矩阵运算</p>
+<p>记 $E=T\times R$</p>
+<script type="math/tex; mode=display">
+p'^{T}Ep = 0</script><blockquote>
+<p>E 称之为<strong>本质矩阵*</strong></p>
+<p>p’：1x3，右边图像像素坐标系下的p’的齐次坐标</p>
+<p>p： 3x1，左边图像像素坐标系下的p 的齐次坐标</p>
+</blockquote>
+<p>此公式反映了左右两个图像上的点之间的对应关系，也就是本质矩阵的内涵</p>
+</li>
 </ol>
+<h3 id="基础矩阵"><a href="#基础矩阵" class="headerlink" title="基础矩阵"></a>基础矩阵</h3><p>基础矩阵是对<strong>一般的透视摄像机</strong>拍摄的两个视点之间图像之间的极几何关系的代数描述</p>
+<h3 id="一般的透视摄像机"><a href="#一般的透视摄像机" class="headerlink" title="一般的透视摄像机"></a>一般的透视摄像机</h3><p>实际情况下，摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换：</p>
+<script type="math/tex; mode=display">
+P'=
+K
+\begin{bmatrix}
+\ E & 0 \\
+\end{bmatrix}
+P
+=
+\begin{bmatrix}
+\ u \\
+\ v \\
+\ z \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+\ \alpha & -\alpha cot\theta & c_x \\
+0 & \frac{\beta}{sin\theta} & c_y \\
+0 & 0 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+\ x \\
+\ y \\
+\ z \\
+\ 1 \\
+\end{bmatrix}
+\\\\
+= 
+\begin{bmatrix}
+\ \alpha & -\alpha cot\theta & c_x & 0 \\
+0 & \frac{\beta}{sin\theta} & c_y & 0 \\
+0 & 0 & 1 & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+\ x \\
+\ y \\
+\ z \\
+\ 1 \\
+\end{bmatrix}
+=
+MP</script><h3 id="推导基础矩阵"><a href="#推导基础矩阵" class="headerlink" title="推导基础矩阵"></a>推导基础矩阵</h3><p>思路：将其变为规范化摄像机</p>
 ]]></content>
       <categories>
         <category>计算机视觉</category>
