@@ -228,7 +228,7 @@ p'^{T}Ep = 0</script><blockquote>
 <h3 id="基础矩阵"><a href="#基础矩阵" class="headerlink" title="基础矩阵"></a>基础矩阵</h3><p>基础矩阵是对<strong>一般的透视摄像机</strong>拍摄的两个视点之间图像之间的极几何关系的代数描述</p>
 <h3 id="一般的透视摄像机"><a href="#一般的透视摄像机" class="headerlink" title="一般的透视摄像机"></a>一般的透视摄像机</h3><p>实际情况下，摄像机坐标系下的空间点 与 像素坐标系下的平面点 之间的转换：</p>
 <script type="math/tex; mode=display">
-P'=
+p=
 K
 \begin{bmatrix}
 \ E & 0 \\
@@ -271,7 +271,37 @@ P
 \ 1 \\
 \end{bmatrix}
 =
-MP</script><h3 id="推导基础矩阵"><a href="#推导基础矩阵" class="headerlink" title="推导基础矩阵"></a>推导基础矩阵</h3><p>思路：将其变为规范化摄像机</p>
+MP</script><blockquote>
+<p>$p$为像素坐标系的二维坐标</p>
+<p>$P$为相机坐标系下的空间坐标</p>
+</blockquote>
+<h3 id="推导基础矩阵"><a href="#推导基础矩阵" class="headerlink" title="推导基础矩阵"></a>推导基础矩阵</h3><p>思路：将其变为规范化摄像机</p>
+<script type="math/tex; mode=display">
+p= K\begin{bmatrix} \ E & 0 \\ \end{bmatrix}P \\
+K^{-1}p = K^{-1}K\begin{bmatrix} \ E & 0 \end{bmatrix} P 
+= \begin{bmatrix}
+\ 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 &  0 & 1 & 0 \\
+\end{bmatrix}
+P</script><p>设 $P_c = K^{-1}p$，则上式可以写为：</p>
+<script type="math/tex; mode=display">
+P_c = \begin{bmatrix}
+\ 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 &  0 & 1 & 0 \\
+\end{bmatrix}
+P</script><p>由规范化相机模型可知：</p>
+<script type="math/tex; mode=display">
+P_c'^{T}EP_c = 0 \\
+(K'^{-1}p')^{T}E(K^{-1}p)=0 \\
+p'^{T}K'^{-T}EK^{-1}p = 0 \\</script><p>记$F = K’^{-T}EK^{-1}$，上式可以表达为：</p>
+<script type="math/tex; mode=display">
+p'^{T}Fp = 0</script><p>F即为<strong>基础矩阵</strong></p>
+<p>由于$E = T \times R$，所以E与外部参数有关，又因为K是相机内部参数的矩阵，所以，基础矩阵F与内部参数，外部参数都有关；</p>
+<h3 id="基础矩阵小结"><a href="#基础矩阵小结" class="headerlink" title="基础矩阵小结"></a>基础矩阵小结</h3><p>基础矩阵F刻画了两幅图像之间的极几何关系，即相同场景下，不同视图之间的对应关系</p>
+<h3 id="估计基础矩阵"><a href="#估计基础矩阵" class="headerlink" title="估计基础矩阵"></a>估计基础矩阵</h3><p>已知$p’$与$p$，求解F</p>
+<p>通常使用<strong>归一化八点算法</strong>对F进行估计</p>
 ]]></content>
       <categories>
         <category>计算机视觉</category>
