@@ -17,7 +17,7 @@
   },
   runtime: '',
   date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
-  copyright: {"limitCount":50,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: Go Further","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: Go Further","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
   medium_zoom: false,
   fancybox: true,
@@ -61,7 +61,7 @@ var saveToLocal = {
 }</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
   isPost: true,
   isHome: false,
-  isHighlightShrink: false,
+  isHighlightShrink: true,
   isSidebar: true,
   postUpdate: '2020-10-26 07:10:24'
 }</script><noscript><style type="text/css">
@@ -196,7 +196,18 @@ window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>
   MathJax.typeset()
 }</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
   $('span.katex-display').wrap('<div class="katex-wrap"></div>')
-})</script><script>function loadValine () {
+})</script><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script>function loadValine () {
   function initValine () {
     window.valine = new Valine({
       el: '#vcomment',
