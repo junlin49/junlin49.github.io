@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu-开发库配置记录</title>
+    <url>/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-开发库配置记录"><a href="#Ubuntu-开发库配置记录" class="headerlink" title="Ubuntu-开发库配置记录"></a>Ubuntu-开发库配置记录</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>由于配置库的过程太过惨痛，所以将现在以及以后的开发库的配置过程记录一下，以供后续参考</p>
+<h2 id="2-Eigen"><a href="#2-Eigen" class="headerlink" title="2. Eigen"></a>2. Eigen</h2><ol>
+<li><p>简单命令安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install libeigen3-dev</span><br></pre></td></tr></table></figure></li>
+<li><p>源码编译安装</p>
+<p>git clone</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;gitlab.com&#x2F;libeigen&#x2F;eigen.git</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"></span><br><span class="line">cd build</span><br><span class="line"></span><br><span class="line">cmake ..</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-Cmake"><a href="#3-Cmake" class="headerlink" title="3. Cmake"></a>3. Cmake</h2><ol>
+<li><p>进入<a href="https://cmake.org/download/">官网</a>下载压缩包</p>
+</li>
+<li><p>解压后按照Github上的提示，安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;bootstrap</span><br><span class="line"></span><br><span class="line">make -j8</span><br><span class="line"></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="4-OpenCV"><a href="#4-OpenCV" class="headerlink" title="4. OpenCV"></a>4. OpenCV</h2></li>
+<li><p>github clone</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;opencv&#x2F;opencv.git</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;opencv&#x2F;opencv_contrib.git</span><br></pre></td></tr></table></figure></li>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE&#x3D;RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX&#x3D;&#x2F;usr&#x2F;local \</span><br><span class="line">    -D INSTALL_C_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D OPENCV_GENERATE_PKGCONFIG&#x3D;ON \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH&#x3D;~&#x2F;OpenCV&#x2F;opencv_contrib&#x2F;modules \</span><br><span class="line">    -D BUILD_EXAMPLES&#x3D;ON ..</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">make -j8</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+        <tag>库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu-安装系统以及花屏问题解决</title>
+    <url>/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-安装系统以及花屏问题解决"><a href="#Ubuntu-安装系统以及花屏问题解决" class="headerlink" title="Ubuntu-安装系统以及花屏问题解决"></a>Ubuntu-安装系统以及花屏问题解决</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>马上就快寒假了，想到回家的时候家里没有这么好的科研条件，就打算买个笔记本作为主力机，教研室电脑作为Ubuntu的机子，然后使用向日葵连接使用；今年已经配置了号多次Ubuntu系统，今天记录一下，以后直接上就好了</p>
+<h2 id="1-制作安装盘"><a href="#1-制作安装盘" class="headerlink" title="1. 制作安装盘"></a>1. 制作安装盘</h2><ol>
+<li>从<a href="https://cn.ubuntu.com/download">官网</a>下载安装包，格式化U盘，然后将<strong>.iso</strong>文件全部解压到U盘中；</li>
+<li>制作完成</li>
+</ol>
+<h2 id="2-花屏问题解决"><a href="#2-花屏问题解决" class="headerlink" title="2. 花屏问题解决"></a>2. 花屏问题解决</h2><ol>
+<li><p>安装系统时，采用安全图形模式安装，最后安装重启阶段，一直按住e键不放，进入一大摞代码的界面；</p>
+</li>
+<li><p>修改代码，在quite splash后面输入nomodeset；</p>
+</li>
+<li><p>快捷键 Ctrl+x启动系统</p>
+</li>
+<li><p>进入系统后，第一件事，并不是修改软件源，而是在终端执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo gedit &#x2F;etc&#x2F;default&#x2F;grub</span><br></pre></td></tr></table></figure></li>
+<li><p>同样，找到quite splash，在后面加入nomodeset</p>
+</li>
+<li><p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+<h2 id="3-最后"><a href="#3-最后" class="headerlink" title="3. 最后"></a>3. 最后</h2></li>
+</ol>
+<p>重新进入系统后，更换软件源，添加附加驱动等等，就不详细说了</p>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>阶段总结</title>
     <url>/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
