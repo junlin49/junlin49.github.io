@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu20.04内置输入法词库导入</title>
+    <url>/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu20-04-内置输入法词库导入"><a href="#Ubuntu20-04-内置输入法词库导入" class="headerlink" title="Ubuntu20.04 内置输入法词库导入"></a>Ubuntu20.04 内置输入法词库导入</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于需要在Clion上写代码，但是它对中文的支持并不好，无法输入中文，为了解决这个问题，我尝试了搜狗输入法，虽然能输入中文，但是无法看到候选词框，体验依旧很难受，万般无奈之下，换回了IBUS，将搜狗输入法的词库导入后，体验还可以</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li>IBUS架构，默认输入法</li>
+<li>按照<a href="https://junlu.club/2020/11/27/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/">此方法</a>配置Clion</li>
+<li>安装深蓝词库转换，github上有，<a href="https://github.com/studyzy/imewlconverter">传送门</a></li>
+<li>将搜狗输入法的词库导出文件转换为txt</li>
+<li>导入默认输入法</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>输入法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu-开发库配置记录</title>
     <url>/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Ubuntu-开发库配置记录"><a href="#Ubuntu-开发库配置记录" class="headerlink" title="Ubuntu-开发库配置记录"></a>Ubuntu-开发库配置记录</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>由于配置库的过程太过惨痛，所以将现在以及以后的开发库的配置过程记录一下，以供后续参考</p>
@@ -23,7 +42,7 @@
 <li><p>github clone</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;opencv&#x2F;opencv.git</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;opencv&#x2F;opencv_contrib.git</span><br></pre></td></tr></table></figure></li>
 <li><p>安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE&#x3D;RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX&#x3D;&#x2F;usr&#x2F;local \</span><br><span class="line">    -D INSTALL_C_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D OPENCV_ENABLE_NONFREE&#x3D;ON \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D OPENCV_GENERATE_PKGCONFIG&#x3D;ON \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH&#x3D;~&#x2F;OpenCV&#x2F;opencv_contrib&#x2F;modules \</span><br><span class="line">    -D BUILD_EXAMPLES&#x3D;ON ..</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">make -j8</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"></span><br><span class="line">cmake -D CMAKE_BUILD_TYPE&#x3D;RELEASE \</span><br><span class="line">    -D CMAKE_INSTALL_PREFIX&#x3D;&#x2F;usr&#x2F;local \</span><br><span class="line">    -D INSTALL_C_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D OPENCV_ENABLE_NONFREE&#x3D;ON \</span><br><span class="line">    -D CUDA_ARCH_BIN&#x3D;7.5 \ </span><br><span class="line">    -D CUDA_ARCH_PTX&#x3D;7.5 \</span><br><span class="line">    -D INSTALL_PYTHON_EXAMPLES&#x3D;ON \</span><br><span class="line">    -D OPENCV_GENERATE_PKGCONFIG&#x3D;ON \</span><br><span class="line">    -D OPENCV_EXTRA_MODULES_PATH&#x3D;~&#x2F;OpenCV&#x2F;opencv_contrib&#x2F;modules \</span><br><span class="line">    -D BUILD_EXAMPLES&#x3D;ON ..</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">make -j8</span><br><span class="line"></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 ]]></content>
