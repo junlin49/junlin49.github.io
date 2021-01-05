@@ -1,6 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JunLu</title><meta name="description"><meta name="author" content="Wang"><meta name="copyright" content="Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://junlu.club/page/4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="JunLu"><meta property="og:url" content="http://junlu.club/page/4/"><meta property="og:site_name" content="JunLu"><meta property="og:description"><meta property="og:image" content="http://junlu.club/img/av.jpg"><meta property="article:published_time" content="2021-01-05T12:52:49.990Z"><meta property="article:modified_time" content="2021-01-05T12:52:49.990Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JunLu</title><meta name="author" content="Wang"><meta name="copyright" content="Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta property="og:type" content="website">
+<meta property="og:title" content="JunLu">
+<meta property="og:url" content="http://junlu.club/page/4/index.html">
+<meta property="og:site_name" content="JunLu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://junlu.club/img/av.jpg">
+<meta property="article:author" content="Wang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://junlu.club/img/av.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://junlu.club/page/4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
   root: '/',
-  hexoversion: '5.3.0',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
@@ -11,22 +18,32 @@
     error: '复制错误',
     noSupport: '浏览器不支持'
   },
-  bookmark: {
-    message_prev: '按',
-    message_next: '键将本页加入书签'
+  relativeDate: {
+    homepage: false,
+    post: false
   },
   runtime: '',
-  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
-  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: JunLu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
-  medium_zoom: false,
-  fancybox: true,
-  Snackbar: undefined,
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
   },
-  baiduPush: false,
+  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: JunLu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
   isPhotoFigcaption: true,
   islazyload: false,
   isanchor: false
@@ -41,7 +58,7 @@ var saveToLocal = {
       expiry: now.getTime() + expiryDay,
     }
     localStorage.setItem(key, JSON.stringify(item))
-    },
+  },
 
   get: function getWithExpiry(key) {
     const itemStr = localStorage.getItem(key)
@@ -58,67 +75,92 @@ var saveToLocal = {
     }
     return item.value
   }
-}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
   isPost: false,
   isHome: true,
   isHighlightShrink: true,
-  isSidebar: false,
-  postUpdate: '2021-01-05 20:52:49'
+  isToc: false,
+  postUpdate: '2021-01-05 21:12:12'
 }</script><noscript><style type="text/css">
-#nav {
-  opacity: 1
-}
-.justified-gallery img {
-  opacity: 1
-}
-</style></noscript><script>var activateDarkMode = function () {
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  #nav {
+    opacity: 1
   }
-}
-var activateLightMode = function () {
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  .justified-gallery img {
+    opacity: 1
   }
-}
 
-var autoChangeMode = 'false'
-var t = saveToLocal.get('theme')
-if (autoChangeMode === '1') {
-  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-  if (t === undefined) {
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport) {
-      var now = new Date()
-      var hour = now.getHours()
-      var isNight = hour <= 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
     }
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-      if (saveToLocal.get('theme') === undefined) {
-        e.matches ? activateDarkMode() : activateLightMode()
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
       }
-    })
-  } else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else if (autoChangeMode === '2') {
-  now = new Date()
-  hour = now.getHours()
-  isNight = hour <= 6 || hour >= 18
-  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else {
-  if (t === 'dark') activateDarkMode()
-  else if (t === 'light') activateLightMode()
-}</script><meta name="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">73</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JunLu</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">JunLu</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/" title="摄像机模型详解">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20200926202434.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="摄像机模型详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/" title="摄像机模型详解">摄像机模型详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-26T14:18:05.000Z" title="发表于 2020-09-26 22:18:05">2020-09-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/CV/">CV</a></span></div><div class="content">摄像机几何模型详解针孔模型&amp;透镜问题引出 - 我们如何记录世界？
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JunLu</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">JunLu</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/" title="摄像机模型详解">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20200926202434.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="摄像机模型详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/26/%E6%91%84%E5%83%8F%E6%9C%BA%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/" title="摄像机模型详解">摄像机模型详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-26T14:18:05.000Z" title="发表于 2020-09-26 22:18:05">2020-09-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/CV/">CV</a></span></div><div class="content">摄像机几何模型详解针孔模型&amp;透镜问题引出 - 我们如何记录世界？
 如果按照上面图片的设计，物体的每一个点，都会在胶片的同一个地方，留下自己的信息；由此胶片上的每一个地方都是物体每一点的信息集合，根本无法记录现实物体。
 改进方案 - 针孔摄像机
 与原有的设计相比，此改进方案增加了一个隔板，只留下了一个孔；正如图上所标注的，光线穿过针孔，物体的每一个点，都在胶片的不同位置留下了自己的信息，不会像之前设计的胶片信息杂乱混合。
@@ -138,7 +180,7 @@ O：摄像机坐标系的原点
 i，j，k：摄像机坐标系的单位向量，构成坐标轴
 f：摄像机模型的焦距
 C’：像平面坐标系的原点
-P’：真实空间点P在 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" title="Aruco实现AR梳理_2">Aruco实现AR梳理_2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T23:45:19.000Z" title="发表于 2020-09-21 07:45:19">2020-09-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Aruco/">Aruco</a></span></div><div class="content">Aruco 实现AR过程梳理2概述上一篇说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。
+P’：真实空间点P在 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" title="Aruco实现AR梳理_2">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Aruco实现AR梳理_2"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/21/Aruco%E5%AE%9E%E7%8E%B0AR%E6%A2%B3%E7%90%86-2/" title="Aruco实现AR梳理_2">Aruco实现AR梳理_2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-20T23:45:19.000Z" title="发表于 2020-09-21 07:45:19">2020-09-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Aruco/">Aruco</a></span></div><div class="content">Aruco 实现AR过程梳理2概述上一篇说的比较不系统，而且有一些问题没有说清楚，这一篇将系统的整理一下OpenCV，OpenGL，Aruco的具体分工，以及一些疑问。
 目标效果
 思路和之前的一篇一样
 
@@ -159,7 +201,7 @@ Cube经历的变换为 MVP（model transform, view transform, projection transfo
 OpenGL中，相机的位置是固定不变的，我们看到的永远是相机看到的，所以，只要清楚相机与世界坐标系的转换矩阵，即View Matrix，就可以将世界坐标系重合了。
 
 Aruco的作用是什么呢？
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" title="关于AR键盘">关于AR键盘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:46.000Z" title="发表于 2020-09-19 21:40:46">2020-09-19</time></span></div><div class="content">AR Keyboard
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" title="关于AR键盘">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于AR键盘"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/19/%E5%85%B3%E4%BA%8EAR%E9%94%AE%E7%9B%98/" title="关于AR键盘">关于AR键盘</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:46.000Z" title="发表于 2020-09-19 21:40:46">2020-09-19</time></span></div><div class="content">AR Keyboard
 参考链接：
 https://www.cnblogs.com/mantgh/p/5680580.html#other
 
@@ -178,7 +220,7 @@ MRTK
 官方链接里面内容说的很清楚，这里不再赘述，将代码列在下方。
 
 how to invoke the system keyboard
-public TouchScreenKeyboard keyboard;...public void OpenSystemKeyboa ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" title="git clone 速度满，加快速度方法">git clone 速度满，加快速度方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:37.000Z" title="发表于 2020-09-19 21:40:37">2020-09-19</time></span></div><div class="content">git clone 速度满，加快速度方法
+public TouchScreenKeyboard keyboard;...public void OpenSystemKeyboa ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" title="git clone 速度满，加快速度方法">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git clone 速度满，加快速度方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/19/git-clone-%E9%80%9F%E5%BA%A6%E6%BB%A1%EF%BC%8C%E5%8A%A0%E5%BF%AB%E9%80%9F%E5%BA%A6%E6%96%B9%E6%B3%95/" title="git clone 速度满，加快速度方法">git clone 速度满，加快速度方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-19T13:40:37.000Z" title="发表于 2020-09-19 21:40:37">2020-09-19</time></span></div><div class="content">git clone 速度满，加快速度方法
 转载于
 https://www.cnblogs.com/PieDaoChuan/p/9773039.html
 
@@ -212,7 +254,7 @@ Socket
 创建socket
 /* * AddressFamily.InterNetwork -- 内网 * SocketType.Stream -- 流形式 * ProtocolType.Tcp -- Tcp协议 */Socket tcpSever = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 绑定自身IP，分配端口号
-//IP地址：两台计算机之间的识别，局域网一般是192.168.xxx//端口号：两台计算机上的软件之间的通讯（一个软件占用一个端口号），一般分布在0-6w之间//端口号一般申请4位数，不容易被软件使用//一个计算机上可能有多个IP地址（网卡多）IPAddress ipaddress = new IPAddress(new byte[] &#123; 192,168,1,107 &#125;);EndPoint point = new IPEndPoint(ipaddres ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/17/Augument-Reality-Review-1/" title="Augument Reality : Review 1">Augument Reality : Review 1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T08:07:50.000Z" title="发表于 2020-09-17 16:07:50">2020-09-17</time></span></div><div class="content">Augument Reality : Review 1definition
+//IP地址：两台计算机之间的识别，局域网一般是192.168.xxx//端口号：两台计算机上的软件之间的通讯（一个软件占用一个端口号），一般分布在0-6w之间//端口号一般申请4位数，不容易被软件使用//一个计算机上可能有多个IP地址（网卡多）IPAddress ipaddress = new IPAddress(new byte[] &#123; 192,168,1,107 &#125;);EndPoint point = new IPEndPoint(ipaddres ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/17/Augument-Reality-Review-1/" title="Augument Reality : Review 1">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Augument Reality : Review 1"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/17/Augument-Reality-Review-1/" title="Augument Reality : Review 1">Augument Reality : Review 1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T08:07:50.000Z" title="发表于 2020-09-17 16:07:50">2020-09-17</time></span></div><div class="content">Augument Reality : Review 1definition
 Azuma [3] provides a commonly accepted definition of AR as a technology which (1) combines real and virtual imagery, (2)  is interactive in real time, and (3) registers the virtual imagery with the real world.
 —-
 
@@ -227,7 +269,7 @@ Is registered in three dimensions
 
 AR Research Topics
 Graphics rendering hardware and software
-Graphics rendering hardware and software that can create the virtual content for overlaying  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" title="OpenCV中的Aruco识别">OpenCV中的Aruco识别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T02:21:35.000Z" title="发表于 2020-09-17 10:21:35">2020-09-17</time></span></div><div class="content">OpenCV中的Aruco识别
+Graphics rendering hardware and software that can create the virtual content for overlaying  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" title="OpenCV中的Aruco识别">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenCV中的Aruco识别"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/17/OpenCV%E4%B8%AD%E7%9A%84Aruco%E8%AF%86%E5%88%AB/" title="OpenCV中的Aruco识别">OpenCV中的Aruco识别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-17T02:21:35.000Z" title="发表于 2020-09-17 10:21:35">2020-09-17</time></span></div><div class="content">OpenCV中的Aruco识别
 转载博客：
 https://blog.csdn.net/u010260681/article/details/77089657
 如有侵权，立即删除
@@ -237,7 +279,7 @@ https://blog.csdn.net/u010260681/article/details/77089657
 aruco模块基于ArUco库，这是一个检测二进制marker的非常流行的库，是由Rafael Muñoz和Sergio Garrido完成的。
 aruco的函数包含在c++：链接地址
 #include &lt;opencv2&#x2F;aruco.hpp&gt;
-Marker和字典一个ArUco marker是一个二进制平方标记，它由一个宽的 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" title="关于Windows10设置Windows terminal 当前目录打开">关于Windows10设置Windows terminal 当前目录打开</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:42.000Z" title="发表于 2020-09-15 20:36:42">2020-09-15</time></span></div><div class="content">关于Win10 设置Windows terminal 的特定目录打开设置
+Marker和字典一个ArUco marker是一个二进制平方标记，它由一个宽的 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" title="关于Windows10设置Windows terminal 当前目录打开">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于Windows10设置Windows terminal 当前目录打开"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/15/%E5%85%B3%E4%BA%8EWindows10%E8%AE%BE%E7%BD%AEWindows-terminal-%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95%E6%89%93%E5%BC%80/" title="关于Windows10设置Windows terminal 当前目录打开">关于Windows10设置Windows terminal 当前目录打开</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:42.000Z" title="发表于 2020-09-15 20:36:42">2020-09-15</time></span></div><div class="content">关于Win10 设置Windows terminal 的特定目录打开设置
 参考博客:
 https://blog.csdn.net/andyL_05/article/details/105943820
 以下内容全部来自参考博客，如有侵权，请联系我删除，感谢
@@ -245,7 +287,7 @@ https://blog.csdn.net/andyL_05/article/details/105943820
 Windows Terminal 简介Windows Terminal 是微软推出的Windows端新的命令行工具，相比于之前一直被吐槽丑的command 和 powershell，Windows Terminal更加“现代”，界面好看，使用方便。
 作为一款开源工具，repo位于Windows Terminal这里。当前（2020年5月初）版本为v0.11.1251.0，也是v1.0rc1，基本上就是预览版（preview）的最后一个版本了，在源码仓库里时间表上也可以看到预计就是本月推出正式版的windows terminal了。以往的预览版通常无法直接安装，需要从源码自行编译。目前已经可以直接从Microsoft Store里直接安装，不过要求系统版本在1903或更新。
 
-Windows Terminal设置简要介绍安装后直接打开 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" title="GitHub上传项目文件">GitHub上传项目文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:32.000Z" title="发表于 2020-09-15 20:36:32">2020-09-15</time></span></div><div class="content">在GitHub上，上传项目文件步骤
+Windows Terminal设置简要介绍安装后直接打开 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" title="GitHub上传项目文件">     <img class="post_bg" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GitHub上传项目文件"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/15/GitHub%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" title="GitHub上传项目文件">GitHub上传项目文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-09-15T12:36:32.000Z" title="发表于 2020-09-15 20:36:32">2020-09-15</time></span></div><div class="content">在GitHub上，上传项目文件步骤
 新建仓库
 将仓库下载到本地
 把要上传的项目文件夹，放进下载的仓库文件夹中
@@ -269,33 +311,40 @@ linux:
 
 在 .git/config 文件中加入
 linux:git config http.postBuffer 524288000
-</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/av.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Wang</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1"><img src="https://gitee.com/JunLuJun/up/raw/master/20210105174421.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="运动恢复结构-1"/></a><div class="content"><a class="title" href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1">运动恢复结构-1</a><time datetime="2021-01-05T09:12:05.000Z" title="发表于 2021-01-05 17:12:05">2021-01-05</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/" title="Ubuntu20.04内置输入法词库导入">Ubuntu20.04内置输入法词库导入</a><time datetime="2020-12-26T03:06:05.000Z" title="发表于 2020-12-26 11:06:05">2020-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录"><img src="https://gitee.com/JunLuJun/up/raw/master/20201225105157.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-开发库配置记录"/></a><div class="content"><a class="title" href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录">Ubuntu-开发库配置记录</a><time datetime="2020-12-25T01:55:39.000Z" title="发表于 2020-12-25 09:55:39">2020-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决"><img src="https://gitee.com/JunLuJun/up/raw/master/20201225104838.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-安装系统以及花屏问题解决"/></a><div class="content"><a class="title" href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决">Ubuntu-安装系统以及花屏问题解决</a><time datetime="2020-12-25T01:29:54.000Z" title="发表于 2020-12-25 09:29:54">2020-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结"><img src="https://i.loli.net/2020/12/19/Mq4ld3QFWmPopUn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="阶段总结"/></a><div class="content"><a class="title" href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结">阶段总结</a><time datetime="2020-12-19T13:46:14.000Z" title="发表于 2020-12-19 21:46:14">2020-12-19</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/av.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Wang</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">49</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1"><img src="https://gitee.com/JunLuJun/up/raw/master/20210105174421.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="运动恢复结构-1"/></a><div class="content"><a class="title" href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1">运动恢复结构-1</a><time datetime="2021-01-05T09:12:05.000Z" title="发表于 2021-01-05 17:12:05">2021-01-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/" title="Ubuntu20.04内置输入法词库导入"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu20.04内置输入法词库导入"/></a><div class="content"><a class="title" href="/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/" title="Ubuntu20.04内置输入法词库导入">Ubuntu20.04内置输入法词库导入</a><time datetime="2020-12-26T03:06:05.000Z" title="发表于 2020-12-26 11:06:05">2020-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录"><img src="https://gitee.com/JunLuJun/up/raw/master/20201225105157.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-开发库配置记录"/></a><div class="content"><a class="title" href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录">Ubuntu-开发库配置记录</a><time datetime="2020-12-25T01:55:39.000Z" title="发表于 2020-12-25 09:55:39">2020-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决"><img src="https://gitee.com/JunLuJun/up/raw/master/20201225104838.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-安装系统以及花屏问题解决"/></a><div class="content"><a class="title" href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决">Ubuntu-安装系统以及花屏问题解决</a><time datetime="2020-12-25T01:29:54.000Z" title="发表于 2020-12-25 09:29:54">2020-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结"><img src="https://i.loli.net/2020/12/19/Mq4ld3QFWmPopUn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="阶段总结"/></a><div class="content"><a class="title" href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结">阶段总结</a><time datetime="2020-12-19T13:46:14.000Z" title="发表于 2020-12-19 21:46:14">2020-12-19</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Aruco/"><span class="card-category-list-name">Aruco</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/C/"><span class="card-category-list-name">C#</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/C/"><span class="card-category-list-name">C++</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CV/"><span class="card-category-list-name">CV</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/PCL/"><span class="card-category-list-name">PCL</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Projects/"><span class="card-category-list-name">Projects</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SLAM/"><span class="card-category-list-name">SLAM</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Socket/"><span class="card-category-list-name">Socket</span><span class="card-category-list-count">8</span></a></li>
             <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
                 <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
-            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ARCore/' style='font-size:1.11em; color:rgb(35, 46, 40)'>ARCore</a><a href='/tags/Aruco/' style='font-size:1.47em; color:rgb(39, 77, 194)'>Aruco</a><a href='/tags/Azure-Kinect/' style='font-size:1.22em; color:rgb(177, 140, 13)'>Azure Kinect</a><a href='/tags/C/' style='font-size:1.21em; color:rgb(147, 188, 7)'>C#</a><a href='/tags/Eigen/' style='font-size:1.49em; color:rgb(86, 170, 128)'>Eigen</a><a href='/tags/HelloAR/' style='font-size:1.25em; color:rgb(119, 37, 162)'>HelloAR</a><a href='/tags/Hexo/' style='font-size:1.20em; color:rgb(96, 39, 57)'>Hexo</a><a href='/tags/Hololens/' style='font-size:1.41em; color:rgb(138, 189, 56)'>Hololens</a><a href='/tags/Hololens2/' style='font-size:1.21em; color:rgb(192, 89, 49)'>Hololens2</a><a href='/tags/NKeyBoard/' style='font-size:1.41em; color:rgb(89, 102, 161)'>NKeyBoard</a><a href='/tags/Next/' style='font-size:1.21em; color:rgb(35, 5, 112)'>Next</a><a href='/tags/OpenCV/' style='font-size:1.25em; color:rgb(158, 47, 19)'>OpenCV</a><a href='/tags/PCL/' style='font-size:1.31em; color:rgb(136, 150, 173)'>PCL</a><a href='/tags/SFM/' style='font-size:1.32em; color:rgb(153, 194, 63)'>SFM</a><a href='/tags/SLAM/' style='font-size:1.43em; color:rgb(134, 144, 15)'>SLAM</a><a href='/tags/Socket/' style='font-size:1.20em; color:rgb(13, 134, 92)'>Socket</a><a href='/tags/Ubuntu/' style='font-size:1.47em; color:rgb(103, 28, 89)'>Ubuntu</a><a href='/tags/Unity/' style='font-size:1.46em; color:rgb(187, 185, 117)'>Unity</a><a href='/tags/VIP/' style='font-size:1.25em; color:rgb(111, 47, 171)'>VIP</a><a href='/tags/VS2019/' style='font-size:1.28em; color:rgb(73, 146, 54)'>VS2019</a><a href='/tags/VisonLib/' style='font-size:1.15em; color:rgb(163, 56, 77)'>VisonLib</a><a href='/tags/Vuforia/' style='font-size:1.12em; color:rgb(33, 118, 170)'>Vuforia</a><a href='/tags/Windows-terminal/' style='font-size:1.19em; color:rgb(70, 192, 38)'>Windows terminal</a><a href='/tags/YouTuBe/' style='font-size:1.40em; color:rgb(90, 61, 152)'>YouTuBe</a><a href='/tags/c/' style='font-size:1.23em; color:rgb(27, 64, 192)'>c++</a><a href='/tags/chorme%E6%8F%92%E4%BB%B6/' style='font-size:1.33em; color:rgb(173, 174, 200)'>chorme插件</a><a href='/tags/clion/' style='font-size:1.27em; color:rgb(14, 191, 107)'>clion</a><a href='/tags/dll/' style='font-size:1.43em; color:rgb(72, 1, 140)'>dll</a><a href='/tags/git/' style='font-size:1.24em; color:rgb(168, 107, 108)'>git</a><a href='/tags/pcl/' style='font-size:1.26em; color:rgb(128, 159, 45)'>pcl</a><a href='/tags/review/' style='font-size:1.46em; color:rgb(89, 69, 19)'>review</a><a href='/tags/socket/' style='font-size:1.45em; color:rgb(134, 134, 43)'>socket</a><a href='/tags/udp/' style='font-size:1.25em; color:rgb(162, 18, 92)'>udp</a><a href='/tags/word%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81/' style='font-size:1.11em; color:rgb(174, 140, 188)'>word中插入代码</a><a href='/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/' style='font-size:1.41em; color:rgb(65, 125, 173)'>三维重建</a><a href='/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/' style='font-size:1.41em; color:rgb(176, 171, 111)'>传感器</a><a href='/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%9C%A8%E7%BA%BF/' style='font-size:1.25em; color:rgb(1, 78, 153)'>大学生在线</a><a href='/tags/%E5%B7%A5%E7%A8%8B%E5%9B%BE/' style='font-size:1.16em; color:rgb(156, 41, 113)'>工程图</a><a href='/tags/%E5%BA%93/' style='font-size:1.21em; color:rgb(182, 94, 137)'>库</a><a href='/tags/%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91/' style='font-size:1.13em; color:rgb(46, 145, 0)'>拨号上网</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">19</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">19</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">73</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">77.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-05T12:52:49.445Z"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>function panguFn () {
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/ARCore/" style="font-size: 1.1em; color: #999">ARCore</a> <a href="/tags/Aruco/" style="font-size: 1.5em; color: #99a9bf">Aruco</a> <a href="/tags/Azure-Kinect/" style="font-size: 1.23em; color: #999ea6">Azure Kinect</a> <a href="/tags/C/" style="font-size: 1.23em; color: #999ea6">C#</a> <a href="/tags/Eigen/" style="font-size: 1.23em; color: #999ea6">Eigen</a> <a href="/tags/HelloAR/" style="font-size: 1.1em; color: #999">HelloAR</a> <a href="/tags/Hexo/" style="font-size: 1.37em; color: #99a4b2">Hexo</a> <a href="/tags/Hololens/" style="font-size: 1.1em; color: #999">Hololens</a> <a href="/tags/Hololens2/" style="font-size: 1.23em; color: #999ea6">Hololens2</a> <a href="/tags/NKeyBoard/" style="font-size: 1.1em; color: #999">NKeyBoard</a> <a href="/tags/Next/" style="font-size: 1.23em; color: #999ea6">Next</a> <a href="/tags/OpenCV/" style="font-size: 1.1em; color: #999">OpenCV</a> <a href="/tags/PCL/" style="font-size: 1.1em; color: #999">PCL</a> <a href="/tags/SFM/" style="font-size: 1.1em; color: #999">SFM</a> <a href="/tags/SLAM/" style="font-size: 1.37em; color: #99a4b2">SLAM</a> <a href="/tags/Socket/" style="font-size: 1.37em; color: #99a4b2">Socket</a> <a href="/tags/Ubuntu/" style="font-size: 1.23em; color: #999ea6">Ubuntu</a> <a href="/tags/Unity/" style="font-size: 1.37em; color: #99a4b2">Unity</a> <a href="/tags/VIP/" style="font-size: 1.1em; color: #999">VIP</a> <a href="/tags/VS2019/" style="font-size: 1.1em; color: #999">VS2019</a> <a href="/tags/VisonLib/" style="font-size: 1.1em; color: #999">VisonLib</a> <a href="/tags/Vuforia/" style="font-size: 1.23em; color: #999ea6">Vuforia</a> <a href="/tags/Windows-terminal/" style="font-size: 1.1em; color: #999">Windows terminal</a> <a href="/tags/YouTuBe/" style="font-size: 1.1em; color: #999">YouTuBe</a> <a href="/tags/c/" style="font-size: 1.23em; color: #999ea6">c++</a> <a href="/tags/chorme%E6%8F%92%E4%BB%B6/" style="font-size: 1.1em; color: #999">chorme插件</a> <a href="/tags/clion/" style="font-size: 1.1em; color: #999">clion</a> <a href="/tags/dll/" style="font-size: 1.1em; color: #999">dll</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/pcl/" style="font-size: 1.37em; color: #99a4b2">pcl</a> <a href="/tags/review/" style="font-size: 1.1em; color: #999">review</a> <a href="/tags/socket/" style="font-size: 1.37em; color: #99a4b2">socket</a> <a href="/tags/udp/" style="font-size: 1.37em; color: #99a4b2">udp</a> <a href="/tags/word%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81/" style="font-size: 1.1em; color: #999">word中插入代码</a> <a href="/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" style="font-size: 1.1em; color: #999">三维重建</a> <a href="/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/" style="font-size: 1.1em; color: #999">传感器</a> <a href="/tags/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%9C%A8%E7%BA%BF/" style="font-size: 1.1em; color: #999">大学生在线</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%9B%BE/" style="font-size: 1.1em; color: #999">工程图</a> <a href="/tags/%E5%BA%93/" style="font-size: 1.1em; color: #999">库</a> <a href="/tags/%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91/" style="font-size: 1.1em; color: #999">拨号上网</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">19</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">19</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">73</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">77.6k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-01-05T13:12:12.037Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
   else {
-    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
-      pangu.spacingElementById('content-inner')
-    })
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.spacingElementById('content-inner')
+      })
   }
 }
 
 function panguInit () {
-  if (true){
+  if (false){
     GLOBAL_CONFIG_SITE.isPost && panguFn()
   } else {
     panguFn()
   }
 }
 
-document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
-  document.body.style.overflow = 'auto';
-  document.getElementById('loading-box').classList.add("loaded")
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
 }
-window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>function subtitleType () {
   if (true) { 
     var typed = new Typed("#subtitle", {
       strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
@@ -310,14 +359,17 @@ window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>
 }
 
 if (true) {
-  if (typeof Typed === 'function') subtitleType()
-  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
 } else {
   subtitleType()
 }</script><script>if (document.getElementsByClassName('mermaid').length) {
   if (window.mermaidJsLoad) mermaid.init()
   else {
-    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
       window.mermaidJsLoad = true
       mermaid.initialize({
         theme: 'default',
@@ -325,7 +377,8 @@ if (true) {
       false && mermaid.init()
     })
   }
-}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
+POWERMODE.mobile = true;
 document.body.addEventListener('input', POWERMODE);
-</script><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="爱国,敬业,诚信,友善,和谐,文明,富强" data-fontsize="15px" data-random="false" async="async"></script></div></body></html>
