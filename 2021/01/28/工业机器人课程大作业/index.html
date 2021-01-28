@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>工业机器人课程大作业 | JunLu</title><meta name="description" content="工业机器人技术与应用课程报告 姓名：王忠康 学号：BX2005907  1. 绪论作业要求：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。 编程环境：MATLAB R2019a 章节安排：第二节至第四节为实现过程 2. 获取末端实际位姿由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿真的方法获取机器人末端的实际位姿，实现思路"><meta name="author" content="Wang"><meta name="copyright" content="Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://junlu.club/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="工业机器人课程大作业"><meta property="og:url" content="http://junlu.club/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/"><meta property="og:site_name" content="JunLu"><meta property="og:description" content="工业机器人技术与应用课程报告 姓名：王忠康 学号：BX2005907  1. 绪论作业要求：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。 编程环境：MATLAB R2019a 章节安排：第二节至第四节为实现过程 2. 获取末端实际位姿由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿真的方法获取机器人末端的实际位姿，实现思路"><meta property="og:image" content="http://junlu.club/img/av.jpg"><meta property="article:published_time" content="2021-01-28T04:16:26.000Z"><meta property="article:modified_time" content="2021-01-28T04:17:58.003Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.3.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: JunLu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-01-28 12:17:58'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">75</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">49</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8%E8%AF%BE%E7%A8%8B%E6%8A%A5%E5%91%8A"><span class="toc-number">1.</span> <span class="toc-text">工业机器人技术与应用课程报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">1. 绪论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%8E%B7%E5%8F%96%E6%9C%AB%E7%AB%AF%E5%AE%9E%E9%99%85%E4%BD%8D%E5%A7%BF"><span class="toc-number">1.2.</span> <span class="toc-text">2. 获取末端实际位姿</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%AD%A3%E8%A7%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 机器人正解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%87%87%E6%A0%B7%E8%8E%B7%E5%8F%96%E5%AE%9E%E9%99%85%E4%BD%8D%E5%A7%BF"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 采样获取实际位姿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%82%E6%95%B0%E8%BE%A8%E8%AF%86"><span class="toc-number">1.3.</span> <span class="toc-text">3. 参数辨识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E8%AF%AF%E5%B7%AE%E6%AF%94%E8%BE%83"><span class="toc-number">1.4.</span> <span class="toc-text">4. 绝对定位误差比较</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JunLu</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">工业机器人课程大作业</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-01-28T04:16:26.000Z" title="发表于 2021-01-28 12:16:26">2021-01-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-01-28T04:17:58.003Z" title="更新于 2021-01-28 12:17:58">2021-01-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="工业机器人技术与应用课程报告"><a href="#工业机器人技术与应用课程报告" class="headerlink" title="工业机器人技术与应用课程报告"></a>工业机器人技术与应用课程报告</h1><blockquote>
+<p>姓名：王忠康</p>
+<p>学号：BX2005907</p>
+</blockquote>
+<h2 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1. 绪论"></a>1. 绪论</h2><p><strong>作业要求</strong>：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。</p>
+<p><strong>编程环境：</strong>MATLAB R2019a</p>
+<p><strong>章节安排：</strong>第二节至第四节为实现过程</p>
+<h2 id="2-获取末端实际位姿"><a href="#2-获取末端实际位姿" class="headerlink" title="2. 获取末端实际位姿"></a>2. 获取末端实际位姿</h2><p>由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿真的方法获取机器人末端的实际位姿，实现思路是建立机器人运动学正解，将真实误差参数补偿进理论运动学模型，通过随机采样获取多组机器人末端实际位姿数据。</p>
+<h3 id="2-1-机器人正解"><a href="#2-1-机器人正解" class="headerlink" title="2.1 机器人正解"></a>2.1 机器人正解</h3><p>建立机器人正解的过程如下：</p>
+<p>首先，建立理论DH参数表与真实误差参数表，代码实现如下：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clc;</span><br><span class="line">clear;</span><br><span class="line"><span class="comment">%% 建立DH与误差表</span></span><br><span class="line">DH = [<span class="built_in">pi</span>,   <span class="number">0.675</span>,  <span class="number">0</span>,      <span class="number">0</span>,          <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">pi</span>/<span class="number">2</span>,   <span class="number">0</span>,      <span class="number">0</span>,      <span class="number">0.35</span>,       <span class="number">0</span>;</span><br><span class="line">    <span class="number">0</span>,      <span class="number">0</span>,      <span class="number">0</span>,      <span class="number">1.15</span>,       <span class="number">0</span>;</span><br><span class="line">    -<span class="built_in">pi</span>/<span class="number">2</span>,  <span class="number">0</span>,      <span class="built_in">pi</span>/<span class="number">2</span>,   <span class="number">0.041</span>,      <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">pi</span>/<span class="number">2</span>,   <span class="number">-1.2</span>    <span class="number">0</span>,      <span class="number">0</span>,          <span class="number">0</span>;</span><br><span class="line">    -<span class="built_in">pi</span>/<span class="number">2</span>,  <span class="number">0</span>,      <span class="number">0</span>,      <span class="number">0</span>,          <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">pi</span>,     <span class="number">-0.215</span>, <span class="number">0</span>,      <span class="number">0</span>,          <span class="number">0</span></span><br><span class="line">    ];</span><br><span class="line"><span class="comment">%alpha d theta a beta</span></span><br><span class="line">delta = [    <span class="number">0.00003</span>*<span class="built_in">pi</span>/<span class="number">180</span>,     <span class="number">-1.03</span>*<span class="number">0.001</span>,        <span class="number">-0.02</span>*<span class="built_in">pi</span>/<span class="number">180</span>,  <span class="number">-0.7</span>*<span class="number">0.001</span>,   <span class="number">0</span>;</span><br><span class="line">             <span class="number">0.002</span>*<span class="built_in">pi</span>/<span class="number">180</span>,       <span class="number">-0.15</span>*<span class="number">0.001</span>,        <span class="number">0</span>,             <span class="number">-0.4</span>*<span class="number">0.001</span>, <span class="number">0.3</span>*<span class="built_in">pi</span>/<span class="number">180</span>;</span><br><span class="line">              <span class="number">0.08</span>*<span class="built_in">pi</span>/<span class="number">180</span>,        <span class="number">-0.006</span>*<span class="number">0.001</span>,       <span class="number">0</span>,            <span class="number">0.5</span>*<span class="number">0.001</span>,  <span class="number">0</span>;</span><br><span class="line">              <span class="number">-0.08</span>*<span class="built_in">pi</span>/<span class="number">180</span>,       <span class="number">-0.1</span>*<span class="number">0.001</span>,         <span class="number">0.3</span>*<span class="built_in">pi</span>/<span class="number">180</span>,   <span class="number">0.5</span>*<span class="number">0.001</span>,  <span class="number">0</span>;</span><br><span class="line">             <span class="number">0.05</span>*<span class="built_in">pi</span>/<span class="number">180</span>,        <span class="number">0.0003</span>*<span class="number">0.001</span>,       <span class="number">0.02</span>*<span class="built_in">pi</span>/<span class="number">180</span>,  <span class="number">-0.1</span>*<span class="number">0.001</span>,  <span class="number">0</span>;</span><br><span class="line">             <span class="number">-0.06</span>*<span class="built_in">pi</span>/<span class="number">180</span>,       <span class="number">0.05</span>*<span class="number">0.001</span>,         <span class="number">-0.6</span>*<span class="built_in">pi</span>/<span class="number">180</span>,  <span class="number">-0.2</span>*<span class="number">0.001</span>,  <span class="number">0</span>;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>其次，按照==公式1==，分别建立6个连杆之间的转换关系</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+T_{i} &=\operatorname{Rot}\left(z, \theta_{i}\right) \cdot \operatorname{Trans}\left(0,0, d_{i}\right) \cdot \operatorname{Trans}\left(a_{i}, 0,0\right) \cdot \operatorname{Rot}\left(x, \alpha_{i}\right) \cdot \operatorname{Rot}\left(y, \beta_{i}\right) \\
+&=\left[\begin{array}{cccc}
+\mathrm{c} \theta_{i} \mathrm{c} \beta_{i}-\mathrm{s} \theta_{i} \mathrm{~s} \alpha_{i} \mathrm{~s} \beta_{i} & -\mathrm{s} \theta_{i} \mathrm{c} \alpha_{i} & \mathrm{c} \theta_{i} \mathrm{~s} \beta_{i}+\mathrm{s} \theta_{i} \mathrm{~s} \alpha_{i} \mathrm{c} \beta_{i} & a_{i} \mathrm{c} \theta_{i} \\
+\mathrm{~s} \theta_{i} \mathrm{c} \beta_{i}+\mathrm{s} \alpha_{i} \mathrm{c} \theta_{i} \mathrm{~s} \beta_{i} & \mathrm{c} \theta_{i} \mathrm{c} \alpha_{i} & \mathrm{~s} \theta_{i} \mathrm{~s} \beta_{i}-\mathrm{s} \alpha_{i} \mathrm{c} \theta_{i} \mathrm{c} \beta_{i} & a_{i} \mathrm{~s} \theta_{i} \\
+-\mathrm{c} \alpha_{i} \mathrm{~s} \beta_{i} & \mathrm{~s} \alpha_{i} & \mathrm{c} \alpha_{i} \mathrm{c} \beta_{i} & d_{i} \\
+0 & 0 & 0 & 1
+\end{array}\right]
+\end{aligned}
+\tag{公式1}</script><p>代码实现如下所示：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[T]</span> = <span class="title">T_itoiplus1</span><span class="params">(alpha,d,theta,a,beta)</span></span></span><br><span class="line"><span class="comment">%连杆转换关系实现函数</span></span><br><span class="line">T = [</span><br><span class="line"><span class="built_in">cos</span>(theta)*<span class="built_in">cos</span>(<span class="built_in">beta</span>) - <span class="built_in">sin</span>(alpha)*<span class="built_in">sin</span>(theta)*<span class="built_in">sin</span>(<span class="built_in">beta</span>),     -<span class="built_in">cos</span>(alpha)*<span class="built_in">sin</span>(theta),     <span class="built_in">cos</span>(theta)*<span class="built_in">sin</span>(<span class="built_in">beta</span>)+<span class="built_in">sin</span>(alpha)*<span class="built_in">sin</span>(theta)*<span class="built_in">cos</span>(<span class="built_in">beta</span>),       a*<span class="built_in">cos</span>(theta);</span><br><span class="line"><span class="built_in">sin</span>(theta)*<span class="built_in">cos</span>(<span class="built_in">beta</span>) + <span class="built_in">sin</span>(alpha)*<span class="built_in">cos</span>(theta)*<span class="built_in">sin</span>(<span class="built_in">beta</span>),     <span class="built_in">cos</span>(alpha)*<span class="built_in">cos</span>(theta),      <span class="built_in">sin</span>(theta)*<span class="built_in">sin</span>(<span class="built_in">beta</span>)-<span class="built_in">sin</span>(alpha)*<span class="built_in">cos</span>(theta)*<span class="built_in">cos</span>(<span class="built_in">beta</span>),       a*<span class="built_in">sin</span>(theta);</span><br><span class="line">-<span class="built_in">cos</span>(alpha)*<span class="built_in">sin</span>(<span class="built_in">beta</span>),  <span class="built_in">sin</span>(alpha), <span class="built_in">cos</span>(alpha)*<span class="built_in">cos</span>(<span class="built_in">beta</span>), d;</span><br><span class="line"><span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>之后，将理论DH参数表代入==公式1==中，并将转换矩阵连乘，得到机器人末端相对于机器人基坐标系的转换关系，根据此转换关系，在分别指定6个关节角度的前提下，可以得到当机器人末端相对于基坐标系的位姿。代码实现如下：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[pos]</span> = <span class="title">Positive</span><span class="params">(theta,dh)</span></span></span><br><span class="line"><span class="comment">%正解</span></span><br><span class="line">T1 = T_itoiplus1(dh(<span class="number">1</span>,<span class="number">1</span>),dh(<span class="number">1</span>,<span class="number">2</span>),theta(<span class="number">1</span>)+dh(<span class="number">1</span>,<span class="number">3</span>),dh(<span class="number">1</span>,<span class="number">4</span>),dh(<span class="number">1</span>,<span class="number">5</span>));</span><br><span class="line">T2 = T_itoiplus1(dh(<span class="number">2</span>,<span class="number">1</span>),dh(<span class="number">2</span>,<span class="number">2</span>),theta(<span class="number">2</span>)+dh(<span class="number">2</span>,<span class="number">3</span>),dh(<span class="number">2</span>,<span class="number">4</span>),dh(<span class="number">2</span>,<span class="number">5</span>));</span><br><span class="line">T3 = T_itoiplus1(dh(<span class="number">3</span>,<span class="number">1</span>),dh(<span class="number">3</span>,<span class="number">2</span>),theta(<span class="number">3</span>)+dh(<span class="number">3</span>,<span class="number">3</span>),dh(<span class="number">3</span>,<span class="number">4</span>),dh(<span class="number">3</span>,<span class="number">5</span>));</span><br><span class="line">T4 = T_itoiplus1(dh(<span class="number">4</span>,<span class="number">1</span>),dh(<span class="number">4</span>,<span class="number">2</span>),theta(<span class="number">4</span>)+dh(<span class="number">4</span>,<span class="number">3</span>),dh(<span class="number">4</span>,<span class="number">4</span>),dh(<span class="number">4</span>,<span class="number">5</span>));</span><br><span class="line">T5 = T_itoiplus1(dh(<span class="number">5</span>,<span class="number">1</span>),dh(<span class="number">5</span>,<span class="number">2</span>),theta(<span class="number">5</span>)+dh(<span class="number">5</span>,<span class="number">3</span>),dh(<span class="number">5</span>,<span class="number">4</span>),dh(<span class="number">5</span>,<span class="number">5</span>));</span><br><span class="line">T6 = T_itoiplus1(dh(<span class="number">6</span>,<span class="number">1</span>),dh(<span class="number">6</span>,<span class="number">2</span>),theta(<span class="number">6</span>)+dh(<span class="number">6</span>,<span class="number">3</span>),dh(<span class="number">6</span>,<span class="number">4</span>),dh(<span class="number">6</span>,<span class="number">5</span>));</span><br><span class="line">T7 = T_itoiplus1(dh(<span class="number">7</span>,<span class="number">1</span>),dh(<span class="number">7</span>,<span class="number">2</span>),dh(<span class="number">7</span>,<span class="number">3</span>),dh(<span class="number">7</span>,<span class="number">4</span>),dh(<span class="number">7</span>,<span class="number">5</span>));</span><br><span class="line">T = T1*T2*T3*T4*T5*T6*T7;</span><br><span class="line">pos(<span class="number">1</span>) = T(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">pos(<span class="number">2</span>) = T(<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">pos(<span class="number">3</span>) = T(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">pos(<span class="number">4</span>) = <span class="built_in">atan2</span>(T(<span class="number">2</span>,<span class="number">1</span>),T(<span class="number">1</span>,<span class="number">1</span>));</span><br><span class="line">pos(<span class="number">5</span>) = <span class="built_in">atan2</span>(-T(<span class="number">3</span>,<span class="number">1</span>),<span class="built_in">sqrt</span>(T(<span class="number">1</span>,<span class="number">1</span>)*T(<span class="number">1</span>,<span class="number">1</span>)+T(<span class="number">2</span>,<span class="number">1</span>)*T(<span class="number">2</span>,<span class="number">1</span>)));</span><br><span class="line">pos(<span class="number">6</span>) = <span class="built_in">atan2</span>(T(<span class="number">3</span>,<span class="number">2</span>),T(<span class="number">3</span>,<span class="number">3</span>));</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">abs</span>(pos(<span class="number">5</span>)*<span class="number">180</span>/<span class="built_in">pi</span><span class="number">-90</span>)&lt;<span class="number">0.01</span>)</span><br><span class="line">    pos(<span class="number">4</span>) = <span class="number">0</span>;</span><br><span class="line">    pos(<span class="number">5</span>) = <span class="built_in">pi</span>/<span class="number">2</span>;</span><br><span class="line">    pos(<span class="number">6</span>) = <span class="built_in">atan2</span>(T(<span class="number">1</span>,<span class="number">2</span>),T(<span class="number">2</span>,<span class="number">2</span>));   </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">abs</span>(pos(<span class="number">5</span>)*<span class="number">180</span>/<span class="built_in">pi</span>+<span class="number">90</span>)&lt;<span class="number">0.01</span>)</span><br><span class="line">    pos(<span class="number">4</span>) = <span class="number">0</span>;</span><br><span class="line">    pos(<span class="number">5</span>) = -<span class="built_in">pi</span>/<span class="number">2</span>;</span><br><span class="line">    pos(<span class="number">6</span>) = -<span class="built_in">atan2</span>(T(<span class="number">1</span>,<span class="number">2</span>),T(<span class="number">2</span>,<span class="number">2</span>)); </span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>为验证上述过程的正确性，将6个分别为0;0;-pi/2;pi/2;0;0关节角度代入上述过程，与机器人理论外形对比，经过验证后发现，正解模型正确；求解出的末端位姿与机器人实际外形数据如下所示：</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20210128112817.png" alt=""></p>
+<p>图1：根据正解模型求解出的末端位姿</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20210128112906.png" alt=""></p>
+<p>图2：真实的KUKA210参数</p>
+<h3 id="2-2-采样获取实际位姿"><a href="#2-2-采样获取实际位姿" class="headerlink" title="2.2 采样获取实际位姿"></a>2.2 采样获取实际位姿</h3><p>在正解模型正确的前提下，为获取实际机器人的末端位姿，采用仿真的手段，将误差参数补偿进DH参数中，并随机采样100个点，得到100组机器人末端位姿数据，为后续的参数辨识及绝对定位误差比较环节提供数据基础。</p>
+<p>与2.1节过程同理，将误差参数表与理论DH表相加，得到新的DH表，并代入正解模型中，得到的机器人末端位姿数据可以看做是由实际的机器人的实验数据；</p>
+<p>其次，利用随机数生成6*100组随机数据，分布在0-30度之间，代表了100组不同的关节角度集合，输入实际正解模型中得到100组不同的末端位姿数据；</p>
+<p>然后，将100组随机数也同样输入理论正解模型中，得到100组末端位姿的理论值；</p>
+<p>最后，将理论值与实际值比较，可以得出下图所示的绝对定位误差图</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20210128114533.png" alt=""></p>
+<p>此图为实际的末端位姿与理论的末端位姿之间的误差图，此图将作为判断后续参数辨识环节是否正确的主要依据，如将辨识后的参数输入正解模型，与理论值之间产生的误差与此图不符，则可以判断出参数辨识出错，若完全重合，则说明误差参数辨识正确。</p>
+<p>此环节代码实现如下：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% 100组数据随机走</span></span><br><span class="line">theta =[<span class="number">0</span>;<span class="number">0</span>;-<span class="built_in">pi</span>/<span class="number">2</span>;<span class="built_in">pi</span>/<span class="number">2</span>;<span class="number">0</span>;<span class="number">0</span>];</span><br><span class="line">DHpos = Positive(theta,DH);</span><br><span class="line">newDH = DH+[delta;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>];</span><br><span class="line">newPos = Positive(theta,newDH);</span><br><span class="line">err = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">x_err = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">y_err = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">z_err = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">delta_p = <span class="built_in">zeros</span>(<span class="number">300</span>,<span class="number">1</span>);</span><br><span class="line">r = randi(<span class="number">30</span>,<span class="number">100</span>,<span class="number">6</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">100</span></span><br><span class="line">    theta = r(<span class="built_in">i</span>,:);</span><br><span class="line">    pos = Positive(theta,DH);</span><br><span class="line">    newPos = Positive(theta,newDH);</span><br><span class="line">    err(<span class="number">1</span>,<span class="built_in">i</span>) = <span class="built_in">sqrt</span>(power(newPos(<span class="number">1</span>,<span class="number">1</span>)-pos(<span class="number">1</span>,<span class="number">1</span>),<span class="number">2</span>)+power(newPos(<span class="number">1</span>,<span class="number">2</span>)-pos(<span class="number">1</span>,<span class="number">2</span>),<span class="number">2</span>)+power(newPos(<span class="number">1</span>,<span class="number">3</span>)-pos(<span class="number">1</span>,<span class="number">3</span>),<span class="number">2</span>));</span><br><span class="line">    delta_p((<span class="built_in">i</span><span class="number">-1</span>)*<span class="number">3</span>+<span class="number">1</span>,<span class="number">1</span>) = newPos(<span class="number">1</span>,<span class="number">1</span>)-pos(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    delta_p((<span class="built_in">i</span><span class="number">-1</span>)*<span class="number">3</span>+<span class="number">2</span>,<span class="number">1</span>) = newPos(<span class="number">1</span>,<span class="number">2</span>)-pos(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">    delta_p((<span class="built_in">i</span><span class="number">-1</span>)*<span class="number">3</span>+<span class="number">3</span>,<span class="number">1</span>) = newPos(<span class="number">1</span>,<span class="number">3</span>)-pos(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">    x_err(<span class="number">1</span>,<span class="built_in">i</span>) = newPos(<span class="number">1</span>,<span class="number">1</span>)-pos(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    y_err(<span class="number">1</span>,<span class="built_in">i</span>) = newPos(<span class="number">1</span>,<span class="number">2</span>)-pos(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">    z_err(<span class="number">1</span>,<span class="built_in">i</span>) = newPos(<span class="number">1</span>,<span class="number">3</span>)-pos(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-参数辨识"><a href="#3-参数辨识" class="headerlink" title="3. 参数辨识"></a>3. 参数辨识</h2><p>误差参数辨识的主要任务在于，根据机器人的定位误差，迭代求解机器人各个连杆的参数误差，实现机器人实际运动学参数的标定。</p>
+<p>考虑使用机器人的位置误差进行机器人运动学参数的标定，设机器人末端的理论位置是$p$，其位置误差记为$Δp$，有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\Delta \boldsymbol{p} &=\frac{\partial \boldsymbol{p}}{\partial \boldsymbol{\theta}} \Delta \boldsymbol{\theta}+\frac{\partial \boldsymbol{p}}{\partial \boldsymbol{d}} \Delta \boldsymbol{d}+\frac{\partial \boldsymbol{p}}{\partial \boldsymbol{a}} \Delta \boldsymbol{a}+\frac{\partial \boldsymbol{p}}{\partial \boldsymbol{\alpha}} \Delta \boldsymbol{\alpha}+\frac{\partial \boldsymbol{p}}{\partial \boldsymbol{\beta}} \Delta \boldsymbol{\beta} \\
+&=\boldsymbol{J}_{\theta} \Delta \boldsymbol{\theta}+\boldsymbol{J}_{d} \Delta \boldsymbol{d}+\boldsymbol{J}_{a} \Delta \boldsymbol{a}+\boldsymbol{J}_{\alpha} \Delta \boldsymbol{\alpha}+\boldsymbol{J}_{\beta} \Delta \boldsymbol{\beta}
+\end{aligned}
+\tag{公式2}</script><p>式中，$J<em>{\theta}$、$Jd$、$Ja$、$J</em>{\alpha}$和$J_{\beta}$ 是由机器人理论运动学参数构成的$3 * n$ 矩阵：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{J}_{\theta} &=\left[\begin{array}{llll}
+\partial \boldsymbol{p}_{/ \partial \theta_{1}} & \partial \boldsymbol{p}_{/ \partial \theta_{2}} & \cdots & \partial \boldsymbol{p}_{/ \partial \theta_{n}}
+\end{array}\right] \\
+\boldsymbol{J}_{d} &=\left[\begin{array}{lll}
+\partial \boldsymbol{p}_{/ \partial d_{1}} & \partial \boldsymbol{p}_{/ \partial d_{2}} & \cdots & \partial \boldsymbol{p} / \partial d_{n}
+\end{array}\right] \\
+\boldsymbol{J}_{a} &=\left[\begin{array}{lll}
+\partial \boldsymbol{p} / \partial a_{1} & \partial \boldsymbol{p}_{/ \partial a_{2}} & \cdots & \partial \boldsymbol{p} / \partial a_{n}
+\end{array}\right] \\
+\boldsymbol{J}_{\alpha} &=\left[\begin{array}{lll}
+\partial \boldsymbol{p} / \partial \alpha_{1} & \partial \boldsymbol{p} / \partial \alpha_{2} & \cdots & \partial \boldsymbol{p} / \partial \alpha_{n}
+\end{array}\right] \\
+\boldsymbol{J}_{\beta} &=\left[\begin{array}{ll}
+\partial \boldsymbol{p}_{/ \partial \beta_{1}} & \partial \boldsymbol{p}_{/ \partial \beta_{2}} & \cdots & \partial \boldsymbol{p}_{/ \partial \beta_{n}}
+\end{array}\right]
+\end{aligned}</script><p>若测量了$m$ 组机器人的定位误差，由==公式2==可以得到：</p>
+<script type="math/tex; mode=display">
+\left[\begin{array}{c}
+\Delta \boldsymbol{p}^{(1)} \\
+\Delta \boldsymbol{p}^{(2)} \\
+\vdots \\
+\Delta \boldsymbol{p}^{(m)}
+\end{array}\right]=\left[\begin{array}{ccccc}
+\boldsymbol{J}_{\theta}^{(1)} & \boldsymbol{J}_{d}^{(1)} & \boldsymbol{J}_{a}^{(1)} & \boldsymbol{J}_{\alpha}^{(1)} & \boldsymbol{J}_{\beta}^{(1)} \\
+\boldsymbol{J}_{\theta}^{(2)} & \boldsymbol{J}_{d}^{(2)} & \boldsymbol{J}_{a}^{(2)} & \boldsymbol{J}_{\alpha}^{(2)} & \boldsymbol{J}_{\beta}^{(2)} \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+\boldsymbol{J}_{\theta}^{(m)} & \boldsymbol{J}_{d}^{(m)} & \boldsymbol{J}_{a}^{(m)} & \boldsymbol{J}_{\alpha}^{(m)} & \boldsymbol{J}_{\beta}^{(m)}
+\end{array}\right]\left[\begin{array}{c}
+\Delta \boldsymbol{\theta} \\
+\Delta \boldsymbol{d} \\
+\Delta \boldsymbol{a} \\
+\Delta \boldsymbol{\alpha} \\
+\Delta \boldsymbol{\beta}
+\end{array}\right]</script><p>上式可以写成：$\Delta \boldsymbol{P}=\boldsymbol{J} \cdot \Delta \boldsymbol{\rho}$</p>
+<p>其中，$Δ\rho$ 是由机器人各连杆参数误差所构成的列向量。</p>
+<p>这样，机器人运动学参数误差辨识问题就被化为形如$Ax = b$ 的线性方程组的求解问题；</p>
+<p>使用Levenberg-Marquardt 算法进行迭代求解，其第k 步迭代过程如下：</p>
+<ul>
+<li>根据机器人各连杆参数计算矩阵$J({\rho}_k)$；</li>
+<li>根据下式计算机器人各连杆参数误差$Δ\rho_k$：</li>
+</ul>
+<script type="math/tex; mode=display">
+\Delta \boldsymbol{\rho}_{k}=-\left[\boldsymbol{J}\left(\boldsymbol{\rho}_{k}\right)^{\top} \boldsymbol{J}\left(\boldsymbol{\rho}_{k}\right)+\mu_{k} \boldsymbol{I}\right]^{-1} \boldsymbol{J}\left(\boldsymbol{\rho}_{k}\right)^{\top} \Delta \boldsymbol{P}\left(\boldsymbol{\rho}_{k}\right)</script><p>其中，$\mu_k$ 是阻尼系数，可以根据下式进行计算：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\mu_{0}=0.001 \\
+\mu_{k+1}=\left\{\begin{array}{ll}
+0.001 \lambda & \left\|\Delta \boldsymbol{P}\left(\boldsymbol{\rho}_{k+1}\right)\right\| \geq\left\|\Delta \boldsymbol{P}\left(\boldsymbol{\rho}_{k}\right)\right\| \\
+0.001 / \lambda & \left\|\Delta \boldsymbol{P}\left(\boldsymbol{\rho}_{k+1}\right)\right\|<\left\|\Delta \boldsymbol{P}\left(\boldsymbol{\rho}_{k}\right)\right\|
+\end{array}\right. \\
+2.5<\lambda<10
+\end{array}\right.</script><ul>
+<li><p>利用$\rho<em>{k+1}=\rho</em>{k}+\Delta \rho_{k}$更新机器人各连杆参数。</p>
+</li>
+<li><p>重复上述步骤，即可得到机器人各连杆参数的误差。</p>
+</li>
+</ul>
+<p>代码实现如下：</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% 求解方程系数</span></span><br><span class="line">syms theta1 theta2 theta3 theta4 theta5 theta6;</span><br><span class="line">syms d1 d2 d3 d4 d5 d6;</span><br><span class="line">syms a1 a2 a3 a4 a5 a6;</span><br><span class="line">syms alpha1 alpha2 alpha3 alpha4 alpha5 alpha6;</span><br><span class="line">syms beta1 beta2 beta3 beta4 beta5 beta6;</span><br><span class="line">symstheta = [theta1 theta2 theta3 theta4 theta5 theta6];</span><br><span class="line">symsd = [d1 d2 d3 d4 d5 d6;];</span><br><span class="line">symsa = [a1 a2 a3 a4 a5 a6];</span><br><span class="line">symsalpha = [alpha1 alpha2 alpha3 alpha4 alpha5 alpha6];</span><br><span class="line">symsbeta = [beta1 beta2 beta3 beta4 beta5 beta6];</span><br><span class="line">J = <span class="built_in">zeros</span>(<span class="number">300</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">3</span>:<span class="number">300</span></span><br><span class="line">    theta = r((<span class="built_in">i</span><span class="number">-1</span>)/<span class="number">3</span>+<span class="number">1</span>,:);</span><br><span class="line">    item = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">6</span>);</span><br><span class="line">     <span class="comment">%求出j_theta_i</span></span><br><span class="line">    pos_theta = symPostive(symstheta,item,item,item,item,DH);</span><br><span class="line">    a_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta1&#x27;</span>),symstheta,theta));</span><br><span class="line">    b_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta2&#x27;</span>),symstheta,theta));</span><br><span class="line">    c_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta3&#x27;</span>),symstheta,theta));</span><br><span class="line">    d_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta4&#x27;</span>),symstheta,theta));</span><br><span class="line">    e_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta5&#x27;</span>),symstheta,theta));</span><br><span class="line">    f_theta = transpose(subs(diff(pos_theta,<span class="string">&#x27;theta6&#x27;</span>),symstheta,theta));</span><br><span class="line">    j_theta_i = <span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line">    j_theta_i(:,<span class="number">1</span>) = a_theta;</span><br><span class="line">    j_theta_i(:,<span class="number">2</span>) = b_theta;</span><br><span class="line">    j_theta_i(:,<span class="number">3</span>) = c_theta;</span><br><span class="line">    j_theta_i(:,<span class="number">4</span>) = d_theta;    </span><br><span class="line">    j_theta_i(:,<span class="number">5</span>) = e_theta;    </span><br><span class="line">    j_theta_i(:,<span class="number">6</span>) = f_theta;    </span><br><span class="line">    <span class="comment">%求j_d_i</span></span><br><span class="line">    pos_d = symPostive(theta,symsd,item,item,item,DH);</span><br><span class="line">    a_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d1&#x27;</span>),symsd,item));</span><br><span class="line">    b_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d2&#x27;</span>),symsd,item));</span><br><span class="line">    c_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d3&#x27;</span>),symsd,item));</span><br><span class="line">    d_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d4&#x27;</span>),symsd,item));</span><br><span class="line">    e_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d5&#x27;</span>),symsd,item));</span><br><span class="line">    f_d = transpose(subs(diff(pos_d,<span class="string">&#x27;d6&#x27;</span>),symsd,item));</span><br><span class="line">    j_d_i = <span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line">    j_d_i(:,<span class="number">1</span>) = a_d;</span><br><span class="line">    j_d_i(:,<span class="number">2</span>) = b_d;</span><br><span class="line">    j_d_i(:,<span class="number">3</span>) = c_d;</span><br><span class="line">    j_d_i(:,<span class="number">4</span>) = d_d;    </span><br><span class="line">    j_d_i(:,<span class="number">5</span>) = e_d;    </span><br><span class="line">    j_d_i(:,<span class="number">6</span>) = f_d;</span><br><span class="line">    <span class="comment">%求j_a_i</span></span><br><span class="line">    pos_a = symPostive(theta,item,symsa,item,item,DH);</span><br><span class="line">    a_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a1&#x27;</span>),symsa,item));</span><br><span class="line">    b_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a2&#x27;</span>),symsa,item));</span><br><span class="line">    c_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a3&#x27;</span>),symsa,item));</span><br><span class="line">    d_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a4&#x27;</span>),symsa,item));</span><br><span class="line">    e_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a5&#x27;</span>),symsa,item));</span><br><span class="line">    f_a = transpose(subs(diff(pos_a,<span class="string">&#x27;a6&#x27;</span>),symsa,item));</span><br><span class="line">    j_a_i = <span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line">    j_a_i(:,<span class="number">1</span>) = a_a;</span><br><span class="line">    j_a_i(:,<span class="number">2</span>) = b_a;</span><br><span class="line">    j_a_i(:,<span class="number">3</span>) = c_a;</span><br><span class="line">    j_a_i(:,<span class="number">4</span>) = d_a;    </span><br><span class="line">    j_a_i(:,<span class="number">5</span>) = e_a;    </span><br><span class="line">    j_a_i(:,<span class="number">6</span>) = f_a;</span><br><span class="line">    <span class="comment">%求j_alpha_i</span></span><br><span class="line">    pos_alpha = symPostive(theta,item,item,symsalpha,item,DH);</span><br><span class="line">    a_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha1&#x27;</span>),symsalpha,item));</span><br><span class="line">    b_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha2&#x27;</span>),symsalpha,item));</span><br><span class="line">    c_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha3&#x27;</span>),symsalpha,item));</span><br><span class="line">    d_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha4&#x27;</span>),symsalpha,item));</span><br><span class="line">    e_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha5&#x27;</span>),symsalpha,item));</span><br><span class="line">    f_alpha = transpose(subs(diff(pos_alpha,<span class="string">&#x27;alpha6&#x27;</span>),symsalpha,item));</span><br><span class="line">    j_alpha_i = <span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line">    j_alpha_i(:,<span class="number">1</span>) = a_alpha;</span><br><span class="line">    j_alpha_i(:,<span class="number">2</span>) = b_alpha;</span><br><span class="line">    j_alpha_i(:,<span class="number">3</span>) = c_alpha;</span><br><span class="line">    j_alpha_i(:,<span class="number">4</span>) = d_alpha;    </span><br><span class="line">    j_alpha_i(:,<span class="number">5</span>) = e_alpha;    </span><br><span class="line">    j_alpha_i(:,<span class="number">6</span>) = f_alpha;</span><br><span class="line">    <span class="comment">%求j_beta_i</span></span><br><span class="line">    pos_beta = symPostive(theta,item,item,item,symsbeta,DH);</span><br><span class="line">    a_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta1&#x27;</span>),symsbeta,item));</span><br><span class="line">    b_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta2&#x27;</span>),symsbeta,item));</span><br><span class="line">    c_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta3&#x27;</span>),symsbeta,item));</span><br><span class="line">    d_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta4&#x27;</span>),symsbeta,item));</span><br><span class="line">    e_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta5&#x27;</span>),symsbeta,item));</span><br><span class="line">    f_beta = transpose(subs(diff(pos_beta,<span class="string">&#x27;beta6&#x27;</span>),symsbeta,item));</span><br><span class="line">    j_beta_i = <span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">6</span>);</span><br><span class="line">    j_beta_i(:,<span class="number">1</span>) = a_beta;</span><br><span class="line">    j_beta_i(:,<span class="number">2</span>) = b_beta;</span><br><span class="line">    j_beta_i(:,<span class="number">3</span>) = c_beta;</span><br><span class="line">    j_beta_i(:,<span class="number">4</span>) = d_beta;    </span><br><span class="line">    j_beta_i(:,<span class="number">5</span>) = e_beta;    </span><br><span class="line">    j_beta_i(:,<span class="number">6</span>) = f_beta;</span><br><span class="line">    <span class="comment">%放到J中</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="number">6</span></span><br><span class="line">        J(<span class="built_in">i</span>,<span class="built_in">j</span>) = j_theta_i(<span class="number">1</span>,<span class="built_in">j</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) = j_theta_i(<span class="number">2</span>,<span class="built_in">j</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">2</span>,<span class="built_in">j</span>) = j_theta_i(<span class="number">3</span>,<span class="built_in">j</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">7</span>:<span class="number">12</span></span><br><span class="line">        J(<span class="built_in">i</span>,<span class="built_in">j</span>) = j_d_i(<span class="number">1</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">1</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) = j_d_i(<span class="number">2</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">1</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">2</span>,<span class="built_in">j</span>) = j_d_i(<span class="number">3</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">13</span>:<span class="number">18</span></span><br><span class="line">        J(<span class="built_in">i</span>,<span class="built_in">j</span>) = j_a_i(<span class="number">1</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">2</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) = j_a_i(<span class="number">2</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">2</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">2</span>,<span class="built_in">j</span>) = j_a_i(<span class="number">3</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">19</span>:<span class="number">24</span></span><br><span class="line">        J(<span class="built_in">i</span>,<span class="built_in">j</span>) = j_alpha_i(<span class="number">1</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">3</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) = j_alpha_i(<span class="number">2</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">3</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">2</span>,<span class="built_in">j</span>) = j_alpha_i(<span class="number">3</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">25</span>:<span class="number">30</span></span><br><span class="line">        J(<span class="built_in">i</span>,<span class="built_in">j</span>) = j_beta_i(<span class="number">1</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">4</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">1</span>,<span class="built_in">j</span>) = j_beta_i(<span class="number">2</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">4</span>);</span><br><span class="line">        J(<span class="built_in">i</span>+<span class="number">2</span>,<span class="built_in">j</span>) = j_beta_i(<span class="number">3</span>,<span class="built_in">j</span><span class="number">-6</span>*<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">%% 求解线性方程组</span></span><br><span class="line">delta_pk = -inv(transpose(J)*J+<span class="number">0.001</span>*<span class="built_in">eye</span>(<span class="number">30</span>,<span class="number">30</span>))*transpose(J)*delta_p;</span><br><span class="line"><span class="comment">%delta_p = J\delta_p;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-绝对定位误差比较"><a href="#4-绝对定位误差比较" class="headerlink" title="4. 绝对定位误差比较"></a>4. 绝对定位误差比较</h2><p>将得到的辨识出的误差参数，代入正解模型中，并走100组随机关节角度集合，将理论位姿与实际位姿作比较，得出绝对定位误差；将题目给的真实误差参数代入正解模型中，走同样的100组数据，得出另外一组绝对定位误差，将两组绝对定位误差放在一起比较，如下图所示，可以看出两组绝对定位误差折线完全重合，说明参数辨识正确。</p>
+<p><img src="https://gitee.com/JunLuJun/up/raw/master/20210128114105.png" alt=""></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Wang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://junlu.club/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/">http://junlu.club/2021/01/28/工业机器人课程大作业/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://junlu.club" target="_blank">JunLu</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/av.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/01/14/xml%E6%93%8D%E4%BD%9C/"><img class="next-cover" src="https://gitee.com/JunLuJun/up/raw/master/20210114160713.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">xml操作</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  var script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'KFCqjgf0rMWEOARLXifgdoTP-gzGzoHsz',
+      appKey: 'f2AGSKWVYlQWgd6deOHoLq8e',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
