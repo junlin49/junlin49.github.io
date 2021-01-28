@@ -3,11 +3,7 @@
   <entry>
     <title>工业机器人课程大作业</title>
     <url>/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="工业机器人技术与应用课程报告"><a href="#工业机器人技术与应用课程报告" class="headerlink" title="工业机器人技术与应用课程报告"></a>工业机器人技术与应用课程报告</h1><blockquote>
-<p>姓名：王忠康</p>
-<p>学号：BX2005907</p>
-</blockquote>
-<h2 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1. 绪论"></a>1. 绪论</h2><p><strong>作业要求</strong>：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="工业机器人技术与应用课程报告"><a href="#工业机器人技术与应用课程报告" class="headerlink" title="工业机器人技术与应用课程报告"></a>工业机器人技术与应用课程报告</h1><h2 id="1-绪论"><a href="#1-绪论" class="headerlink" title="1. 绪论"></a>1. 绪论</h2><p><strong>作业要求</strong>：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。</p>
 <p><strong>编程环境：</strong>MATLAB R2019a</p>
 <p><strong>章节安排：</strong>第二节至第四节为实现过程</p>
 <h2 id="2-获取末端实际位姿"><a href="#2-获取末端实际位姿" class="headerlink" title="2. 获取末端实际位姿"></a>2. 获取末端实际位姿</h2><p>由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿真的方法获取机器人末端的实际位姿，实现思路是建立机器人运动学正解，将真实误差参数补偿进理论运动学模型，通过随机采样获取多组机器人末端实际位姿数据。</p>
