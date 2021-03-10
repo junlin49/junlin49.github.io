@@ -12,9 +12,14 @@
 <p>合计投入：8RMB/YEAR</p>
 </blockquote>
 <h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="1-网络架构"><a href="#1-网络架构" class="headerlink" title="1. 网络架构"></a>1. 网络架构</h3><p>整个网络必须是一层NAT的架构，即WAN -&gt; LAN只经过1次；博主设置的架构如下：</p>
-<p>软路由采用R2S，最便宜的软路由；硬路由要求具备AP模式类似的功能，手头的路由器并不具备，但是只要在后台把DHCP关闭，网线插入LAN口也能达到相同的效果。</p>
-<h3 id="2-申请公网IP"><a href="#2-申请公网IP" class="headerlink" title="2. 申请公网IP"></a>2. 申请公网IP</h3><h3 id="3-购买域名"><a href="#3-购买域名" class="headerlink" title="3. 购买域名"></a>3. 购买域名</h3><p>域名可以从很多网站购买，如CloudFare，阿里云，腾讯云等，博主从阿里云购买的域名，并在其控制台内，将域名解析；</p>
-<h3 id="4-设置域名解析与DDNS"><a href="#4-设置域名解析与DDNS" class="headerlink" title="4. 设置域名解析与DDNS"></a>4. 设置域名解析与DDNS</h3><h3 id="5-设置端口转发"><a href="#5-设置端口转发" class="headerlink" title="5. 设置端口转发"></a>5. 设置端口转发</h3><h3 id="6-配置Terraria-server"><a href="#6-配置Terraria-server" class="headerlink" title="6. 配置Terraria server"></a>6. 配置Terraria server</h3><p>待续。。。</p>
+<p> <img src="https://gitee.com/JunLuJun/up/raw/master/20210310144025.png" alt=""></p>
+<p>软路由采用R2S，最便宜的软路由，在软路由中拨号上网；硬路由要求具备AP模式类似的功能，手头的路由器并不具备，但是只要在后台把DHCP关闭，网线插入LAN口也能达到相同的效果；光猫必须处于调制模式；</p>
+<h3 id="2-申请公网IP"><a href="#2-申请公网IP" class="headerlink" title="2. 申请公网IP"></a>2. 申请公网IP</h3><p>这一部博主没有试验过，网上提供的做法是向运营商打电话，申请公网IP，理由可以称要在公司看家里的监控等等；如果没给申请，就可以投诉，最终都会给；当然者是网上提供的做法；博主在学校的宿舍里布置的服务器，学校的联通会提供公网IP，根本不用申请。</p>
+<p>当然还有一点需要说明的是，申请的公网IP是动态的，以博主的为例，每次重新拨号，IP都会改变，但是依旧是公网IP；所以为了在进入服务器时能够保持一个固定的连接入口，就需要一个域名指向这个公网IP，并设置DDNS，作用是每隔固定时间，域名会始终指向动态的公网IP，我们只需要记住这个域名即可。</p>
+<h3 id="3-购买域名"><a href="#3-购买域名" class="headerlink" title="3. 购买域名"></a>3. 购买域名</h3><p>域名可以从很多网站购买，如CloudFare，阿里云，腾讯云等，博主从阿里云购买的域名，并在其控制台内，将域名解析；</p>
+<h3 id="4-设置域名解析与DDNS"><a href="#4-设置域名解析与DDNS" class="headerlink" title="4. 设置域名解析与DDNS"></a>4. 设置域名解析与DDNS</h3><p>这一步需要在软路由中设置，一般软路由中都会有DDNS这一个服务项，选择阿里云的类型，根据提示填写信息即可。</p>
+<h3 id="5-设置端口转发"><a href="#5-设置端口转发" class="headerlink" title="5. 设置端口转发"></a>5. 设置端口转发</h3><p>做完以上步骤，还需要做端口转发，以便访问域名+端口时，能够进入Terraria的服务器；在软路由中填写对应的端口转发端口号，Terraria一般默认7777端口，外部端口随意填写即可。</p>
+<h3 id="6-配置Terraria-server"><a href="#6-配置Terraria-server" class="headerlink" title="6. 配置Terraria server"></a>6. 配置Terraria server</h3><p>配置服务器共有两种方式，一种是采用官方的服务器文件，但是并没有很多人性化的功能，但是提供了Mac，Windows，Linux上的安装方式；另外一种是TShock，在GitHub上开源，有很多功能，查看官方文档安装即可。</p>
 ]]></content>
       <categories>
         <category>服务器</category>
