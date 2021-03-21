@@ -1,160 +1,22 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JunLu</title><meta name="description"><meta name="author" content="Wang"><meta name="copyright" content="Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://junlu.club/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="JunLu"><meta property="og:url" content="http://junlu.club/"><meta property="og:site_name" content="JunLu"><meta property="og:description"><meta property="og:image" content="http://junlu.club/img/av.jpg"><meta property="article:published_time" content="2021-03-10T12:23:55.381Z"><meta property="article:modified_time" content="2021-03-10T12:23:55.381Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  hexoversion: '5.3.0',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  bookmark: {
-    message_prev: '按',
-    message_next: '键将本页加入书签'
-  },
-  runtime: '',
-  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
-  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: JunLu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
-  medium_zoom: false,
-  fancybox: true,
-  Snackbar: undefined,
-  justifiedGallery: {
-    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-  },
-  baiduPush: false,
-  isPhotoFigcaption: true,
-  islazyload: false,
-  isanchor: false
-};
-
-var saveToLocal = {
-  set: function setWithExpiry(key, value, ttl) {
-    const now = new Date()
-    const expiryDay = ttl * 86400000
-    const item = {
-      value: value,
-      expiry: now.getTime() + expiryDay,
-    }
-    localStorage.setItem(key, JSON.stringify(item))
-    },
-
-  get: function getWithExpiry(key) {
-    const itemStr = localStorage.getItem(key)
-
-    if (!itemStr) {
-      return undefined
-    }
-    const item = JSON.parse(itemStr)
-    const now = new Date()
-
-    if (now.getTime() > item.expiry) {
-      localStorage.removeItem(key)
-      return undefined
-    }
-    return item.value
-  }
-}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isSidebar: false,
-  postUpdate: '2021-03-10 20:23:55'
-}</script><noscript><style type="text/css">
-#nav {
-  opacity: 1
-}
-.justified-gallery img {
-  opacity: 1
-}
-</style></noscript><script>var activateDarkMode = function () {
-  document.documentElement.setAttribute('data-theme', 'dark')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-  }
-}
-var activateLightMode = function () {
-  document.documentElement.setAttribute('data-theme', 'light')
-  if (document.querySelector('meta[name="theme-color"]') !== null) {
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-  }
-}
-
-var autoChangeMode = 'false'
-var t = saveToLocal.get('theme')
-if (autoChangeMode === '1') {
-  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-
-  if (t === undefined) {
-    if (isLightMode) activateLightMode()
-    else if (isDarkMode) activateDarkMode()
-    else if (isNotSpecified || hasNoSupport) {
-      var now = new Date()
-      var hour = now.getHours()
-      var isNight = hour <= 6 || hour >= 18
-      isNight ? activateDarkMode() : activateLightMode()
-    }
-    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-      if (saveToLocal.get('theme') === undefined) {
-        e.matches ? activateDarkMode() : activateLightMode()
-      }
-    })
-  } else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else if (autoChangeMode === '2') {
-  now = new Date()
-  hour = now.getHours()
-  isNight = hour <= 6 || hour >= 18
-  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-  else if (t === 'light') activateLightMode()
-  else activateDarkMode()
-} else {
-  if (t === 'dark') activateDarkMode()
-  else if (t === 'light') activateLightMode()
-}</script><meta name="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">79</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">52</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JunLu</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">JunLu</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210310201338.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-Sophus"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus">SLAM-Sophus</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-10T12:11:47.000Z" title="发表于 2021-03-10 20:11:47">2021-03-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%85%85%E7%94%B5/">充电</a></span></div><div class="content">SLAM-SophususeSophus.cpp#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;Eigen/Core&gt;#include &lt;Eigen/Geometry&gt;#include &lt;Eigen/Dense&gt;#include &lt;sophus/se3.hpp&gt;using namespace std;using namespace Eigen;/** * 本程序演示Sophus的基本用法 * @param argc * @param argv * @return */int main(int argc,char **argv)&#123;    /* 1.定义沿Z轴转90度的SO3d*/    Matrix3d R = AngleAxisd(M_PI/2,Vector3d(0,0,1)).toRotationMatrix();    Quaterniond q(R);    //SO3d 可直接从旋转矩阵构造，也可以通过四元数构造，两者等价    Sophus::SO3d  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210310144025.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Terraria服务器搭建记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录">Terraria服务器搭建记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-10T01:18:40.000Z" title="发表于 2021-03-10 09:18:40">2021-03-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span></div><div class="content">Terraria 服务器搭建记录前言网上搜索了一些教程，发现大多数都是使用云主机搭建的，如ECS，VPS等，大多数从阿里云腾讯云购买，奈何钱包空空，价格太贵了，所以自己使用了物理机+端口映射+DDNS+动态公网IP的方法，价格低很多；
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>JunLu</title><meta name="description" content="A Blog Powered By Hexo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 5.3.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">JunLu</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a target="_blank" rel="noopener" href="https://www.caicai.me"> CaiCai </a><span>&</span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a class="current" href="/">Home</a></li><li><a href="/about">Sobre</a></li><li><a href="/archives">Arquivo</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/03/10/SLAM-Sophus/">SLAM-Sophus</a></h3></div><div class="post-content"><p>SLAM-SophususeSophus.cpp#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;Eigen/Core&gt;#include &lt;Eigen/Geometry&gt;#include &lt;Eigen/Dense&gt;...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-03-10</span><i class="fa fa-tag"></i><a class="tag" href="/categories/充电/" title="充电">充电 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">Terraria服务器搭建记录</a></h3></div><div class="post-content"><p>Terraria 服务器搭建记录前言网上搜索了一些教程，发现大多数都是使用云主机搭建的，如ECS，VPS等，大多数从阿里云腾讯云购买，奈何钱包空空，价格太贵了，所以自己使用了物理机+端口映射+DDNS+动态公网IP的方法，价格低很多；
 
 物理机：退休的老笔记本电脑
 公网IP：免费，向移动/联通/电信服务商要
-端口 映射与DDNS：免费
-域名：可以购买免费域名，博主购买的是一年8元的域名
-合计投入：8RMB/YEAR
-
-搭建过程1. 网络架构整个网络必须是一层NAT的架构，即WAN -&gt; LAN只经过1次；博主设置的架构如下：
- 
-软路由采用R2S，最便宜的软路由，在软路由中拨号上网；硬路由要求具备AP模式类似的功能，手头的路由器并不具备，但是只要在后台把DHCP关闭，网线插入LAN口也能达到相同的效果；光猫必须处于调制模式；
-2. 申请公网IP这一部博主没有试验过，网上提供的做法是向运营商打电话，申请公网IP，理由可以称要在公司看家里的监控等等；如果没给申请，就可以投诉，最终都会给；当然者是网上提供的做法；博主在学校的宿舍里布置的服务器，学校的联通会提供公网IP，根本不用申请。
- ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210310131802.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TShock指令详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解">TShock指令详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-09T14:40:21.000Z" title="发表于 2021-03-09 22:40:21">2021-03-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span></div><div class="content">TShock指令详解Tshock是一款terraria服务器出色的插件，其在原版服务器的基础上添加了一系列简单易上手且实用的指令，极大地丰富了服务器的可玩性。
-config.json配置文件详解config配置文件位于Tshock文件夹下，使用记事本方式打开此文件，修改config可以达到丰富服务器人性化的特点。以下是config配置↓↓↓【请修改冒号后面的数值】
-&quot;InvasionMultiplier&quot;: 1，//入侵规模，计算公式：入侵怪物数量=100+（X*HP＞200的玩家）&quot;DefaultMaximumSpawns&quot;: 5，//怪物刷新最大数值（设置越高怪物越多）&quot;DefaultSpawnRate&quot;: 600，//刷新怪物时间间隔，数值越大刷新越慢&quot;ServerPort&quot;: 7777，//服务器端口【默认】&quot;EnableWhitelist&quot;: false，//是否开启白名单【true代表是，false代表否，以下都是】&quot;InfiniteInvasion&quot;:  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210306211927.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AZURE KINECT生成点云"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云">AZURE KINECT生成点云</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-06T13:14:43.000Z" title="发表于 2021-03-06 21:14:43">2021-03-06</time></span></div><div class="content">Azure Kinect 生成点云
+端口...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-03-10</span><i class="fa fa-tag"></i><a class="tag" href="/categories/服务器/" title="服务器">服务器 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/">TShock指令详解</a></h3></div><div class="post-content"><p>TShock指令详解Tshock是一款terraria服务器出色的插件，其在原版服务器的基础上添加了一系列简单易上手且实用的指令，极大地丰富了服务器的可玩性。
+config.json配置文件详解config配置文件位于Tshock文件夹下，使用记事本方式打开此文件，修改config可以达到丰富服务器人性化的特点。...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-03-09</span><i class="fa fa-tag"></i><a class="tag" href="/categories/服务器/" title="服务器">服务器 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/">AZURE KINECT生成点云</a></h3></div><div class="post-content"><p>Azure Kinect 生成点云
 参考链接：
 https://blog.csdn.net/denkywu/article/details/103305714
 
 效果
-main.cpp#include &lt;iostream&gt;#include &lt;opencv2/opencv.hpp&gt;#include &lt;k4a/k4a.hpp&gt;#include &lt;pcl/point_cloud.h&gt;#include &lt;pcl/point_types.h&gt;#include &lt;pcl/visualization/cloud_viewer.h&gt;#include &lt;pcl/io/pcd_io.h&gt;// 方便控制是否 std::cout 信息#define DEBUG_std_cout 0/** * 将Mat转换为pcl的xyz格式 * @param xyzDepth 输入的Mat * @param cloud 输入cloud * @return 是否转换成功 */bool convertMatToPcl(const cv::Mat& ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210304172258.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="clion输入中文最新解决方法"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法">clion输入中文最新解决方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-01T07:42:14.000Z" title="发表于 2021-03-01 15:42:14">2021-03-01</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">CLion 输入中文失效问题解决方法-最新
+main.cpp#include &lt;iostream&gt;#include &lt;opencv2/opencv.hpp&gt;#incl...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-03-06</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Kinect/" title="Kinect">Kinect </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">clion输入中文最新解决方法</a></h3></div><div class="post-content"><p>CLion 输入中文失效问题解决方法-最新
 此处参考链接为：
 https://blog.csdn.net/u011166277/article/details/106287587
 https://bbs.archlinuxcn.org/viewtopic.php?id=10529&amp;p=1
 
-问题描述Linux系统上，使用JetBrains的IDE，会出现输入中文的时候，搜狗输入法的候选词框一直停留在左下角，不会跟随光标移动
-问题根源具体问题官方其实七年前就有了（参考https://youtrack.jetbrains.com/issue/JBR-2460），但是比较坑的是官方也一直没有解决这个问题；
-简单来说就是Idea的jre运行环境一个bug，导致输入法无法定位到鼠标位置。
-解决方法由于其问题根源在于源码，所以需要重新编译才能获得比较好的使用体验；其中解决方法1能够较好的解决问题，但是特别费事，困难重重；解决方法2比较简单，但是使用体验并不是很好。
-解决方案1的成品链接：
-链接: https://pan.baidu.com/s/1KGRDCcFa0gLw-xQAa8cvaw ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/" title="工业机器人课程大作业">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210304172618" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="工业机器人课程大作业"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/" title="工业机器人课程大作业">工业机器人课程大作业</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-28T04:16:26.000Z" title="发表于 2021-01-28 12:16:26">2021-01-28</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">工业机器人技术与应用课程报告1. 绪论作业要求：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。
+问题描述Lin...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-03-01</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/clion/" title="clion">clion </a><a class="tag" href="/tags/搜狗输入法/" title="搜狗输入法">搜狗输入法 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/28/%E5%B7%A5%E4%B8%9A%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%AF%BE%E7%A8%8B%E5%A4%A7%E4%BD%9C%E4%B8%9A/">工业机器人课程大作业</a></h3></div><div class="post-content"><p>工业机器人技术与应用课程报告1. 绪论作业要求：对KUKA KR210型工业机器人进行运动学（包括DH参数及挠度参数）校准，并测试校准后机器人位姿精度。
 编程环境：MATLAB R2019a
 章节安排：第二节至第四节为实现过程
-2. 获取末端实际位姿由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿真的方法获取机器人末端的实际位姿，实现思路是建立机器人运动学正解，将真实误差参数补偿进理论运动学模型，通过随机采样获取多组机器人末端实际位姿数据。
-2.1 机器人正解建立机器人正解的过程如下：
-首先，建立理论DH参数表与真实误差参数表，代码实现如下：
-clc;clear;%% 建立DH与误差表DH = [pi,   0.675,  0,      0,          0;    pi/2,   0,      0,      0.35,       0;    0,      0,      0,      1.15,       0;    -pi/2,  0,      pi/2,   0.041,      0;    pi/2,   -1.2    0,       ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/14/xml%E6%93%8D%E4%BD%9C/" title="xml操作">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210114160713.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="xml操作"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/14/xml%E6%93%8D%E4%BD%9C/" title="xml操作">xml操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-14T07:34:40.000Z" title="发表于 2021-01-14 15:34:40">2021-01-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%85%85%E7%94%B5/">充电</a></span></div><div class="content">XML操作XML文本&lt;skills&gt;  &lt;skill&gt;    &lt;id&gt;2&lt;/id&gt;    &lt;name lang =&quot;cn&quot;&gt;天下无敌&lt;/name&gt;    &lt;damage&gt;123&lt;/damage&gt;  &lt;/skill&gt;  &lt;skill&gt;    &lt;id&gt;4&lt;/id&gt;    &lt;name lang =&quot;cn&quot;&gt;宇宙无敌&lt;/name&gt;    &lt;damage&gt;1231&lt;/damage&gt;  &lt;/skill&gt;  &lt;skill&gt;    &lt;id&gt;5&lt;/id&gt;    &lt;name lang =&quot;cn&quot;&gt;多个平行宇宙无敌&lt;/name&gt;    &lt;damage&gt;12331&lt;/damage&gt;  &lt;/skill&gt;&lt;/skills&gt;
-对应的解析代码using ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/11/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="matlab学习笔记">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210304172116.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="matlab学习笔记"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/11/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="matlab学习笔记">matlab学习笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-11T00:58:04.000Z" title="发表于 2021-01-11 08:58:04">2021-01-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">Matlab学习笔记矩阵格式x=[1 2 3;4 5 6]x*yx.*y对于矩阵来说是不同的x = 5;y = 7;x + y加分号的话，matlab的命令区不会显示（屏蔽）C = input(&#x27;please enter a temporary .c :&#x27;);fprintf(&#x27;华氏度=%f\n&#x27;,F);fprintf(&#x27;%g + %g = %g\n&#x27;,x,y,x+y);&gt;&gt; tutorial2_1please enter x :8please enter y :98 + 9 = 17% if 格式x=input(&#x27;please enter x :&#x27;);y=input(&#x27;please enter y :&#x27;);if (x&gt;10)    fprintf(&#x27;%g + %g = %g\n&#x27;,x,y,x+y);else    fprintf(&#x27;gg\n&#x27;);end;%取余mod(19,5)%求最大公约数a= input(&#x27;请输入数字 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/11/C-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" title="C#进程与线程">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210304171706.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C#进程与线程"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/11/C-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" title="C#进程与线程">C#进程与线程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-11T00:57:48.000Z" title="发表于 2021-01-11 08:57:48">2021-01-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">501 进程与线程
+2. 获取末端实际位姿由于条件原因缺少真实的KUKA210进行实际实验，因此需要采用仿...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-28</span><i class="fa fa-tag"></i><a class="tag" href="/categories/学习笔记/" title="学习笔记">学习笔记 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/14/xml%E6%93%8D%E4%BD%9C/">xml操作</a></h3></div><div class="post-content"><p>XML操作XML文本&lt;skills&gt;  &lt;skill&gt;    &lt;id&gt;2&lt;/id&gt;    &lt;name lang =&quot;cn&quot;&gt;天下无敌&lt;/name&gt;    &lt;damage&gt;123&lt;/damage&gt;  ...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-14</span><i class="fa fa-tag"></i><a class="tag" href="/categories/充电/" title="充电">充电 </a><a class="tag" href="/tags/xml/" title="xml">xml </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/11/matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">matlab学习笔记</a></h3></div><div class="post-content"><p>Matlab学习笔记矩阵格式x=[1 2 3;4 5 6]x*yx.*y对于矩阵来说是不同的x = 5;y = 7;x + y加分号的话，matlab的命令区不会显示（屏蔽）C = input(&#x27;please enter a temporary .c :&#x27;);fprintf(&#x27;华氏度...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-11</span><i class="fa fa-tag"></i><a class="tag" href="/categories/学习笔记/" title="学习笔记">学习笔记 </a><a class="tag" href="/tags/matlab/" title="matlab">matlab </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/11/C-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/">C#进程与线程</a></h3></div><div class="post-content"><p>501 进程与线程
 一般情况下，一个应用程序开启一个进程，开启多个线程
 
 应用程序 —&gt; 进程1（车间）
@@ -165,15 +27,7 @@ clc;clear;%% 建立DH与误差表DH = [pi,   0.675,  0,      0,          0;    p
 线程之中，某些内存区域在同一时间只能由一个线程访问；（互斥锁）
 
 
-​                                某些内存区域可以容纳固定数目的线程访问；（信号量）
-
-线程中语句的执行是从上到下的
-多线程（异步多线程），同时执行
-
-502 开启线程
-委托开启（有一个参数）
-
-using System;using System.Text;using System.Threading.Tasks;namespace ConsoleApp2&#123;    class Program    &#123;        static void Test(int i)        &#123;            Console.WriteLine(&quot;Test&quot;);        &#125;        static ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210304171942.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="正则表达式"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">正则表达式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-11T00:57:11.000Z" title="发表于 2021-01-11 08:57:11">2021-01-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="content">正则表达式正则表达式语言是一种专门用于字符串处理的语言
+​     ...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-11</span><i class="fa fa-tag"></i><a class="tag" href="/categories/学习笔记/" title="学习笔记">学习笔记 </a><a class="tag" href="/tags/线程/" title="线程">线程 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></h3></div><div class="post-content"><p>正则表达式正则表达式语言是一种专门用于字符串处理的语言
 
 检索：通过正则表达式，从字符串中获取我们想要的部分
 
@@ -185,66 +39,4 @@ using System;using System.Text;using System.Threading.Tasks;namespace ConsoleApp
 正则表达式就是由普通字符以及特殊字符（成为元字符）组成的文字模式。
 
 常用元字符：
-^  匹配必须出现在字符串的开头或行的开头
-$  匹配必须出现在以下位置：字符串结尾、字符串结尾处的 \n 之前或行的结尾。
-using System;using System.Security.Cryptography;using System.Text.RegularExpressions;namespace 正则表达式&#123;    class Program    &#123;        //正则表达式（字符串处理语言）        //检索 + 匹配        static void Main(string[] args)        &#123;            string s = &quot;sdfsdfsdfsdfsdfsdfdsfasdf发士大夫士大夫&qu ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/av.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Wang</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">79</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">52</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310201338.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-Sophus"/></a><div class="content"><a class="title" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus">SLAM-Sophus</a><time datetime="2021-03-10T12:11:47.000Z" title="发表于 2021-03-10 20:11:47">2021-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310144025.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Terraria服务器搭建记录"/></a><div class="content"><a class="title" href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录">Terraria服务器搭建记录</a><time datetime="2021-03-10T01:18:40.000Z" title="发表于 2021-03-10 09:18:40">2021-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310131802.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TShock指令详解"/></a><div class="content"><a class="title" href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解">TShock指令详解</a><time datetime="2021-03-09T14:40:21.000Z" title="发表于 2021-03-09 22:40:21">2021-03-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云"><img src="https://gitee.com/JunLuJun/up/raw/master/20210306211927.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AZURE KINECT生成点云"/></a><div class="content"><a class="title" href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云">AZURE KINECT生成点云</a><time datetime="2021-03-06T13:14:43.000Z" title="发表于 2021-03-06 21:14:43">2021-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法"><img src="https://gitee.com/JunLuJun/up/raw/master/20210304172258.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="clion输入中文最新解决方法"/></a><div class="content"><a class="title" href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法">clion输入中文最新解决方法</a><time datetime="2021-03-01T07:42:14.000Z" title="发表于 2021-03-01 15:42:14">2021-03-01</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/"><span class="card-category-list-name">Project</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">Ubuntu配置</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Windows%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">Windows环境配置</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%85%E7%94%B5/"><span class="card-category-list-name">充电</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">奇淫技巧</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AE%9E%E8%B7%B5/"><span class="card-category-list-name">实践</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"><span class="card-category-list-name">服务器</span><span class="card-category-list-count">2</span></a></li>
-            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
-                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
-            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ARCore/' style='font-size:1.42em; color:rgb(174, 172, 28)'>ARCore</a><a href='/tags/ArRobot/' style='font-size:1.36em; color:rgb(1, 21, 50)'>ArRobot</a><a href='/tags/Aruco/' style='font-size:1.10em; color:rgb(11, 195, 98)'>Aruco</a><a href='/tags/Azure-Kinect/' style='font-size:1.14em; color:rgb(94, 29, 75)'>Azure Kinect</a><a href='/tags/C/' style='font-size:1.20em; color:rgb(187, 75, 161)'>C#</a><a href='/tags/Eigen/' style='font-size:1.43em; color:rgb(171, 87, 11)'>Eigen</a><a href='/tags/HelloAR/' style='font-size:1.30em; color:rgb(52, 83, 133)'>HelloAR</a><a href='/tags/Hexo/' style='font-size:1.29em; color:rgb(40, 18, 148)'>Hexo</a><a href='/tags/Hololens/' style='font-size:1.38em; color:rgb(182, 169, 30)'>Hololens</a><a href='/tags/Hololens2/' style='font-size:1.27em; color:rgb(128, 83, 133)'>Hololens2</a><a href='/tags/Kinect/' style='font-size:1.40em; color:rgb(75, 74, 40)'>Kinect</a><a href='/tags/NKeyBoard/' style='font-size:1.32em; color:rgb(156, 145, 152)'>NKeyBoard</a><a href='/tags/Next/' style='font-size:1.41em; color:rgb(43, 12, 143)'>Next</a><a href='/tags/OpenCV/' style='font-size:1.35em; color:rgb(9, 100, 151)'>OpenCV</a><a href='/tags/PCL/' style='font-size:1.37em; color:rgb(155, 166, 77)'>PCL</a><a href='/tags/SFM/' style='font-size:1.19em; color:rgb(41, 11, 191)'>SFM</a><a href='/tags/SLAM/' style='font-size:1.37em; color:rgb(44, 131, 11)'>SLAM</a><a href='/tags/Socket/' style='font-size:1.30em; color:rgb(166, 125, 193)'>Socket</a><a href='/tags/Ubuntu/' style='font-size:1.16em; color:rgb(67, 165, 23)'>Ubuntu</a><a href='/tags/Unity/' style='font-size:1.43em; color:rgb(42, 41, 22)'>Unity</a><a href='/tags/VS2019/' style='font-size:1.41em; color:rgb(157, 79, 111)'>VS2019</a><a href='/tags/VisonLib/' style='font-size:1.17em; color:rgb(2, 173, 163)'>VisonLib</a><a href='/tags/Vuforia/' style='font-size:1.25em; color:rgb(122, 62, 94)'>Vuforia</a><a href='/tags/Windows-terminal/' style='font-size:1.26em; color:rgb(103, 135, 200)'>Windows terminal</a><a href='/tags/YouTuBe/' style='font-size:1.47em; color:rgb(118, 195, 112)'>YouTuBe</a><a href='/tags/c/' style='font-size:1.18em; color:rgb(112, 197, 4)'>c++</a><a href='/tags/chorme%E6%8F%92%E4%BB%B6/' style='font-size:1.40em; color:rgb(135, 130, 141)'>chorme插件</a><a href='/tags/clion/' style='font-size:1.27em; color:rgb(79, 65, 67)'>clion</a><a href='/tags/dll/' style='font-size:1.40em; color:rgb(122, 119, 100)'>dll</a><a href='/tags/git/' style='font-size:1.13em; color:rgb(161, 14, 89)'>git</a><a href='/tags/matlab/' style='font-size:1.48em; color:rgb(115, 48, 84)'>matlab</a><a href='/tags/pcl/' style='font-size:1.12em; color:rgb(21, 22, 159)'>pcl</a><a href='/tags/review/' style='font-size:1.26em; color:rgb(112, 100, 163)'>review</a><a href='/tags/socket/' style='font-size:1.32em; color:rgb(9, 73, 12)'>socket</a><a href='/tags/udp/' style='font-size:1.11em; color:rgb(160, 22, 172)'>udp</a><a href='/tags/word%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81/' style='font-size:1.19em; color:rgb(87, 93, 72)'>word中插入代码</a><a href='/tags/xml/' style='font-size:1.43em; color:rgb(62, 54, 19)'>xml</a><a href='/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/' style='font-size:1.30em; color:rgb(132, 62, 180)'>三维重建</a><a href='/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/' style='font-size:1.46em; color:rgb(113, 161, 42)'>传感器</a><a href='/tags/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/' style='font-size:1.40em; color:rgb(19, 113, 156)'>博客迁移</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
-              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">79</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">92.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-03-10T12:23:54.870Z"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
- <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>function panguFn () {
-  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
-  else {
-    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
-      pangu.spacingElementById('content-inner')
-    })
-  }
-}
-
-function panguInit () {
-  if (true){
-    GLOBAL_CONFIG_SITE.isPost && panguFn()
-  } else {
-    panguFn()
-  }
-}
-
-document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
-  document.body.style.overflow = 'auto';
-  document.getElementById('loading-box').classList.add("loaded")
-}
-window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
-  if (true) { 
-    var typed = new Typed("#subtitle", {
-      strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50
-    })
-  } else {
-    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
-  }
-}
-
-if (true) {
-  if (typeof Typed === 'function') subtitleType()
-  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
-} else {
-  subtitleType()
-}</script><script>if (document.getElementsByClassName('mermaid').length) {
-  if (window.mermaidJsLoad) mermaid.init()
-  else {
-    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
-      window.mermaidJsLoad = true
-      mermaid.initialize({
-        theme: 'default',
-      })
-      false && mermaid.init()
-    })
-  }
-}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
+^  匹配必须出现在字...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-11</span><i class="fa fa-tag"></i><a class="tag" href="/categories/学习笔记/" title="学习笔记">学习笔记 </a><a class="tag" href="/tags/正则表达式/" title="正则表达式">正则表达式 </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/2/">Próximo</a></li></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
