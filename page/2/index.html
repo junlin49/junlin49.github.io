@@ -1,4 +1,124 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>JunLu</title><meta name="description" content="A Blog Powered By Hexo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 5.3.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">JunLu</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a target="_blank" rel="noopener" href="https://www.caicai.me"> CaiCai </a><span>&</span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a class="current" href="/">Home</a></li><li><a href="/about">Sobre</a></li><li><a href="/archives">Arquivo</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/10/hexo%E8%BF%81%E7%A7%BB/">hexo迁移</a></h3></div><div class="post-content"><p>hexo博客迁移前言前面几次迁移都很顺利，但是最近2次迁移发生了错误，所以特定记录下来，以后迁移的时候傻瓜式操作就好些了
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JunLu</title><meta name="description"><meta name="author" content="Wang"><meta name="copyright" content="Wang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://junlu.club/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="JunLu"><meta property="og:url" content="http://junlu.club/page/2/"><meta property="og:site_name" content="JunLu"><meta property="og:description"><meta property="og:image" content="http://junlu.club/img/av.jpg"><meta property="article:published_time" content="2021-03-21T12:38:25.403Z"><meta property="article:modified_time" content="2021-03-21T12:38:25.403Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.3.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: {"limitCount":500,"languages":{"author":"作者: Wang","link":"链接: ","source":"来源: JunLu","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"爱国,敬业,诚信,友善,和谐,富强","fontSize":"15px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-03-21 20:38:25'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="referrer" content="no-referrer-when-downgrade" /><meta name="generator" content="Hexo 5.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/av.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">79</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">52</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JunLu</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">JunLu</h1><div id="site_subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/10/hexo%E8%BF%81%E7%A7%BB/" title="hexo迁移">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210110112638.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo迁移"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/10/hexo%E8%BF%81%E7%A7%BB/" title="hexo迁移">hexo迁移</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-10T01:46:18.000Z" title="发表于 2021-01-10 09:46:18">2021-01-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">hexo博客迁移前言前面几次迁移都很顺利，但是最近2次迁移发生了错误，所以特定记录下来，以后迁移的时候傻瓜式操作就好些了
 步骤
 根据官网文档看步骤https://hexo.io/zh-cn/docs/
 
@@ -8,21 +128,59 @@ git安装
 
 
 执行命令：
-sudo npm install -...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-10</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/博客迁移/" title="博客迁移">博客迁移 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/10/AR%E5%85%A5%E9%97%A8/">AR入门</a></h3></div><div class="post-content"><p>
-  363b6228bcfacc53aa38305c896cbc22765620d0e1b0be9befb9e6affb34f1e3e987de581cc44a1f36ad88ea6787a9e7a664772dbf3450bf0ce66f137a528324bb1dc786eca5f5001e4f6f9d81...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-10</span><i class="fa fa-tag"></i><a class="tag" href="/categories/实践/" title="实践">实践 </a><a class="tag" href="/tags/指导入门/" title="指导入门">指导入门 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/">运动恢复结构-1</a></h3></div><div class="post-content"><p>
-  2d058b368786be6af85840de2b870e3a8e0d65d8d41b6c86d759371d32e3a62070c385ccac7a240fd061091b8fe71e980e811cb1e708fdb93e3ccce966db820994fac143d30ef08f0bb32aefbc...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2021-01-05</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Project/" title="Project">Project </a><a class="tag" href="/tags/SFM/" title="SFM">SFM </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/">Ubuntu20.04内置输入法词库导入</a></h3></div><div class="post-content"><p>Ubuntu20.04 内置输入法词库导入前言由于需要在Clion上写代码，但是它对中文的支持并不好，无法输入中文，为了解决这个问题，我尝试了搜狗输入法，虽然能输入中文，但是无法看到候选词框，体验依旧很难受，万般无奈之下，换回了IBUS，将搜狗输入法的词库导入后，体验还可以
+sudo npm install -g hexo-cli
+OK
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/01/10/AR%E5%85%A5%E9%97%A8/" title="AR入门">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210110112508.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AR入门"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/10/AR%E5%85%A5%E9%97%A8/" title="AR入门">AR入门</a><div class="article-meta-wrap"><span class="article-meta"><i class="fas fa-thumbtack article-meta__icon sticky"></i><span class="sticky">置顶</span><span class="article-meta__separator">|</span></span><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-10T01:45:53.000Z" title="发表于 2021-01-10 09:45:53">2021-01-10</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%AE%9E%E8%B7%B5/">实践</a></span></div><div class="content">
+  363b6228bcfacc53aa38305c896cbc22765620d0e1b0be9befb9e6affb34f1e3e987de581cc44a1f36ad88ea6787a9e7a664772dbf3450bf0ce66f137a528324bb1dc786eca5f5001e4f6f9d81cff4e500d897449de92a8a12628888e3db517ae48c70e8333f40cbe07bfc15e80b71ca16e72ea1b6e051dfe193834c6851413811f8cfe6bf168b1cf09808178c8c1c1e11222bcaea1c37b3d5ff9490dbf67b784c0a15653f6ef43f52d288554cb20ea70235f0be823a27a4c00254675d0b1eb69daa749ec89af3df8f08db4552b2871b79ed5925178486f6d8f6a21c4ed8305c43da021d97b49a6bbfd4157a695164f88ef4ffd26c813584d ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20210105174421.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="运动恢复结构-1"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/05/%E8%BF%90%E5%8A%A8%E6%81%A2%E5%A4%8D%E7%BB%93%E6%9E%84-1/" title="运动恢复结构-1">运动恢复结构-1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-05T09:12:05.000Z" title="发表于 2021-01-05 17:12:05">2021-01-05</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Project/">Project</a></span></div><div class="content">
+  2d058b368786be6af85840de2b870e3a8e0d65d8d41b6c86d759371d32e3a62070c385ccac7a240fd061091b8fe71e980e811cb1e708fdb93e3ccce966db820994fac143d30ef08f0bb32aefbcf9ce377fd35803db98d1f84d47abafbb37a946bcbd9e073adf671a49f558c26597568fb402655cfd17597fd2d21ce0a8ff2bf376281a38f8c37cedd4ee2a7052d77cbdd516edc319531206f9f47a4c8e8c538930acb62dc24948a116f879d96b4426b3742a607a4debc70e6347a4eccd1c6c5dba08707dacf3ccdc5b80d96d71e334b9080550969145df0b97ac92cd1f8b1552c35cda2e02289956db226c0cf50fb3647f862faf18115bc1e ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/12/26/Ubuntu20-04%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E8%AF%8D%E5%BA%93%E5%AF%BC%E5%85%A5/" title="Ubuntu20.04内置输入法词库导入">Ubuntu20.04内置输入法词库导入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-26T03:06:05.000Z" title="发表于 2020-12-26 11:06:05">2020-12-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">Ubuntu20.04 内置输入法词库导入前言由于需要在Clion上写代码，但是它对中文的支持并不好，无法输入中文，为了解决这个问题，我尝试了搜狗输入法，虽然能输入中文，但是无法看到候选词框，体验依旧很难受，万般无奈之下，换回了IBUS，将搜狗输入法的词库导入后，体验还可以
 配置
 IBUS架构，默认输入法
-按照此...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-12-26</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/输入法/" title="输入法">输入法 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">Ubuntu-开发库配置记录</a></h3></div><div class="post-content"><p>Ubuntu-开发库配置记录1. 前言由于配置库的过程太过惨痛，所以将现在以及以后的开发库的配置过程记录一下，以供后续参考
+按照此方法配置Clion
+安装深蓝词库转换，github上有，传送门
+将搜狗输入法的词库导出文件转换为txt
+导入默认输入法
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20201225105157.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-开发库配置记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/12/25/Ubuntu-%E5%BC%80%E5%8F%91%E5%BA%93%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" title="Ubuntu-开发库配置记录">Ubuntu-开发库配置记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-25T01:55:39.000Z" title="发表于 2020-12-25 09:55:39">2020-12-25</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">Ubuntu-开发库配置记录1. 前言由于配置库的过程太过惨痛，所以将现在以及以后的开发库的配置过程记录一下，以供后续参考
 2. Eigen
 简单命令安装
 sudo apt-get install libeigen3-dev
 源码编译安装
 git clone
-git clone https:&#x2F;&#x2F...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-12-25</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/Ubuntu/" title="Ubuntu">Ubuntu </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">Ubuntu-安装系统以及花屏问题解决</a></h3></div><div class="post-content"><p>Ubuntu-安装系统以及花屏问题解决前言马上就快寒假了，想到回家的时候家里没有这么好的科研条件，就打算买个笔记本作为主力机，教研室电脑作为Ubuntu的机子，然后使用向日葵连接使用；今年已经配置了号多次Ubuntu系统，今天记录一下，以后直接上就好了
+git clone https:&#x2F;&#x2F;gitlab.com&#x2F;libeigen&#x2F;eigen.git
+安装
+mkdir buildcd buildcmake ..sudo make install
+
+
+3. Cmake
+进入官网下载压缩包
+
+解压后按照Github上的提示，安装
+.&#x2F;bootstrapmake -j8make install
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20201225104838.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu-安装系统以及花屏问题解决"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/12/25/Ubuntu-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E4%BB%A5%E5%8F%8A%E8%8A%B1%E5%B1%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="Ubuntu-安装系统以及花屏问题解决">Ubuntu-安装系统以及花屏问题解决</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-25T01:29:54.000Z" title="发表于 2020-12-25 09:29:54">2020-12-25</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">Ubuntu-安装系统以及花屏问题解决前言马上就快寒假了，想到回家的时候家里没有这么好的科研条件，就打算买个笔记本作为主力机，教研室电脑作为Ubuntu的机子，然后使用向日葵连接使用；今年已经配置了号多次Ubuntu系统，今天记录一下，以后直接上就好了
 1. 制作安装盘
-从官网下载安装包，格式化U盘，然后将.is...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-12-25</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/Ubuntu/" title="Ubuntu">Ubuntu </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/">阶段总结</a></h3></div><div class="post-content"><p>
-  9d2191e021f8241343bd324910f32a8ed005932a203ec9a1f156d8d06bfe2232a3227cd6bc39d7ff6d43639a21334dcbf3bb050f6419f62defb35ee61dc2297d2340117c4e64619924f3b8ac79...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-12-19</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Project/" title="Project">Project </a><a class="tag" href="/tags/ArRobot/" title="ArRobot">ArRobot </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/12/01/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%9C%A8%E7%BA%BF%E7%AD%94%E9%A2%98%E6%89%93%E5%BC%80%E5%A4%8D%E5%88%B6%E6%9D%83%E9%99%90/">大学生在线答题打开复制权限</a></h3></div><div class="post-content"><p>关于实现“大学生在线”答题页面开启复制题目权限的技巧前提准备
+从官网下载安装包，格式化U盘，然后将.iso文件全部解压到U盘中；
+制作完成
+
+2. 花屏问题解决
+安装系统时，采用安全图形模式安装，最后安装重启阶段，一直按住e键不放，进入一大摞代码的界面；（或者不停的按Esc）
+
+修改代码，在quite splash后面输入nomodeset；
+
+快捷键 Ctrl+x启动系统
+
+进入系统后，第一件事，并不是修改软件源，而是在终端执行以下命令：
+sudo gedit &#x2F;etc&#x2F;default&#x2F;grub
+同样，找到quite splash，在后面加入nomodeset
+
+执行命令
+sudo update-grub
+3. 最后
+
+重新进入系统后，更换软件源，添加附加驱动等等，就不详细说了
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结">     <img class="post_bg" src="https://i.loli.net/2020/12/19/Mq4ld3QFWmPopUn.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="阶段总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/12/19/%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%93/" title="阶段总结">阶段总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-19T13:46:14.000Z" title="发表于 2020-12-19 21:46:14">2020-12-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Project/">Project</a></span></div><div class="content">
+  9d2191e021f8241343bd324910f32a8ed005932a203ec9a1f156d8d06bfe2232a3227cd6bc39d7ff6d43639a21334dcbf3bb050f6419f62defb35ee61dc2297d2340117c4e64619924f3b8ac7988c774bb18022fa031e4bf84b54af804c8fec6a6bcf2a6138c254cacb31cb8f56f7eaa1211c495534f3dc153238e150b8826d2c01c04abfb9dd88b8dedf7d5635b2873cc9de298ec49f5219c9ec4f4e4d29393d61297493a167d7e6386208f72f0f80dbd206b6b88eff5d5b9bb1ab02af52b56db547904b328e3172e1d7f21d120fe837944d030c3226f86dd0186c10303d22f3e2d2911283638b37e8d55ced8f875e2366d71dd5b12765ba ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/12/01/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%9C%A8%E7%BA%BF%E7%AD%94%E9%A2%98%E6%89%93%E5%BC%80%E5%A4%8D%E5%88%B6%E6%9D%83%E9%99%90/" title="大学生在线答题打开复制权限">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20201201222327.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="大学生在线答题打开复制权限"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/12/01/%E5%A4%A7%E5%AD%A6%E7%94%9F%E5%9C%A8%E7%BA%BF%E7%AD%94%E9%A2%98%E6%89%93%E5%BC%80%E5%A4%8D%E5%88%B6%E6%9D%83%E9%99%90/" title="大学生在线答题打开复制权限">大学生在线答题打开复制权限</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-01T14:19:32.000Z" title="发表于 2020-12-01 22:19:32">2020-12-01</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">杂七杂八</a></span></div><div class="content">关于实现“大学生在线”答题页面开启复制题目权限的技巧前提准备
 谷歌浏览器
 油猴插件
 
@@ -37,9 +195,115 @@ git clone https:&#x2F;&#x2F...</p></div><div class="post-footer"><div class="met
 在右上角开启开发者模式，如下图
 
 
-下载油猴插件，点我下载，下载完成后，是一个.crx文件，要做...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-12-01</span><i class="fa fa-tag"></i><a class="tag" href="/categories/杂七杂八/" title="杂七杂八">杂七杂八 </a><a class="tag" href="/tags/大学生在线/" title="大学生在线">大学生在线 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/11/27/%E5%B0%86ubuntu%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E6%94%B9%E4%B8%BA%E8%8B%B1%E6%96%87/">将ubuntu默认中文文件夹名称改为英文</a></h3></div><div class="post-content"><p>将Ubuntu默认中文文件夹名称改为英文
+下载油猴插件，点我下载，下载完成后，是一个.crx文件，要做的是将其安装到浏览器中
+
+下载完成后，放在桌面上，将文件的后缀名.crx改掉，改为.zip，然后将其用解压软件解压到桌面
+
+打开浏览器的扩展程序页面，选择加载已解压的扩展程序，选择桌面上的已经解压的文件夹，安装扩展程序
+
+
+
+
+
+
+安装网页限制解除脚本
+打开此网址，点击安装按钮，如下图所示；
+
+安装完成后，任意打开网页，如，百度主页，鼠标移动至左上角，如下图所示：
+
+可以发现有解除限制的选项，点它！就可以在此网页有复制权限了，因此，在大学生在线答题之前，需要先点击此按钮，再答题
+至此配置结束
+
+
+具体效果
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/11/27/%E5%B0%86ubuntu%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E6%94%B9%E4%B8%BA%E8%8B%B1%E6%96%87/" title="将ubuntu默认中文文件夹名称改为英文">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20201127091209.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将ubuntu默认中文文件夹名称改为英文"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/27/%E5%B0%86ubuntu%E9%BB%98%E8%AE%A4%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%A4%B9%E5%90%8D%E7%A7%B0%E6%94%B9%E4%B8%BA%E8%8B%B1%E6%96%87/" title="将ubuntu默认中文文件夹名称改为英文">将ubuntu默认中文文件夹名称改为英文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-27T01:10:05.000Z" title="发表于 2020-11-27 09:10:05">2020-11-27</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">将Ubuntu默认中文文件夹名称改为英文
 转载于https://blog.csdn.net/jeffrey_li/article/details/54947502
 
 解决方法
-方法一：打开 系统设置-》语言支持 将“english”拖动到最上端，重启系统。重启后，会提示更新文件名称，更新后在将语言”中文“拖动到顶...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-11-27</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/文件夹改名/" title="文件夹改名">文件夹改名 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2020/11/27/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/">clion输入中文</a></h3></div><div class="post-content"><p>Ubuntu20.04下clion无法输入中文问题解决
-转载于https://blog.csdn.net/dyg7777/article/details/108334293?utm_medium=distribute.pc_relevant.none-task-blog-title-2&amp;spm=1001....</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2020-11-27</span><i class="fa fa-tag"></i><a class="tag" href="/categories/Ubuntu配置/" title="Ubuntu配置">Ubuntu配置 </a><a class="tag" href="/tags/clion/" title="clion">clion </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/">Anterior</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/3/">Próximo</a></li></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+方法一：打开 系统设置-》语言支持 将“english”拖动到最上端，重启系统。重启后，会提示更新文件名称，更新后在将语言”中文“拖动到顶部，重启系统 。
+
+方法二：编辑~/.config/user-dirs.dirs文件
+vim ~&#x2F;.config&#x2F;user-dirs.dirs1
+修改文件内容为：
+XDG_DESKTOP_DIR&#x3D;&quot;$HOME&#x2F;Desktop&quot;XDG_DOWNLOAD_DIR&#x3D;&quot;$HOME&#x2F;Downloads&quot;XDG_TEMPLATES_DIR&#x3D;&quot;$HOME&#x2F;Templates&quot;XDG_PUBLICSHARE_DIR&#x3D;&quot;$HOME&#x2F;Public&quot;XDG_DOCUMENTS_DIR&#x3D;&quot;$HOME&#x ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/11/27/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/" title="clion输入中文">     <img class="post_bg" src="https://gitee.com/JunLuJun/up/raw/master/20201127090904.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="clion输入中文"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/11/27/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87/" title="clion输入中文">clion输入中文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-27T01:03:35.000Z" title="发表于 2020-11-27 09:03:35">2020-11-27</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/">Ubuntu配置</a></span></div><div class="content">Ubuntu20.04下clion无法输入中文问题解决
+转载于https://blog.csdn.net/dyg7777/article/details/108334293?utm_medium=distribute.pc_relevant.none-task-blog-title-2&amp;spm=1001.2101.3001.4242
+
+解决方法
+设置输入法
+将 Ubuntu 的输入法设置为 Ibus Pinyin
+
+
+下载JBR
+下载解压 JBR
+
+
+安装runtime插件
+打开 IDE，下载插件 Choose Runtime
+
+IDE在jbr下运行
+在 CLion中按下 Ctrl + Shift + A， 随后输入 Choose Runtime，打开对话框，随后选择下载解压的 JBR，点击 Install，随后 IDE 会在自动重启
+就此结束
+
+
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/av.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Wang</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">79</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length_num">52</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junlin49" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2998963449@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310201338.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-Sophus"/></a><div class="content"><a class="title" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus">SLAM-Sophus</a><time datetime="2021-03-10T12:11:47.000Z" title="发表于 2021-03-10 20:11:47">2021-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310144025.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Terraria服务器搭建记录"/></a><div class="content"><a class="title" href="/2021/03/10/Terraria%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" title="Terraria服务器搭建记录">Terraria服务器搭建记录</a><time datetime="2021-03-10T01:18:40.000Z" title="发表于 2021-03-10 09:18:40">2021-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310131802.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TShock指令详解"/></a><div class="content"><a class="title" href="/2021/03/09/TShock%E6%8C%87%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="TShock指令详解">TShock指令详解</a><time datetime="2021-03-09T14:40:21.000Z" title="发表于 2021-03-09 22:40:21">2021-03-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云"><img src="https://gitee.com/JunLuJun/up/raw/master/20210306211927.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AZURE KINECT生成点云"/></a><div class="content"><a class="title" href="/2021/03/06/AZURE-KINECT%E7%94%9F%E6%88%90%E7%82%B9%E4%BA%91/" title="AZURE KINECT生成点云">AZURE KINECT生成点云</a><time datetime="2021-03-06T13:14:43.000Z" title="发表于 2021-03-06 21:14:43">2021-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法"><img src="https://gitee.com/JunLuJun/up/raw/master/20210304172258.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="clion输入中文最新解决方法"/></a><div class="content"><a class="title" href="/2021/03/01/clion%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87%E6%9C%80%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="clion输入中文最新解决方法">clion输入中文最新解决方法</a><time datetime="2021-03-01T07:42:14.000Z" title="发表于 2021-03-01 15:42:14">2021-03-01</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Project/"><span class="card-category-list-name">Project</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Ubuntu%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">Ubuntu配置</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Windows%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><span class="card-category-list-name">Windows环境配置</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%85%E7%94%B5/"><span class="card-category-list-name">充电</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%A5%87%E6%B7%AB%E6%8A%80%E5%B7%A7/"><span class="card-category-list-name">奇淫技巧</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">学习笔记</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%AE%9E%E8%B7%B5/"><span class="card-category-list-name">实践</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"><span class="card-category-list-name">服务器</span><span class="card-category-list-count">2</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories/">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ARCore/' style='font-size:1.20em; color:rgb(113, 178, 107)'>ARCore</a><a href='/tags/ArRobot/' style='font-size:1.12em; color:rgb(149, 28, 173)'>ArRobot</a><a href='/tags/Aruco/' style='font-size:1.27em; color:rgb(57, 165, 17)'>Aruco</a><a href='/tags/Azure-Kinect/' style='font-size:1.29em; color:rgb(182, 199, 92)'>Azure Kinect</a><a href='/tags/C/' style='font-size:1.40em; color:rgb(49, 37, 200)'>C#</a><a href='/tags/Eigen/' style='font-size:1.41em; color:rgb(31, 50, 25)'>Eigen</a><a href='/tags/HelloAR/' style='font-size:1.50em; color:rgb(177, 159, 152)'>HelloAR</a><a href='/tags/Hexo/' style='font-size:1.22em; color:rgb(52, 171, 85)'>Hexo</a><a href='/tags/Hololens/' style='font-size:1.18em; color:rgb(41, 119, 94)'>Hololens</a><a href='/tags/Hololens2/' style='font-size:1.14em; color:rgb(129, 56, 16)'>Hololens2</a><a href='/tags/Kinect/' style='font-size:1.25em; color:rgb(129, 176, 127)'>Kinect</a><a href='/tags/NKeyBoard/' style='font-size:1.15em; color:rgb(8, 31, 146)'>NKeyBoard</a><a href='/tags/Next/' style='font-size:1.23em; color:rgb(29, 187, 187)'>Next</a><a href='/tags/OpenCV/' style='font-size:1.40em; color:rgb(80, 137, 22)'>OpenCV</a><a href='/tags/PCL/' style='font-size:1.18em; color:rgb(13, 56, 20)'>PCL</a><a href='/tags/SFM/' style='font-size:1.39em; color:rgb(24, 130, 93)'>SFM</a><a href='/tags/SLAM/' style='font-size:1.45em; color:rgb(53, 67, 153)'>SLAM</a><a href='/tags/Socket/' style='font-size:1.21em; color:rgb(38, 34, 26)'>Socket</a><a href='/tags/Ubuntu/' style='font-size:1.44em; color:rgb(178, 85, 72)'>Ubuntu</a><a href='/tags/Unity/' style='font-size:1.35em; color:rgb(21, 6, 132)'>Unity</a><a href='/tags/VS2019/' style='font-size:1.47em; color:rgb(97, 168, 51)'>VS2019</a><a href='/tags/VisonLib/' style='font-size:1.34em; color:rgb(163, 158, 95)'>VisonLib</a><a href='/tags/Vuforia/' style='font-size:1.47em; color:rgb(182, 20, 88)'>Vuforia</a><a href='/tags/Windows-terminal/' style='font-size:1.45em; color:rgb(194, 195, 178)'>Windows terminal</a><a href='/tags/YouTuBe/' style='font-size:1.30em; color:rgb(90, 30, 18)'>YouTuBe</a><a href='/tags/c/' style='font-size:1.30em; color:rgb(27, 155, 176)'>c++</a><a href='/tags/chorme%E6%8F%92%E4%BB%B6/' style='font-size:1.32em; color:rgb(190, 156, 87)'>chorme插件</a><a href='/tags/clion/' style='font-size:1.11em; color:rgb(81, 91, 82)'>clion</a><a href='/tags/dll/' style='font-size:1.44em; color:rgb(135, 31, 117)'>dll</a><a href='/tags/git/' style='font-size:1.20em; color:rgb(4, 55, 162)'>git</a><a href='/tags/matlab/' style='font-size:1.36em; color:rgb(58, 5, 138)'>matlab</a><a href='/tags/pcl/' style='font-size:1.47em; color:rgb(113, 11, 144)'>pcl</a><a href='/tags/review/' style='font-size:1.37em; color:rgb(73, 55, 15)'>review</a><a href='/tags/socket/' style='font-size:1.27em; color:rgb(88, 124, 103)'>socket</a><a href='/tags/udp/' style='font-size:1.11em; color:rgb(56, 189, 0)'>udp</a><a href='/tags/word%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81/' style='font-size:1.31em; color:rgb(22, 15, 128)'>word中插入代码</a><a href='/tags/xml/' style='font-size:1.29em; color:rgb(136, 95, 93)'>xml</a><a href='/tags/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/' style='font-size:1.26em; color:rgb(6, 200, 179)'>三维重建</a><a href='/tags/%E4%BC%A0%E6%84%9F%E5%99%A8/' style='font-size:1.16em; color:rgb(194, 66, 174)'>传感器</a><a href='/tags/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB/' style='font-size:1.33em; color:rgb(176, 180, 83)'>博客迁移</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/09/"><span class="card-archive-list-date">九月 2020</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">79</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">92.9k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-03-21T12:38:24.898Z"></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gitee.com/JunLuJun/up/raw/master/20201227082127.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Wang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "今日事&#44;今日毕,Never put off till tomorrow what you can do today".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '今日事&#44;今日毕'
+  }
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}</script><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="true" src="/js/third-party/piao.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="/js/third-party/ClickShowText.js" async="async"></script></div></body></html>
