@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SLAM-HW3 简答 | Junlu's Blog</title><meta name="keywords" content="homework"><meta name="author" content="Junlu"><meta name="copyright" content="Junlu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SLAM-HW3 简答2.群的性质2.1 封闭性验证： $\forall a_1,a_2 \in Z,a_1+a_2 \in Z$  结合律验证 $\forall a_1,a_2,a_3\in Z,(a_1+a_2)+a_3 &#x3D; a_1+(a_2+a_3)$  幺元验证 $a_0&#x3D;0, a_0 \in Z,s.t. \forall a \in Z,0+a &#x3D; a+0 &#x3D; a$  逆元验证 $\fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SLAM-HW3 简答">
+<meta property="og:url" content="http://blog.junlu.club/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/index.html">
+<meta property="og:site_name" content="Junlu&#39;s Blog">
+<meta property="og:description" content="SLAM-HW3 简答2.群的性质2.1 封闭性验证： $\forall a_1,a_2 \in Z,a_1+a_2 \in Z$  结合律验证 $\forall a_1,a_2,a_3\in Z,(a_1+a_2)+a_3 &#x3D; a_1+(a_2+a_3)$  幺元验证 $a_0&#x3D;0, a_0 \in Z,s.t. \forall a \in Z,0+a &#x3D; a+0 &#x3D; a$  逆元验证 $\fo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/JunLuJun/up/raw/master/image-20210410160353509.png">
+<meta property="article:published_time" content="2021-04-10T08:01:32.000Z">
+<meta property="article:modified_time" content="2021-04-10T08:04:48.360Z">
+<meta property="article:author" content="Junlu">
+<meta property="article:tag" content="homework">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/JunLuJun/up/raw/master/image-20210410160353509.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://blog.junlu.club/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-10 16:04:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://gitee.com/JunLuJun/up/raw/master/wallhaven-o35m3m.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">83</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://gitee.com/JunLuJun/up/raw/master/image-20210410160353509.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Junlu's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SLAM-HW3 简答</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-10T08:01:32.000Z" title="发表于 2021-04-10 16:01:32">2021-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-10T08:04:48.360Z" title="更新于 2021-04-10 16:04:48">2021-04-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/SLAM-HomeWork/">SLAM-HomeWork</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SLAM-HW3 简答"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="SLAM-HW3-简答"><a href="#SLAM-HW3-简答" class="headerlink" title="SLAM-HW3 简答"></a>SLAM-HW3 简答</h1><h2 id="2-群的性质"><a href="#2-群的性质" class="headerlink" title="2.群的性质"></a>2.群的性质</h2><h3 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h3><ul>
+<li><p>封闭性验证：</p>
+<p>$\forall a_1,a_2 \in Z,a_1+a_2 \in Z$</p>
+</li>
+<li><p>结合律验证</p>
+<p>$\forall a_1,a_2,a_3\in Z,(a_1+a_2)+a_3 = a_1+(a_2+a_3)$</p>
+</li>
+<li><p>幺元验证</p>
+<p>$a_0=0, a_0 \in Z,s.t. \forall a \in Z,0+a = a+0 = a$</p>
+</li>
+<li><p>逆元验证</p>
+<p>$\forall a \in Z,a^{-1} = -a \in Z,s.t. a+(-a) = 0$</p>
+</li>
+</ul>
+<p>综上，{$Z,+$}是群。</p>
+<h3 id="2-2"><a href="#2-2" class="headerlink" title="2.2"></a>2.2</h3><ul>
+<li><p>封闭性验证</p>
+<p>$\forall a_1,a_2 \in N,a_1+a_2 \in Z$</p>
+</li>
+<li><p>结合律验证</p>
+<p>$\forall a_1,a_2,a_3\in Z,(a_1+a_2)+a_3 = a_1+(a_2+a_3)$</p>
+</li>
+<li><p>幺元验证</p>
+<p>$\not\exist a_0 \in N,s.t. \forall a \in N,a_0+a = a+a_0 = a$</p>
+</li>
+</ul>
+<p>综上，{$N,+$}不是群。</p>
+<h2 id="3-验证向量叉乘的李代数性质"><a href="#3-验证向量叉乘的李代数性质" class="headerlink" title="3.验证向量叉乘的李代数性质"></a>3.验证向量叉乘的李代数性质</h2><p>$V = R^3,F=R,[a,b]=a\times b,验证g = (R^3,R,\times)构成李代数$</p>
+<ul>
+<li><p>封闭性验证</p>
+<p>$\forall X,Y \in R^3,[X,Y] = X \times Y \in R^3$</p>
+</li>
+<li><p>双线性验证</p>
+<p>$\forall X,Y,Z \in V,a,b \in R$：</p>
+<p>$[aX+bY,Z] = (aX+bY)\times Z=aX \times Z + bY\times Z=a[X,Z]+b[Y,Z]$</p>
+<p>$[Z,aX+bY] =Z\times(aX +bY)=Z\times aX+Z \times bY = a[Z,X]+b[Z,Y]$</p>
+</li>
+<li><p>自反性验证</p>
+<p>$\forall X \in R^3,[X,X]=X \times X = 0$</p>
+</li>
+<li><p>雅克比等价验证</p>
+<p>$\forall X,Y,Z \in R^3$，</p>
+<script type="math/tex; mode=display">[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]] = [X,Y \times Z]+[Y,Z \times X]+[Z,X \times Y]=0</script></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Junlu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.junlu.club/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/">http://blog.junlu.club/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.junlu.club" target="_blank">Junlu's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/homework/">homework</a></div><div class="post_share"><div class="social-share" data-image="https://gitee.com/JunLuJun/up/raw/master/image-20210410160353509.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/10/SLAM-HW1-%E7%AE%80%E7%AD%94/"><img class="prev-cover" src="https://gitee.com/JunLuJun/up/raw/master/image-20210410160732325.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SLAM-HW1 简答</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/10/SLAM-HW3-code-%E8%AF%BB%E5%8F%96%E8%BD%A8%E8%BF%B9%E7%94%BB%E5%9B%BE/"><img class="next-cover" src="https://gitee.com/JunLuJun/up/raw/master/image-20210410085530351.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SLAM-HW3 code:读取轨迹画图</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/10/SLAM-HW1-简答/" title="SLAM-HW1 简答"><img class="cover" src="https://gitee.com/JunLuJun/up/raw/master/image-20210410160732325.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-10</div><div class="title">SLAM-HW1 简答</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://gitee.com/JunLuJun/up/raw/master/wallhaven-o35m3m.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Junlu</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">83</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SLAM-HW3-%E7%AE%80%E7%AD%94"><span class="toc-number">1.</span> <span class="toc-text">SLAM-HW3 简答</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BE%A4%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.1.</span> <span class="toc-text">2.群的性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1"><span class="toc-number">1.1.1.</span> <span class="toc-text">2.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98%E7%9A%84%E6%9D%8E%E4%BB%A3%E6%95%B0%E6%80%A7%E8%B4%A8"><span class="toc-number">1.2.</span> <span class="toc-text">3.验证向量叉乘的李代数性质</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/10/SLAM-HW1-%E7%AE%80%E7%AD%94/" title="SLAM-HW1 简答"><img src="https://gitee.com/JunLuJun/up/raw/master/image-20210410160732325.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-HW1 简答"/></a><div class="content"><a class="title" href="/2021/04/10/SLAM-HW1-%E7%AE%80%E7%AD%94/" title="SLAM-HW1 简答">SLAM-HW1 简答</a><time datetime="2021-04-10T08:06:02.000Z" title="发表于 2021-04-10 16:06:02">2021-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/" title="SLAM-HW3 简答"><img src="https://gitee.com/JunLuJun/up/raw/master/image-20210410160353509.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-HW3 简答"/></a><div class="content"><a class="title" href="/2021/04/10/SLAM-HW3-%E7%AE%80%E7%AD%94/" title="SLAM-HW3 简答">SLAM-HW3 简答</a><time datetime="2021-04-10T08:01:32.000Z" title="发表于 2021-04-10 16:01:32">2021-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/10/SLAM-HW3-code-%E8%AF%BB%E5%8F%96%E8%BD%A8%E8%BF%B9%E7%94%BB%E5%9B%BE/" title="SLAM-HW3 code:读取轨迹画图"><img src="https://gitee.com/JunLuJun/up/raw/master/image-20210410085530351.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-HW3 code:读取轨迹画图"/></a><div class="content"><a class="title" href="/2021/04/10/SLAM-HW3-code-%E8%AF%BB%E5%8F%96%E8%BD%A8%E8%BF%B9%E7%94%BB%E5%9B%BE/" title="SLAM-HW3 code:读取轨迹画图">SLAM-HW3 code:读取轨迹画图</a><time datetime="2021-04-10T00:54:11.000Z" title="发表于 2021-04-10 08:54:11">2021-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/05/%E7%BE%A4%E6%99%96NAS%E9%83%A8%E7%BD%B2AWTRIX2/" title="群晖NAS部署AWTRIX2"><img src="http://i.imgur.com/lQSmPiN.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="群晖NAS部署AWTRIX2"/></a><div class="content"><a class="title" href="/2021/04/05/%E7%BE%A4%E6%99%96NAS%E9%83%A8%E7%BD%B2AWTRIX2/" title="群晖NAS部署AWTRIX2">群晖NAS部署AWTRIX2</a><time datetime="2021-04-05T11:25:03.000Z" title="发表于 2021-04-05 19:25:03">2021-04-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus"><img src="https://gitee.com/JunLuJun/up/raw/master/20210310201338.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SLAM-Sophus"/></a><div class="content"><a class="title" href="/2021/03/10/SLAM-Sophus/" title="SLAM-Sophus">SLAM-Sophus</a><time datetime="2021-03-10T12:11:47.000Z" title="发表于 2021-03-10 20:11:47">2021-03-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Junlu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":"hibiki","display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body></html>
