@@ -146,11 +146,11 @@
 </blockquote>
 <ol>
 <li><p>输入命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nmcli con edit type pppoe con-name “YOUR_CONNECTION_NAME”</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmcli con edit type pppoe con-name “YOUR_CONNECTION_NAME”</span><br></pre></td></tr></table></figure>
 <p>把里面的<code>YOUR_CONNECTION_NAME</code>改成新建立的拨号上网的名字。<br>然后命令行界面会有所变化，接下来开始设置用户名和密码就行了.</p>
 </li>
 <li><p>依次输入命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set pppoe.username YOUR_DSL_ACCOUNT_USERNAME</span><br><span class="line">set pppoe.password YOUR_DSL_ACCOUNT_PASSWORD</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set pppoe.username YOUR_DSL_ACCOUNT_USERNAME</span><br><span class="line">set pppoe.password YOUR_DSL_ACCOUNT_PASSWORD</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
 <p>把用户名和密码填成你自己的账号和密码就OK。<br>接下来回询问你是否想设置成自动连接，经常用的话输入<code>yes</code>就可以，开机就会自动连接，比较方便。<br>这就设置好了，然后输入<code>quit</code>退出即可。</p>
 <p>就此结束</p>
 </li>

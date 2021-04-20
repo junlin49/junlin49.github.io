@@ -146,13 +146,13 @@
 <li><p><strong>方法一：</strong><br>打开 系统设置-》语言支持 将“english”拖动到最上端，重启系统。<br>重启后，会提示更新文件名称，更新后在将语言”中文“拖动到顶部，重启系统 。</p>
 </li>
 <li><p><strong>方法二：</strong>编辑~/.config/user-dirs.dirs文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;user-dirs.dirs1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;user-dirs.dirs1</span><br></pre></td></tr></table></figure>
 <p>修改文件内容为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XDG_DESKTOP_DIR&#x3D;&quot;$HOME&#x2F;Desktop&quot;</span><br><span class="line">XDG_DOWNLOAD_DIR&#x3D;&quot;$HOME&#x2F;Downloads&quot;</span><br><span class="line">XDG_TEMPLATES_DIR&#x3D;&quot;$HOME&#x2F;Templates&quot;</span><br><span class="line">XDG_PUBLICSHARE_DIR&#x3D;&quot;$HOME&#x2F;Public&quot;</span><br><span class="line">XDG_DOCUMENTS_DIR&#x3D;&quot;$HOME&#x2F;Documents&quot;</span><br><span class="line">XDG_MUSIC_DIR&#x3D;&quot;$HOME&#x2F;Music&quot;</span><br><span class="line">XDG_PICTURES_DIR&#x3D;&quot;$HOME&#x2F;Pictures&quot;</span><br><span class="line">XDG_VIDEOS_DIR&#x3D;&quot;$HOME&#x2F;Videos&quot;12345678</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">XDG_DESKTOP_DIR&#x3D;&quot;$HOME&#x2F;Desktop&quot;</span><br><span class="line">XDG_DOWNLOAD_DIR&#x3D;&quot;$HOME&#x2F;Downloads&quot;</span><br><span class="line">XDG_TEMPLATES_DIR&#x3D;&quot;$HOME&#x2F;Templates&quot;</span><br><span class="line">XDG_PUBLICSHARE_DIR&#x3D;&quot;$HOME&#x2F;Public&quot;</span><br><span class="line">XDG_DOCUMENTS_DIR&#x3D;&quot;$HOME&#x2F;Documents&quot;</span><br><span class="line">XDG_MUSIC_DIR&#x3D;&quot;$HOME&#x2F;Music&quot;</span><br><span class="line">XDG_PICTURES_DIR&#x3D;&quot;$HOME&#x2F;Pictures&quot;</span><br><span class="line">XDG_VIDEOS_DIR&#x3D;&quot;$HOME&#x2F;Videos&quot;12345678</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>方法三：</strong><br>打开终端，在终端中输入命令:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LANG&#x3D;en_US</span><br><span class="line">xdg-user-dirs-gtk-update12</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export LANG&#x3D;en_US</span><br><span class="line">xdg-user-dirs-gtk-update12</span><br></pre></td></tr></table></figure>
 <p>跳出对话框询问是否将目录转化为英文路径,同意并关闭。<br>在终端中输入命令:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LANG&#x3D;zh_CN1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LANG&#x3D;zh_CN1</span><br></pre></td></tr></table></figure>
 <p>重新启动系统，系统会提示更新文件名称，选择不再提示,并取消修改。</p>
 </li>
 </ul>
