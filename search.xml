@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>opengl在ubuntu上的配置</title>
+    <url>/2021/04/21/opengl%E5%9C%A8ubuntu%E4%B8%8A%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="OpenGL在ubuntu上的配置"><a href="#OpenGL在ubuntu上的配置" class="headerlink" title="OpenGL在ubuntu上的配置"></a>OpenGL在ubuntu上的配置</h1><h2 id="配置方案"><a href="#配置方案" class="headerlink" title="配置方案"></a>配置方案</h2><p>GLFW，GLAD</p>
+<h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/glfw/glfw.git</span><br><span class="line">cd GLFW</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
+<p>注意：在Linux下你需要链接<strong>libGL.so</strong>库文件，这需要添加<code>-lGL</code>到你的链接器设置中。如果找不到这个库你可能需要安装Mesa，NVidia或AMD的开发包。</p>
+<p>对于用GCC编译的Linux用户建议使用这个命令行选项<code>-lGLEW -lglfw3 -lGL -lX11 -lpthread -lXrandr -lXi</code>。没有正确链接相应的库会产生 <em>undefined reference</em> (未定义的引用) 这个错误。</p>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;GLFW\glfw3.h&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="GLAD"><a href="#GLAD" class="headerlink" title="GLAD"></a>GLAD</h2><p>GLAD是一个<a href="https://github.com/Dav1dde/glad">开源</a>的库，它能解决我们上面提到的那个繁琐的问题。GLAD的配置与大多数的开源库有些许的不同，GLAD使用了一个<a href="http://glad.dav1d.de/">在线服务</a>。在这里我们能够告诉GLAD需要定义的OpenGL版本，并且根据这个版本加载所有相关的OpenGL函数。</p>
+<p>打开GLAD的<a href="http://glad.dav1d.de/">在线服务</a>，将语言(Language)设置为<strong>C/C++</strong>，在API选项中，选择<strong>3.3</strong>以上的OpenGL(gl)版本（我们的教程中将使用3.3版本，但更新的版本也能正常工作）。之后将模式(Profile)设置为<strong>Core</strong>，并且保证<strong>生成加载器</strong>(Generate a loader)的选项是选中的。现在可以先（暂时）忽略拓展(Extensions)中的内容。都选择完之后，点击<strong>生成</strong>(Generate)按钮来生成库文件。</p>
+<p>GLAD现在应该提供给你了一个zip压缩文件，包含两个头文件目录，和一个<strong>glad.c</strong>文件。将两个头文件目录（<strong>glad</strong>和<strong>KHR</strong>）复制到你的<strong>Include</strong>文件夹中（或者增加一个额外的项目指向这些目录），并添加<strong>glad.c</strong>文件到你的工程中。</p>
+<p>经过前面的这些步骤之后，你就应该可以将以下的指令加到你的文件顶部了：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;glad&#x2F;glad.h&gt; </span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+  </entry>
+  <entry>
     <title>MarkerlessARDemo_1</title>
     <url>/2021/04/20/MarkerlessARDemo-1/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
