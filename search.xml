@@ -67,6 +67,10 @@ v_p
 <h3 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h3><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.17</span>)</span><br><span class="line"><span class="keyword">project</span>(WriteORB)</span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">14</span>)</span><br><span class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</span><br><span class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;OpenCV_INCLUDE_DIRS&#125;</span>)</span><br><span class="line"><span class="keyword">add_executable</span>(WriteORB main.cpp)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(WriteORB <span class="variable">$&#123;OpenCV_LIBRARIES&#125;</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="https://raw.githubusercontent.com/junlin49/up/master/image-20210426150738906.png" alt="image-20210426150738906"></p>
 <p><img src="https://raw.githubusercontent.com/junlin49/up/master/image-20210426150848863.png" alt="image-20210426150848863"></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/1.png" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/2.png" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/feat1.png" alt="feat1"></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/matches.png" alt="matches"></p>
 ]]></content>
       <categories>
         <category>SLAM</category>
