@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>显示器输入源快速切换</title>
+    <url>/2021/04/26/%E6%98%BE%E7%A4%BA%E5%99%A8%E8%BE%93%E5%85%A5%E6%BA%90%E5%BF%AB%E9%80%9F%E5%88%87%E6%8D%A2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="显示器输入源快速切换"><a href="#显示器输入源快速切换" class="headerlink" title="显示器输入源快速切换"></a>显示器输入源快速切换</h1><blockquote>
+<p>参考连接：</p>
+<p><a href="https://www.jianshu.com/p/658919447bff">https://www.jianshu.com/p/658919447bff</a></p>
+<p><a href="https://cn.myanmarbloggers.org/938916-how-can-i-set-sleep-FWVMKF-article">https://cn.myanmarbloggers.org/938916-how-can-i-set-sleep-FWVMKF-article</a></p>
+</blockquote>
+<p>笔记本为Windows系统，台式机为Ubuntu系统，但是大的显示器只有1个，有时候想切换一下输入源，让两个系统都是大屏模式下使用</p>
+<h2 id="传统方法"><a href="#传统方法" class="headerlink" title="传统方法"></a>传统方法</h2><ol>
+<li>可以通过显示器下面的按钮切换 按了几次手疼不方便</li>
+<li>通过拔插VGA或HDMI的线也可以实现切换 emmmm 不优雅不完美</li>
+</ol>
+<h2 id="最佳方法"><a href="#最佳方法" class="headerlink" title="最佳方法"></a>最佳方法</h2><p>原理：通过计算机睡眠最终达到切换输入源的目的</p>
+<ol>
+<li>Win 键盘Fn+F1</li>
+<li>Mac 键盘Control+Shift+Eject</li>
+</ol>
+<p>Eject是苹果电脑键盘右上角的键</p>
+<p>但是Ubuntu系统该如何快速休眠呢？</p>
+<ol>
+<li>在右上角打开状态菜单。按下“ alt”键会将关机按钮变为暂停按钮。</li>
+<li>长按关机按钮会将其变成暂停按钮</li>
+<li>在活动视图（您可以在其中看到窗口和搜索应用程序）中，以ubuntu使用的语言（例如，以意大利语为例）搜索“暂停”，然后选择它。</li>
+</ol>
+<p>prefect !</p>
+]]></content>
+      <categories>
+        <category>tips</category>
+      </categories>
+  </entry>
+  <entry>
     <title>手写orb</title>
     <url>/2021/04/26/%E6%89%8B%E5%86%99orb/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="手写ORB"><a href="#手写ORB" class="headerlink" title="手写ORB"></a>手写ORB</h1><blockquote>
@@ -5334,7 +5365,7 @@ m \stackrel{\text { def }}{=}\left(\begin{array}{l}
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">linux:</span><br><span class="line">git config http.postBuffer 524288000</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>奇淫技巧</category>
+        <category>tips</category>
       </categories>
       <tags>
         <tag>git</tag>
@@ -5806,11 +5837,8 @@ m \stackrel{\text { def }}{=}\left(\begin{array}{l}
 </ol>
 ]]></content>
       <categories>
-        <category>奇淫技巧</category>
+        <category>tips</category>
       </categories>
-      <tags>
-        <tag>word中插入代码</tag>
-      </tags>
   </entry>
   <entry>
     <title>Unity重新激活许可证</title>
@@ -6270,7 +6298,7 @@ m \stackrel{\text { def }}{=}\left(\begin{array}{l}
 <h3 id="4-FindYoutube"><a href="#4-FindYoutube" class="headerlink" title="4. FindYoutube"></a>4. FindYoutube</h3><p><a href="https://www.findyoutube.net/">https://www.findyoutube.net/</a></p>
 ]]></content>
       <categories>
-        <category>奇淫技巧</category>
+        <category>tips</category>
       </categories>
       <tags>
         <tag>YouTuBe</tag>
@@ -6670,10 +6698,7 @@ m \stackrel{\text { def }}{=}\left(\begin{array}{l}
 </ol>
 ]]></content>
       <categories>
-        <category>奇淫技巧</category>
+        <category>tips</category>
       </categories>
-      <tags>
-        <tag>chorme插件</tag>
-      </tags>
   </entry>
 </search>
