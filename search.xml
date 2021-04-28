@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title> error: ‘usleep’ was not declared in this scope</title>
+    <url>/2021/04/28/error-%E2%80%98usleep%E2%80%99-was-not-declared-in-this-scope/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="error-‘usleep’-was-not-declared-in-this-scope"><a href="#error-‘usleep’-was-not-declared-in-this-scope" class="headerlink" title="error: ‘usleep’ was not declared in this scope"></a>error: ‘usleep’ was not declared in this scope</h1><blockquote>
+<p><a href="https://github.com/raulmur/ORB_SLAM2/issues/337">https://github.com/raulmur/ORB_SLAM2/issues/337</a></p>
+</blockquote>
+<ol>
+<li>find that file,and add the following codes to it:</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>An easier way is to add <code>#include &lt;unistd.h&gt;</code> in <code>System.h</code>.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>SLAM configure errors</category>
+      </categories>
+      <tags>
+        <tag>SLAM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>特征点法里程计第3版</title>
     <url>/2021/04/27/%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95%E9%87%8C%E7%A8%8B%E8%AE%A1%E7%AC%AC3%E7%89%88/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
