@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NAS私人云笔记</title>
+    <url>/2021/05/19/NAS%E7%A7%81%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="NAS私人云笔记"><a href="#NAS私人云笔记" class="headerlink" title="NAS私人云笔记"></a>NAS私人云笔记</h1><blockquote>
+<p>参考链接：</p>
+<p><a href="https://post.smzdm.com/p/724709/">https://post.smzdm.com/p/724709/</a></p>
+</blockquote>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>由于经常在Ubuntu与Winodws之间切换，一个在线的云笔记软件对我来说显得非常重要；看视频的时候可以随时记下笔记，积累素材</p>
+<h2 id="DS-Note简介"><a href="#DS-Note简介" class="headerlink" title="DS Note简介"></a>DS Note简介</h2><p>DS Note是群晖DSM系统中提供的一个云笔记服务。像印象笔记一样，支持跨平台，多终端之间的笔记可以在云端同步；允许用户创建多个笔记本；也支持笔记的分享；能够对笔记设置标签；可喜的是，DS Note同样有网页剪藏功能，还提供了Chrome浏览器中的剪藏工具、桌面客户端等工具。由于群晖服务器属于用户私有，那么特别适合在意隐私的重度笔记用户。</p>
+<h2 id="DS-Note搭建条件"><a href="#DS-Note搭建条件" class="headerlink" title="DS Note搭建条件"></a>DS Note搭建条件</h2><ul>
+<li>一台群晖NAS（型号不限）。</li>
+<li>群晖NAS上安装Note Station套件（即安装服务器端）。</li>
+<li>在计算机、平板电脑、智能手机上安装DS Note软件或app（即安装客户端）。</li>
+<li>在上述客户端登录你的群晖账户</li>
+</ul>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="安装套件"><a href="#安装套件" class="headerlink" title="安装套件"></a>安装套件</h3><p>DS Note的服务器端套件名为Note Station，这个符合群晖的命名习惯，比如视频套件叫Video Station等。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/5b3bf804e93c56114.png_e680.jpg" alt="在套件中心，搜索或浏览找到Note Station套件"></p>
+<p>在Note Station图标上单击右键，选添加到桌面，在DSM桌面上放置一个Note Station的快捷方式。</p>
+<h3 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h3><h4 id="Windows、Ubuntu"><a href="#Windows、Ubuntu" class="headerlink" title="Windows、Ubuntu"></a>Windows、Ubuntu</h4><p>访问群晖官网的<a href="https://www.synology.cn/zh-cn/support/download">下载中心</a></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/5b3bfdf5da1fa6800.png_e680.jpg" alt="选择任一型号设备，以出现下载列表"></p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/5b3bfeb0d51ef2404.png_e680.jpg" alt="在下载列表中，找到Note Station Client（桌面客户端）"></p>
+<h4 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h4><p>直接远程连接NAS，点开桌面的快捷方式即可</p>
+<h3 id="markdown支持"><a href="#markdown支持" class="headerlink" title="markdown支持"></a>markdown支持</h3><p>浏览器插件 markdown here</p>
+]]></content>
+      <categories>
+        <category>NAS</category>
+      </categories>
+  </entry>
+  <entry>
     <title> error: ‘usleep’ was not declared in this scope</title>
     <url>/2021/04/28/error-%E2%80%98usleep%E2%80%99-was-not-declared-in-this-scope/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="error-‘usleep’-was-not-declared-in-this-scope"><a href="#error-‘usleep’-was-not-declared-in-this-scope" class="headerlink" title="error: ‘usleep’ was not declared in this scope"></a>error: ‘usleep’ was not declared in this scope</h1><blockquote>
