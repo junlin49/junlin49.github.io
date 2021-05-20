@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>TimeShift为Ubuntu系统创建快照</title>
+    <url>/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="TimeShift为Ubuntu系统创建快照"><a href="#TimeShift为Ubuntu系统创建快照" class="headerlink" title="TimeShift为Ubuntu系统创建快照"></a>TimeShift为Ubuntu系统创建快照</h1><blockquote>
+<p>转载自：<a href="https://linux.cn/article-11619-1.html?pr">https://linux.cn/article-11619-1.html?pr</a></p>
+<p>译自：<a href="https://www.linuxtechi.com/timeshift-backup-restore-ubuntu-linux/作者：">https://www.linuxtechi.com/timeshift-backup-restore-ubuntu-linux/作者：</a> James Kiarie<br>原创：<a href="http://lctt.github.io/">LCTT</a> <a href="https://linux.cn/article-11619-1.html译者：">https://linux.cn/article-11619-1.html译者：</a> geekpi</p>
+</blockquote>
+<p>你是否曾经想过如何备份和还原 Ubuntu 或 Debian 系统？Timeshift 是一款自由开源工具，可让你创建文件系统的增量快照。你可以使用 RSYNC 或 BTRFS 两种方式创建快照。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/235959fejmb080e7z0jnu0.jpg" alt="img"></p>
+<p>让我们深入研究并安装 Timeshift。在本教程，我们将安装在 Ubuntu 18.04 LTS 系统上。</p>
+<h2 id="在-Ubuntu-Debian-Linux-上安装-TimeShift"><a href="#在-Ubuntu-Debian-Linux-上安装-TimeShift" class="headerlink" title="在 Ubuntu / Debian Linux 上安装 TimeShift"></a>在 Ubuntu / Debian Linux 上安装 TimeShift</h2><p>TimeShift 尚未正式托管在 Ubuntu 和 Debian 仓库中。考虑到这一点，我们将运行以下命令来添加 PPA：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository -y ppa:teejee2008&#x2F;ppa</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001558mvh2kqjmrzrkvs18.png" alt="Add timeshift repository"></p>
+<p>接下来，使用以下命令更新系统软件包：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<p>成功更新系统后，使用以下 <code>apt</code> 命令安装 Timeshift：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install timeshift</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001417qpv1v3yspypkl9vv.png" alt="apt install timeshift"></p>
+<h2 id="准备备份存储设备"><a href="#准备备份存储设备" class="headerlink" title="准备备份存储设备"></a>准备备份存储设备</h2><p>最佳实践要求我们将系统快照保存在系统硬盘之外的单独的存储卷上。对于本指南，我们将使用 16GB 闪存作为第二个驱动器，并在该驱动器上保存快照。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># lsblk | grep sdb</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001421nrarp82frkrxjoqt.png" alt="lsblk sdb ubuntu"></p>
+<p>为了将闪存用作快照的备份位置，我们需要在设备上创建一个分区表。运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># parted &#x2F;dev&#x2F;sdb  mklabel gpt</span><br><span class="line"># parted &#x2F;dev&#x2F;sdb  mkpart primary 0% 100%</span><br><span class="line"># mkfs.ext4  &#x2F;dev&#x2F;sdb1</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001425rzbfdn9un4ioditt.jpg" alt="create partition table on drive ubuntu"></p>
+<p>在 USB 闪存上创建分区表后，我们可以开始创建文件系统的快照！</p>
+<h3 id="使用-Timeshift-创建快照"><a href="#使用-Timeshift-创建快照" class="headerlink" title="使用 Timeshift 创建快照"></a>使用 Timeshift 创建快照</h3><p>要启动 Timeshift，使用应用程序菜单搜索 “Timeshift”。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001427b5swwersrye5lspd.jpg" alt="Access timeshift"></p>
+<p>单击 Timeshift 图标，系统将提示你输入管理员密码。提供密码，然后单击验证。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001431smjkwpzm46aa1c0m.jpg" alt="Authentication required"></p>
+<p>接下来，选择你喜欢的快照类型。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001431tfrfor6kizsis4os.jpg" alt="Select rsync option"></p>
+<p>点击 “Next”。选择快照的目标驱动器。在这里，我的位置是标记为 <code>/dev/sdb</code> 的外部 USB 驱动器。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001434m1kbo1q11q1qgqj1.png" alt="Select snapshot location"></p>
+<p>接下来，定义快照级别。级别是指创建快照的时间间隔。你可以选择每月、每周、每天或每小时的快照级别。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001437bcz28s8auc7zchf3.jpg" alt="Select snapshot levels"></p>
+<p>点击 “Finish”。</p>
+<p>在下一个窗口中，单击 “Create” 按钮开始创建快照。此后，系统将开始创建快照。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001439b32933jyj9z88m95.jpg" alt="Create snapshot"></p>
+<p>最后，你的快照将显示如下：</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001441qcqklak68c4cqcbk.jpg" alt="Snapshot created"></p>
+<h3 id="从快照还原-Ubuntu-Debian"><a href="#从快照还原-Ubuntu-Debian" class="headerlink" title="从快照还原 Ubuntu / Debian"></a>从快照还原 Ubuntu / Debian</h3><p>创建系统快照后，现在让我们看看如何从同一快照还原系统。在同一个 Timeshift 中，单击快照，然后单击 “Restore” 按钮，如图所示。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001444z3udab299qd39adi.jpg" alt="Restore snapshot"></p>
+<p>接下来，将提示你选择目标设备。保留默认选择，然后点击 “Next”。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001448ax09vvc0wzb96lz0.jpg" alt="Select target device"></p>
+<p>恢复过程开始之前，Timeshift 将会试运行。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001454rico1n1p1112oi3p.jpg" alt="Comparing files dry run"></p>
+<p>在下一个窗口中，点击 “Next” 按钮确认显示的操作。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001459iwaeriwejni8ra3b.jpg" alt="Confirm actions"></p>
+<p>如图所示，你会看到警告和免责声明。点击 “Next” 初始化恢复过程。</p>
+<p>此后，将开始还原过程，最后，系统之后将重新启动到快照定义的早期版本。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/001507y44rsxkp7j90s1f7.png" alt="Restoring snapshot"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如你所见，使用 TimeShift 从快照还原系统非常容易。在备份系统文件时，它非常方便，并允许你在系统故障时进行恢复。因此，不要害怕修改系统或弄乱系统。TimeShift 使你能够返回到一切运行平稳的时间点。</p>
+]]></content>
+      <categories>
+        <category>Ubuntu配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>NAS私人云笔记</title>
     <url>/2021/05/19/NAS%E7%A7%81%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="NAS私人云笔记"><a href="#NAS私人云笔记" class="headerlink" title="NAS私人云笔记"></a>NAS私人云笔记</h1><blockquote>
