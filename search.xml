@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于图像通道的理解</title>
+    <url>/2021/05/20/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%83%8F%E9%80%9A%E9%81%93%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="关于图像通道的理解"><a href="#关于图像通道的理解" class="headerlink" title="关于图像通道的理解"></a>关于图像通道的理解</h1><blockquote>
+<p>转载自：</p>
+<p><a href="https://tinacristal.github.io/2018/09/24/%E5%85%B3%E4%BA%8Eopencv%E7%9A%84%E9%80%9A%E9%81%93/">https://tinacristal.github.io/2018/09/24/%E5%85%B3%E4%BA%8Eopencv%E7%9A%84%E9%80%9A%E9%81%93/</a></p>
+</blockquote>
+<h2 id="OpenCV中的图像通道"><a href="#OpenCV中的图像通道" class="headerlink" title="OpenCV中的图像通道"></a>OpenCV中的图像通道</h2><p>OpenCV中图像的通道可以是1、2、3和4。其中常见的是1通道和3通道，2通道和4通道不常见。</p>
+<p>1通道的是灰度图。</p>
+<p>3通道的是彩色图像，比如RGB图像。</p>
+<p>4通道的图像是RGBA，是RGB加上一个A通道，也叫alpha通道，表示透明度。PNG图像是一种典型的4通道图像。alpha通道可以赋值0到1，或者0到255，表示透明到不透明。</p>
+<p>2通道的图像是RGB555和RGB565。2通道图在程序处理中会用到，如傅里叶变换，可能会用到，一个通道为实数，一个通道为虚数，主要是编程方便。RGB555是16位的，2个字节，5+6+5，第一字节的前5位是R，后三位+第二字节是G，第二字节后5位是B，可见对原图像进行压缩了。</p>
+<h2 id="必要常识"><a href="#必要常识" class="headerlink" title="必要常识"></a>必要常识</h2><ol>
+<li>一个图像的通道数是N，就表明每个像素点处有N个数，一个a×b的N通道图像，其图像矩阵实际上是b行N×a列的数字矩阵。</li>
+<li>OpenCV中用imshow( )来显示图像，只要Mat的数据矩阵符合图像的要求，就可以用imshow来显示。二通道好像不可以。。。超过了4通道，就不是图像了，imshow( )也显示不了。</li>
+<li>imshow( )显示单通道图像时一定是灰度图，如果我们想显示红色的R分量，还是应该按三通道图像显示，只不过G和B通道要赋值成0或255。</li>
+<li>通道分解用split( )，通道合成用merge( )，这俩函数都是mixchannel( )的特例。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>C++ main(int argc,char* argv[]) 详解</title>
     <url>/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-main-int-argc-char-argv-详解"><a href="#C-main-int-argc-char-argv-详解" class="headerlink" title="C++ main(int argc,char* argv[]) 详解"></a>C++ main(int argc,char* argv[]) 详解</h1><blockquote>
