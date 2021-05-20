@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>转载：markdown转word | Junlu's Blog</title><meta name="author" content="Junlu"><meta name="copyright" content="Junlu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="转载：markdown转word 转载链接： https:&#x2F;&#x2F;www.trickyedecay.me&#x2F;2020&#x2F;08&#x2F;04&#x2F;use-pandoc-to-convert-markdown-to-docx&#x2F; 这篇文档需要你：  拥有 markdown 基础 了解 命令行 的使用方式   最近公司里需要写一些开发文档，用于提交给甲方。这件艰巨的任务落在了我身上，然而甲方要求我们提供 docx 格式的文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="转载：markdown转word">
+<meta property="og:url" content="http://blog.junlu.club/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/index.html">
+<meta property="og:site_name" content="Junlu&#39;s Blog">
+<meta property="og:description" content="转载：markdown转word 转载链接： https:&#x2F;&#x2F;www.trickyedecay.me&#x2F;2020&#x2F;08&#x2F;04&#x2F;use-pandoc-to-convert-markdown-to-docx&#x2F; 这篇文档需要你：  拥有 markdown 基础 了解 命令行 的使用方式   最近公司里需要写一些开发文档，用于提交给甲方。这件艰巨的任务落在了我身上，然而甲方要求我们提供 docx 格式的文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF">
+<meta property="article:published_time" content="2021-05-20T13:58:31.000Z">
+<meta property="article:modified_time" content="2021-05-20T14:03:57.216Z">
+<meta property="article:author" content="Junlu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://blog.junlu.club/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-20 22:03:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://raw.githubusercontent.com/junlin49/up/master/photo_2021-04-25_19-34-57.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">106</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Junlu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">转载：markdown转word</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-20T13:58:31.000Z" title="发表于 2021-05-20 21:58:31">2021-05-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-20T14:03:57.216Z" title="更新于 2021-05-20 22:03:57">2021-05-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="转载：markdown转word"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="转载：markdown转word"><a href="#转载：markdown转word" class="headerlink" title="转载：markdown转word"></a>转载：markdown转word</h1><blockquote>
+<p>转载链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.trickyedecay.me/2020/08/04/use-pandoc-to-convert-markdown-to-docx/">https://www.trickyedecay.me/2020/08/04/use-pandoc-to-convert-markdown-to-docx/</a></p>
+<p>这篇文档需要你：</p>
+<ul>
+<li>拥有 markdown 基础</li>
+<li>了解 命令行 的使用方式</li>
+</ul>
+</blockquote>
+<p>最近公司里需要写一些开发文档，用于提交给甲方。这件艰巨的任务落在了我身上，然而甲方要求我们提供 <code>docx</code> 格式的文档。</p>
+<p>一想到使用 <code>word</code> 来书写文档，头不由自主地痛了起来！要是能够使用我最熟悉的 markdown 语法来书写文档，那该多好啊！</p>
+<p>因为：</p>
+<ol>
+<li>我实在是太喜欢使用 markdown 来写东西了。</li>
+<li>比起 word，markdown 能够让我更专注于书写内容而不是文档格式。</li>
+<li>markdown 是纯文本文件，可以使用 git 管理以查看文档版本之间的修改差异。</li>
+</ol>
+<h2 id="一、最简单的方案"><a href="#一、最简单的方案" class="headerlink" title="一、最简单的方案"></a>一、最简单的方案</h2><p>其实一直以来，除了书写各种 <code>readme.md</code> 以外，一些快速的 markdown 文档书写我都是使用 <a target="_blank" rel="noopener" href="https://typora.io/">typora</a> 这款软件。因为它提供了一种足够简单、简洁的界面和操作方式，更重要的是，这款软件跨平台。</p>
+<p><img src="https://raw.githubusercontent.com/junlin49/up/master/FnmJbULsFYqUGyy1DqWGL9DMaDXo" alt="typora-cross-platform"></p>
+<p>还有一个更重要的原因，很多人接触它是因为，它能够直接将 markdown 转换成为 pdf 或 word。 <img src="https://raw.githubusercontent.com/junlin49/up/master/FvjJPFom9SQmnrCLsODda2l4Sx5i" alt="typora-export"></p>
+<p>那有这么方便的软件，为什么还要专门写这篇文章呢？不就完事了吗？</p>
+<h2 id="二、转换的些许需求"><a href="#二、转换的些许需求" class="headerlink" title="二、转换的些许需求"></a>二、转换的些许需求</h2><p>很快，你就会发现使用 typora 转换成为 docx 时，会有各种地方让你不爽。比如，转换之后的文档会变得很不好看。</p>
+<p>这是在 typora 里面文档的样子：<br><img src="https://raw.githubusercontent.com/junlin49/up/master/FqcpcfgE9vnDZqqwDo4SKTLWraAD" alt="example-in-typora"></p>
+<p>这是通过 typora 导出成 docx 的样子：<br><img src="https://raw.githubusercontent.com/junlin49/up/master/FujN6J7t1kkLLZ5BTTzobcC2v5l8" alt="typora-to-word-example"></p>
+<p>这是通过 typora 导出成 pdf 的样子：<br><img src="https://raw.githubusercontent.com/junlin49/up/master/FnzLDKaeKJHeA6h5VJ-5Sr-IKcV2" alt="typora-to-pdf-example"></p>
+<p>你会发现，导出成 pdf 几乎保持着书写时的原样，而导出成 word 的效果难以言喻。</p>
+<p>这时候我在想，<strong>要不，我们去说服一下甲方使用 pdf 文档？</strong></p>
+<p>很快，我就发现了新的问题需要解决：<strong>文档需要目录</strong>。</p>
+<p>还好，typora为我们提供了一个特殊的标签 <code>[TOC]</code>。使用起来像这样： <img src="https://raw.githubusercontent.com/junlin49/up/master/FmB3qL4zB_tuPEw8MjKz2ruuhtQE" alt="usage-of-toc"></p>
+<p>在 typora 渲染文档看起来像这样： <img src="https://raw.githubusercontent.com/junlin49/up/master/Fv6BiZdViYJl6zEqO1m5bp4mwG9a" alt="render-of-toc"></p>
+<p>这个功能很棒，导出成 <code>pdf</code> 之后，它的目录是可以 <strong>点击</strong> 的。但是很快也会发现新的问题，这个目录仅仅是个目录，它没有页码。没有页码有什么问题呢？有！打印出来的时候目录就显得没意义了。</p>
+<p>显然，给甲方写的文档在验收时可能用于打印，<strong>甲方可能会要求我们在目录上添加页码，同时，还需要一个封面图。</strong></p>
+<p>我们总结一下，这次的文档工作，需求大概是这样：</p>
+<ol>
+<li>使用 markdown 来书写</li>
+<li>要能转换成 docx</li>
+<li>要有目录</li>
+<li>要有页码</li>
+<li>要有封面图</li>
+</ol>
+<h2 id="三、曲线方案"><a href="#三、曲线方案" class="headerlink" title="三、曲线方案"></a>三、曲线方案</h2><p>在很久之前，我也做过类似的事情，出自于对 markdown 的喜爱，我竟然：</p>
+<ol>
+<li>先用 markdown 书写文档</li>
+<li>使用 typora 导出成 pdf (content.pdf)</li>
+<li>使用<a target="_blank" rel="noopener" href="http://www.pdfdo.com/page-number.aspx">在线工具</a> 为 content.pdf 添加页码。</li>
+<li>打开 word<ul>
+<li>手动创建一个封面图</li>
+<li>手动创建一个目录(手动编辑目录内容、页码)</li>
+</ul>
+</li>
+<li>把 word 导出成 pdf (cover.pdf)</li>
+<li>使用<a target="_blank" rel="noopener" href="https://smallpdf.com/cn/merge-pdf/">在线工具</a> 合并两个 pdf 成为一个 pdf。</li>
+</ol>
+<p><img src="https://img.trickyedecay.me/FkgaOKsT96c5qZmU4J0h1AFdiwos" alt="curve-solution"></p>
+<p>总之，太麻烦了，让我在开始写文档之前就已经原地死亡了。</p>
+<blockquote>
+<p>还有，这样的在线方案让我觉得很不安全</p>
+</blockquote>
+<h2 id="四、简单使用-pandoc"><a href="#四、简单使用-pandoc" class="headerlink" title="四、简单使用 pandoc"></a>四、简单使用 pandoc</h2><p>typora 的导出 docx 和 pdf 功能其实需要大家先安装 <code>pandoc</code> 的。在使用 typora 导出文档时，它会指引你如何安装 <a target="_blank" rel="noopener" href="https://pandoc.org/installing.html">pandoc</a>。</p>
+<blockquote>
+<p>typora 的导出功能，就是调用了这个软件！</p>
+</blockquote>
+<p>那么，我们怎么模拟 typora 导出 docx 呢？非常简单，首先<strong>在markdown文档所在的路径打开命令行工具</strong>。然后这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s example.md -o target.docx </span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>-s &lt;sourcefile&gt;</code> 参数用于指定来源文件，那么这里肯定是你的 markdown 文件名称</li>
+<li><code>-o &lt;targetfile&gt;</code> 参数用于指定目标文件，就是转换后该生成一个什么名字的文件</li>
+</ul>
+<p>这样一来你就能得到一个 <code>target.docx</code> 文件啦！ 但是呢，这个文件就如我们之前说的，它的格式还是一样非常丑！</p>
+<h2 id="五、优化-pandoc-对于-docx-导出的样式"><a href="#五、优化-pandoc-对于-docx-导出的样式" class="headerlink" title="五、优化 pandoc 对于 docx 导出的样式"></a>五、优化 pandoc 对于 docx 导出的样式</h2><p>pandoc 为我们提供了一个<a target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html#option--reference-doc">参数</a> <code>--reference-doc</code>。</p>
+<p>这个参数是这样使用的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s example.md -o target.docx --reference-doc reference.docx</span><br></pre></td></tr></table></figure>
+<p>从命令行中可以看出，多了一个 <code>reference.docx</code>。那么这个文档是<strong>需要我们事先准备的</strong>。</p>
+<p>该参数的原理就是，将 <code>reference.docx</code> 中的各种文本样式(一级标题啊、二级标题啊、列表样式啊、表格样式啊)应用到导出的 <code>target.docx</code> 中，所以我们可以称这个 <code>reference.docx</code> 文件为 <strong>样式模板文件</strong>。</p>
+<p>我们可以通过以下命令行得到一个 pandoc 用于生成 docx 的 <strong>默认样式模板文件</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -o custom-reference.docx --print-default-data-file reference.docx</span><br></pre></td></tr></table></figure>
+<p>上面这个命令生成了一个 <code>custom-reference.docx</code>，这个默认样式模板文件用word打开来像这样： <img src="https://raw.githubusercontent.com/junlin49/up/master/FtvRwkib-cjT4mVdkUJUsYJxsaoQ" alt="custom-reference.docx"></p>
+<p>那么，接下来，别着急着使用word最显眼的工具来调整这些字体的样式： <img src="https://raw.githubusercontent.com/junlin49/up/master/Fr6v61VLpWAP3eCB94pvrglzf08v" alt="do-not-do-this"></p>
+<p>我们应该使用 word 的<a target="_blank" rel="noopener" href="https://support.microsoft.com/zh-cn/office/自定义或创建新样式-d38d6e47-f6fc-48eb-a607-1eb120dec563">样式</a>功能来调整这些字体的样式。</p>
+<p>接下来，就靠自己把这份样式文件调到最舒服的状态啦~</p>
+<blockquote>
+<p>这里有一份<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/12V00on6SwIan25tVrcytVQ">我自己调好的样式模板文件</a>，提取码<code>cnn9</code>： 左边是 markdown ，右边是 word <img src="https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF" alt="my-reference-style"></p>
+</blockquote>
+<p>使用这个方法还有一些不完美的地方，目前我也没有去解决，引用语法里面添加列表和图片在word里面渲染不正常。</p>
+<h2 id="六、添加封面图和目录"><a href="#六、添加封面图和目录" class="headerlink" title="六、添加封面图和目录"></a>六、添加封面图和目录</h2><p>到目前为止，我们已经能比较完美地转换文档了，但是呢，还缺少目录和封面图。<code>pandoc</code>支持使用 <code>frontmatter</code> 的方式生成一个目录，但是仅能生成目录而已。</p>
+<blockquote>
+<p>pandoc 支持一系列的 frontMatter 设置，文档在这：<a target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html#variables-for-latex">传送门</a></p>
+</blockquote>
+<p>如果你不知道什么是 <code>frontmatter</code> 也没关系，因为我们不会用到它。(那我说个屁)</p>
+<p>在一次偶然的文档阅读中，我发现了 pandoc 文档中的<a target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html#extension-raw_attribute">这一点</a>： <img src="https://raw.githubusercontent.com/junlin49/up/master/FkviVLYnzcRGZCfEaL3G5rEuR7xc" alt="pandoc-openxml"></p>
+<p>意思大概是，在 markdown 里面书写这段代码，可以在 word 中生成一个 <strong>分页符</strong>。 <img src="https://img.trickyedecay.me/FoA5PJdzasCoDFXGYnv4UIitDrZ_" alt="word-page-break-openxml"></p>
+<p>也就是说，在 markdown 中可以插入一些特殊的代码，使用pandoc生成word的时候，这些特殊的代码会生成word概念中的一些东西。</p>
+<p>好家伙，仔细了解了一下，这种特殊的代码是 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Office_Open_XML">openxml</a>，是微软开发的以XML为基础并以ZIP格式压缩的电子文件规范，通常我们的word、ppt、excel都是由这样的代码组成。</p>
+<p>换句话说，<strong>如果我们懂得按照某种规范书写 xml 代码，我们也可以自制一个 word 文档</strong>。</p>
+<p>反过来想，是不是每一个 word 文档都可以转换成为 openxml 呢？</p>
+<p>哈哈哈哈！确实是这样的！</p>
+<h3 id="6-1-编辑封面"><a href="#6-1-编辑封面" class="headerlink" title="6.1 编辑封面"></a>6.1 编辑封面</h3><p>让我们新建一个word文档，并对内容进行简单的编辑： <img src="https://raw.githubusercontent.com/junlin49/up/master/Fj7gEqcMZbTFhqLWKZWHvnPoU6HO" alt="my-edition-cover"></p>
+<p>在这一页 word 中，我添加了一个 1列4行 的表格，并在合适的地方填入了内容，比如标题和承办单位什么的。</p>
+<p>然后保存这个文档到合适的地方。</p>
+<h3 id="6-2-提取-openxml"><a href="#6-2-提取-openxml" class="headerlink" title="6.2 提取 openxml"></a>6.2 提取 openxml</h3><p>我们可以使用压缩软件打开刚刚保存的word文档，然后在压缩文件里找到 <code>word/document.xml</code> 文件 <img src="https://raw.githubusercontent.com/junlin49/up/master/Fu1IIy7_0mHVxBvmNgzCpgnPiqNs" alt="zip-document_xml"></p>
+<p>我们可以在文本编辑器里面打开这个文档： <img src="https://raw.githubusercontent.com/junlin49/up/master/FjH58miQ1h1e4c9XAqZtQWfiyGrI" alt="document_xml-content"></p>
+<p>可以看到这些 xml 标签其实也不是很难理解，<code>w:tbl</code> 显然就是代表表格的意思。所以在 <code>&lt;w:tbl&gt;</code> 和 <code>&lt;/w:tbl&gt;</code> 之间应该就是我们刚刚在word里面绘制的内容。</p>
+<blockquote>
+<p>哈哈哈哈？显然是表格？？？？？？？？？？因为 tbl 是 table 的缩写啊！开发人员的敏感直觉！如果你没办法猜到这些单词的意思，那么你可以移步 <a target="_blank" rel="noopener" href="http://officeopenxml.com/anatomyofOOXML.php">openxml的文档</a> 来真正认识这些标签。</p>
+</blockquote>
+<h3 id="6-3-写入-markdown"><a href="#6-3-写入-markdown" class="headerlink" title="6.3 写入 markdown"></a>6.3 写入 markdown</h3><p>把上面的 <code>&lt;w:tbl&gt;</code> 和 <code>&lt;/w:tbl&gt;</code> 之间的代码复制到 markdown 中，然后用代码块包起来。注意不要少了特殊标记，像这样：<br><img src="https://raw.githubusercontent.com/junlin49/up/master/FhocJyz1jJiwdhftMPBr7JKEU6r0" alt="example-of-openxml-in-markdown"></p>
+<blockquote>
+<p>这一段东西可能会相当长咧，所以可能会让你的 markdown 的一开头看起来乱糟糟的，不过没事嘛，至少以后不用在写完 markdown 之后还要额外插入封面了。</p>
+</blockquote>
+<p>一样的，我们也可以通过这种方式插入目录。目录的 <code>openxml</code> 代码是这样的，大家可以直接复制：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;w:sdt&gt;&lt;w:sdtPr&gt;&lt;w:docPartObj&gt;&lt;w:docPartGallery w:val=&quot;Table of Contents&quot; /&gt;&lt;w:docPartUnique /&gt;&lt;/w:docPartObj&gt;&lt;/w:sdtPr&gt;&lt;w:sdtContent&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val=&quot;TOC&quot; /&gt;&lt;/w:pPr&gt;&lt;w:r&gt;&lt;w:t xml:space=&quot;preserve&quot;&gt;目录&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:p&gt;&lt;w:r&gt;&lt;w:fldChar w:fldCharType=&quot;begin&quot; w:dirty=&quot;true&quot; /&gt;&lt;w:instrText xml:space=&quot;preserve&quot;&gt;TOC \o &amp;quot;1-3&amp;quot; \h \z \u&lt;/w:instrText&gt;&lt;w:fldChar w:fldCharType=&quot;separate&quot; /&gt;&lt;w:fldChar w:fldCharType=&quot;end&quot; /&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;/w:sdtContent&gt;&lt;/w:sdt&gt;</span><br></pre></td></tr></table></figure>
+<p>在目录之后，我们需要一个分页符，所以看起来会像是这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;w:sdt&gt;&lt;w:sdtPr&gt;&lt;w:docPartObj&gt;&lt;w:docPartGallery w:val=&quot;Table of Contents&quot; /&gt;&lt;w:docPartUnique /&gt;&lt;/w:docPartObj&gt;&lt;/w:sdtPr&gt;&lt;w:sdtContent&gt;&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val=&quot;TOC&quot; /&gt;&lt;/w:pPr&gt;&lt;w:r&gt;&lt;w:t xml:space=&quot;preserve&quot;&gt;目录&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;w:p&gt;&lt;w:r&gt;&lt;w:fldChar w:fldCharType=&quot;begin&quot; w:dirty=&quot;true&quot; /&gt;&lt;w:instrText xml:space=&quot;preserve&quot;&gt;TOC \o &amp;quot;1-3&amp;quot; \h \z \u&lt;/w:instrText&gt;&lt;w:fldChar w:fldCharType=&quot;separate&quot; /&gt;&lt;w:fldChar w:fldCharType=&quot;end&quot; /&gt;&lt;/w:r&gt;&lt;/w:p&gt;&lt;/w:sdtContent&gt;&lt;/w:sdt&gt;</span><br><span class="line"></span><br><span class="line">&lt;w:p&gt;</span><br><span class="line">&lt;w:r&gt;</span><br><span class="line">    &lt;w:br w:type=&quot;page&quot;/&gt;</span><br><span class="line">  &lt;/w:r&gt;</span><br><span class="line">&lt;/w:p&gt;</span><br></pre></td></tr></table></figure>
+<p>然后使用<strong>上文中解释过的</strong>的命令行代码来生成docx文档吧！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s example-markdown.md -o target.docx --reference-doc=templ.docx</span><br></pre></td></tr></table></figure>
+<p>学会了使用 openxml 来生成一些 word 内容之后，更多的可能性就等你自己去发挥啦~</p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>这个方案呢，可以生成一个<strong>大致符合</strong>内心审美的、带有封面图和目录的 docx 文档。它还有一个缺点，就是在转换的过程中<strong>没办法自己加导出的docx加页码</strong>，所以页码只能自己打开word动手给加上啦。</p>
+<p>如果我以后想到什么办法可以一条命令行就解决这个问题我再来补充啦。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Junlu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.junlu.club/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/">http://blog.junlu.club/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.junlu.club" target="_blank">Junlu's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/05/20/mpv%E6%92%AD%E6%94%BE%E5%99%A8%E5%9C%A8Ubuntu%E7%AB%AF%E7%9A%84%E9%85%8D%E7%BD%AE/"><img class="next-cover" src="https://raw.githubusercontent.com/junlin49/up/master/image-20210520215626280.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">mpv播放器在Ubuntu端的配置</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://raw.githubusercontent.com/junlin49/up/master/photo_2021-04-25_19-34-57.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Junlu</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">106</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">bolg</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword"><span class="toc-number">1.</span> <span class="toc-text">转载：markdown转word</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">一、最简单的方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BD%AC%E6%8D%A2%E7%9A%84%E4%BA%9B%E8%AE%B8%E9%9C%80%E6%B1%82"><span class="toc-number">1.2.</span> <span class="toc-text">二、转换的些许需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9B%B2%E7%BA%BF%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">三、曲线方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8-pandoc"><span class="toc-number">1.4.</span> <span class="toc-text">四、简单使用 pandoc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BC%98%E5%8C%96-pandoc-%E5%AF%B9%E4%BA%8E-docx-%E5%AF%BC%E5%87%BA%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">五、优化 pandoc 对于 docx 导出的样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%B7%BB%E5%8A%A0%E5%B0%81%E9%9D%A2%E5%9B%BE%E5%92%8C%E7%9B%AE%E5%BD%95"><span class="toc-number">1.6.</span> <span class="toc-text">六、添加封面图和目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E7%BC%96%E8%BE%91%E5%B0%81%E9%9D%A2"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 编辑封面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E6%8F%90%E5%8F%96-openxml"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 提取 openxml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%86%99%E5%85%A5-markdown"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 写入 markdown</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.7.</span> <span class="toc-text">七、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/" title="转载：markdown转word"><img src="https://raw.githubusercontent.com/junlin49/up/master/FmbQWYvbJrWxqckdA58AmJVdlAcF" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="转载：markdown转word"/></a><div class="content"><a class="title" href="/2021/05/20/%E8%BD%AC%E8%BD%BD%EF%BC%9Amarkdown%E8%BD%ACword/" title="转载：markdown转word">转载：markdown转word</a><time datetime="2021-05-20T13:58:31.000Z" title="发表于 2021-05-20 21:58:31">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/mpv%E6%92%AD%E6%94%BE%E5%99%A8%E5%9C%A8Ubuntu%E7%AB%AF%E7%9A%84%E9%85%8D%E7%BD%AE/" title="mpv播放器在Ubuntu端的配置"><img src="https://raw.githubusercontent.com/junlin49/up/master/image-20210520215626280.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mpv播放器在Ubuntu端的配置"/></a><div class="content"><a class="title" href="/2021/05/20/mpv%E6%92%AD%E6%94%BE%E5%99%A8%E5%9C%A8Ubuntu%E7%AB%AF%E7%9A%84%E9%85%8D%E7%BD%AE/" title="mpv播放器在Ubuntu端的配置">mpv播放器在Ubuntu端的配置</a><time datetime="2021-05-20T13:48:55.000Z" title="发表于 2021-05-20 21:48:55">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%83%8F%E9%80%9A%E9%81%93%E7%9A%84%E7%90%86%E8%A7%A3/" title="关于图像通道的理解"><img src="https://w.wallhaven.cc/full/28/wallhaven-2813r9.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于图像通道的理解"/></a><div class="content"><a class="title" href="/2021/05/20/%E5%85%B3%E4%BA%8E%E5%9B%BE%E5%83%8F%E9%80%9A%E9%81%93%E7%9A%84%E7%90%86%E8%A7%A3/" title="关于图像通道的理解">关于图像通道的理解</a><time datetime="2021-05-20T13:21:30.000Z" title="发表于 2021-05-20 21:21:30">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/" title="C++ main(int argc,char* argv[]) 详解"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ main(int argc,char* argv[]) 详解"/></a><div class="content"><a class="title" href="/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/" title="C++ main(int argc,char* argv[]) 详解">C++ main(int argc,char* argv[]) 详解</a><time datetime="2021-05-20T08:10:24.000Z" title="发表于 2021-05-20 16:10:24">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/" title="TimeShift为Ubuntu系统创建快照"><img src="https://raw.githubusercontent.com/junlin49/up/master/235959fejmb080e7z0jnu0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TimeShift为Ubuntu系统创建快照"/></a><div class="content"><a class="title" href="/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/" title="TimeShift为Ubuntu系统创建快照">TimeShift为Ubuntu系统创建快照</a><time datetime="2021-05-20T06:17:27.000Z" title="发表于 2021-05-20 14:17:27">2021-05-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Junlu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":"hibiki","display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body></html>
