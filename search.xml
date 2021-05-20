@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++ main(int argc,char* argv[]) 详解</title>
+    <url>/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="C-main-int-argc-char-argv-详解"><a href="#C-main-int-argc-char-argv-详解" class="headerlink" title="C++ main(int argc,char* argv[]) 详解"></a>C++ main(int argc,char* argv[]) 详解</h1><blockquote>
+<p>参考链接：</p>
+<p><a href="https://xicheng412.github.io/2016/09/09/cpp-main-argc-argv/">https://xicheng412.github.io/2016/09/09/cpp-main-argc-argv/</a></p>
+<p><a href="https://blog.csdn.net/dcrmg/article/details/51987413">https://blog.csdn.net/dcrmg/article/details/51987413</a></p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>argv 和 argc 是命令行传递给 C 和 C++ 中 main() 函数的参数</p>
+<ul>
+<li>argc 是指代的 <strong>argv 这个 string 字符串长度</strong> 。 这个长度是参数个数 +1 。 （argument count）</li>
+<li>argv 是一个包含多个字符串的数组，包含执行的文件名和所附带的参数。 (argument vector)</li>
+</ul>
+<p>在 main() 中，也可以写成其他的名字例如</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> num_args, <span class="keyword">char</span>** arg_strings)</span> </span></span><br></pre></td></tr></table></figure>
+<p>这样也是等价的。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>下面是一些测试代码，可以演示这个功能：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Have &quot;</span> &lt;&lt; argc &lt;&lt; <span class="string">&quot; arguments:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; argc; ++i) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; argv[i] &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结论解析"><a href="#结论解析" class="headerlink" title="结论解析"></a>结论解析</h2><p>编译之后可以运行查看结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;test a1 b2 c3</span><br><span class="line">	</span><br><span class="line">Have 4 arguments:</span><br><span class="line">.&#x2F;test</span><br><span class="line">a1</span><br><span class="line">b2</span><br><span class="line">c3</span><br></pre></td></tr></table></figure>
+<p>可以看到</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">argc</td>
+<td style="text-align:left">是指字符串组数，这里是等于4</td>
+</tr>
+<tr>
+<td style="text-align:left">argv[0]</td>
+<td style="text-align:left">是特殊的,是文件执行的命令</td>
+</tr>
+<tr>
+<td style="text-align:left">argv[1]-argv[3]</td>
+<td style="text-align:left">是跟的参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+  </entry>
+  <entry>
     <title>TimeShift为Ubuntu系统创建快照</title>
     <url>/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="TimeShift为Ubuntu系统创建快照"><a href="#TimeShift为Ubuntu系统创建快照" class="headerlink" title="TimeShift为Ubuntu系统创建快照"></a>TimeShift为Ubuntu系统创建快照</h1><blockquote>

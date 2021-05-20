@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C++ main(int argc,char* argv[]) 详解 | Junlu's Blog</title><meta name="author" content="Junlu"><meta name="copyright" content="Junlu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C++ main(int argc,char* argv[]) 详解 参考链接： https:&#x2F;&#x2F;xicheng412.github.io&#x2F;2016&#x2F;09&#x2F;09&#x2F;cpp-main-argc-argv&#x2F; https:&#x2F;&#x2F;blog.csdn.net&#x2F;dcrmg&#x2F;article&#x2F;details&#x2F;51987413  简介argv 和 argc 是命令行传递给 C 和 C++ 中 main() 函数的参数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ main(int argc,char* argv[]) 详解">
+<meta property="og:url" content="http://blog.junlu.club/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Junlu&#39;s Blog">
+<meta property="og:description" content="C++ main(int argc,char* argv[]) 详解 参考链接： https:&#x2F;&#x2F;xicheng412.github.io&#x2F;2016&#x2F;09&#x2F;09&#x2F;cpp-main-argc-argv&#x2F; https:&#x2F;&#x2F;blog.csdn.net&#x2F;dcrmg&#x2F;article&#x2F;details&#x2F;51987413  简介argv 和 argc 是命令行传递给 C 和 C++ 中 main() 函数的参数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg">
+<meta property="article:published_time" content="2021-05-20T08:10:24.000Z">
+<meta property="article:modified_time" content="2021-05-20T08:14:08.347Z">
+<meta property="article:author" content="Junlu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://blog.junlu.club/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-20 16:14:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://raw.githubusercontent.com/junlin49/up/master/photo_2021-04-25_19-34-57.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Junlu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++ main(int argc,char* argv[]) 详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-20T08:10:24.000Z" title="发表于 2021-05-20 16:10:24">2021-05-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-20T08:14:08.347Z" title="更新于 2021-05-20 16:14:08">2021-05-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="C++ main(int argc,char* argv[]) 详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="C-main-int-argc-char-argv-详解"><a href="#C-main-int-argc-char-argv-详解" class="headerlink" title="C++ main(int argc,char* argv[]) 详解"></a>C++ main(int argc,char* argv[]) 详解</h1><blockquote>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://xicheng412.github.io/2016/09/09/cpp-main-argc-argv/">https://xicheng412.github.io/2016/09/09/cpp-main-argc-argv/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dcrmg/article/details/51987413">https://blog.csdn.net/dcrmg/article/details/51987413</a></p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>argv 和 argc 是命令行传递给 C 和 C++ 中 main() 函数的参数</p>
+<ul>
+<li>argc 是指代的 <strong>argv 这个 string 字符串长度</strong> 。 这个长度是参数个数 +1 。 （argument count）</li>
+<li>argv 是一个包含多个字符串的数组，包含执行的文件名和所附带的参数。 (argument vector)</li>
+</ul>
+<p>在 main() 中，也可以写成其他的名字例如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> num_args, <span class="keyword">char</span>** arg_strings)</span> </span></span><br></pre></td></tr></table></figure>
+<p>这样也是等价的。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>下面是一些测试代码，可以演示这个功能：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Have &quot;</span> &lt;&lt; argc &lt;&lt; <span class="string">&quot; arguments:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; argc; ++i) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; argv[i] &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结论解析"><a href="#结论解析" class="headerlink" title="结论解析"></a>结论解析</h2><p>编译之后可以运行查看结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;test a1 b2 c3</span><br><span class="line">	</span><br><span class="line">Have 4 arguments:</span><br><span class="line">.&#x2F;test</span><br><span class="line">a1</span><br><span class="line">b2</span><br><span class="line">c3</span><br></pre></td></tr></table></figure>
+<p>可以看到</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">argc</td>
+<td style="text-align:left">是指字符串组数，这里是等于4</td>
+</tr>
+<tr>
+<td style="text-align:left">argv[0]</td>
+<td style="text-align:left">是特殊的,是文件执行的命令</td>
+</tr>
+<tr>
+<td style="text-align:left">argv[1]-argv[3]</td>
+<td style="text-align:left">是跟的参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Junlu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.junlu.club/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/">http://blog.junlu.club/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.junlu.club" target="_blank">Junlu's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/"><img class="next-cover" src="https://raw.githubusercontent.com/junlin49/up/master/235959fejmb080e7z0jnu0.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TimeShift为Ubuntu系统创建快照</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://raw.githubusercontent.com/junlin49/up/master/photo_2021-04-25_19-34-57.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Junlu</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">103</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junlin49"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">bolg</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">C++ main(int argc,char* argv[]) 详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">结论解析</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/" title="C++ main(int argc,char* argv[]) 详解"><img src="https://w.wallhaven.cc/full/8o/wallhaven-8ogod1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++ main(int argc,char* argv[]) 详解"/></a><div class="content"><a class="title" href="/2021/05/20/C-main-int-argc-char-argv-%E8%AF%A6%E8%A7%A3/" title="C++ main(int argc,char* argv[]) 详解">C++ main(int argc,char* argv[]) 详解</a><time datetime="2021-05-20T08:10:24.000Z" title="发表于 2021-05-20 16:10:24">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/" title="TimeShift为Ubuntu系统创建快照"><img src="https://raw.githubusercontent.com/junlin49/up/master/235959fejmb080e7z0jnu0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TimeShift为Ubuntu系统创建快照"/></a><div class="content"><a class="title" href="/2021/05/20/TimeShift%E4%B8%BAUbuntu%E7%B3%BB%E7%BB%9F%E5%88%9B%E5%BB%BA%E5%BF%AB%E7%85%A7/" title="TimeShift为Ubuntu系统创建快照">TimeShift为Ubuntu系统创建快照</a><time datetime="2021-05-20T06:17:27.000Z" title="发表于 2021-05-20 14:17:27">2021-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/19/NAS%E7%A7%81%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/" title="NAS私人云笔记"><img src="https://raw.githubusercontent.com/junlin49/up/master/image-20210519214541240.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NAS私人云笔记"/></a><div class="content"><a class="title" href="/2021/05/19/NAS%E7%A7%81%E4%BA%BA%E4%BA%91%E7%AC%94%E8%AE%B0/" title="NAS私人云笔记">NAS私人云笔记</a><time datetime="2021-05-19T13:35:19.000Z" title="发表于 2021-05-19 21:35:19">2021-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/28/error-%E2%80%98usleep%E2%80%99-was-not-declared-in-this-scope/" title=" error: ‘usleep’ was not declared in this scope"><img src="https://raw.githubusercontent.com/junlin49/up/master/wallhaven-4yxvjd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt=" error: ‘usleep’ was not declared in this scope"/></a><div class="content"><a class="title" href="/2021/04/28/error-%E2%80%98usleep%E2%80%99-was-not-declared-in-this-scope/" title=" error: ‘usleep’ was not declared in this scope"> error: ‘usleep’ was not declared in this scope</a><time datetime="2021-04-27T23:57:04.000Z" title="发表于 2021-04-28 07:57:04">2021-04-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/27/%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95%E9%87%8C%E7%A8%8B%E8%AE%A1%E7%AC%AC3%E7%89%88/" title="特征点法里程计第3版"><img src="https://raw.githubusercontent.com/junlin49/up/master/image-20210427170612283.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="特征点法里程计第3版"/></a><div class="content"><a class="title" href="/2021/04/27/%E7%89%B9%E5%BE%81%E7%82%B9%E6%B3%95%E9%87%8C%E7%A8%8B%E8%AE%A1%E7%AC%AC3%E7%89%88/" title="特征点法里程计第3版">特征点法里程计第3版</a><time datetime="2021-04-27T08:58:54.000Z" title="发表于 2021-04-27 16:58:54">2021-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Junlu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":"hibiki","display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body></html>
